@@ -15,6 +15,10 @@ Stub. To be written once the analysis is done.
 | `video/` | Walkthrough video. |
 | `chat-history/` | Exported AI chat history. |
 
+## System requirement
+
+The reader needs the **Tesseract OCR program** installed and on your `PATH` (the Python package `pytesseract` only calls it). On Windows use the installer from UB Mannheim (https://github.com/UB-Mannheim/tesseract/wiki); on Linux run `apt install tesseract-ocr`. Check with `tesseract --version`. If Tesseract is not there, the app falls back to saved results for the labelled bills and marks the screen `reader simulated`.
+
 ## Commands
 
 Requires Python 3.11. On Windows without `make`, use `mingw32-make`.

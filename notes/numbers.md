@@ -2156,3 +2156,48 @@ Script: `analysis/12_loose_duplicates.py`. Output: `analysis/out/figures_loose.c
 | ld.invoice_no.distinct_forms_per_loose_key | 0.0 | vendor and invoice-number keys written in more than one way |
 
 <!-- END 12_loose_duplicates.py -->
+
+<!-- BEGIN 13_duplicate_false_alarms.py -->
+
+### Figures from `analysis/13_duplicate_false_alarms.py` (used in notes/duplicate-false-alarms.md. Loose near-duplicate matching run on every posted invoice in the SAP extract)
+
+Script: `analysis/13_duplicate_false_alarms.py`. Output: `analysis/out/figures_dupalarm.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
+
+```
+.venv\Scripts\python.exe -I analysis\clean.py
+.venv\Scripts\python.exe -I analysis\02_stage_times.py
+.venv\Scripts\python.exe -I analysis\04_query_forensics.py
+.venv\Scripts\python.exe -I analysis\13_duplicate_false_alarms.py
+```
+
+`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+
+| Figure id | Value | What it counts |
+|---|---|---|
+| da.rows | 11075.0 | rows in posted_invoices |
+| da.invoices | 10856.0 | distinct posted invoices after collapsing exact duplicate rows (D11) |
+| da.flagged_loose | 120.0 | posted invoices that loose matching flags: another posted invoice of the same vendor matches on letters and digits |
+| da.flagged_exact | 120.0 | posted invoices flagged by exact matching (case and whitespace normalised, as the adapter does) |
+| da.flagged_extra | 0.0 | posted invoices that loose matching flags and exact matching does not |
+| da.flag_rate_per_1000 | 11.054 | loose flags per 1,000 posted invoices |
+| da.pairs | 60.0 | distinct flagged pairs |
+| da.pairs_same_date_and_amount | 0.0 | pairs with the same invoice date and the same amount (the fail grade of check H13) |
+| da.pairs_same_amount | 0.0 | pairs with the same amount |
+| da.pairs_same_date | 1.0 | pairs with the same invoice date |
+| da.pairs_same_wo | 34.0 | pairs on the same work order |
+| da.pairs_same_text | 60.0 | pairs whose invoice numbers are written identically |
+| da.confirmed | 61.0 | flagged invoices that the register shows with a duplicate-bill query (R01) |
+| da.unconfirmed | 59.0 | flagged invoices with no duplicate-bill query |
+| da.false_alarm_pct | 49.167 | share of flagged invoices with no duplicate-bill query, % |
+| da.pairs_either_queried | 60.0 | pairs where at least one of the two invoices has a duplicate-bill query |
+| da.pairs_both_queried | 1.0 | pairs where both invoices have a duplicate-bill query |
+| da.pairs_one_queried | 59.0 | pairs where exactly one invoice has a duplicate-bill query |
+| da.pairs_none_queried | 0.0 | pairs where neither invoice has a duplicate-bill query |
+| da.intake.flagged | 60.0 | as at intake: one flag per pair, raised when the second bill of the pair arrives |
+| da.intake.confirmed | 60.0 | of those, pairs with a duplicate-bill query on at least one of the two invoices |
+| da.intake.false_alarms | 0.0 | of those, pairs with no duplicate-bill query on either invoice |
+| da.intake.false_alarm_pct | 0.0 | share of intake flags (pairs) with no duplicate-bill query on either invoice, % |
+| da.intake.rate_per_1000 | 5.527 | intake flags (pairs) per 1,000 posted invoices |
+| da.queried_dup_not_flagged | 59.0 | posted invoices with a duplicate-bill query that loose matching does not flag |
+
+<!-- END 13_duplicate_false_alarms.py -->

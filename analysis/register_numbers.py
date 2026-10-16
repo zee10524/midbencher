@@ -39,6 +39,8 @@ SOURCES = [
      "notes/assumptions.md ('Tracker: judgement calls', verifier load). Reads pack/data and runs app/tracker; every row of pick_balance.csv is also a figure: same script, same command"),
     ("12_loose_duplicates.py", "figures_loose.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py"],
      "notes/assumptions.md and the docstring of check H13 in app/rules/checks.py. What loose duplicate matching adds on the register; the backtest and impact figures use exact matching only"),
+    ("13_duplicate_false_alarms.py", "figures_dupalarm.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py"],
+     "notes/duplicate-false-alarms.md. Loose near-duplicate matching run on every posted invoice in the SAP extract"),
 ]
 
 text = NUM.read_text(encoding="utf-8")
