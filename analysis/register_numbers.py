@@ -30,11 +30,13 @@ SOURCES = [
     ("08_problem_ranking.py", "figures_problem.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py", "06_msme_exposure.py", "05_claims_tested.py"],
      "notes/problem.md. The other numbers in problem.md are read by figure id from the other scripts' figures files"),
     ("09_levers.py", "figures_levers.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py", "06_msme_exposure.py", "05_claims_tested.py", "08_problem_ranking.py"],
-     "notes/payment-lag.md and notes/solution-design.md (part f). Every row of levers.csv, lag_factors.csv, lag_first_run.csv and backtest_rules.csv is also a figure: same script, same command"),
+     "notes/payment-lag.md and notes/solution-design.md (part f). The replay is backtest/replay.py, called by this script; every value in backtest/out/impact.csv and confusion.csv is one of these figures (l.lever.*, l.base.*, l.cf.*, l.impact.*, l.assume.*, l.live.*): same script, same command. Every row of levers.csv, lag_factors.csv, lag_first_run.csv and backtest_rules.csv is also a figure: same script, same command"),
     ("09_options.py", "figures_options.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py", "06_msme_exposure.py", "05_claims_tested.py", "08_problem_ranking.py"],
      "notes/options.md. Build hours are my estimates and the time budget is an assumption, both stated in the note; the other numbers are read by figure id from the other scripts' figures files"),
     ("10_solution_design.py", "figures_design.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py", "06_msme_exposure.py", "05_claims_tested.py", "08_problem_ranking.py", "09_levers.py", "09_options.py"],
      "notes/solution-design.md. The check classes and build hours are my judgement and estimates, stated in the note; four inbox bills were read by eye"),
+    ("11_pick_balance.py", "figures_pickbalance.csv", [],
+     "notes/assumptions.md ('Tracker: judgement calls', verifier load). Reads pack/data and runs app/tracker; every row of pick_balance.csv is also a figure: same script, same command"),
 ]
 
 text = NUM.read_text(encoding="utf-8")

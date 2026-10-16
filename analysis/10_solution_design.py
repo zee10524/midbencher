@@ -7,6 +7,7 @@ register to give the expected verdicts for acceptance tests.
 Writes notes/solution-design.md and analysis/out/figures_design.csv.   Run: python analysis/10_solution_design.py
 """
 import re
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -14,6 +15,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "analysis" / "out"
+sys.path.insert(0, str(ROOT))
+from backtest.replay import LABEL_CEILING, LABEL_NO_FLAG, LIMITS, NOT_RUN  # noqa: E402
 F = {}
 for fname in ["figures.csv", "figures_stage_times.csv", "figures_query_forensics.csv", "figures_msme.csv", "figures_claims_tested.csv", "figures_problem.csv", "figures_options.csv", "figures_levers.csv"]:
     for r in pd.read_csv(OUT / fname, keep_default_na=False).itertuples():
@@ -142,6 +145,10 @@ LV_T = "\n".join([f"| Before (the year as it ran) | | | {d0('l.base.ms_late')} (
                   + [lv_row(c, n) for c, n in [("pay0", "1. Pay on the first run"), ("pay1", "1. Pay on the first run"), ("pay2", "1. Pay on the first run"), ("queue", "2. Balanced pick order"),
                                               ("in3", "3. Three intake rules"), ("in1", "3. Three intake rules"), ("inopt", "3. Intake, optimistic"),
                                               ("low", "**All three, low**"), ("mid", "**All three, middle**"), ("high", "**All three, high**")]])
+CF = pd.read_csv(ROOT / "backtest" / "out" / "confusion.csv")
+CF_T = "\n".join(f"| {r.rule} | {r.flagged_and_queried:,} | {r.flagged_not_queried:,} | {r.queried_not_flagged:,} | {r.neither:,} | {r.precision_pct:.1f}% | {r.recall_pct:.1f}% |" for r in CF.itertuples())
+NOT_RUN_T = "\n".join(f"- **{a}:** {b_}" for a, b_ in NOT_RUN)
+LIMITS_T = "\n".join(f"{i}. {t}" for i, t in enumerate(LIMITS, 1))
 fig("d.hours.full", f("o.pre.hours") + f("o.track4b.hours"), "hours for the full checker plus the full work queue, which do not fit")
 pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in own.items()]).to_csv(OUT / "figures_design.csv", index=False)
 
@@ -391,6 +398,26 @@ The last column is the false-alarm load: a flag with no query is a bill someone 
 {LV_T}
 
 **Reading.** Residual 1 against 3 days gives {d2('l.lever.in1.save')} against {d2('l.lever.in3.save')} days: the two differ by about {f('l.lever.in1.save') - f('l.lever.in3.save'):.2f} because the residual is small against the {d1('query.mean_days_among_queried')} days a caught query actually cost and only {d0('l.lever.in1.bills')} bills are caught. What moves the number is how many queries the rules catch, not what a catch costs. The combined low, middle and high rows use the cut-off 2, 1 and 0 settings with residual 3, residual 1 and the optimistic intake setting.
+
+**Confusion table, bill level.** For each rule, bills flagged on the desk date against bills that really got a query for the same cause (`backtest/out/confusion.csv`; the rate figures are of the {d0('l.bt.bills')} distinct bills).
+
+| Rule | Flagged and queried | Flagged, not queried | Queried, not flagged | Neither | Precision | Recall |
+|---|---|---|---|---|---|---|
+{CF_T}
+
+**Rules requested but not run, and why:**
+
+{NOT_RUN_T}
+
+**AP work and vendor calls.** {d1('l.impact.no_flag_pct')}%: {LABEL_NO_FLAG}. Those checks are rates, quantities, service entries and attendance. **Vendor calls: {d0('l.impact.calls_ceiling')} a year is a {LABEL_CEILING}.** It is the vendor survey's {d0('l.assume.calls_per_bill')} calls per bill on {d0('l.bt.bills')} bills, an assumption; the survey does not say how many are status calls, so no lower figure is given.
+
+**The pick-order lever is a replay on historical bills.** Each AP-1 bill is given the pick-up wait of the other four verifiers at the same rank. The live queue on 30 April 2026 holds only {d0('l.live.waiting')} waiting bills, so the pick order cannot repeat that saving on today's queue; it can only stop a backlog building.
+
+**Where the backtest cannot prove anything:**
+
+{LIMITS_T}
+
+The lever replay lives in `backtest/replay.py`; its screen data is `screen_data()` and its output is `backtest/out/impact.csv`.
 
 **Dependencies to settle tonight (for the whole slice, not only part f).** A model API key for the reader, and whether sending the sample bills to an outside model is acceptable (they are fictional; a real client would need data-protection terms). If there is no key, the reader is simulated from the start.
 

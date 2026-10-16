@@ -1848,7 +1848,7 @@ Script: `analysis/10_solution_design.py`. Output: `analysis/out/figures_design.c
 
 <!-- BEGIN 09_levers.py -->
 
-### Figures from `analysis/09_levers.py` (used in notes/payment-lag.md and notes/solution-design.md (part f). Every row of levers.csv, lag_factors.csv, lag_first_run.csv and backtest_rules.csv is also a figure: same script, same command)
+### Figures from `analysis/09_levers.py` (used in notes/payment-lag.md and notes/solution-design.md (part f). The replay is backtest/replay.py, called by this script; every value in backtest/out/impact.csv and confusion.csv is one of these figures (l.lever.*, l.base.*, l.cf.*, l.impact.*, l.assume.*, l.live.*): same script, same command. Every row of levers.csv, lag_factors.csv, lag_first_run.csv and backtest_rules.csv is also a figure: same script, same command)
 
 Script: `analysis/09_levers.py`. Output: `analysis/out/figures_levers.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
@@ -1962,6 +1962,34 @@ Script: `analysis/09_levers.py`. Output: `analysis/out/figures_levers.csv`, one 
 | l.bt.q_caught | 145.0 | of those, on bills flagged on the desk date |
 | l.bt.extra | 2.23 | days a queried bill carries beyond the days its query stays open |
 | l.bt.n_caught_paid | 121.0 | queries on paid invoices that the three rules would have caught |
+| l.cf.dup.tp | 34.0 | confusion, bills, Duplicate invoice number for the vendor (H13): flagged and queried for this cause |
+| l.cf.dup.fp | 34.0 | confusion, bills, Duplicate invoice number for the vendor (H13): flagged, not queried for this cause |
+| l.cf.dup.fn | 96.0 | confusion, bills, Duplicate invoice number for the vendor (H13): queried for this cause, not flagged |
+| l.cf.dup.tn | 10836.0 | confusion, bills, Duplicate invoice number for the vendor (H13): neither |
+| l.cf.dup.precision_pct | 50.0 | Duplicate invoice number for the vendor (H13): % of flagged bills that really had a query for this cause |
+| l.cf.dup.recall_pct | 26.154 | Duplicate invoice number for the vendor (H13): % of bills with a query for this cause that were flagged on day 0 |
+| l.cf.exp.tp | 102.0 | confusion, bills, Work order expired on the invoice date (H3): flagged and queried for this cause |
+| l.cf.exp.fp | 588.0 | confusion, bills, Work order expired on the invoice date (H3): flagged, not queried for this cause |
+| l.cf.exp.fn | 5.0 | confusion, bills, Work order expired on the invoice date (H3): queried for this cause, not flagged |
+| l.cf.exp.tn | 10305.0 | confusion, bills, Work order expired on the invoice date (H3): neither |
+| l.cf.exp.precision_pct | 14.783 | Work order expired on the invoice date (H3): % of flagged bills that really had a query for this cause |
+| l.cf.exp.recall_pct | 95.327 | Work order expired on the invoice date (H3): % of bills with a query for this cause that were flagged on day 0 |
+| l.cf.bal.tp | 9.0 | confusion, bills, Work order value exhausted (H3, as value headroom): flagged and queried for this cause |
+| l.cf.bal.fp | 685.0 | confusion, bills, Work order value exhausted (H3, as value headroom): flagged, not queried for this cause |
+| l.cf.bal.fn | 210.0 | confusion, bills, Work order value exhausted (H3, as value headroom): queried for this cause, not flagged |
+| l.cf.bal.tn | 10096.0 | confusion, bills, Work order value exhausted (H3, as value headroom): neither |
+| l.cf.bal.precision_pct | 1.297 | Work order value exhausted (H3, as value headroom): % of flagged bills that really had a query for this cause |
+| l.cf.bal.recall_pct | 4.11 | Work order value exhausted (H3, as value headroom): % of bills with a query for this cause that were flagged on day 0 |
+| l.cf.any.tp | 160.0 | confusion, bills, Any of the three rules: flagged and queried for this cause |
+| l.cf.any.fp | 1232.0 | confusion, bills, Any of the three rules: flagged, not queried for this cause |
+| l.cf.any.fn | 296.0 | confusion, bills, Any of the three rules: queried for this cause, not flagged |
+| l.cf.any.tn | 9312.0 | confusion, bills, Any of the three rules: neither |
+| l.cf.any.precision_pct | 11.494 | Any of the three rules: % of flagged bills that really had a query for this cause |
+| l.cf.any.recall_pct | 35.088 | Any of the three rules: % of bills with a query for this cause that were flagged on day 0 |
+| l.impact.no_flag_pct | 87.345 | Share of bills with no flag from the three rules we can test; AP still runs all other checks on these bills (%) |
+| l.assume.calls_per_bill | 3.0 | ASSUMPTION: vendor status calls per bill (vendor survey, about 3) |
+| l.impact.calls_ceiling | 33000.0 | Vendor calls a year, ceiling if every call were a status call that the tool removes; not an estimate (ASSUMPTION: 3 calls per bill on the replayed bills) |
+| l.live.waiting | 27.0 | bills waiting at head office for AP to pick them up on 30 April 2026 (not yet picked) |
 | l.lever.queue.days | 1.669 | days off the mean: AP-1's pick-up waits matched to the other verifiers' at the same rank |
 | l.lever.queue.bills | 4221.0 | Balanced AP pick order, AP-1 matched to the other four: bills |
 | l.base.desk_mean | 31.284 | mean days desk to paid, paid invoices, as run |
@@ -2049,3 +2077,51 @@ Script: `analysis/09_levers.py`. Output: `analysis/out/figures_levers.csv`, one 
 | l.lever.high.overlap | -0.043 | days the separate levers count twice, high case |
 
 <!-- END 09_levers.py -->
+
+<!-- BEGIN 11_pick_balance.py -->
+
+### Figures from `analysis/11_pick_balance.py` (used in notes/assumptions.md ('Tracker: judgement calls', verifier load). Reads pack/data and runs app/tracker; every row of pick_balance.csv is also a figure: same script, same command)
+
+Script: `analysis/11_pick_balance.py`. Output: `analysis/out/figures_pickbalance.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
+
+```
+.venv\Scripts\python.exe -I analysis\11_pick_balance.py
+```
+
+`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+
+| Figure id | Value | What it counts |
+|---|---|---|
+| pb.tolerance_pct | 20.0 | tolerance: highest verifier load at most this % above the lowest |
+| pb.waiting | 27.0 | bills waiting at head office that the pick order assigns |
+| pb.AP-1.in_hand | 8.0 | AP-1: bills in hand excluding open queries (definition 1), before |
+| pb.AP-1.open_queries | 19.0 | AP-1: bills blocked by an open query |
+| pb.AP-1.new_from_pick_order | 1.0 | AP-1: new bills given by the pick order |
+| pb.AP-1.in_hand_after | 9.0 | AP-1: bills in hand excluding open queries, after |
+| pb.AP-1.def2_after | 28.0 | AP-1: bills in hand including open queries (definition 2), after |
+| pb.AP-2.in_hand | 3.0 | AP-2: bills in hand excluding open queries (definition 1), before |
+| pb.AP-2.open_queries | 15.0 | AP-2: bills blocked by an open query |
+| pb.AP-2.new_from_pick_order | 5.0 | AP-2: new bills given by the pick order |
+| pb.AP-2.in_hand_after | 8.0 | AP-2: bills in hand excluding open queries, after |
+| pb.AP-2.def2_after | 23.0 | AP-2: bills in hand including open queries (definition 2), after |
+| pb.AP-3.in_hand | 0.0 | AP-3: bills in hand excluding open queries (definition 1), before |
+| pb.AP-3.open_queries | 8.0 | AP-3: bills blocked by an open query |
+| pb.AP-3.new_from_pick_order | 8.0 | AP-3: new bills given by the pick order |
+| pb.AP-3.in_hand_after | 8.0 | AP-3: bills in hand excluding open queries, after |
+| pb.AP-3.def2_after | 16.0 | AP-3: bills in hand including open queries (definition 2), after |
+| pb.AP-4.in_hand | 2.0 | AP-4: bills in hand excluding open queries (definition 1), before |
+| pb.AP-4.open_queries | 12.0 | AP-4: bills blocked by an open query |
+| pb.AP-4.new_from_pick_order | 6.0 | AP-4: new bills given by the pick order |
+| pb.AP-4.in_hand_after | 8.0 | AP-4: bills in hand excluding open queries, after |
+| pb.AP-4.def2_after | 20.0 | AP-4: bills in hand including open queries (definition 2), after |
+| pb.AP-5.in_hand | 1.0 | AP-5: bills in hand excluding open queries (definition 1), before |
+| pb.AP-5.open_queries | 5.0 | AP-5: bills blocked by an open query |
+| pb.AP-5.new_from_pick_order | 7.0 | AP-5: new bills given by the pick order |
+| pb.AP-5.in_hand_after | 8.0 | AP-5: bills in hand excluding open queries, after |
+| pb.AP-5.def2_after | 13.0 | AP-5: bills in hand including open queries (definition 2), after |
+| pb.def1.spread_pct | 12.5 | after the pick order, highest load above lowest as % of lowest, def1 (-1 = lowest is zero) |
+| pb.def1.within | 1.0 | 1 if def1 is within the tolerance after the pick order, else 0 |
+| pb.def2.spread_pct | 115.385 | after the pick order, highest load above lowest as % of lowest, def2 (-1 = lowest is zero) |
+| pb.def2.within | 0.0 | 1 if def2 is within the tolerance after the pick order, else 0 |
+
+<!-- END 11_pick_balance.py -->

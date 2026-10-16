@@ -4,17 +4,19 @@
     AP-1 about 40% of bills, 11.3 against 7.2 days to pick-up, 1.65 days off the mean; removing every query saves at most about 3.0 days;
     754 of the 1,153 bills over 45 days were queried. These use vectorised code that shares nothing with 08_problem_ranking.py, which they are compared to.
 (b) What explains the payment-run lag: posting weekday, gap to the run, amount, MSME status, vendor, property, month.
-(c) Replay on the register of: pay on the first run after posting (cut-off 0, 1 or 2 days), a balanced AP pick order, and the three intake rules that the register and
+(c) Replay on the register (done in backtest/replay.py, called from here) of: pay on the first run after posting (cut-off 0, 1 or 2 days), a balanced AP pick order, and the three intake rules that the register and
     the SAP extract can test. Each alone and combined by shifting each bill's own dates, so days are not counted twice.
 
 Writes analysis/out/figures_levers.csv, levers.csv, lag_factors.csv, lag_first_run.csv, backtest_rules.csv.   Run: python analysis/09_levers.py
 """
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 OUT = ROOT / "analysis" / "out"
 P = {}
 for r in pd.read_csv(OUT / "figures_problem.csv", keep_default_na=False).itertuples():
@@ -40,19 +42,7 @@ tot = (pop.paid_date - pop.desk_received_date).dt.days
 tot_inv = (pop.paid_date - pop.invoice_date).dt.days
 
 
-def gap_table(cutoff):
-    """days from a posting weekday to the first Tuesday or Friday at least 1 + cutoff days later"""
-    t = np.zeros(7, int)
-    for d in range(7):
-        k = 1 + cutoff
-        while (d + k) % 7 not in (1, 4):
-            k += 1
-        t[d] = k
-    return t
-
-
-def next_run(dates, cutoff):
-    return dates + pd.to_timedelta(gap_table(cutoff)[dates.dt.dayofweek.to_numpy()], unit="D")
+from backtest.replay import next_run, run, write_impact  # noqa: E402  (the lever replay lives in backtest/replay.py)
 
 
 # ============================================================ (a) independent checks
@@ -145,117 +135,13 @@ fig("l.lag.bills_per_run_tue", pop[pop.paid_date.dt.dayofweek == 1].groupby("pai
 fig("l.lag.bills_per_run_fri", pop[pop.paid_date.dt.dayofweek == 4].groupby("paid_date").size().mean(), "mean paid invoices per Friday run")
 fig("l.lag.tue_share", 100 * (pop.paid_date.dt.dayofweek == 1).mean(), "% of paid invoices paid on a Tuesday")
 
-# ============================================================ (c) levers
-# intake rules, as if checked on the desk date (the backtest)
-bt = b.sort_values(["desk_received_date", "bill_id"]).copy()
-bt["f_dup"] = bt.groupby(bt.vendor_id + "|" + bt.invoice_no).cumcount() > 0
-bt["f_exp"] = (bt.invoice_date > bt.wo_valid_to) & ~bt.f_wo_validity_inverted
-_inv = bt[bt.doc_type == "invoice"]
-bt["f_bal"] = False
-bt.loc[_inv.index, "f_bal"] = _inv.groupby("wo_id").amount_inr.cumsum() > _inv.wo_approved_value_inr
-bt["f_any"] = bt.f_dup | bt.f_exp | bt.f_bal
-RULES = [("dup", "Duplicate invoice number for the vendor (H13)", ["R01"]), ("exp", "Work order expired on the invoice date (H3)", ["R26"]),
-         ("bal", "Work order value exhausted (H3, as value headroom)", ["R25", "R24", "R10"])]
-rk = {r: k for k, _, rs in RULES for r in rs}
-cat = []
-for key, label, rules in RULES:
-    fl = bt["f_" + key]
-    qs = q[q.rule_id.isin(rules)]
-    cat.append(dict(key=key, rule=label, query_rules=", ".join(rules), queries=len(qs), caught=int(qs.bill_id.isin(bt.loc[fl, "bill_id"]).sum()), flagged=int(fl.sum()), flagged_never_queried=int((fl & ~bt.bill_id.isin(q.bill_id)).sum())))
-pd.DataFrame(cat).to_csv(OUT / "backtest_rules.csv", index=False)
-for c in cat:
-    for k in ["queries", "caught", "flagged", "flagged_never_queried"]:
-        fig(f"l.bt.{c['key']}.{k}", c[k], f"backtest, {c['rule']}: {k.replace('_', ' ')}")
-raw_rows = len(pd.read_csv(ROOT / "pack" / "data" / "bill_register.csv", dtype=str, keep_default_na=False))
-fig("l.bt.raw_rows", raw_rows, "rows in bill_register.csv")
-fig("l.bt.bills", len(bt), "distinct bills replayed (raw rows less the exact duplicate rows, data-audit D01)")
-fig("l.bt.dropped", raw_rows - len(bt), "exact duplicate rows removed before the replay")
-fig("l.bt.flag_any", int(bt.f_any.sum()), "bills flagged by at least one of the three rules")
-fig("l.bt.flag_any_pct", 100 * bt.f_any.mean(), "% of replayed bills flagged by at least one rule")
-fig("l.bt.q_total", len(q), "queries last year, all rules")
-fig("l.bt.q_testable", sum(c["queries"] for c in cat), "queries on the rules the backtest can test")
-fig("l.bt.q_caught", sum(c["caught"] for c in cat), "of those, on bills flagged on the desk date")
-EXTRA = S["added.s99"] - S["added.s07"]
-fig("l.bt.extra", EXTRA, "days a queried bill carries beyond the days its query stays open")
-qp = q[(q.doc_type == "invoice") & q.bill_id.isin(pop.index) & q.days_open.notna()].copy()
-qc = qp[qp.rule_id.isin(rk)]
-qc = qc[[bool(bt.set_index("bill_id").at[i, "f_" + rk[r]]) for i, r in zip(qc.bill_id, qc.rule_id)]]
-fig("l.bt.n_caught_paid", len(qc), "queries on paid invoices that the three rules would have caught")
-ab = qp[qp.catch_layer.isin(["A", "B"])]
-
-
-def intake_saving(residual, optimistic=False):
-    """per bill: open days of the caught queries (plus the extra days around an optimistic catch) less the residual delay, never below 0"""
-    src = ab if optimistic else qc
-    s = src.groupby("bill_id").days_open.sum() + (EXTRA if optimistic else 0)
-    return (s - residual).clip(lower=0).reindex(pop.index).fillna(0)
-
-
-# balanced pick order: AP-1's bills take the pick-up wait of the other verifiers at the same rank
-qd_all = (pop.ho_picked_date - pop.ho_received_date).dt.days
-a1m = pop.ho_verifier == "AP-1"
-rank = qd_all[a1m].rank(method="average") / (a1m.sum() + 1)
-newq = pd.Series(np.quantile(qd_all[~a1m], rank.to_numpy()), index=rank.index)
-s_queue = (qd_all[a1m] - newq).clip(lower=0).reindex(pop.index).fillna(0)
-fig("l.lever.queue.days", s_queue.sum() / N, "days off the mean: AP-1's pick-up waits matched to the other verifiers' at the same rank")
-fig("l.lever.queue.bills", int((s_queue > 0).sum()), "paid invoices that gain days from the balanced pick order")
-
-ms_late = lambda t: int((t[ms] > 45).sum())
-p90 = lambda t: float(np.percentile(t, 90))
-base = dict(mean=tot.mean(), ms_late=ms_late(tot), p90=p90(tot), p90_inv=p90(tot_inv))
-fig("l.base.desk_mean", base["mean"], "mean days desk to paid, paid invoices, as run")
-fig("l.base.inv_mean", tot_inv.mean(), "mean days invoice to paid, paid invoices, as run")
-fig("l.base.ms_late", base["ms_late"], "known Micro and Small paid invoices over 45 days from the desk, as run")
-fig("l.base.ms_late_pct", 100 * base["ms_late"] / NMS, "...as % of known Micro and Small paid invoices")
-fig("l.base.p90", base["p90"], "p90 days desk to paid, as run")
-fig("l.base.p90_inv", base["p90_inv"], "p90 days invoice to paid, as run")
-fig("l.base.over45", int(over.sum()), "all paid invoices over 45 days from the desk, as run")
-fig("l.base.over45_pct", 100 * over.mean(), "...as % of paid invoices")
-
-
-def replay(cut=None, queue=False, intake=None):
-    """Shift each bill's own dates. cut: payment-run cut-off in days (None = payment as it ran). intake: (residual, optimistic) or None."""
-    s = pd.Series(0.0, index=pop.index)
-    if queue:
-        s += s_queue
-    if intake is not None:
-        s += intake_saving(*intake)
-    s = np.minimum(s, (pop.posted_date - pop.desk_received_date).dt.days.clip(lower=0))
-    paid = (pop.paid_date - pop.desk_received_date).dt.days - s
-    if cut is not None:
-        newpost = pop.posted_date - pd.to_timedelta(s.round().astype(int), unit="D")
-        run = (next_run(newpost, cut) - pop.desk_received_date).dt.days
-        paid = np.minimum(paid, run)
-    save = tot - paid
-    after = tot - save
-    return dict(save=save.mean(), ms_late=ms_late(after), ms_pct=100 * ms_late(after) / NMS, p90=p90(after), p90_inv=p90(tot_inv - save), over=int((after > 45).sum()), bills=int((save > 0).sum()))
-
-
-ROWS = []
-
-
-def add(code, lever, setting, **kw):
-    r = replay(**kw)
-    ROWS.append(dict(code=code, lever=lever, setting=setting, **r))
-    for k, v in r.items():
-        fig(f"l.lever.{code}.{k}", v, f"{lever}, {setting}: {k}")
-
-
-add("pay0", "Pay on the first run after posting", "list closes the same day (cut-off 0)", cut=0)
-add("pay1", "Pay on the first run after posting", "list closes 1 day before (cut-off 1)", cut=1)
-add("pay2", "Pay on the first run after posting", "list closes 2 days before (cut-off 2)", cut=2)
-add("queue", "Balanced AP pick order", "AP-1 matched to the other four", queue=True)
-add("in3", "Three intake rules", "residual delay 3 days", intake=(3, False))
-add("in1", "Three intake rules", "residual delay 1 day", intake=(1, False))
-add("inopt", "Intake rules, optimistic", "all layer A and B queries, residual 1 day", intake=(1, True))
-add("low", "All three combined", "cut-off 2, balanced order, residual 3", cut=2, queue=True, intake=(3, False))
-add("mid", "All three combined", "cut-off 1, balanced order, residual 1", cut=1, queue=True, intake=(1, False))
-add("high", "All three combined", "cut-off 0, balanced order, optimistic intake", cut=0, queue=True, intake=(1, True))
-for tag, a, bb, c in [("low", "pay2", "queue", "in3"), ("mid", "pay1", "queue", "in1"), ("high", "pay0", "queue", "inopt")]:
-    s = sum(next(r["save"] for r in ROWS if r["code"] == k) for k in (a, bb, c))
-    fig(f"l.lever.{tag}.sum_alone", s, f"sum of the three levers' days off the mean taken separately, {tag} case")
-    fig(f"l.lever.{tag}.overlap", s - figs[f"l.lever.{tag}.save"][0], f"days the separate levers count twice, {tag} case")
+# ============================================================ (c) levers: replayed in backtest/replay.py
+R = run(OUT)
+figs.update(R.figs)
+ROWS = R.levers
+pd.DataFrame(R.rules).to_csv(OUT / "backtest_rules.csv", index=False)
 pd.DataFrame(ROWS).round(3).to_csv(OUT / "levers.csv", index=False)
+write_impact(R)
 pd.DataFrame([dict(id=k, value=v, description=d) for k, (v, d) in figs.items()]).to_csv(OUT / "figures_levers.csv", index=False)
 print("figures:", len(figs))
 print(pd.DataFrame(ROWS).round(2).to_string(index=False))

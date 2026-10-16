@@ -274,6 +274,39 @@ The last column is the false-alarm load: a flag with no query is a bill someone 
 
 **Reading.** Residual 1 against 3 days gives 0.26 against 0.24 days: the two differ by about 0.02 because the residual is small against the 21.9 days a caught query actually cost and only 121 bills are caught. What moves the number is how many queries the rules catch, not what a catch costs. The combined low, middle and high rows use the cut-off 2, 1 and 0 settings with residual 3, residual 1 and the optimistic intake setting.
 
+**Confusion table, bill level.** For each rule, bills flagged on the desk date against bills that really got a query for the same cause (`backtest/out/confusion.csv`; the rate figures are of the 11,000 distinct bills).
+
+| Rule | Flagged and queried | Flagged, not queried | Queried, not flagged | Neither | Precision | Recall |
+|---|---|---|---|---|---|---|
+| Duplicate invoice number for the vendor (H13) | 34 | 34 | 96 | 10,836 | 50.0% | 26.1% |
+| Work order expired on the invoice date (H3) | 102 | 588 | 5 | 10,305 | 14.8% | 95.3% |
+| Work order value exhausted (H3, as value headroom) | 9 | 685 | 210 | 10,096 | 1.3% | 4.1% |
+| Any of the three rules | 160 | 1,232 | 296 | 9,312 | 11.5% | 35.1% |
+
+**Rules requested but not run, and why:**
+
+- **GST type from place of supply:** The register holds only the GST amount, not its type or the place of supply printed on the bill, and the place-of-supply reading is unsettled (notes/research.md). Needs the bill itself.
+- **GSTIN match:** The register carries no GSTIN as printed on the bill: the vendor is already the master's vendor, so a match would be true by construction. Needs the bill itself.
+- **MSME:** MSME status is context for the countdown, not a cause of a query, so there is nothing to catch. It enters through the MSME bills-over-45-days measure.
+
+**AP work and vendor calls.** 87.3%: share of bills with no flag from the three rules we can test; AP still runs all other checks on these bills. Those checks are rates, quantities, service entries and attendance. **Vendor calls: 33,000 a year is a ceiling if every call were a status call that the tool removes; not an estimate.** It is the vendor survey's 3 calls per bill on 11,000 bills, an assumption; the survey does not say how many are status calls, so no lower figure is given.
+
+**The pick-order lever is a replay on historical bills.** Each AP-1 bill is given the pick-up wait of the other four verifiers at the same rank. The live queue on 30 April 2026 holds only 27 waiting bills, so the pick order cannot repeat that saving on today's queue; it can only stop a backlog building.
+
+**Where the backtest cannot prove anything:**
+
+1. Counterfactual. The days saved assume a caught problem is fixed at the source in 1 or 3 days. Nothing in the register shows how fast a vendor would fix a bill, so the three settings are assumptions, not findings.
+2. Three rules only. GST type, GSTIN match and MSME are not run (see NOT_RUN); the other checks need the paper, rates, quantities or service entries. The rules run touch a minority of last year's queries.
+3. Final values, not day-0 values. Work-order validity and approved value are as they stand in the extract; amendments made later are not visible (data-audit D08). Value headroom is rebuilt from invoices in desk order, not from SAP's balance on the day. 'Flagged on day 0' is therefore an approximation.
+4. False alarms cannot be sized. A bill that is flagged and never queried may be a real problem nobody raised or a flag with nothing behind it; the register cannot tell which.
+5. Shift model. Where the payment-run lever is not applied, the pick-order and intake savings assume payment follows posting at the same gap. Payments go out on two weekdays, so this is a simplification.
+6. Payment-run lever depends on Treasury. The real cut-off, approval step and funding rule are unknown (notes/payment-lag.md); the three cut-offs are settings, not a finding.
+7. Pick order is a replay. It matches AP-1's historical pick-up waits to the other verifiers' on bills that are already paid. It does not show that a queue run this way would hold the same saving on a live queue.
+8. Vendor calls: ceiling if every call were a status call that the tool removes; not an estimate. The survey gives about 3 calls per bill but not what share are status calls or how many a status message would remove.
+9. Rows versus bills. The register has 11,220 rows, of which 220 are exact duplicates (data-audit D01); the replay uses the 11,000 distinct bills, and the rate-of-flag figures are of those.
+
+The lever replay lives in `backtest/replay.py`; its screen data is `screen_data()` and its output is `backtest/out/impact.csv`.
+
 **Dependencies to settle tonight (for the whole slice, not only part f).** A model API key for the reader, and whether sending the sample bills to an outside model is acceptable (they are fictional; a real client would need data-protection terms). If there is no key, the reader is simulated from the start.
 
 ## 10. Open risks

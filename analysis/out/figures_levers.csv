@@ -95,6 +95,34 @@ l.bt.q_testable,456.0,queries on the rules the backtest can test
 l.bt.q_caught,145.0,"of those, on bills flagged on the desk date"
 l.bt.extra,2.23,days a queried bill carries beyond the days its query stays open
 l.bt.n_caught_paid,121.0,queries on paid invoices that the three rules would have caught
+l.cf.dup.tp,34.0,"confusion, bills, Duplicate invoice number for the vendor (H13): flagged and queried for this cause"
+l.cf.dup.fp,34.0,"confusion, bills, Duplicate invoice number for the vendor (H13): flagged, not queried for this cause"
+l.cf.dup.fn,96.0,"confusion, bills, Duplicate invoice number for the vendor (H13): queried for this cause, not flagged"
+l.cf.dup.tn,10836.0,"confusion, bills, Duplicate invoice number for the vendor (H13): neither"
+l.cf.dup.precision_pct,50.0,Duplicate invoice number for the vendor (H13): % of flagged bills that really had a query for this cause
+l.cf.dup.recall_pct,26.154,Duplicate invoice number for the vendor (H13): % of bills with a query for this cause that were flagged on day 0
+l.cf.exp.tp,102.0,"confusion, bills, Work order expired on the invoice date (H3): flagged and queried for this cause"
+l.cf.exp.fp,588.0,"confusion, bills, Work order expired on the invoice date (H3): flagged, not queried for this cause"
+l.cf.exp.fn,5.0,"confusion, bills, Work order expired on the invoice date (H3): queried for this cause, not flagged"
+l.cf.exp.tn,10305.0,"confusion, bills, Work order expired on the invoice date (H3): neither"
+l.cf.exp.precision_pct,14.783,Work order expired on the invoice date (H3): % of flagged bills that really had a query for this cause
+l.cf.exp.recall_pct,95.327,Work order expired on the invoice date (H3): % of bills with a query for this cause that were flagged on day 0
+l.cf.bal.tp,9.0,"confusion, bills, Work order value exhausted (H3, as value headroom): flagged and queried for this cause"
+l.cf.bal.fp,685.0,"confusion, bills, Work order value exhausted (H3, as value headroom): flagged, not queried for this cause"
+l.cf.bal.fn,210.0,"confusion, bills, Work order value exhausted (H3, as value headroom): queried for this cause, not flagged"
+l.cf.bal.tn,10096.0,"confusion, bills, Work order value exhausted (H3, as value headroom): neither"
+l.cf.bal.precision_pct,1.297,"Work order value exhausted (H3, as value headroom): % of flagged bills that really had a query for this cause"
+l.cf.bal.recall_pct,4.11,"Work order value exhausted (H3, as value headroom): % of bills with a query for this cause that were flagged on day 0"
+l.cf.any.tp,160.0,"confusion, bills, Any of the three rules: flagged and queried for this cause"
+l.cf.any.fp,1232.0,"confusion, bills, Any of the three rules: flagged, not queried for this cause"
+l.cf.any.fn,296.0,"confusion, bills, Any of the three rules: queried for this cause, not flagged"
+l.cf.any.tn,9312.0,"confusion, bills, Any of the three rules: neither"
+l.cf.any.precision_pct,11.494,Any of the three rules: % of flagged bills that really had a query for this cause
+l.cf.any.recall_pct,35.088,Any of the three rules: % of bills with a query for this cause that were flagged on day 0
+l.impact.no_flag_pct,87.345,Share of bills with no flag from the three rules we can test; AP still runs all other checks on these bills (%)
+l.assume.calls_per_bill,3.0,"ASSUMPTION: vendor status calls per bill (vendor survey, about 3)"
+l.impact.calls_ceiling,33000.0,"Vendor calls a year, ceiling if every call were a status call that the tool removes; not an estimate (ASSUMPTION: 3 calls per bill on the replayed bills)"
+l.live.waiting,27.0,bills waiting at head office for AP to pick them up on 30 April 2026 (not yet picked)
 l.lever.queue.days,1.669,days off the mean: AP-1's pick-up waits matched to the other verifiers' at the same rank
 l.lever.queue.bills,4221.0,"Balanced AP pick order, AP-1 matched to the other four: bills"
 l.base.desk_mean,31.284,"mean days desk to paid, paid invoices, as run"

@@ -1,0 +1,39 @@
+group,metric,low,middle,high,unit,note
+pay,days_off_mean,1.97,2.75,3.72,days,Pay on the first run after posting (cut-off 2 / 1 / 0 days)
+pay,mean_days_desk_to_paid_after,29.32,28.54,27.57,days,before: 31.28
+pay,mean_days_invoice_to_paid_after,35.67,34.89,33.92,days,before: 37.64
+pay,msme_over_45_days_count,430,401,370.0,"known Micro and Small paid invoices, of 5,106",before: 530
+pay,msme_over_45_days_pct,8.4,7.9,7.2,% of known Micro and Small paid invoices,before: 10.4
+pay,all_over_45_days_count,928,868,802.0,"paid invoices, of 10,449",before: 1153
+pay,p90_days_desk_to_paid,44,43,42.0,days,before: 47
+pay,p90_days_invoice_to_paid,52,51,50.0,days,before: 54
+pay,paid_invoices_gaining_days,4115,5662,7417.0,paid invoices,
+queue,days_off_mean,1.67,1.67,1.67,days,Balanced AP pick order
+queue,mean_days_desk_to_paid_after,29.62,29.62,29.62,days,before: 31.28
+queue,mean_days_invoice_to_paid_after,35.97,35.97,35.97,days,before: 37.64
+queue,msme_over_45_days_count,414,414,414.0,"known Micro and Small paid invoices, of 5,106",before: 530
+queue,msme_over_45_days_pct,8.1,8.1,8.1,% of known Micro and Small paid invoices,before: 10.4
+queue,all_over_45_days_count,897,897,897.0,"paid invoices, of 10,449",before: 1153
+queue,p90_days_desk_to_paid,43,43,43.0,days,before: 47
+queue,p90_days_invoice_to_paid,52,52,52.0,days,before: 54
+queue,paid_invoices_gaining_days,4221,4221,4221.0,paid invoices,
+intake,days_off_mean,0.24,0.26,0.91,days,Three intake rules (residual 3 days / 1 day / optimistic)
+intake,mean_days_desk_to_paid_after,31.04,31.02,30.37,days,before: 31.28
+intake,mean_days_invoice_to_paid_after,37.4,37.38,36.73,days,before: 37.64
+intake,msme_over_45_days_count,497,497,414.0,"known Micro and Small paid invoices, of 5,106",before: 530
+intake,msme_over_45_days_pct,9.7,9.7,8.1,% of known Micro and Small paid invoices,before: 10.4
+intake,all_over_45_days_count,1092,1092,930.0,"paid invoices, of 10,449",before: 1153
+intake,p90_days_desk_to_paid,46,46,44.0,days,before: 47
+intake,p90_days_invoice_to_paid,54,54,52.0,days,before: 54
+intake,paid_invoices_gaining_days,118,121,403.0,paid invoices,
+combined,days_off_mean,3.94,4.75,6.34,days,All three together
+combined,mean_days_desk_to_paid_after,27.35,26.53,24.94,days,before: 31.28
+combined,mean_days_invoice_to_paid_after,33.7,32.89,31.3,days,before: 37.64
+combined,msme_over_45_days_count,303,288,200.0,"known Micro and Small paid invoices, of 5,106",before: 530
+combined,msme_over_45_days_pct,5.9,5.6,3.9,% of known Micro and Small paid invoices,before: 10.4
+combined,all_over_45_days_count,653,617,447.0,"paid invoices, of 10,449",before: 1153
+combined,p90_days_desk_to_paid,40,39,37.0,days,before: 47
+combined,p90_days_invoice_to_paid,48,47,45.0,days,before: 54
+combined,paid_invoices_gaining_days,6690,7601,8689.0,paid invoices,
+ap_work,share of bills with no flag from the three rules we can test; AP still runs all other checks on these bills,87.345,87.345,87.345,% of bills,"AP still runs rates, quantities, service entries and attendance checks on every bill"
+vendor_calls,vendor calls a year: ceiling if every call were a status call that the tool removes; not an estimate,,,33000.0,calls a year,"ASSUMPTION: 3 calls per bill (survey) x 11,000 bills. No low or middle figure exists"

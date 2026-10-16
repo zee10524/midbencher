@@ -56,3 +56,42 @@ Late by vendor status, the year-end and open-bill positions, and the closest bil
 On the primary clock (desk received) the paid-late count for Micro and Small is 530 with none of the blanks counted, 620 at 58.2%, and 684 with all (`e.scen.paid_late.desk_received.n_late.*`). The product shows blank-status vendors as their own group and never folds them into "not MSME".
 
 What would change it: Udyam registration numbers and dates for every vendor (`notes/research.md` §5).
+
+## Tracker: judgement calls (`app/tracker`)
+
+Choices made while building the ledger, payment list and pick order, seeded from `bill_register.csv` and `queries.csv` as of 30 April 2026. None is measured. Each is a setting or a definition that can be changed in one place, and each is tested in `tests/test_tracker.py`.
+
+| # | Call | Why | What it changes | What would change it |
+|---|---|---|---|---|
+| 1 | **Credit notes are left out of the oldest-20, ageing, MSME countdown and payment list.** They stay in the ledger and in the AP pick order. A posted credit note's vendor sentence says only that it has been booked, with no payment-run date | A credit note is not an amount owed to the vendor, and the countdown is about what the company owes. The register does mark some credit notes as paid, so how Treasury handles them is not known | Five open credit notes are not counted in the CFO views. If Treasury pays them as run items, they would need to be added to the next-run list | How Treasury treats credit notes (netted against an invoice, or paid on their own) |
+| 2 | **Verifier load counts bills in hand, not rupee value, and does not count bills blocked by an open query** | A query waits on someone else, so the verifier is not working it. The register shows the wait is not driven by volume or size but by who holds the bill (`notes/problem.md`) | Pick order gives the next bills to the verifiers with fewest active bills. A value-weighted load would move large bills away from the busiest verifier | AP time data per bill, or a rule that large bills take longer to check |
+| 3 | **Runway burn is the work order's lifetime average**: value billed to date divided by the months from its start date to the extract date (or its end date if earlier), at least one month | The extract holds no period balance, open quantity or billing history by month. The adapter says so | Runway days are rough. An order that billed heavily early and slowly since looks worse than it is, and the reverse | Period balances and work-order lines over RFC (`app/sap/adapter.py`, `get_work_order`) |
+| 4 | **A bill not yet posted is counted as if it could post at the as-of date** when counting payment runs left | Without it, no run could be counted for the bills still with the desk, property or AP. It is the best case, so runs left is an upper bound for those bills | The MSME countdown may show a run left for a bill that cannot in fact post in time. It never shows fewer runs than are possible | Real posting dates for open bills, from SAP |
+| 5 | **A bill paid before it was posted (D03) keeps its stage as Paid, is flagged `paid_before_posted`, and its sentence says the payment date is being confirmed** | `notes/data-audit.md` D03: the payment date is the field that is wrong, not the posting date. The bill itself is real and was paid | No open-bill figure changes, because the bill is not open. A vendor is not told a date that cannot be right | The reason for the early payment dates, from Treasury |
+
+### Verifier load: two definitions and the balance check under each (call 2)
+
+**Decision (kept after seeing the check): the pick order balances definition 1, and the counting is not changed to make a check pass.**
+
+| | Definition | Used for |
+|---|---|---|
+| **1** | **Bills in hand**: picked, not posted, **excluding** bills blocked by an open query. A query waits on someone else, so the verifier is not working the bill | The pick order's balancing, and the `in_hand` column of the control tower |
+| **2** | Bills in hand **including** the bills blocked by an open query | Reported only. It is the `in_hand` plus the `open_queries` column of the control tower |
+
+The control tower data (`control_tower()` in `app/tracker/pickorder.py`) gives the AP lead one row per verifier with both: `in_hand` (definition 1), `open_queries` (the follow-up work that definition 1 leaves out), the new bills the pick order gives and `in_hand_after`.
+
+**Result as of 30 April 2026.** After the pick order assigns the waiting bills, the highest verifier's load against the lowest, with a tolerance of 20% above the lowest (`pb.tolerance_pct`). Ids `pb.*`, script `analysis/11_pick_balance.py`.
+
+| Verifier | In hand, def. 1, before | Open queries | New from pick order | In hand, def. 1, after | In hand, def. 2, after |
+|---|---|---|---|---|---|
+| AP-1 | 8 | 19 | 1 | 9 | 28 |
+| AP-2 | 3 | 15 | 5 | 8 | 23 |
+| AP-3 | 0 | 8 | 8 | 8 | 16 |
+| AP-4 | 2 | 12 | 6 | 8 | 20 |
+| AP-5 | 1 | 5 | 7 | 8 | 13 |
+| **Highest above lowest** | | | | **12.5%: within tolerance** | **115.4%: outside tolerance** |
+
+**The balance is within the tolerance only under definition 1.** Under definition 2 AP-1 still holds far more than the others. The pick order assigns only the 27 bills waiting at head office; it does not move bills a verifier already holds, so it cannot level the existing backlog, in particular AP-1's queried bills. Balanced here therefore means balanced on new work among bills that can be worked now. If the AP lead wants the whole backlog levelled, bills would have to be reassigned, and that needs her say. The `open_queries` column exists so that she can see this.
+
+The payment-run cut-off is also a setting, not a finding: the tracker defaults to 1 day (the middle of the 0, 1 and 2 days replayed in `notes/solution-design.md` part f) until Treasury's real rule is known (`notes/payment-lag.md`).
+

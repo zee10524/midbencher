@@ -1,0 +1,5 @@
+key,rule,flagged_and_queried,flagged_not_queried,queried_not_flagged,neither,precision_pct,recall_pct
+dup,Duplicate invoice number for the vendor (H13),34,34,96,10836,50.0,26.15
+exp,Work order expired on the invoice date (H3),102,588,5,10305,14.78,95.33
+bal,"Work order value exhausted (H3, as value headroom)",9,685,210,10096,1.3,4.11
+any,Any of the three rules,160,1232,296,9312,11.49,35.09

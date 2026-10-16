@@ -1,0 +1,32 @@
+id,value,description
+pb.tolerance_pct,20.0,tolerance: highest verifier load at most this % above the lowest
+pb.waiting,27.0,bills waiting at head office that the pick order assigns
+pb.AP-1.in_hand,8.0,"AP-1: bills in hand excluding open queries (definition 1), before"
+pb.AP-1.open_queries,19.0,AP-1: bills blocked by an open query
+pb.AP-1.new_from_pick_order,1.0,AP-1: new bills given by the pick order
+pb.AP-1.in_hand_after,9.0,"AP-1: bills in hand excluding open queries, after"
+pb.AP-1.def2_after,28.0,"AP-1: bills in hand including open queries (definition 2), after"
+pb.AP-2.in_hand,3.0,"AP-2: bills in hand excluding open queries (definition 1), before"
+pb.AP-2.open_queries,15.0,AP-2: bills blocked by an open query
+pb.AP-2.new_from_pick_order,5.0,AP-2: new bills given by the pick order
+pb.AP-2.in_hand_after,8.0,"AP-2: bills in hand excluding open queries, after"
+pb.AP-2.def2_after,23.0,"AP-2: bills in hand including open queries (definition 2), after"
+pb.AP-3.in_hand,0.0,"AP-3: bills in hand excluding open queries (definition 1), before"
+pb.AP-3.open_queries,8.0,AP-3: bills blocked by an open query
+pb.AP-3.new_from_pick_order,8.0,AP-3: new bills given by the pick order
+pb.AP-3.in_hand_after,8.0,"AP-3: bills in hand excluding open queries, after"
+pb.AP-3.def2_after,16.0,"AP-3: bills in hand including open queries (definition 2), after"
+pb.AP-4.in_hand,2.0,"AP-4: bills in hand excluding open queries (definition 1), before"
+pb.AP-4.open_queries,12.0,AP-4: bills blocked by an open query
+pb.AP-4.new_from_pick_order,6.0,AP-4: new bills given by the pick order
+pb.AP-4.in_hand_after,8.0,"AP-4: bills in hand excluding open queries, after"
+pb.AP-4.def2_after,20.0,"AP-4: bills in hand including open queries (definition 2), after"
+pb.AP-5.in_hand,1.0,"AP-5: bills in hand excluding open queries (definition 1), before"
+pb.AP-5.open_queries,5.0,AP-5: bills blocked by an open query
+pb.AP-5.new_from_pick_order,7.0,AP-5: new bills given by the pick order
+pb.AP-5.in_hand_after,8.0,"AP-5: bills in hand excluding open queries, after"
+pb.AP-5.def2_after,13.0,"AP-5: bills in hand including open queries (definition 2), after"
+pb.def1.spread_pct,12.5,"after the pick order, highest load above lowest as % of lowest, def1 (-1 = lowest is zero)"
+pb.def1.within,1.0,"1 if def1 is within the tolerance after the pick order, else 0"
+pb.def2.spread_pct,115.385,"after the pick order, highest load above lowest as % of lowest, def2 (-1 = lowest is zero)"
+pb.def2.within,0.0,"1 if def2 is within the tolerance after the pick order, else 0"
