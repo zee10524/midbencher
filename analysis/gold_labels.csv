@@ -1,0 +1,11 @@
+file,bill_type,vendor_name,invoice_number,invoice_date,amount,gstin,po_or_wo_number
+bill-11.pdf,pdf_single,,,,,,
+bill-12.pdf,pdf_single,,,,,,
+bill-14.pdf,pdf_single,,,,,,
+packet-01-security-manpower.pdf,pdf_packet,,,,,,
+packet-08-repeat-invoice.pdf,pdf_packet,,,,,,
+packet-10-credit-note.pdf,pdf_packet,,,,,,
+bill-16.jpg,phone_photo,,,,,,
+bill-23.jpg,phone_photo,,,,,,
+bill-28.jpg,phone_photo,,,,,,
+bill-38.jpg,phone_photo,,,,,,
