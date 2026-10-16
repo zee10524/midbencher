@@ -2125,3 +2125,34 @@ Script: `analysis/11_pick_balance.py`. Output: `analysis/out/figures_pickbalance
 | pb.def2.within | 0.0 | 1 if def2 is within the tolerance after the pick order, else 0 |
 
 <!-- END 11_pick_balance.py -->
+
+<!-- BEGIN 12_loose_duplicates.py -->
+
+### Figures from `analysis/12_loose_duplicates.py` (used in notes/assumptions.md and the docstring of check H13 in app/rules/checks.py. What loose duplicate matching adds on the register; the backtest and impact figures use exact matching only)
+
+Script: `analysis/12_loose_duplicates.py`. Output: `analysis/out/figures_loose.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
+
+```
+.venv\Scripts\python.exe -I analysis\clean.py
+.venv\Scripts\python.exe -I analysis\02_stage_times.py
+.venv\Scripts\python.exe -I analysis\04_query_forensics.py
+.venv\Scripts\python.exe -I analysis\12_loose_duplicates.py
+```
+
+`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+
+| Figure id | Value | What it counts |
+|---|---|---|
+| ld.bills | 11000.0 | distinct bills in the register (after the exact duplicate rows are removed) |
+| ld.exact.flagged | 68.0 | bills flagged by exact matching: an earlier bill of the vendor has the same invoice number as written |
+| ld.loose.flagged | 68.0 | bills flagged by loose matching: same vendor, same letters and digits ignoring case, slashes, dashes and spaces |
+| ld.extra.flagged | 0.0 | extra bills that loose matching flags and exact matching does not |
+| ld.extra.queried_dup | 0.0 | of the extra bills, those with a duplicate-bill query (R01) |
+| ld.extra.not_queried | 0.0 | of the extra bills, those with no duplicate-bill query: the false alarms |
+| ld.extra.false_alarm_pct | -1.0 | false-alarm share of the extra bills, % (-1 = there are no extra bills, so the rate cannot be measured on this register) |
+| ld.exact.queried_dup | 34.0 | of the exactly flagged bills, those with a duplicate-bill query (R01) |
+| ld.exact.false_alarm_pct | 50.0 | false-alarm share of the exactly flagged bills, % (for comparison) |
+| ld.invoice_no.nonstandard | 0.0 | bills whose invoice number is not in the form NNN/YY-YY/NNN, the only form the register uses when it is clean |
+| ld.invoice_no.distinct_forms_per_loose_key | 0.0 | vendor and invoice-number keys written in more than one way |
+
+<!-- END 12_loose_duplicates.py -->

@@ -201,6 +201,11 @@ def norm_invoice_no(x: str | None) -> str:
     return re.sub(r"\s+", "", x or "").upper()
 
 
+def norm_invoice_loose(x: str | None) -> str:
+    """Letters and digits only, upper case: `085/25-26/730`, `085 25 26 730` and `085-25-26-730` all become the same key (near-duplicate check)."""
+    return re.sub(r"[^0-9A-Za-z]", "", x or "").upper()
+
+
 def norm_property(x: str | None) -> str:
     return re.sub(r"[\s_-]+", "-", (x or "").strip()).upper()
 
@@ -333,21 +338,23 @@ class SapAdapter:
         return wo
 
     # ---------------------------------------------------------------- posted invoices
-    def find_posted_invoices(self, vendor_id: str, invoice_no: str) -> list[PostedInvoice]:
+    def find_posted_invoices(self, vendor_id: str, invoice_no: str, loose: bool = False) -> list[PostedInvoice]:
         """Invoices already posted for this vendor with this invoice number, oldest first (check H13).
 
         Exact duplicate rows are collapsed (D11). Several different bills can share one number (D04), so the caller compares amount and
-        date. An empty list does not prove the invoice was never posted (D12).
+        date. With `loose=True` the number is compared on letters and digits only, so case, slashes, dashes and spaces do not hide a near-duplicate.
+        An empty list does not prove the invoice was never posted (D12).
 
         Real connection: posted vendor invoices over RFC read access: `RFC_READ_TABLE` on RBKP (invoice document header: reference
         number, document and posting dates, gross amount) with RSEG for the purchase-order link, or BKPF and BSIK/BSAK filtered on the
         vendor and the reference field (XBLNR); or `BAPI_INCOMINGINVOICE_GETDETAIL` for one known document. Include parked and held
         documents, or the duplicate check will miss them.
         """
-        want = norm_invoice_no(invoice_no)
+        key = norm_invoice_loose if loose else norm_invoice_no
+        want = key(invoice_no)
         rows = self._ro.execute("SELECT DISTINCT * FROM posted_invoices WHERE vendor_id = ?", ((vendor_id or "").strip(),)).fetchall()
         out = [PostedInvoice(r["bill_id"], r["vendor_id"], r["invoice_no"], _date(r["invoice_date"]), _date(r["posted_date"]), _num(r["amount_inr"]),
-                             _num(r["gst_inr"]), r["wo_id"]) for r in rows if norm_invoice_no(r["invoice_no"]) == want]
+                             _num(r["gst_inr"]), r["wo_id"]) for r in rows if key(r["invoice_no"]) == want]
         return sorted(out, key=lambda p: (p.posted_date or date.max, p.bill_id))
 
     # ---------------------------------------------------------------- properties

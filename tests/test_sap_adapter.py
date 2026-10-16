@@ -251,3 +251,10 @@ def test_vendor_by_id(sap):
     assert sap.get_vendor_by_id("V2").msme_status == "Unknown"
     assert sap.get_vendor_by_id(" V1 ").name.startswith("Yamuna")
     assert sap.get_vendor_by_id("V99") is None
+
+
+def test_loose_match_finds_near_duplicates(sap):
+    assert sap.find_posted_invoices("V1", "100-25-26-1") == []
+    loose = sap.find_posted_invoices("V1", "100 25/26-1", loose=True)
+    assert [p.bill_id for p in loose] == ["TRK1", "TRK2"]
+    assert [p.bill_id for p in sap.find_posted_invoices("V1", "100/25-26/1", loose=True)] == ["TRK1", "TRK2"]

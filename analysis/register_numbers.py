@@ -37,6 +37,8 @@ SOURCES = [
      "notes/solution-design.md. The check classes and build hours are my judgement and estimates, stated in the note; four inbox bills were read by eye"),
     ("11_pick_balance.py", "figures_pickbalance.csv", [],
      "notes/assumptions.md ('Tracker: judgement calls', verifier load). Reads pack/data and runs app/tracker; every row of pick_balance.csv is also a figure: same script, same command"),
+    ("12_loose_duplicates.py", "figures_loose.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py"],
+     "notes/assumptions.md and the docstring of check H13 in app/rules/checks.py. What loose duplicate matching adds on the register; the backtest and impact figures use exact matching only"),
 ]
 
 text = NUM.read_text(encoding="utf-8")
