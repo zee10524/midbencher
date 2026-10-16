@@ -1,0 +1,147 @@
+id,value,description
+c.courier.weekdays_with_a_single_lag,7.0,signing weekdays on which every bill took the same number of days to reach head office
+c.courier.lag_signed_wednesday,2.0,days from head's signature to HO receipt when signed on a Wednesday
+c.courier.lag_signed_thursday,8.0,days from head's signature to HO receipt when signed on a Thursday
+c.courier.lag_signed_friday,7.0,days from head's signature to HO receipt when signed on a Friday
+c.courier.lag_min,2.0,
+c.courier.lag_max,8.0,
+c.packet.posted_before_ho_received,0.0,bills posted before the packet reached head office
+c.packet.posted_bills,10896.0,
+c.packet.received_bills,10996.0,bills whose packet has a head-office receipt date
+c.prop.desk_to_signed_mean,7.14,"days from desk to head's signature, mean"
+c.prop.desk_to_signed_median,6.0,
+c.prop.desk_to_signed_p90,13.0,
+c.prop.sign_step_mean,1.52,"days from verified to head's signature, mean"
+c.prop.sign_step_median,2.0,
+c.prop.sign_step_max,3.0,
+c.prop.sign_step_le2_pct,75.3,% signed within 2 days of verification
+c.prop.desk_to_ho_mean,12.12,"days from desk to head-office receipt, mean"
+c.prop.desk_to_signed_le2_pct,6.7,% of bills leaving property (signed) within 2 days of the desk
+c.prop.signed_on_weekend_pct,28.4,% of signatures dated Saturday or Sunday
+c.ho.recv_to_post_mean,13.2,"days at head office from receipt to posting, mean"
+c.ho.recv_to_post_median,9.0,
+c.ho.recv_to_post_gt14_pct,26.9,% of posted bills more than 14 days from HO receipt to posting
+c.ho.recv_to_post_gt21_pct,14.6,
+c.ho.recv_to_post_gt28_pct,8.4,
+c.ho.recv_to_post_queried_median,30.0,"same, bills with a query"
+c.ho.recv_to_post_queried_mean,34.5,
+c.ho.recv_to_post_clean_median,9.0,"same, bills with no query"
+c.ho.recv_to_post_clean_gt14_pct,17.2,
+c.ho.recv_to_pick_gt14_pct,13.5,% of picked bills that waited more than 14 days for a verifier
+c.ho.clean_pick_to_post_mean,1.34,"days from pick to posting, bills with no query, mean"
+c.ho.clean_pick_to_post_median,1.0,
+c.ho.clean_pick_to_post_max,3.0,
+c.ver.AP-1.bills,4421.0,bills handled by AP-1
+c.ver.AP-1.share_pct,40.3,
+c.ver.AP-1.queue_days,11.29,mean days waiting for AP-1 to pick up
+c.ver.AP-1.query_pct,14.0,% of AP-1's bills with a query
+c.ver.AP-1.mean_amount,268374.0,mean bill amount for AP-1
+c.ver.AP-1.residential_pct,73.9,
+c.ver.AP-2.bills,2167.0,bills handled by AP-2
+c.ver.AP-2.share_pct,19.8,
+c.ver.AP-2.queue_days,7.18,mean days waiting for AP-2 to pick up
+c.ver.AP-2.query_pct,11.1,% of AP-2's bills with a query
+c.ver.AP-2.mean_amount,258254.0,mean bill amount for AP-2
+c.ver.AP-2.residential_pct,74.5,
+c.ver.AP-3.bills,1665.0,bills handled by AP-3
+c.ver.AP-3.share_pct,15.2,
+c.ver.AP-3.queue_days,7.24,mean days waiting for AP-3 to pick up
+c.ver.AP-3.query_pct,12.4,% of AP-3's bills with a query
+c.ver.AP-3.mean_amount,255180.0,mean bill amount for AP-3
+c.ver.AP-3.residential_pct,73.8,
+c.ver.AP-4.bills,1610.0,bills handled by AP-4
+c.ver.AP-4.share_pct,14.7,
+c.ver.AP-4.queue_days,7.28,mean days waiting for AP-4 to pick up
+c.ver.AP-4.query_pct,14.3,% of AP-4's bills with a query
+c.ver.AP-4.mean_amount,248117.0,mean bill amount for AP-4
+c.ver.AP-4.residential_pct,73.8,
+c.ver.AP-5.bills,1106.0,bills handled by AP-5
+c.ver.AP-5.share_pct,10.1,
+c.ver.AP-5.queue_days,7.11,mean days waiting for AP-5 to pick up
+c.ver.AP-5.query_pct,13.2,% of AP-5's bills with a query
+c.ver.AP-5.mean_amount,254872.0,mean bill amount for AP-5
+c.ver.AP-5.residential_pct,75.8,
+c.ver.total_with_verifier,10969.0,
+c.ver.properties_served_by_all_five,38.0,properties served by all five verifiers
+c.ver.properties,38.0,
+c.ver.properties_where_AP1_is_main,38.0,properties where AP-1 handles the most bills
+c.ver.AP1_min_share_in_a_property_pct,31.0,
+c.ver.AP1_max_share_in_a_property_pct,47.1,
+c.ver.other_queue_min,7.11,
+c.ver.other_queue_max,7.28,
+c.load.picked_monday,1742.0,bills picked up on a Monday
+c.load.picked_tuesday,1816.0,bills picked up on a Tuesday
+c.load.picked_saturday,1240.0,bills picked up on a Saturday
+c.load.picked_mean_per_weekday,1567.0,mean bills picked up per weekday
+c.load.per_friday_days_1-7,159.0,"bills reaching head office per Friday, Fridays on days 1-7 of the month"
+c.load.per_friday_days_8-14,137.0,"bills reaching head office per Friday, Fridays on days 8-14 of the month"
+c.load.per_friday_days_15-21,236.0,"bills reaching head office per Friday, Fridays on days 15-21 of the month"
+c.load.per_friday_days_22-31,249.0,"bills reaching head office per Friday, Fridays on days 22-31 of the month"
+c.load.manpower_share_received_days_1-14,25.9,"% of bills reaching HO on days 1-14 that are manpower (security, housekeeping, landscaping)"
+c.load.queue_days_received_1-14,8.56,
+c.load.manpower_share_received_days_15-31,56.3,"% of bills reaching HO on days 15-31 that are manpower (security, housekeeping, landscaping)"
+c.load.queue_days_received_15-31,9.0,
+c.load.invoiced_first10_manpower_pct,72.4,% of bills invoiced on days 1 to 10 that are manpower
+c.load.invoiced_after10_manpower_pct,0.0,
+c.load.invoiced_first10_share_pct,63.7,% of all bills invoiced on days 1 to 10
+c.wo.duration_median_days,530.0,median validity of a work order in days
+c.wo.duration_330_400_pct,6.3,% of work orders valid for 330 to 400 days
+c.wo.duration_ge300_pct,96.7,
+c.wo.overbilled_pct_min_category,22.7,
+c.wo.overbilled_pct_max_category,35.3,
+c.wo.overbilled_pct_security,30.7,
+c.wo.overbilled_pct_housekeeping,29.2,
+c.wo.crossed_approved_value,601.0,work orders whose cumulative invoices pass approved value
+c.wo.crossed_before_valid_to,560.0,...before their valid_to date
+c.wo.crossed_before_valid_to_pct,93.2,
+c.wo.over_approved_by_dec,244.0,work orders past approved value by invoice date 2025-12-31
+c.wo.over_approved_by_feb,422.0,work orders past approved value by invoice date 2026-02-28
+c.wo.crossed_in_jan_feb,178.0,work orders that crossed approved value during Jan and Feb 2026
+c.wo.crossings_per_month_apr_sep_max,23.0,most work orders crossing approved value in any month Apr to Sep 2025
+c.wo.crossings_per_month_oct_feb_min,42.0,fewest in any month Oct 2025 to Feb 2026
+c.wo.expiry_query_orders_on_a_60day_report,93.0,orders behind an expiry query that fall inside a 'next 60 days' list run on the 1st of a month from 1 Apr 2025
+c.wo.expiry_days_between_expiry_and_desk_median,39.0,median days from the order's expiry to the bill reaching the desk
+c.gl.queries_per_month,6.3,"GL-does-not-match queries per month (first and last, partial, months left out)"
+c.gl.gl_or_cc_per_month,17.9,GL or cost-centre queries per month
+c.woq.closed,321.0,
+c.woq.le7_pct,14.0,% of work-order queries closed within 7 days of being raised
+c.woq.le14_pct,41.1,
+c.woq.gt30_pct,22.1,% open longer than 30 days
+c.woq.median,17.0,
+c.woq.p90,44.0,
+c.woq.max,154.0,
+c.sec.clean_median,36.0,security bills with no query: median days invoice to paid
+c.sec.queried_median,56.5,security bills with a query: median days
+c.sec.gt60_pct,8.1,% of security bills taking more than 60 days
+c.sec.oct_mean,41.4,security bills invoiced Oct 2025: mean days
+c.sec.other_months_mean,41.0,
+c.sec.oct_gt60,12.0,...of which over 60 days
+c.sec.oct_n,167.0,
+c.sec.vendors,72.0,
+c.sec.vendor_max_properties,4.0,most properties any security vendor serves
+c.sec.vendors_msme_blank,10.0,
+c.sec.queries,306.0,
+c.sec.wo_queries,69.0,
+c.igst.haryana_haryana,10.0,IGST queries where vendor and property are both in Haryana
+c.att.claim_days,388.0,
+c.att.biometric_days,352.0,
+c.att.gate_days,382.0,
+c.att.people,17.0,
+c.att.claim_gt_biometric_people,11.0,people whose claimed days exceed biometric days
+c.att.claim_gt_gate_people,4.0,people whose claimed days exceed gate-register days
+c.att.claim_minus_gate_days,6.0,claimed days not backed by the gate register
+c.att.relievers,3.0,
+c.att.relievers_in_biometric,0.0,
+c.att.guard_days_in_gate_not_biometric,11.0,guard-days in the gate register with no biometric punch
+c.case.december_housekeeping_matches,0.0,"bills matching the described December housekeeping case (desk 5 Jan 2026, work-order query closed 11 to 14 Feb)"
+c.q.on_property_checklist_items,366.0,queries on items the property checklist P1 to P9 already requires
+c.q.on_property_checklist_items_pct,25.4,
+c.dup.bills_in_same_vendor_invoice_pairs,136.0,
+c.dup.pct_of_bills,1.24,
+c.typing.share_of_central_ap,12.0,AP verification (no query open) as % of the days a bill spends in central AP: queue + verify + query
+c.ho.central_ap_plus_treasury,19.17,mean days from head-office receipt to paid: central AP stages plus the payment run
+c.prop.courier_plus_property,12.12,"mean days in the property's check, signature and courier stages"
+c.igst.inter_state,39.0,IGST queries where the extract says vendor and property are in different states
+c.att.claim_minus_biometric_days,36.0,claimed days not backed by biometric punches
+c.wo.over_dec_share_of_feb_pct,57.8,% of the work orders past approved value by 28 Feb that were already past it on 31 Dec
+c.sec.wo_queries_pct,22.5,% of queries on security bills that are work-order queries

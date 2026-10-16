@@ -1,0 +1,247 @@
+id,value,description
+pop.bills_in_clean,11000.0,bills in bills_clean.parquet
+pop.credit_notes_excluded,261.0,"credit notes, not a payment of a bill"
+pop.invoices_unpaid_excluded,180.0,invoices with no paid_date: still in the pipeline
+pop.invoices_bad_paid_date_excluded,110.0,invoices in D03: paid_date unusable
+pop.invoices_analysed,10449.0,paid invoices with a trustworthy paid_date
+query.clipped_to_window,0.0,queries that fell outside the pick..post window and were clipped
+query.bills_with_query,1308.0,analysed invoices that had a query
+overall.s01.cal_mean,6.36,Vendor to facility desk: cal_mean
+overall.s01.cal_median,5.0,Vendor to facility desk: cal_median
+overall.s01.cal_p90,12.0,Vendor to facility desk: cal_p90
+overall.s01.wd_mean,4.53,Vendor to facility desk: wd_mean
+overall.s01.wd_median,4.0,Vendor to facility desk: wd_median
+overall.s01.wd_p90,9.0,Vendor to facility desk: wd_p90
+overall.s01.share,0.1689,Vendor to facility desk: share of mean calendar days
+overall.s02.cal_mean,5.63,Property check and service entry: cal_mean
+overall.s02.cal_median,4.0,Property check and service entry: cal_median
+overall.s02.cal_p90,11.0,Property check and service entry: cal_p90
+overall.s02.wd_mean,4.02,Property check and service entry: wd_mean
+overall.s02.wd_median,3.0,Property check and service entry: wd_median
+overall.s02.wd_p90,8.0,Property check and service entry: wd_p90
+overall.s02.share,0.1495,Property check and service entry: share of mean calendar days
+overall.s03.cal_mean,1.51,Waiting for property head's signature: cal_mean
+overall.s03.cal_median,2.0,Waiting for property head's signature: cal_median
+overall.s03.cal_p90,3.0,Waiting for property head's signature: cal_p90
+overall.s03.wd_mean,1.08,Waiting for property head's signature: wd_mean
+overall.s03.wd_median,1.0,Waiting for property head's signature: wd_median
+overall.s03.wd_p90,3.0,Waiting for property head's signature: wd_p90
+overall.s03.share,0.0402,Waiting for property head's signature: share of mean calendar days
+overall.s04.cal_mean,4.98,Courier to head office: cal_mean
+overall.s04.cal_median,5.0,Courier to head office: cal_median
+overall.s04.cal_p90,8.0,Courier to head office: cal_p90
+overall.s04.wd_mean,3.99,Courier to head office: wd_mean
+overall.s04.wd_median,4.0,Courier to head office: wd_median
+overall.s04.wd_p90,6.0,Courier to head office: wd_p90
+overall.s04.share,0.1322,Courier to head office: share of mean calendar days
+overall.s05.cal_mean,8.84,Queue at central AP: cal_mean
+overall.s05.cal_median,7.0,Queue at central AP: cal_median
+overall.s05.cal_p90,16.0,Queue at central AP: cal_p90
+overall.s05.wd_mean,5.84,Queue at central AP: wd_mean
+overall.s05.wd_median,5.0,Queue at central AP: wd_median
+overall.s05.wd_p90,11.0,Queue at central AP: wd_p90
+overall.s05.share,0.235,Queue at central AP: share of mean calendar days
+overall.s06.cal_mean,1.58,"AP verification, no query open: cal_mean"
+overall.s06.cal_median,1.0,"AP verification, no query open: cal_median"
+overall.s06.cal_p90,3.0,"AP verification, no query open: cal_p90"
+overall.s06.wd_mean,1.17,"AP verification, no query open: wd_mean"
+overall.s06.wd_median,1.0,"AP verification, no query open: wd_median"
+overall.s06.wd_p90,2.0,"AP verification, no query open: wd_p90"
+overall.s06.share,0.0421,"AP verification, no query open: share of mean calendar days"
+overall.s07.cal_mean,2.75,Query open: cal_mean
+overall.s07.cal_median,0.0,Query open: cal_median
+overall.s07.cal_p90,9.0,Query open: cal_p90
+overall.s07.wd_mean,1.96,Query open: wd_mean
+overall.s07.wd_median,0.0,Query open: wd_median
+overall.s07.wd_p90,6.0,Query open: wd_p90
+overall.s07.share,0.0729,Query open: share of mean calendar days
+overall.s08.cal_mean,5.99,Waiting for payment run: cal_mean
+overall.s08.cal_median,5.0,Waiting for payment run: cal_median
+overall.s08.cal_p90,10.0,Waiting for payment run: cal_p90
+overall.s08.wd_mean,4.22,Waiting for payment run: wd_mean
+overall.s08.wd_median,4.0,Waiting for payment run: wd_median
+overall.s08.wd_p90,7.0,Waiting for payment run: wd_p90
+overall.s08.share,0.1592,Waiting for payment run: share of mean calendar days
+overall.s97.cal_mean,30.43,Total waiting: cal_mean
+overall.s97.cal_median,27.0,Total waiting: cal_median
+overall.s97.cal_p90,46.0,Total waiting: cal_p90
+overall.s97.wd_mean,21.63,Total waiting: wd_mean
+overall.s97.wd_median,20.0,Total waiting: wd_median
+overall.s97.wd_p90,33.0,Total waiting: wd_p90
+overall.s97.share,0.8085,Total waiting: share of mean calendar days
+overall.s98.cal_mean,7.21,Total worked: cal_mean
+overall.s98.cal_median,6.0,Total worked: cal_median
+overall.s98.cal_p90,13.0,Total worked: cal_p90
+overall.s98.wd_mean,5.19,Total worked: wd_mean
+overall.s98.wd_median,5.0,Total worked: wd_median
+overall.s98.wd_p90,9.0,Total worked: wd_p90
+overall.s98.share,0.1915,Total worked: share of mean calendar days
+overall.s99.cal_mean,37.64,Total invoice to paid: cal_mean
+overall.s99.cal_median,35.0,Total invoice to paid: cal_median
+overall.s99.cal_p90,54.0,Total invoice to paid: cal_p90
+overall.s99.wd_mean,26.82,Total invoice to paid: wd_mean
+overall.s99.wd_median,25.0,Total invoice to paid: wd_median
+overall.s99.wd_p90,39.0,Total invoice to paid: wd_p90
+overall.s99.share,1.0,Total invoice to paid: share of mean calendar days
+side.1.cal_mean,6.36,mean calendar days with: Vendor (to the desk)
+side.1.share,0.1689,share of mean total with: Vendor (to the desk)
+side.2.cal_mean,7.14,"mean calendar days with: Property (check, signature)"
+side.2.share,0.1897,"share of mean total with: Property (check, signature)"
+side.4.cal_mean,4.98,mean calendar days with: Courier
+side.4.share,0.1322,share of mean total with: Courier
+side.5.cal_mean,13.17,"mean calendar days with: Central AP (queue, verify, query)"
+side.5.share,0.35,"share of mean total with: Central AP (queue, verify, query)"
+side.8.cal_mean,5.99,mean calendar days with: Treasury (payment run)
+side.8.share,0.1592,share of mean total with: Treasury (payment run)
+query.mean_days_among_queried,21.93,"mean calendar days a query was open, on bills that had one"
+query.share_of_bills,0.1252,share of analysed invoices that had a query
+policy.micro.invoice.n_paid,5106.0,"Micro or Small, clock from invoice_date: n_paid"
+policy.micro.invoice.mean,37.48,"Micro or Small, clock from invoice_date: mean"
+policy.micro.invoice.median,34.0,"Micro or Small, clock from invoice_date: median"
+policy.micro.invoice.p90,54.0,"Micro or Small, clock from invoice_date: p90"
+policy.micro.invoice.pct_over_45,20.19,"Micro or Small, clock from invoice_date: pct_over_45"
+policy.micro.invoice.pct_over_60,6.15,"Micro or Small, clock from invoice_date: pct_over_60"
+policy.micro.invoice.pct_in_cfo_band_45_to_50,8.56,"Micro or Small, clock from invoice_date: pct_in_cfo_band_45_to_50"
+policy.micro.invoice.n_unpaid,88.0,"Micro or Small, clock from invoice_date: n_unpaid"
+policy.micro.invoice.n_unpaid_already_over_45,43.0,"Micro or Small, clock from invoice_date: n_unpaid_already_over_45"
+policy.micro.invoice.n_unpaid_already_over_60,9.0,"Micro or Small, clock from invoice_date: n_unpaid_already_over_60"
+policy.micro.desk_received.n_paid,5106.0,"Micro or Small, clock from desk_received_date: n_paid"
+policy.micro.desk_received.mean,31.06,"Micro or Small, clock from desk_received_date: mean"
+policy.micro.desk_received.median,28.0,"Micro or Small, clock from desk_received_date: median"
+policy.micro.desk_received.p90,46.0,"Micro or Small, clock from desk_received_date: p90"
+policy.micro.desk_received.pct_over_45,10.38,"Micro or Small, clock from desk_received_date: pct_over_45"
+policy.micro.desk_received.pct_over_60,3.41,"Micro or Small, clock from desk_received_date: pct_over_60"
+policy.micro.desk_received.pct_in_cfo_band_45_to_50,4.43,"Micro or Small, clock from desk_received_date: pct_in_cfo_band_45_to_50"
+policy.micro.desk_received.n_unpaid,88.0,"Micro or Small, clock from desk_received_date: n_unpaid"
+policy.micro.desk_received.n_unpaid_already_over_45,30.0,"Micro or Small, clock from desk_received_date: n_unpaid_already_over_45"
+policy.micro.desk_received.n_unpaid_already_over_60,8.0,"Micro or Small, clock from desk_received_date: n_unpaid_already_over_60"
+policy.micro.property_verified.n_paid,5106.0,"Micro or Small, clock from property_verified_date: n_paid"
+policy.micro.property_verified.mean,25.3,"Micro or Small, clock from property_verified_date: mean"
+policy.micro.property_verified.median,22.0,"Micro or Small, clock from property_verified_date: median"
+policy.micro.property_verified.p90,39.0,"Micro or Small, clock from property_verified_date: p90"
+policy.micro.property_verified.pct_over_45,5.97,"Micro or Small, clock from property_verified_date: pct_over_45"
+policy.micro.property_verified.pct_over_60,2.47,"Micro or Small, clock from property_verified_date: pct_over_60"
+policy.micro.property_verified.pct_in_cfo_band_45_to_50,2.21,"Micro or Small, clock from property_verified_date: pct_in_cfo_band_45_to_50"
+policy.micro.property_verified.n_unpaid,88.0,"Micro or Small, clock from property_verified_date: n_unpaid"
+policy.micro.property_verified.n_unpaid_already_over_45,17.0,"Micro or Small, clock from property_verified_date: n_unpaid_already_over_45"
+policy.micro.property_verified.n_unpaid_already_over_60,7.0,"Micro or Small, clock from property_verified_date: n_unpaid_already_over_60"
+policy.medium.invoice.n_paid,3811.0,"Medium or Not MSME, clock from invoice_date: n_paid"
+policy.medium.invoice.mean,38.05,"Medium or Not MSME, clock from invoice_date: mean"
+policy.medium.invoice.median,35.0,"Medium or Not MSME, clock from invoice_date: median"
+policy.medium.invoice.p90,56.0,"Medium or Not MSME, clock from invoice_date: p90"
+policy.medium.invoice.pct_over_45,20.99,"Medium or Not MSME, clock from invoice_date: pct_over_45"
+policy.medium.invoice.pct_over_60,6.9,"Medium or Not MSME, clock from invoice_date: pct_over_60"
+policy.medium.invoice.pct_in_cfo_band_45_to_50,8.4,"Medium or Not MSME, clock from invoice_date: pct_in_cfo_band_45_to_50"
+policy.medium.invoice.n_unpaid,61.0,"Medium or Not MSME, clock from invoice_date: n_unpaid"
+policy.medium.invoice.n_unpaid_already_over_45,30.0,"Medium or Not MSME, clock from invoice_date: n_unpaid_already_over_45"
+policy.medium.invoice.n_unpaid_already_over_60,8.0,"Medium or Not MSME, clock from invoice_date: n_unpaid_already_over_60"
+policy.medium.desk_received.n_paid,3811.0,"Medium or Not MSME, clock from desk_received_date: n_paid"
+policy.medium.desk_received.mean,31.69,"Medium or Not MSME, clock from desk_received_date: mean"
+policy.medium.desk_received.median,28.0,"Medium or Not MSME, clock from desk_received_date: median"
+policy.medium.desk_received.p90,48.0,"Medium or Not MSME, clock from desk_received_date: p90"
+policy.medium.desk_received.pct_over_45,12.31,"Medium or Not MSME, clock from desk_received_date: pct_over_45"
+policy.medium.desk_received.pct_over_60,3.8,"Medium or Not MSME, clock from desk_received_date: pct_over_60"
+policy.medium.desk_received.pct_in_cfo_band_45_to_50,5.12,"Medium or Not MSME, clock from desk_received_date: pct_in_cfo_band_45_to_50"
+policy.medium.desk_received.n_unpaid,61.0,"Medium or Not MSME, clock from desk_received_date: n_unpaid"
+policy.medium.desk_received.n_unpaid_already_over_45,19.0,"Medium or Not MSME, clock from desk_received_date: n_unpaid_already_over_45"
+policy.medium.desk_received.n_unpaid_already_over_60,6.0,"Medium or Not MSME, clock from desk_received_date: n_unpaid_already_over_60"
+policy.medium.property_verified.n_paid,3811.0,"Medium or Not MSME, clock from property_verified_date: n_paid"
+policy.medium.property_verified.mean,26.16,"Medium or Not MSME, clock from property_verified_date: mean"
+policy.medium.property_verified.median,23.0,"Medium or Not MSME, clock from property_verified_date: median"
+policy.medium.property_verified.p90,41.0,"Medium or Not MSME, clock from property_verified_date: p90"
+policy.medium.property_verified.pct_over_45,6.87,"Medium or Not MSME, clock from property_verified_date: pct_over_45"
+policy.medium.property_verified.pct_over_60,2.57,"Medium or Not MSME, clock from property_verified_date: pct_over_60"
+policy.medium.property_verified.pct_in_cfo_band_45_to_50,2.65,"Medium or Not MSME, clock from property_verified_date: pct_in_cfo_band_45_to_50"
+policy.medium.property_verified.n_unpaid,61.0,"Medium or Not MSME, clock from property_verified_date: n_unpaid"
+policy.medium.property_verified.n_unpaid_already_over_45,11.0,"Medium or Not MSME, clock from property_verified_date: n_unpaid_already_over_45"
+policy.medium.property_verified.n_unpaid_already_over_60,4.0,"Medium or Not MSME, clock from property_verified_date: n_unpaid_already_over_60"
+policy.unknown.invoice.n_paid,1532.0,"Unknown, clock from invoice_date: n_paid"
+policy.unknown.invoice.mean,37.15,"Unknown, clock from invoice_date: mean"
+policy.unknown.invoice.median,34.0,"Unknown, clock from invoice_date: median"
+policy.unknown.invoice.p90,53.0,"Unknown, clock from invoice_date: p90"
+policy.unknown.invoice.pct_over_45,18.99,"Unknown, clock from invoice_date: pct_over_45"
+policy.unknown.invoice.pct_over_60,5.87,"Unknown, clock from invoice_date: pct_over_60"
+policy.unknown.invoice.pct_in_cfo_band_45_to_50,9.27,"Unknown, clock from invoice_date: pct_in_cfo_band_45_to_50"
+policy.unknown.invoice.n_unpaid,31.0,"Unknown, clock from invoice_date: n_unpaid"
+policy.unknown.invoice.n_unpaid_already_over_45,12.0,"Unknown, clock from invoice_date: n_unpaid_already_over_45"
+policy.unknown.invoice.n_unpaid_already_over_60,5.0,"Unknown, clock from invoice_date: n_unpaid_already_over_60"
+policy.unknown.desk_received.n_paid,1532.0,"Unknown, clock from desk_received_date: n_paid"
+policy.unknown.desk_received.mean,31.04,"Unknown, clock from desk_received_date: mean"
+policy.unknown.desk_received.median,28.0,"Unknown, clock from desk_received_date: median"
+policy.unknown.desk_received.p90,45.9,"Unknown, clock from desk_received_date: p90"
+policy.unknown.desk_received.pct_over_45,10.05,"Unknown, clock from desk_received_date: pct_over_45"
+policy.unknown.desk_received.pct_over_60,3.39,"Unknown, clock from desk_received_date: pct_over_60"
+policy.unknown.desk_received.pct_in_cfo_band_45_to_50,3.66,"Unknown, clock from desk_received_date: pct_in_cfo_band_45_to_50"
+policy.unknown.desk_received.n_unpaid,31.0,"Unknown, clock from desk_received_date: n_unpaid"
+policy.unknown.desk_received.n_unpaid_already_over_45,10.0,"Unknown, clock from desk_received_date: n_unpaid_already_over_45"
+policy.unknown.desk_received.n_unpaid_already_over_60,4.0,"Unknown, clock from desk_received_date: n_unpaid_already_over_60"
+policy.unknown.property_verified.n_paid,1532.0,"Unknown, clock from property_verified_date: n_paid"
+policy.unknown.property_verified.mean,25.61,"Unknown, clock from property_verified_date: mean"
+policy.unknown.property_verified.median,22.0,"Unknown, clock from property_verified_date: median"
+policy.unknown.property_verified.p90,39.0,"Unknown, clock from property_verified_date: p90"
+policy.unknown.property_verified.pct_over_45,6.46,"Unknown, clock from property_verified_date: pct_over_45"
+policy.unknown.property_verified.pct_over_60,2.28,"Unknown, clock from property_verified_date: pct_over_60"
+policy.unknown.property_verified.pct_in_cfo_band_45_to_50,2.81,"Unknown, clock from property_verified_date: pct_in_cfo_band_45_to_50"
+policy.unknown.property_verified.n_unpaid,31.0,"Unknown, clock from property_verified_date: n_unpaid"
+policy.unknown.property_verified.n_unpaid_already_over_45,6.0,"Unknown, clock from property_verified_date: n_unpaid_already_over_45"
+policy.unknown.property_verified.n_unpaid_already_over_60,4.0,"Unknown, clock from property_verified_date: n_unpaid_already_over_60"
+policy.all.invoice.n_paid,10449.0,"All, clock from invoice_date: n_paid"
+policy.all.invoice.mean,37.64,"All, clock from invoice_date: mean"
+policy.all.invoice.median,35.0,"All, clock from invoice_date: median"
+policy.all.invoice.p90,54.0,"All, clock from invoice_date: p90"
+policy.all.invoice.pct_over_45,20.31,"All, clock from invoice_date: pct_over_45"
+policy.all.invoice.pct_over_60,6.38,"All, clock from invoice_date: pct_over_60"
+policy.all.invoice.pct_in_cfo_band_45_to_50,8.6,"All, clock from invoice_date: pct_in_cfo_band_45_to_50"
+policy.all.invoice.n_unpaid,180.0,"All, clock from invoice_date: n_unpaid"
+policy.all.invoice.n_unpaid_already_over_45,85.0,"All, clock from invoice_date: n_unpaid_already_over_45"
+policy.all.invoice.n_unpaid_already_over_60,22.0,"All, clock from invoice_date: n_unpaid_already_over_60"
+policy.all.desk_received.n_paid,10449.0,"All, clock from desk_received_date: n_paid"
+policy.all.desk_received.mean,31.28,"All, clock from desk_received_date: mean"
+policy.all.desk_received.median,28.0,"All, clock from desk_received_date: median"
+policy.all.desk_received.p90,47.0,"All, clock from desk_received_date: p90"
+policy.all.desk_received.pct_over_45,11.03,"All, clock from desk_received_date: pct_over_45"
+policy.all.desk_received.pct_over_60,3.55,"All, clock from desk_received_date: pct_over_60"
+policy.all.desk_received.pct_in_cfo_band_45_to_50,4.57,"All, clock from desk_received_date: pct_in_cfo_band_45_to_50"
+policy.all.desk_received.n_unpaid,180.0,"All, clock from desk_received_date: n_unpaid"
+policy.all.desk_received.n_unpaid_already_over_45,59.0,"All, clock from desk_received_date: n_unpaid_already_over_45"
+policy.all.desk_received.n_unpaid_already_over_60,18.0,"All, clock from desk_received_date: n_unpaid_already_over_60"
+policy.all.property_verified.n_paid,10449.0,"All, clock from property_verified_date: n_paid"
+policy.all.property_verified.mean,25.66,"All, clock from property_verified_date: mean"
+policy.all.property_verified.median,22.0,"All, clock from property_verified_date: median"
+policy.all.property_verified.p90,40.0,"All, clock from property_verified_date: p90"
+policy.all.property_verified.pct_over_45,6.37,"All, clock from property_verified_date: pct_over_45"
+policy.all.property_verified.pct_over_60,2.48,"All, clock from property_verified_date: pct_over_60"
+policy.all.property_verified.pct_in_cfo_band_45_to_50,2.46,"All, clock from property_verified_date: pct_in_cfo_band_45_to_50"
+policy.all.property_verified.n_unpaid,180.0,"All, clock from property_verified_date: n_unpaid"
+policy.all.property_verified.n_unpaid_already_over_45,34.0,"All, clock from property_verified_date: n_unpaid_already_over_45"
+policy.all.property_verified.n_unpaid_already_over_60,15.0,"All, clock from property_verified_date: n_unpaid_already_over_60"
+policy.matured.invoice.n_paid,8888.0,"All, invoiced to 31 Jan 2026, clock from invoice_date: n_paid"
+policy.matured.invoice.mean,38.13,"All, invoiced to 31 Jan 2026, clock from invoice_date: mean"
+policy.matured.invoice.median,35.0,"All, invoiced to 31 Jan 2026, clock from invoice_date: median"
+policy.matured.invoice.p90,56.0,"All, invoiced to 31 Jan 2026, clock from invoice_date: p90"
+policy.matured.invoice.pct_over_45,21.3,"All, invoiced to 31 Jan 2026, clock from invoice_date: pct_over_45"
+policy.matured.invoice.pct_over_60,7.08,"All, invoiced to 31 Jan 2026, clock from invoice_date: pct_over_60"
+policy.matured.invoice.pct_in_cfo_band_45_to_50,8.8,"All, invoiced to 31 Jan 2026, clock from invoice_date: pct_in_cfo_band_45_to_50"
+policy.matured.invoice.n_unpaid,5.0,"All, invoiced to 31 Jan 2026, clock from invoice_date: n_unpaid"
+policy.matured.invoice.n_unpaid_already_over_45,5.0,"All, invoiced to 31 Jan 2026, clock from invoice_date: n_unpaid_already_over_45"
+policy.matured.invoice.n_unpaid_already_over_60,5.0,"All, invoiced to 31 Jan 2026, clock from invoice_date: n_unpaid_already_over_60"
+policy.matured.desk_received.n_paid,8888.0,"All, invoiced to 31 Jan 2026, clock from desk_received_date: n_paid"
+policy.matured.desk_received.mean,31.7,"All, invoiced to 31 Jan 2026, clock from desk_received_date: mean"
+policy.matured.desk_received.median,28.0,"All, invoiced to 31 Jan 2026, clock from desk_received_date: median"
+policy.matured.desk_received.p90,48.0,"All, invoiced to 31 Jan 2026, clock from desk_received_date: p90"
+policy.matured.desk_received.pct_over_45,11.81,"All, invoiced to 31 Jan 2026, clock from desk_received_date: pct_over_45"
+policy.matured.desk_received.pct_over_60,3.98,"All, invoiced to 31 Jan 2026, clock from desk_received_date: pct_over_60"
+policy.matured.desk_received.pct_in_cfo_band_45_to_50,4.7,"All, invoiced to 31 Jan 2026, clock from desk_received_date: pct_in_cfo_band_45_to_50"
+policy.matured.desk_received.n_unpaid,5.0,"All, invoiced to 31 Jan 2026, clock from desk_received_date: n_unpaid"
+policy.matured.desk_received.n_unpaid_already_over_45,5.0,"All, invoiced to 31 Jan 2026, clock from desk_received_date: n_unpaid_already_over_45"
+policy.matured.desk_received.n_unpaid_already_over_60,5.0,"All, invoiced to 31 Jan 2026, clock from desk_received_date: n_unpaid_already_over_60"
+policy.matured.property_verified.n_paid,8888.0,"All, invoiced to 31 Jan 2026, clock from property_verified_date: n_paid"
+policy.matured.property_verified.mean,26.03,"All, invoiced to 31 Jan 2026, clock from property_verified_date: mean"
+policy.matured.property_verified.median,23.0,"All, invoiced to 31 Jan 2026, clock from property_verified_date: median"
+policy.matured.property_verified.p90,41.0,"All, invoiced to 31 Jan 2026, clock from property_verified_date: p90"
+policy.matured.property_verified.pct_over_45,7.07,"All, invoiced to 31 Jan 2026, clock from property_verified_date: pct_over_45"
+policy.matured.property_verified.pct_over_60,2.81,"All, invoiced to 31 Jan 2026, clock from property_verified_date: pct_over_60"
+policy.matured.property_verified.pct_in_cfo_band_45_to_50,2.72,"All, invoiced to 31 Jan 2026, clock from property_verified_date: pct_in_cfo_band_45_to_50"
+policy.matured.property_verified.n_unpaid,5.0,"All, invoiced to 31 Jan 2026, clock from property_verified_date: n_unpaid"
+policy.matured.property_verified.n_unpaid_already_over_45,5.0,"All, invoiced to 31 Jan 2026, clock from property_verified_date: n_unpaid_already_over_45"
+policy.matured.property_verified.n_unpaid_already_over_60,5.0,"All, invoiced to 31 Jan 2026, clock from property_verified_date: n_unpaid_already_over_60"

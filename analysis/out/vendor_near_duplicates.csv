@@ -1,0 +1,37 @@
+vendor_a,name_a,vendor_b,name_b,same_state,same_category
+V10018,Ojas Engineering Works,V10024,Tejas Engineering Works,False,True
+V10019,Abhay Nirmal Engineering Works Pvt Ltd,V10867,Vardhan Nirmal Engineering Works,False,True
+V10040,Ojas Elevator Care,V10727,Tejas Elevator Care Pvt Ltd,True,True
+V10052,Hemkunt Fire Safety Systems Pvt Ltd,V10495,Ekta Fire Safety Systems,False,True
+V10078,Ekta Shivalik Fire Safety Systems,V10582,Pratap Shivalik Fire Safety Systems,False,True
+V10092,Saksham Fire Safety Systems,V10269,Raksha Fire Safety Systems Pvt Ltd,False,True
+V10109,Ojas Landscapes,V10240,Tejas Landscapes Pvt Ltd,False,True
+V10112,Satluj Aravind Engineering Works,V10332,Satluj Vardhan Engineering Works,False,True
+V10116,Ojas Fire Safety Systems Pvt Ltd,V10283,Tejas Fire Safety Systems,True,True
+V10118,Amrit Ojas Engineering Works Pvt Ltd,V10612,Amrit Tejas Engineering Works Pvt Ltd,True,False
+V10135,Ekta Aravind Engineering Works Pvt Ltd,V10858,Kesari Aravind Engineering Works,False,False
+V10137,Saksham Facility Services,V10784,Raksha Facility Services,False,True
+V10151,Amrit Vasundhara Engineering Works Pvt Ltd,V10809,Kesari Vasundhara Engineering Works,False,False
+V10154,Aravind Sarthak Engineering Works,V10202,Aravind Abhay Engineering Works,True,False
+V10154,Aravind Sarthak Engineering Works,V10529,Aravind Saksham Engineering Works,False,False
+V10173,Raksha Facility Management Pvt Ltd,V10327,Abhay Facility Management,False,True
+V10173,Raksha Facility Management Pvt Ltd,V10458,Saksham Facility Management,False,True
+V10196,Prakriti Fire Safety Systems Pvt Ltd,V10757,Amrit Fire Safety Systems,False,True
+V10202,Aravind Abhay Engineering Works,V10529,Aravind Saksham Engineering Works,False,False
+V10224,Kesari Indus Facility Management Pvt Ltd,V10385,Amrit Indus Facility Management,True,True
+V10249,Saksham Engineering Works,V10262,Raksha Engineering Works,False,True
+V10260,Shivalik Aravind Fire Safety Systems,V10826,Shivalik Indus Fire Safety Systems,True,True
+V10269,Raksha Fire Safety Systems Pvt Ltd,V10443,Abhay Fire Safety Systems,False,True
+V10282,Garud Nirmal Engineering Works,V10867,Vardhan Nirmal Engineering Works,False,True
+V10350,Prakriti Facility Management Pvt Ltd,V10573,Amrit Facility Management Pvt Ltd,False,True
+V10369,Panchjanya Sarthak Fire Safety Systems,V10830,Panchjanya Pratap Fire Safety Systems,True,True
+V10401,Vasundhara Sanjivani Engineering Works,V10445,Vasundhara Shivalik Engineering Works,True,False
+V10413,Sarthak Sanjivani Engineering Works,V10467,Saksham Sanjivani Engineering Works Pvt Ltd,False,True
+V10418,Indus Sanjivani Engineering Works,V10849,Dhruv Sanjivani Engineering Works,False,False
+V10557,Raksha Landscapes Pvt Ltd,V10564,Saksham Landscapes Pvt Ltd,True,True
+V10558,Kesari Facility Management,V10573,Amrit Facility Management Pvt Ltd,False,True
+V10593,Ekta Panchjanya Engineering Works,V10877,Tejas Panchjanya Engineering Works Pvt Ltd,False,True
+V10603,Amrit Aravind Engineering Works Pvt Ltd,V10858,Kesari Aravind Engineering Works,False,True
+V10730,Raksha Trishul Pest Solutions,V10884,Saksham Trishul Pest Solutions,False,True
+V10740,Ekta Shivalik Facility Management Pvt Ltd,V10744,Ojas Shivalik Facility Management,True,True
+V10742,Udaan Nirmal Engineering Works,V10867,Vardhan Nirmal Engineering Works,False,True

@@ -1,0 +1,247 @@
+id,value,description
+q.rows,1441,rows in queries.csv
+rules.queries_matching_no_rule,0,queries no text rule matched (category fallback used)
+rules.queries_matching_two_rules,0,queries two text rules matched
+rules.other_queries,94,queries categorised Other
+rules.other_relabelled,74,Other queries given a real category from their text
+rules.other_still_other,20,queries still Other after re-labelling (no reason recorded)
+share.bills,11000,bills in bills_clean
+share.bills_with_query,1441,bills with a query
+share.bills_with_query_pct,13.1,% of bills with a query
+share.invoices_with_query,1416,
+share.invoices_with_query_pct,13.19,
+share.credit_notes_with_query,25,
+share.credit_notes_with_query_pct,9.58,
+multi.bills_with_more_than_one_query,0,bills with more than one query row
+multi.max_queries_per_bill,1,
+open.queries,59,queries still open at 30 Apr 2026
+open.queries_pct,4.09,
+open.status_Query,59,open queries on bills with status Query
+open.status_With AP,0,open queries on bills with status With AP
+open.status_Posted,0,open queries on bills with status Posted
+open.status_Paid,0,open queries on bills with status Paid
+open.age_median_days,25.0,median age of open queries since raised
+open.age_max_days,174,
+timing.days_desk_to_raised.mean,22.25,desk to raised: mean
+timing.days_desk_to_raised.median,20.0,desk to raised: median
+timing.days_desk_to_raised.p90,32.0,desk to raised: p90
+timing.days_desk_to_raised.min,7.0,desk to raised: min
+timing.days_desk_to_raised.max,96.0,desk to raised: max
+timing.days_desk_to_raised.n,1441.0,desk to raised: n
+timing.days_ho_received_to_raised.mean,10.21,HO received to raised: mean
+timing.days_ho_received_to_raised.median,9.0,HO received to raised: median
+timing.days_ho_received_to_raised.p90,18.0,HO received to raised: p90
+timing.days_ho_received_to_raised.min,1.0,HO received to raised: min
+timing.days_ho_received_to_raised.max,86.0,HO received to raised: max
+timing.days_ho_received_to_raised.n,1441.0,HO received to raised: n
+timing.days_pick_to_raised.mean,1.0,AP picked to raised: mean
+timing.days_pick_to_raised.median,1.0,AP picked to raised: median
+timing.days_pick_to_raised.p90,2.0,AP picked to raised: p90
+timing.days_pick_to_raised.min,0.0,AP picked to raised: min
+timing.days_pick_to_raised.max,2.0,AP picked to raised: max
+timing.days_pick_to_raised.n,1441.0,AP picked to raised: n
+timing.days_open.mean,21.92,"open (raised to resolved), closed queries: mean"
+timing.days_open.median,17.0,"open (raised to resolved), closed queries: median"
+timing.days_open.p90,44.0,"open (raised to resolved), closed queries: p90"
+timing.days_open.min,2.0,"open (raised to resolved), closed queries: min"
+timing.days_open.max,154.0,"open (raised to resolved), closed queries: max"
+timing.days_open.n,1382.0,"open (raised to resolved), closed queries: n"
+timing.days_resolved_to_posted.mean,2.3,resolved to posted: mean
+timing.days_resolved_to_posted.median,2.0,resolved to posted: median
+timing.days_resolved_to_posted.p90,4.0,resolved to posted: p90
+timing.days_resolved_to_posted.min,1.0,resolved to posted: min
+timing.days_resolved_to_posted.max,4.0,resolved to posted: max
+timing.days_resolved_to_posted.n,1375.0,resolved to posted: n
+added.s01,-0.14,Vendor to facility desk: extra mean calendar days for bills with a query
+added.s02,-0.1,Property check and service entry: extra mean calendar days for bills with a query
+added.s03,-0.01,Waiting for property head's signature: extra mean calendar days for bills with a query
+added.s04,0.04,Courier to head office: extra mean calendar days for bills with a query
+added.s05,0.41,Queue at central AP: extra mean calendar days for bills with a query
+added.s06,1.96,"AP verification, no query open: extra mean calendar days for bills with a query"
+added.s07,21.93,Query open: extra mean calendar days for bills with a query
+added.s08,0.07,Waiting for payment run: extra mean calendar days for bills with a query
+added.s99,24.16,Total invoice to paid: extra mean calendar days for bills with a query
+added.n_paid_with_query,1308,paid invoices with a query (stage analysis population)
+added.n_paid_without_query,9141,
+added.total_mean_with_query,58.78,
+added.total_mean_without_query,34.62,
+added.days_on_overall_mean,3.02,days the queries add to the mean invoice-to-paid time of all paid invoices (extra days x share of bills with a query)
+added.total_within_category_weighted,24.0,"extra days with a query, compared within the same spend category (weighted by queried bills)"
+resolve.Duplicate bill.median,16.5,"median days to resolve, Duplicate bill"
+resolve.Duplicate bill.mean,20.79,"mean days to resolve, Duplicate bill"
+resolve.Duplicate bill.n_open,8,"open queries, Duplicate bill"
+resolve.GL or cost centre.median,17.0,"median days to resolve, GL or cost centre"
+resolve.GL or cost centre.mean,22.14,"mean days to resolve, GL or cost centre"
+resolve.GL or cost centre.n_open,8,"open queries, GL or cost centre"
+resolve.GST.median,17.0,"median days to resolve, GST"
+resolve.GST.mean,22.03,"mean days to resolve, GST"
+resolve.GST.n_open,8,"open queries, GST"
+resolve.Other.median,18.0,"median days to resolve, Other"
+resolve.Other.mean,22.15,"mean days to resolve, Other"
+resolve.Other.n_open,5,"open queries, Other"
+resolve.Rate mismatch.median,16.0,"median days to resolve, Rate mismatch"
+resolve.Rate mismatch.mean,20.05,"mean days to resolve, Rate mismatch"
+resolve.Rate mismatch.n_open,5,"open queries, Rate mismatch"
+resolve.Service entry or GRN not posted.median,16.0,"median days to resolve, Service entry or GRN not posted"
+resolve.Service entry or GRN not posted.mean,20.82,"mean days to resolve, Service entry or GRN not posted"
+resolve.Service entry or GRN not posted.n_open,1,"open queries, Service entry or GRN not posted"
+resolve.Supporting documents.median,17.5,"median days to resolve, Supporting documents"
+resolve.Supporting documents.mean,22.88,"mean days to resolve, Supporting documents"
+resolve.Supporting documents.n_open,8,"open queries, Supporting documents"
+resolve.WO balance or validity.median,16.0,"median days to resolve, WO balance or validity"
+resolve.WO balance or validity.mean,22.63,"mean days to resolve, WO balance or validity"
+resolve.WO balance or validity.n_open,16,"open queries, WO balance or validity"
+resolve.category_median_min,16.0,lowest category median days to resolve
+resolve.category_median_max,18.0,highest category median days to resolve
+resolve.side_median_min,16.0,
+resolve.side_median_max,19.0,
+resolve_side.head-office.median,19.0,"median days to resolve, head-office-side"
+resolve_side.head-office.mean,23.55,
+resolve_side.procurement.median,17.0,"median days to resolve, procurement-side"
+resolve_side.procurement.mean,22.5,
+resolve_side.property.median,16.0,"median days to resolve, property-side"
+resolve_side.property.mean,21.15,
+resolve_side.vendor.median,17.0,"median days to resolve, vendor-side"
+resolve_side.vendor.mean,21.91,
+side.vendor.primary,615,queries whose fix sits with the vendor side (primary rule)
+side.vendor.primary_pct,42.7,
+side.vendor.min,223,vendor: queries where the text leaves no alternative owner
+side.vendor.max,745,vendor: primary plus queries where it is the alternative owner
+side.vendor.min_pct,15.5,
+side.vendor.max_pct,51.7,
+side.property.primary,407,queries whose fix sits with the property side (primary rule)
+side.property.primary_pct,28.2,
+side.property.min,311,property: queries where the text leaves no alternative owner
+side.property.max,719,property: primary plus queries where it is the alternative owner
+side.property.min_pct,21.6,
+side.property.max_pct,49.9,
+side.procurement.primary,338,queries whose fix sits with the procurement side (primary rule)
+side.procurement.primary_pct,23.5,
+side.procurement.min,12,procurement: queries where the text leaves no alternative owner
+side.procurement.max,600,procurement: primary plus queries where it is the alternative owner
+side.procurement.min_pct,0.8,
+side.procurement.max_pct,41.6,
+side.head-office.primary,81,queries whose fix sits with the head-office side (primary rule)
+side.head-office.primary_pct,5.6,
+side.head-office.min,61,head-office: queries where the text leaves no alternative owner
+side.head-office.max,211,head-office: primary plus queries where it is the alternative owner
+side.head-office.min_pct,4.2,
+side.head-office.max_pct,14.6,
+side.company_side_primary,826,"property + procurement + head-office, primary"
+side.company_side_primary_pct,57.3,
+side.company_side_min,384,"company side, only queries with no alternative owner"
+side.ap_lead_three_categories,679,"queries on work order, GL / cost centre, service entry / GRN (the AP lead's 'our own side')"
+side.ap_lead_three_categories_pct,47.1,
+side.company_side_min_pct,26.6,
+side.vendor.high_confidence,223,vendor-side queries where the text names the actor clearly
+side.property.high_confidence,311,property-side queries where the text names the actor clearly
+side.procurement.high_confidence,119,procurement-side queries where the text names the actor clearly
+side.head-office.high_confidence,0,head-office-side queries where the text names the actor clearly
+side.confidence_high,653,queries where the text names the actor clearly
+side.confidence_medium,768,
+side.confidence_low,20,
+ev.dup_queries,130,duplicate-invoice-number queries
+ev.dup_twin_registered_earlier,34,...where the same vendor+invoice no. had already reached the desk
+ev.dup_twin_exists,68,...where a twin exists in the register at all
+ev.dup_twin_same_amount,0,...where the twin has the same amount
+ev.dup_no_twin_in_register,62,
+ev.expiry_queries,107,work-order-expired queries
+ev.expiry_invoice_after_valid_to,104,...where the invoice date is after the SAP valid_to
+ev.expiry_text_date_equals_valid_to,104,...where the expiry date in the query text equals SAP valid_to
+ev.no_balance.queries,96,
+ev.no_balance.over_balance_on_day_one,5,...where cumulative invoices on the work order exceed approved value by this bill (SAP extract)
+ev.no_balance.final_billed_gt_approved,25,
+ev.quantity.queries,105,
+ev.quantity.over_balance_on_day_one,3,...where cumulative invoices on the work order exceed approved value by this bill (SAP extract)
+ev.quantity.final_billed_gt_approved,24,
+ev.wo_bal_other.queries,18,
+ev.wo_bal_other.over_balance_on_day_one,1,...where cumulative invoices on the work order exceed approved value by this bill (SAP extract)
+ev.wo_bal_other.final_billed_gt_approved,7,
+ev.wo_balance_all.queries,219,"work-order balance, quantity and no-balance queries together"
+ev.wo_balance_all.over_balance_on_day_one,9,...where the extract's value rule says the bill pushed the work order over its approved value
+ev.over_balance_rate_all_invoices_pct,6.5,"% of all invoices the same value rule would flag, queried or not"
+ev.over_balance_flagged_invoices,694,invoices the value rule flags
+ev.igst.queries,55,queries saying IGST was charged on an intra-state supply
+ev.igst.master_says_same_state,16,...where vendor state equals property state in the extract
+ev.igst.master_says_different_state,39,...where the extract says the supply is inter-state
+ev.igst.base_rate_same_state_pct,36.3,% of all bills where vendor state equals property state
+ev.taxrate.queries,52,queries saying the bill has 12% where 18% applies
+ev.taxrate.register_gst_is_18pct,45,...where the register shows 18% GST
+ev.taxrate.diesel_zero_gst,7,"...on Diesel bills, which carry no GST in the register"
+layer.A.queries,237,queries in layer A: bill + SAP extract (checked)
+layer.A.cum_queries,237,queries in layers A together
+layer.A.cum_pct,16.4,
+layer.A.cum_mean_days_saved_per_closed_query,14.86,"mean days saved per closed query, layers A"
+layer.A.cum_days_off_mean_total,0.28,"days off the mean invoice-to-paid time of 10449 paid invoices, layers A"
+layer.B.queries,217,queries in layer B: bill printed fields + SAP master
+layer.AB.cum_queries,454,queries in layers AB together
+layer.AB.cum_pct,31.5,
+layer.AB.cum_mean_days_saved_per_closed_query,14.87,"mean days saved per closed query, layers AB"
+layer.AB.cum_days_off_mean_total,0.57,"days off the mean invoice-to-paid time of 10449 paid invoices, layers AB"
+layer.C.queries,508,queries in layer C: SAP fields not in the extract
+layer.ABC.cum_queries,962,queries in layers ABC together
+layer.ABC.cum_pct,66.8,
+layer.ABC.cum_mean_days_saved_per_closed_query,14.75,"mean days saved per closed query, layers ABC"
+layer.ABC.cum_days_off_mean_total,1.22,"days off the mean invoice-to-paid time of 10449 paid invoices, layers ABC"
+layer.D.queries,242,queries in layer D: packet documents
+layer.ABCD.cum_queries,1204,queries in layers ABCD together
+layer.ABCD.cum_pct,83.6,
+layer.ABCD.cum_mean_days_saved_per_closed_query,14.71,"mean days saved per closed query, layers ABCD"
+layer.ABCD.cum_days_off_mean_total,1.53,"days off the mean invoice-to-paid time of 10449 paid invoices, layers ABCD"
+layer.E.queries,237,queries in layer E: not knowable on day one
+layer.ABCDE.cum_queries,1441,queries in layers ABCDE together
+layer.ABCDE.cum_pct,100.0,
+layer.ABCDE.cum_mean_days_saved_per_closed_query,14.65,"mean days saved per closed query, layers ABCDE"
+layer.ABCDE.cum_days_off_mean_total,1.83,"days off the mean invoice-to-paid time of 10449 paid invoices, layers ABCDE"
+a_verified.queries,163,"queries where a day-one rule on bill + extract fires (duplicates seen earlier, expired WOs, over-balance, IGST same-state)"
+a_verified.layerA_queries,138,layer A queries where the rule fires on the data
+a_verified.layerA_days_off_mean_total,0.17,
+timing.desk_to_pick_median,20.0,"median days from desk to AP picking the bill, queried bills"
+timing.min_desk_to_raised,7,shortest gap from desk to a query being raised
+month.pct_min,11.73,lowest monthly share of bills with a query
+month.pct_max,14.39,highest monthly share of bills with a query
+month.pct_min_month,2026-01,
+month.pct_max_month,2025-07,
+month.raised_max,136,most queries raised in one month
+month.raised_max_month,2026-03,
+month.raised_min,34,
+month.raised_min_month,2025-04,
+month.raised_mean,113.6,"mean queries raised per month (all but the last, partial month)"
+wo_cluster.max_4day_count,10,most work-order queries raised in any 4 consecutive days
+wo_cluster.max_4day_ending,2026-01-15,
+wo_cluster.feb2026_week2_count,11,work-order queries raised 8 to 15 Feb 2026
+wo_cluster.mean_4day_count,3.58,mean work-order queries per 4 days
+wo_cluster.feb2026_total,25,work-order queries raised in Feb 2026
+wo_cluster.monthly_mean_wo,26.2,
+claim.missing_challan_median_days,22.0,AP lead: a missing challan takes a week. Median days to resolve PF/ESIC challan queries
+claim.wo_median_days,17.0,AP lead: an amendment can take a month. Median days to resolve work-order queries
+proptype.Office Tower.pct_queried,13.83,% of Office Tower bills with a query
+proptype.Residential Society.pct_queried,12.99,% of Residential Society bills with a query
+proptype.Retail Mall.pct_queried,11.49,% of Retail Mall bills with a query
+spend.Cleaning Material.queries,158,queries on Cleaning Material bills
+spend.Cleaning Material.pct_queried,12.66,% of Cleaning Material bills with a query
+spend.DG Set AMC.queries,80,queries on DG Set AMC bills
+spend.DG Set AMC.pct_queried,15.5,% of DG Set AMC bills with a query
+spend.Diesel Supply.queries,132,queries on Diesel Supply bills
+spend.Diesel Supply.pct_queried,12.13,% of Diesel Supply bills with a query
+spend.Fire AMC.queries,69,queries on Fire AMC bills
+spend.Fire AMC.pct_queried,12.8,% of Fire AMC bills with a query
+spend.Housekeeping Manpower.queries,268,queries on Housekeeping Manpower bills
+spend.Housekeeping Manpower.pct_queried,13.43,% of Housekeeping Manpower bills with a query
+spend.Landscaping.queries,121,queries on Landscaping bills
+spend.Landscaping.pct_queried,13.64,% of Landscaping bills with a query
+spend.Lift AMC.queries,85,queries on Lift AMC bills
+spend.Lift AMC.pct_queried,12.32,% of Lift AMC bills with a query
+spend.Pest Control.queries,77,queries on Pest Control bills
+spend.Pest Control.pct_queried,12.09,% of Pest Control bills with a query
+spend.Repairs and Maintenance.queries,80,queries on Repairs and Maintenance bills
+spend.Repairs and Maintenance.pct_queried,11.99,% of Repairs and Maintenance bills with a query
+spend.Security Manpower.queries,306,queries on Security Manpower bills
+spend.Security Manpower.pct_queried,13.99,% of Security Manpower bills with a query
+spend.Water Testing.queries,65,queries on Water Testing bills
+spend.Water Testing.pct_queried,11.93,% of Water Testing bills with a query
+msme.Micro.pct_queried,12.83,% of Micro vendors' bills with a query
+msme.Small.pct_queried,12.34,% of Small vendors' bills with a query
+msme.Medium.pct_queried,13.7,% of Medium vendors' bills with a query
+msme.Not MSME.pct_queried,13.59,% of Not MSME vendors' bills with a query
+msme.Unknown.pct_queried,13.4,% of Unknown vendors' bills with a query

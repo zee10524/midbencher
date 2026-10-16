@@ -1,0 +1,16 @@
+msme_group,clock_starts,clock_meaning,limit_days,n_paid,mean,median,p90,pct_over_45,pct_over_60,pct_in_cfo_band_45_to_50,n_unpaid,unpaid_median_age,n_unpaid_already_over_45,n_unpaid_already_over_60
+Micro or Small,invoice_date,invoice date on the bill,45,5106,37.48,34.0,54.0,20.19,6.15,8.56,88,45.0,43,9
+Micro or Small,desk_received_date,facility desk logs it,45,5106,31.06,28.0,46.0,10.38,3.41,4.43,88,36.5,30,8
+Micro or Small,property_verified_date,"property verified, service entry created (proxy for acceptance)",45,5106,25.3,22.0,39.0,5.97,2.47,2.21,88,31.5,17,7
+Medium or Not MSME,invoice_date,invoice date on the bill,60,3811,38.05,35.0,56.0,20.99,6.9,8.4,61,44.0,30,8
+Medium or Not MSME,desk_received_date,facility desk logs it,60,3811,31.69,28.0,48.0,12.31,3.8,5.12,61,33.0,19,6
+Medium or Not MSME,property_verified_date,"property verified, service entry created (proxy for acceptance)",60,3811,26.16,23.0,41.0,6.87,2.57,2.65,61,31.0,11,4
+Unknown,invoice_date,invoice date on the bill,45 or 60,1532,37.15,34.0,53.0,18.99,5.87,9.27,31,39.0,12,5
+Unknown,desk_received_date,facility desk logs it,45 or 60,1532,31.04,28.0,45.9,10.05,3.39,3.66,31,31.0,10,4
+Unknown,property_verified_date,"property verified, service entry created (proxy for acceptance)",45 or 60,1532,25.61,22.0,39.0,6.46,2.28,2.81,31,27.0,6,4
+All,invoice_date,invoice date on the bill,45 (MSME) / 60 (others),10449,37.64,35.0,54.0,20.31,6.38,8.6,180,44.0,85,22
+All,desk_received_date,facility desk logs it,45 (MSME) / 60 (others),10449,31.28,28.0,47.0,11.03,3.55,4.57,180,36.0,59,18
+All,property_verified_date,"property verified, service entry created (proxy for acceptance)",45 (MSME) / 60 (others),10449,25.66,22.0,40.0,6.37,2.48,2.46,180,31.0,34,15
+"All, invoiced to 31 Jan 2026",invoice_date,invoice date on the bill,45 (MSME) / 60 (others),8888,38.13,35.0,56.0,21.3,7.08,8.8,5,114.0,5,5
+"All, invoiced to 31 Jan 2026",desk_received_date,facility desk logs it,45 (MSME) / 60 (others),8888,31.7,28.0,48.0,11.81,3.98,4.7,5,106.0,5,5
+"All, invoiced to 31 Jan 2026",property_verified_date,"property verified, service entry created (proxy for acceptance)",45 (MSME) / 60 (others),8888,26.03,23.0,41.0,7.07,2.81,2.72,5,98.0,5,5

@@ -1,0 +1,27 @@
+rule_id,pattern,issue_type,side,alt_side,confidence,catch_layer,catch_rule,n
+R01,Same invoice number already booked,Duplicate invoice number,vendor,head-office,medium,A,same vendor and invoice no. already seen at the desk,130
+R02,Cost centre on service entry belongs to a different property,Cost centre on service entry is another property's,property,,high,E,service entry does not exist on day one,76
+R03,GL on WO .* does not match the expense type,GL on work order does not match expense type,property,procurement,medium,C,"needs GL-to-expense mapping, not in extract",71
+R04,WBS element closed,WBS element closed,head-office,,medium,C,"needs WBS status from SAP, not in extract",61
+R05,IGST charged on an intra-state supply,IGST charged on intra-state supply,vendor,,high,B,tax type printed on bill vs vendor and property state,55
+R06,HSN/SAC code missing,HSN/SAC missing,vendor,,high,B,HSN/SAC printed on bill,52
+R07,Tax rate on bill is,Wrong GST rate on bill,vendor,,high,B,rate printed on bill vs rate for the service,52
+R08,GSTIN on bill does not match vendor master,GSTIN differs from vendor master,vendor,procurement,medium,B,GSTIN printed on bill vs vendor_master,46
+R09,"Discussed with property team, on hold","On hold, no reason recorded",head-office,property,low,E,reason not recorded,20
+R10,Pls check WO bal before sending,Work order balance (asks property to check first),procurement,property,medium,C,"WO balance by period, not in extract",18
+R11,Bill amount and SE amount not matching,Bill amount differs from service entry,property,vendor,medium,E,service entry does not exist on day one,17
+R12,PO not released yet,PO not released,procurement,,high,C,"PO release status, not in extract",12
+R13,Wrong company name on bill,Wrong company name on bill,vendor,,high,B,bill addressee printed on bill,12
+R14,"Hard copy not received yet, only scan","Original not received, only scan",property,vendor,medium,E,depends on the courier packet arriving,8
+R15,Vendor bank details changed,Vendor bank details changed,vendor,procurement,medium,C,bank data not in extract,7
+R16,Overtime billed but not approved in WO,Overtime billed but not in work order,vendor,procurement,medium,C,"needs WO line items, not in extract",72
+R17,Rate on bill is higher than WO rate,Rate above work order rate,vendor,procurement,medium,C,"needs WO rate, not in extract",66
+R18,Service entry still parked,Service entry parked,property,,high,E,service entry does not exist on day one,59
+R19,GRN not found in SAP,GRN not found,property,,high,E,GRN does not exist on day one,57
+R20,Service report for the quarter not attached,Service report missing,vendor,property,medium,D,packet document,71
+R21,Delivery challan missing security stamp,Challan missing gate stamp,property,,high,D,packet document,68
+R22,PF and ESIC challan for previous month not attached,PF/ESIC challan missing,vendor,,high,D,packet document,52
+R23,Attendance sheet not signed by property head,Attendance sheet unsigned,property,,high,D,packet document,51
+R24,Quantity billed exceeds open quantity on WO,Quantity above open WO quantity,procurement,vendor,medium,C,"needs open quantity, not in extract (value balance tested)",105
+R25,WO .* has no balance left for this period,Work order has no balance,procurement,property,medium,C,needs WO balance by period (value balance tested),96
+R26,WO .* expired on \d{2}-\d{2}-\d{4},Work order expired before bill date,procurement,property,high,A,invoice date after work-order valid_to,107

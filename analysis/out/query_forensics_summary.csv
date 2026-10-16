@@ -1,0 +1,671 @@
+table,group,metric,value
+timing,days_desk_to_raised,mean,22.251
+timing,days_desk_to_raised,median,20.0
+timing,days_desk_to_raised,p90,32.0
+timing,days_desk_to_raised,min,7.0
+timing,days_desk_to_raised,max,96.0
+timing,days_desk_to_raised,n,1441.0
+timing,days_ho_received_to_raised,mean,10.212
+timing,days_ho_received_to_raised,median,9.0
+timing,days_ho_received_to_raised,p90,18.0
+timing,days_ho_received_to_raised,min,1.0
+timing,days_ho_received_to_raised,max,86.0
+timing,days_ho_received_to_raised,n,1441.0
+timing,days_pick_to_raised,mean,1.003
+timing,days_pick_to_raised,median,1.0
+timing,days_pick_to_raised,p90,2.0
+timing,days_pick_to_raised,min,0.0
+timing,days_pick_to_raised,max,2.0
+timing,days_pick_to_raised,n,1441.0
+timing,days_open,mean,21.923
+timing,days_open,median,17.0
+timing,days_open,p90,44.0
+timing,days_open,min,2.0
+timing,days_open,max,154.0
+timing,days_open,n,1382.0
+timing,days_resolved_to_posted,mean,2.296
+timing,days_resolved_to_posted,median,2.0
+timing,days_resolved_to_posted,p90,4.0
+timing,days_resolved_to_posted,min,1.0
+timing,days_resolved_to_posted,max,4.0
+timing,days_resolved_to_posted,n,1375.0
+query_vs_no_query_mean_cal_days,Vendor to facility desk,with_query,6.237
+query_vs_no_query_mean_cal_days,Vendor to facility desk,without_query,6.373
+query_vs_no_query_mean_cal_days,Vendor to facility desk,added_days,-0.136
+query_vs_no_query_mean_cal_days,Property check and service entry,with_query,5.537
+query_vs_no_query_mean_cal_days,Property check and service entry,without_query,5.639
+query_vs_no_query_mean_cal_days,Property check and service entry,added_days,-0.102
+query_vs_no_query_mean_cal_days,Waiting for property head's signature,with_query,1.504
+query_vs_no_query_mean_cal_days,Waiting for property head's signature,without_query,1.517
+query_vs_no_query_mean_cal_days,Waiting for property head's signature,added_days,-0.013
+query_vs_no_query_mean_cal_days,Courier to head office,with_query,5.011
+query_vs_no_query_mean_cal_days,Courier to head office,without_query,4.971
+query_vs_no_query_mean_cal_days,Courier to head office,added_days,0.04
+query_vs_no_query_mean_cal_days,Queue at central AP,with_query,9.203
+query_vs_no_query_mean_cal_days,Queue at central AP,without_query,8.793
+query_vs_no_query_mean_cal_days,Queue at central AP,added_days,0.41
+query_vs_no_query_mean_cal_days,"AP verification, no query open",with_query,3.297
+query_vs_no_query_mean_cal_days,"AP verification, no query open",without_query,1.338
+query_vs_no_query_mean_cal_days,"AP verification, no query open",added_days,1.959
+query_vs_no_query_mean_cal_days,Query open,with_query,21.934
+query_vs_no_query_mean_cal_days,Query open,without_query,0.0
+query_vs_no_query_mean_cal_days,Query open,added_days,21.934
+query_vs_no_query_mean_cal_days,Waiting for payment run,with_query,6.057
+query_vs_no_query_mean_cal_days,Waiting for payment run,without_query,5.985
+query_vs_no_query_mean_cal_days,Waiting for payment run,added_days,0.072
+query_vs_no_query_mean_cal_days,Total invoice to paid,with_query,58.781
+query_vs_no_query_mean_cal_days,Total invoice to paid,without_query,34.616
+query_vs_no_query_mean_cal_days,Total invoice to paid,added_days,24.165
+days_to_resolve_by_category,Duplicate bill,n_closed,122.0
+days_to_resolve_by_category,Duplicate bill,mean,20.787
+days_to_resolve_by_category,Duplicate bill,median,16.5
+days_to_resolve_by_category,Duplicate bill,p90,42.9
+days_to_resolve_by_category,Duplicate bill,max,76.0
+days_to_resolve_by_category,GL or cost centre,n_closed,200.0
+days_to_resolve_by_category,GL or cost centre,mean,22.145
+days_to_resolve_by_category,GL or cost centre,median,17.0
+days_to_resolve_by_category,GL or cost centre,p90,43.0
+days_to_resolve_by_category,GL or cost centre,max,142.0
+days_to_resolve_by_category,GST,n_closed,197.0
+days_to_resolve_by_category,GST,mean,22.025
+days_to_resolve_by_category,GST,median,17.0
+days_to_resolve_by_category,GST,p90,40.4
+days_to_resolve_by_category,GST,max,129.0
+days_to_resolve_by_category,Other,n_closed,89.0
+days_to_resolve_by_category,Other,mean,22.146
+days_to_resolve_by_category,Other,median,18.0
+days_to_resolve_by_category,Other,p90,44.0
+days_to_resolve_by_category,Other,max,94.0
+days_to_resolve_by_category,Rate mismatch,n_closed,133.0
+days_to_resolve_by_category,Rate mismatch,mean,20.053
+days_to_resolve_by_category,Rate mismatch,median,16.0
+days_to_resolve_by_category,Rate mismatch,p90,37.8
+days_to_resolve_by_category,Rate mismatch,max,102.0
+days_to_resolve_by_category,Service entry or GRN not posted,n_closed,115.0
+days_to_resolve_by_category,Service entry or GRN not posted,mean,20.817
+days_to_resolve_by_category,Service entry or GRN not posted,median,16.0
+days_to_resolve_by_category,Service entry or GRN not posted,p90,43.0
+days_to_resolve_by_category,Service entry or GRN not posted,max,90.0
+days_to_resolve_by_category,Supporting documents,n_closed,234.0
+days_to_resolve_by_category,Supporting documents,mean,22.88
+days_to_resolve_by_category,Supporting documents,median,17.5
+days_to_resolve_by_category,Supporting documents,p90,49.7
+days_to_resolve_by_category,Supporting documents,max,91.0
+days_to_resolve_by_category,WO balance or validity,n_closed,292.0
+days_to_resolve_by_category,WO balance or validity,mean,22.63
+days_to_resolve_by_category,WO balance or validity,median,16.0
+days_to_resolve_by_category,WO balance or validity,p90,45.8
+days_to_resolve_by_category,WO balance or validity,max,154.0
+days_to_resolve_by_category_clean,Duplicate bill,n_closed,122.0
+days_to_resolve_by_category_clean,Duplicate bill,mean,20.787
+days_to_resolve_by_category_clean,Duplicate bill,median,16.5
+days_to_resolve_by_category_clean,Duplicate bill,p90,42.9
+days_to_resolve_by_category_clean,Duplicate bill,max,76.0
+days_to_resolve_by_category_clean,GL or cost centre,n_closed,200.0
+days_to_resolve_by_category_clean,GL or cost centre,mean,22.145
+days_to_resolve_by_category_clean,GL or cost centre,median,17.0
+days_to_resolve_by_category_clean,GL or cost centre,p90,43.0
+days_to_resolve_by_category_clean,GL or cost centre,max,142.0
+days_to_resolve_by_category_clean,GST,n_closed,197.0
+days_to_resolve_by_category_clean,GST,mean,22.025
+days_to_resolve_by_category_clean,GST,median,17.0
+days_to_resolve_by_category_clean,GST,p90,40.4
+days_to_resolve_by_category_clean,GST,max,129.0
+days_to_resolve_by_category_clean,Other,n_closed,19.0
+days_to_resolve_by_category_clean,Other,mean,20.895
+days_to_resolve_by_category_clean,Other,median,16.0
+days_to_resolve_by_category_clean,Other,p90,41.0
+days_to_resolve_by_category_clean,Other,max,58.0
+days_to_resolve_by_category_clean,Rate mismatch,n_closed,133.0
+days_to_resolve_by_category_clean,Rate mismatch,mean,20.053
+days_to_resolve_by_category_clean,Rate mismatch,median,16.0
+days_to_resolve_by_category_clean,Rate mismatch,p90,37.8
+days_to_resolve_by_category_clean,Rate mismatch,max,102.0
+days_to_resolve_by_category_clean,Service entry or GRN not posted,n_closed,130.0
+days_to_resolve_by_category_clean,Service entry or GRN not posted,mean,21.362
+days_to_resolve_by_category_clean,Service entry or GRN not posted,median,16.0
+days_to_resolve_by_category_clean,Service entry or GRN not posted,p90,44.0
+days_to_resolve_by_category_clean,Service entry or GRN not posted,max,90.0
+days_to_resolve_by_category_clean,Supporting documents,n_closed,241.0
+days_to_resolve_by_category_clean,Supporting documents,mean,22.589
+days_to_resolve_by_category_clean,Supporting documents,median,17.0
+days_to_resolve_by_category_clean,Supporting documents,p90,49.0
+days_to_resolve_by_category_clean,Supporting documents,max,91.0
+days_to_resolve_by_category_clean,Vendor master or bill details,n_closed,19.0
+days_to_resolve_by_category_clean,Vendor master or bill details,mean,25.526
+days_to_resolve_by_category_clean,Vendor master or bill details,median,19.0
+days_to_resolve_by_category_clean,Vendor master or bill details,p90,48.2
+days_to_resolve_by_category_clean,Vendor master or bill details,max,94.0
+days_to_resolve_by_category_clean,WO balance or validity,n_closed,321.0
+days_to_resolve_by_category_clean,WO balance or validity,mean,22.505
+days_to_resolve_by_category_clean,WO balance or validity,median,17.0
+days_to_resolve_by_category_clean,WO balance or validity,p90,44.0
+days_to_resolve_by_category_clean,WO balance or validity,max,154.0
+days_to_resolve_by_side,head-office,n_closed,77.0
+days_to_resolve_by_side,head-office,mean,23.545
+days_to_resolve_by_side,head-office,median,19.0
+days_to_resolve_by_side,head-office,p90,53.8
+days_to_resolve_by_side,head-office,max,85.0
+days_to_resolve_by_side,procurement,n_closed,321.0
+days_to_resolve_by_side,procurement,mean,22.505
+days_to_resolve_by_side,procurement,median,17.0
+days_to_resolve_by_side,procurement,p90,44.0
+days_to_resolve_by_side,procurement,max,154.0
+days_to_resolve_by_side,property,n_closed,394.0
+days_to_resolve_by_side,property,mean,21.152
+days_to_resolve_by_side,property,median,16.0
+days_to_resolve_by_side,property,p90,44.0
+days_to_resolve_by_side,property,max,142.0
+days_to_resolve_by_side,vendor,n_closed,590.0
+days_to_resolve_by_side,vendor,mean,21.91
+days_to_resolve_by_side,vendor,median,17.0
+days_to_resolve_by_side,vendor,p90,43.1
+days_to_resolve_by_side,vendor,max,129.0
+days_to_resolve_by_issue,Attendance sheet unsigned,n_closed,49.0
+days_to_resolve_by_issue,Attendance sheet unsigned,mean,22.98
+days_to_resolve_by_issue,Attendance sheet unsigned,median,17.0
+days_to_resolve_by_issue,Attendance sheet unsigned,p90,51.6
+days_to_resolve_by_issue,Attendance sheet unsigned,max,68.0
+days_to_resolve_by_issue,Bill amount differs from service entry,n_closed,15.0
+days_to_resolve_by_issue,Bill amount differs from service entry,mean,25.533
+days_to_resolve_by_issue,Bill amount differs from service entry,median,20.0
+days_to_resolve_by_issue,Bill amount differs from service entry,p90,48.2
+days_to_resolve_by_issue,Bill amount differs from service entry,max,82.0
+days_to_resolve_by_issue,Challan missing gate stamp,n_closed,66.0
+days_to_resolve_by_issue,Challan missing gate stamp,mean,20.121
+days_to_resolve_by_issue,Challan missing gate stamp,median,17.0
+days_to_resolve_by_issue,Challan missing gate stamp,p90,45.5
+days_to_resolve_by_issue,Challan missing gate stamp,max,66.0
+days_to_resolve_by_issue,Cost centre on service entry is another property's,n_closed,75.0
+days_to_resolve_by_issue,Cost centre on service entry is another property's,mean,18.76
+days_to_resolve_by_issue,Cost centre on service entry is another property's,median,16.0
+days_to_resolve_by_issue,Cost centre on service entry is another property's,p90,35.0
+days_to_resolve_by_issue,Cost centre on service entry is another property's,max,54.0
+days_to_resolve_by_issue,Duplicate invoice number,n_closed,122.0
+days_to_resolve_by_issue,Duplicate invoice number,mean,20.787
+days_to_resolve_by_issue,Duplicate invoice number,median,16.5
+days_to_resolve_by_issue,Duplicate invoice number,p90,42.9
+days_to_resolve_by_issue,Duplicate invoice number,max,76.0
+days_to_resolve_by_issue,GL on work order does not match expense type,n_closed,67.0
+days_to_resolve_by_issue,GL on work order does not match expense type,mean,23.97
+days_to_resolve_by_issue,GL on work order does not match expense type,median,16.0
+days_to_resolve_by_issue,GL on work order does not match expense type,p90,52.4
+days_to_resolve_by_issue,GL on work order does not match expense type,max,142.0
+days_to_resolve_by_issue,GRN not found,n_closed,57.0
+days_to_resolve_by_issue,GRN not found,mean,18.684
+days_to_resolve_by_issue,GRN not found,median,14.0
+days_to_resolve_by_issue,GRN not found,p90,33.6
+days_to_resolve_by_issue,GRN not found,max,90.0
+days_to_resolve_by_issue,GSTIN differs from vendor master,n_closed,45.0
+days_to_resolve_by_issue,GSTIN differs from vendor master,mean,22.422
+days_to_resolve_by_issue,GSTIN differs from vendor master,median,18.0
+days_to_resolve_by_issue,GSTIN differs from vendor master,p90,40.0
+days_to_resolve_by_issue,GSTIN differs from vendor master,max,72.0
+days_to_resolve_by_issue,HSN/SAC missing,n_closed,49.0
+days_to_resolve_by_issue,HSN/SAC missing,mean,28.02
+days_to_resolve_by_issue,HSN/SAC missing,median,20.0
+days_to_resolve_by_issue,HSN/SAC missing,p90,54.2
+days_to_resolve_by_issue,HSN/SAC missing,max,129.0
+days_to_resolve_by_issue,IGST charged on intra-state supply,n_closed,51.0
+days_to_resolve_by_issue,IGST charged on intra-state supply,mean,20.176
+days_to_resolve_by_issue,IGST charged on intra-state supply,median,16.0
+days_to_resolve_by_issue,IGST charged on intra-state supply,p90,33.0
+days_to_resolve_by_issue,IGST charged on intra-state supply,max,99.0
+days_to_resolve_by_issue,"On hold, no reason recorded",n_closed,19.0
+days_to_resolve_by_issue,"On hold, no reason recorded",mean,20.895
+days_to_resolve_by_issue,"On hold, no reason recorded",median,16.0
+days_to_resolve_by_issue,"On hold, no reason recorded",p90,41.0
+days_to_resolve_by_issue,"On hold, no reason recorded",max,58.0
+days_to_resolve_by_issue,"Original not received, only scan",n_closed,7.0
+days_to_resolve_by_issue,"Original not received, only scan",mean,12.857
+days_to_resolve_by_issue,"Original not received, only scan",median,10.0
+days_to_resolve_by_issue,"Original not received, only scan",p90,25.2
+days_to_resolve_by_issue,"Original not received, only scan",max,27.0
+days_to_resolve_by_issue,Overtime billed but not in work order,n_closed,71.0
+days_to_resolve_by_issue,Overtime billed but not in work order,mean,20.254
+days_to_resolve_by_issue,Overtime billed but not in work order,median,16.0
+days_to_resolve_by_issue,Overtime billed but not in work order,p90,38.0
+days_to_resolve_by_issue,Overtime billed but not in work order,max,68.0
+days_to_resolve_by_issue,PF/ESIC challan missing,n_closed,51.0
+days_to_resolve_by_issue,PF/ESIC challan missing,mean,27.078
+days_to_resolve_by_issue,PF/ESIC challan missing,median,22.0
+days_to_resolve_by_issue,PF/ESIC challan missing,p90,58.0
+days_to_resolve_by_issue,PF/ESIC challan missing,max,91.0
+days_to_resolve_by_issue,PO not released,n_closed,12.0
+days_to_resolve_by_issue,PO not released,mean,25.167
+days_to_resolve_by_issue,PO not released,median,22.0
+days_to_resolve_by_issue,PO not released,p90,45.2
+days_to_resolve_by_issue,PO not released,max,56.0
+days_to_resolve_by_issue,Quantity above open WO quantity,n_closed,99.0
+days_to_resolve_by_issue,Quantity above open WO quantity,mean,22.283
+days_to_resolve_by_issue,Quantity above open WO quantity,median,16.0
+days_to_resolve_by_issue,Quantity above open WO quantity,p90,44.4
+days_to_resolve_by_issue,Quantity above open WO quantity,max,119.0
+days_to_resolve_by_issue,Rate above work order rate,n_closed,62.0
+days_to_resolve_by_issue,Rate above work order rate,mean,19.823
+days_to_resolve_by_issue,Rate above work order rate,median,16.0
+days_to_resolve_by_issue,Rate above work order rate,p90,36.9
+days_to_resolve_by_issue,Rate above work order rate,max,102.0
+days_to_resolve_by_issue,Service entry parked,n_closed,58.0
+days_to_resolve_by_issue,Service entry parked,mean,22.914
+days_to_resolve_by_issue,Service entry parked,median,18.0
+days_to_resolve_by_issue,Service entry parked,p90,51.3
+days_to_resolve_by_issue,Service entry parked,max,90.0
+days_to_resolve_by_issue,Service report missing,n_closed,68.0
+days_to_resolve_by_issue,Service report missing,mean,22.338
+days_to_resolve_by_issue,Service report missing,median,17.5
+days_to_resolve_by_issue,Service report missing,p90,44.3
+days_to_resolve_by_issue,Service report missing,max,78.0
+days_to_resolve_by_issue,Vendor bank details changed,n_closed,7.0
+days_to_resolve_by_issue,Vendor bank details changed,mean,20.571
+days_to_resolve_by_issue,Vendor bank details changed,median,19.0
+days_to_resolve_by_issue,Vendor bank details changed,p90,36.0
+days_to_resolve_by_issue,Vendor bank details changed,max,39.0
+days_to_resolve_by_issue,WBS element closed,n_closed,58.0
+days_to_resolve_by_issue,WBS element closed,mean,24.414
+days_to_resolve_by_issue,WBS element closed,median,19.0
+days_to_resolve_by_issue,WBS element closed,p90,53.6
+days_to_resolve_by_issue,WBS element closed,max,85.0
+days_to_resolve_by_issue,Work order balance (asks property to check first),n_closed,17.0
+days_to_resolve_by_issue,Work order balance (asks property to check first),mean,18.471
+days_to_resolve_by_issue,Work order balance (asks property to check first),median,18.0
+days_to_resolve_by_issue,Work order balance (asks property to check first),p90,37.0
+days_to_resolve_by_issue,Work order balance (asks property to check first),max,43.0
+days_to_resolve_by_issue,Work order expired before bill date,n_closed,101.0
+days_to_resolve_by_issue,Work order expired before bill date,mean,24.426
+days_to_resolve_by_issue,Work order expired before bill date,median,18.0
+days_to_resolve_by_issue,Work order expired before bill date,p90,50.0
+days_to_resolve_by_issue,Work order expired before bill date,max,154.0
+days_to_resolve_by_issue,Work order has no balance,n_closed,92.0
+days_to_resolve_by_issue,Work order has no balance,mean,21.033
+days_to_resolve_by_issue,Work order has no balance,median,15.5
+days_to_resolve_by_issue,Work order has no balance,p90,43.7
+days_to_resolve_by_issue,Work order has no balance,max,137.0
+days_to_resolve_by_issue,Wrong GST rate on bill,n_closed,52.0
+days_to_resolve_by_issue,Wrong GST rate on bill,mean,17.846
+days_to_resolve_by_issue,Wrong GST rate on bill,median,16.0
+days_to_resolve_by_issue,Wrong GST rate on bill,p90,30.8
+days_to_resolve_by_issue,Wrong GST rate on bill,max,71.0
+days_to_resolve_by_issue,Wrong company name on bill,n_closed,12.0
+days_to_resolve_by_issue,Wrong company name on bill,mean,28.417
+days_to_resolve_by_issue,Wrong company name on bill,median,20.5
+days_to_resolve_by_issue,Wrong company name on bill,p90,62.9
+days_to_resolve_by_issue,Wrong company name on bill,max,94.0
+side,vendor,primary,615
+side,vendor,min,223
+side,vendor,max,745
+side,property,primary,407
+side,property,min,311
+side,property,max,719
+side,procurement,primary,338
+side,procurement,min,12
+side,procurement,max,600
+side,head-office,primary,81
+side,head-office,min,61
+side,head-office,max,211
+side_by_category,head-office | GL or cost centre,n,61
+side_by_category,head-office | Other,n,20
+side_by_category,procurement | Other,n,30
+side_by_category,procurement | WO balance or validity,n,308
+side_by_category,property | GL or cost centre,n,147
+side_by_category,property | Other,n,25
+side_by_category,property | Service entry or GRN not posted,n,116
+side_by_category,property | Supporting documents,n,119
+side_by_category,vendor | Duplicate bill,n,130
+side_by_category,vendor | GST,n,205
+side_by_category,vendor | Other,n,19
+side_by_category,vendor | Rate mismatch,n,138
+side_by_category,vendor | Supporting documents,n,123
+side_by_spend_category,Cleaning Material | vendor,n,72
+side_by_spend_category,Cleaning Material | property,n,47
+side_by_spend_category,Cleaning Material | procurement,n,33
+side_by_spend_category,Cleaning Material | head-office,n,6
+side_by_spend_category,DG Set AMC | vendor,n,27
+side_by_spend_category,DG Set AMC | property,n,25
+side_by_spend_category,DG Set AMC | procurement,n,25
+side_by_spend_category,DG Set AMC | head-office,n,3
+side_by_spend_category,Diesel Supply | vendor,n,59
+side_by_spend_category,Diesel Supply | procurement,n,33
+side_by_spend_category,Diesel Supply | property,n,32
+side_by_spend_category,Diesel Supply | head-office,n,8
+side_by_spend_category,Fire AMC | vendor,n,34
+side_by_spend_category,Fire AMC | property,n,20
+side_by_spend_category,Fire AMC | procurement,n,13
+side_by_spend_category,Fire AMC | head-office,n,2
+side_by_spend_category,Housekeeping Manpower | vendor,n,119
+side_by_spend_category,Housekeeping Manpower | property,n,71
+side_by_spend_category,Housekeeping Manpower | procurement,n,59
+side_by_spend_category,Housekeeping Manpower | head-office,n,19
+side_by_spend_category,Landscaping | vendor,n,52
+side_by_spend_category,Landscaping | property,n,34
+side_by_spend_category,Landscaping | procurement,n,25
+side_by_spend_category,Landscaping | head-office,n,10
+side_by_spend_category,Lift AMC | vendor,n,34
+side_by_spend_category,Lift AMC | procurement,n,28
+side_by_spend_category,Lift AMC | property,n,20
+side_by_spend_category,Lift AMC | head-office,n,3
+side_by_spend_category,Pest Control | vendor,n,30
+side_by_spend_category,Pest Control | property,n,22
+side_by_spend_category,Pest Control | procurement,n,19
+side_by_spend_category,Pest Control | head-office,n,6
+side_by_spend_category,Repairs and Maintenance | vendor,n,30
+side_by_spend_category,Repairs and Maintenance | property,n,21
+side_by_spend_category,Repairs and Maintenance | procurement,n,20
+side_by_spend_category,Repairs and Maintenance | head-office,n,9
+side_by_spend_category,Security Manpower | vendor,n,135
+side_by_spend_category,Security Manpower | property,n,90
+side_by_spend_category,Security Manpower | procurement,n,69
+side_by_spend_category,Security Manpower | head-office,n,12
+side_by_spend_category,Water Testing | property,n,25
+side_by_spend_category,Water Testing | vendor,n,23
+side_by_spend_category,Water Testing | procurement,n,14
+side_by_spend_category,Water Testing | head-office,n,3
+side_by_property_type,Office Tower | vendor,n,136
+side_by_property_type,Office Tower | procurement,n,85
+side_by_property_type,Office Tower | property,n,79
+side_by_property_type,Office Tower | head-office,n,21
+side_by_property_type,Residential Society | vendor,n,448
+side_by_property_type,Residential Society | property,n,310
+side_by_property_type,Residential Society | procurement,n,244
+side_by_property_type,Residential Society | head-office,n,58
+side_by_property_type,Retail Mall | vendor,n,31
+side_by_property_type,Retail Mall | property,n,18
+side_by_property_type,Retail Mall | procurement,n,9
+side_by_property_type,Retail Mall | head-office,n,2
+catch_layer_cumulative,A,queries,237
+catch_layer_cumulative,A,pct,16.45
+catch_layer_cumulative,A,days_off_mean_total,0.284
+catch_layer_cumulative,AB,queries,454
+catch_layer_cumulative,AB,pct,31.51
+catch_layer_cumulative,AB,days_off_mean_total,0.573
+catch_layer_cumulative,ABC,queries,962
+catch_layer_cumulative,ABC,pct,66.76
+catch_layer_cumulative,ABC,days_off_mean_total,1.221
+catch_layer_cumulative,ABCD,queries,1204
+catch_layer_cumulative,ABCD,pct,83.55
+catch_layer_cumulative,ABCD,days_off_mean_total,1.531
+catch_layer_cumulative,ABCDE,queries,1441
+catch_layer_cumulative,ABCDE,pct,100.0
+catch_layer_cumulative,ABCDE,days_off_mean_total,1.835
+rules,R01,n,130
+rules,R01,layer,A
+rules,R01,side,vendor
+rules,R01,evidence_true,34
+rules,R01,evidence_false,96
+rules,R01,median_days_open,16.5
+rules,R02,n,76
+rules,R02,layer,E
+rules,R02,side,property
+rules,R02,evidence_true,0
+rules,R02,evidence_false,0
+rules,R02,median_days_open,16.0
+rules,R03,n,71
+rules,R03,layer,C
+rules,R03,side,property
+rules,R03,evidence_true,0
+rules,R03,evidence_false,0
+rules,R03,median_days_open,16.0
+rules,R04,n,61
+rules,R04,layer,C
+rules,R04,side,head-office
+rules,R04,evidence_true,0
+rules,R04,evidence_false,0
+rules,R04,median_days_open,19.0
+rules,R05,n,55
+rules,R05,layer,B
+rules,R05,side,vendor
+rules,R05,evidence_true,16
+rules,R05,evidence_false,39
+rules,R05,median_days_open,16.0
+rules,R06,n,52
+rules,R06,layer,B
+rules,R06,side,vendor
+rules,R06,evidence_true,0
+rules,R06,evidence_false,0
+rules,R06,median_days_open,20.0
+rules,R07,n,52
+rules,R07,layer,B
+rules,R07,side,vendor
+rules,R07,evidence_true,0
+rules,R07,evidence_false,0
+rules,R07,median_days_open,16.0
+rules,R08,n,46
+rules,R08,layer,B
+rules,R08,side,vendor
+rules,R08,evidence_true,0
+rules,R08,evidence_false,0
+rules,R08,median_days_open,18.0
+rules,R09,n,20
+rules,R09,layer,E
+rules,R09,side,head-office
+rules,R09,evidence_true,0
+rules,R09,evidence_false,0
+rules,R09,median_days_open,16.0
+rules,R10,n,18
+rules,R10,layer,C
+rules,R10,side,procurement
+rules,R10,evidence_true,1
+rules,R10,evidence_false,17
+rules,R10,median_days_open,18.0
+rules,R11,n,17
+rules,R11,layer,E
+rules,R11,side,property
+rules,R11,evidence_true,0
+rules,R11,evidence_false,0
+rules,R11,median_days_open,20.0
+rules,R12,n,12
+rules,R12,layer,C
+rules,R12,side,procurement
+rules,R12,evidence_true,0
+rules,R12,evidence_false,0
+rules,R12,median_days_open,22.0
+rules,R13,n,12
+rules,R13,layer,B
+rules,R13,side,vendor
+rules,R13,evidence_true,0
+rules,R13,evidence_false,0
+rules,R13,median_days_open,20.5
+rules,R14,n,8
+rules,R14,layer,E
+rules,R14,side,property
+rules,R14,evidence_true,0
+rules,R14,evidence_false,0
+rules,R14,median_days_open,10.0
+rules,R15,n,7
+rules,R15,layer,C
+rules,R15,side,vendor
+rules,R15,evidence_true,0
+rules,R15,evidence_false,0
+rules,R15,median_days_open,19.0
+rules,R16,n,72
+rules,R16,layer,C
+rules,R16,side,vendor
+rules,R16,evidence_true,0
+rules,R16,evidence_false,0
+rules,R16,median_days_open,16.0
+rules,R17,n,66
+rules,R17,layer,C
+rules,R17,side,vendor
+rules,R17,evidence_true,0
+rules,R17,evidence_false,0
+rules,R17,median_days_open,16.0
+rules,R18,n,59
+rules,R18,layer,E
+rules,R18,side,property
+rules,R18,evidence_true,0
+rules,R18,evidence_false,0
+rules,R18,median_days_open,18.0
+rules,R19,n,57
+rules,R19,layer,E
+rules,R19,side,property
+rules,R19,evidence_true,0
+rules,R19,evidence_false,0
+rules,R19,median_days_open,14.0
+rules,R20,n,71
+rules,R20,layer,D
+rules,R20,side,vendor
+rules,R20,evidence_true,0
+rules,R20,evidence_false,0
+rules,R20,median_days_open,17.5
+rules,R21,n,68
+rules,R21,layer,D
+rules,R21,side,property
+rules,R21,evidence_true,0
+rules,R21,evidence_false,0
+rules,R21,median_days_open,17.0
+rules,R22,n,52
+rules,R22,layer,D
+rules,R22,side,vendor
+rules,R22,evidence_true,0
+rules,R22,evidence_false,0
+rules,R22,median_days_open,22.0
+rules,R23,n,51
+rules,R23,layer,D
+rules,R23,side,property
+rules,R23,evidence_true,0
+rules,R23,evidence_false,0
+rules,R23,median_days_open,17.0
+rules,R24,n,105
+rules,R24,layer,C
+rules,R24,side,procurement
+rules,R24,evidence_true,3
+rules,R24,evidence_false,102
+rules,R24,median_days_open,16.0
+rules,R25,n,96
+rules,R25,layer,C
+rules,R25,side,procurement
+rules,R25,evidence_true,5
+rules,R25,evidence_false,91
+rules,R25,median_days_open,15.5
+rules,R26,n,107
+rules,R26,layer,A
+rules,R26,side,procurement
+rules,R26,evidence_true,104
+rules,R26,evidence_false,3
+rules,R26,median_days_open,18.0
+by_invoice_month,2025-04,bills,940
+by_invoice_month,2025-04,bills_with_query,123
+by_invoice_month,2025-04,pct_with_query,13.09
+by_invoice_month,2025-05,bills,979
+by_invoice_month,2025-05,bills_with_query,118
+by_invoice_month,2025-05,pct_with_query,12.05
+by_invoice_month,2025-06,bills,897
+by_invoice_month,2025-06,bills_with_query,121
+by_invoice_month,2025-06,pct_with_query,13.49
+by_invoice_month,2025-07,bills,945
+by_invoice_month,2025-07,bills_with_query,136
+by_invoice_month,2025-07,pct_with_query,14.39
+by_invoice_month,2025-08,bills,940
+by_invoice_month,2025-08,bills_with_query,126
+by_invoice_month,2025-08,pct_with_query,13.4
+by_invoice_month,2025-09,bills,908
+by_invoice_month,2025-09,bills_with_query,112
+by_invoice_month,2025-09,pct_with_query,12.33
+by_invoice_month,2025-10,bills,890
+by_invoice_month,2025-10,bills_with_query,114
+by_invoice_month,2025-10,pct_with_query,12.81
+by_invoice_month,2025-11,bills,868
+by_invoice_month,2025-11,bills_with_query,124
+by_invoice_month,2025-11,pct_with_query,14.29
+by_invoice_month,2025-12,bills,926
+by_invoice_month,2025-12,bills_with_query,123
+by_invoice_month,2025-12,pct_with_query,13.28
+by_invoice_month,2026-01,bills,921
+by_invoice_month,2026-01,bills_with_query,108
+by_invoice_month,2026-01,pct_with_query,11.73
+by_invoice_month,2026-02,bills,817
+by_invoice_month,2026-02,bills_with_query,107
+by_invoice_month,2026-02,pct_with_query,13.1
+by_invoice_month,2026-03,bills,969
+by_invoice_month,2026-03,bills_with_query,129
+by_invoice_month,2026-03,pct_with_query,13.31
+by_raised_month,2025-04,queries,34
+by_raised_month,2025-04,queries_vendor,18
+by_raised_month,2025-04,queries_property,5
+by_raised_month,2025-04,queries_procurement,9
+by_raised_month,2025-04,queries_head-office,2
+by_raised_month,2025-04,mean_days_open,30.29
+by_raised_month,2025-05,queries,119
+by_raised_month,2025-05,queries_vendor,43
+by_raised_month,2025-05,queries_property,40
+by_raised_month,2025-05,queries_procurement,30
+by_raised_month,2025-05,queries_head-office,6
+by_raised_month,2025-05,mean_days_open,22.39
+by_raised_month,2025-06,queries,115
+by_raised_month,2025-06,queries_vendor,63
+by_raised_month,2025-06,queries_property,26
+by_raised_month,2025-06,queries_procurement,21
+by_raised_month,2025-06,queries_head-office,5
+by_raised_month,2025-06,mean_days_open,22.09
+by_raised_month,2025-07,queries,125
+by_raised_month,2025-07,queries_vendor,47
+by_raised_month,2025-07,queries_property,33
+by_raised_month,2025-07,queries_procurement,35
+by_raised_month,2025-07,queries_head-office,10
+by_raised_month,2025-07,mean_days_open,24.94
+by_raised_month,2025-08,queries,133
+by_raised_month,2025-08,queries_vendor,51
+by_raised_month,2025-08,queries_property,38
+by_raised_month,2025-08,queries_procurement,32
+by_raised_month,2025-08,queries_head-office,12
+by_raised_month,2025-08,mean_days_open,24.77
+by_raised_month,2025-09,queries,126
+by_raised_month,2025-09,queries_vendor,54
+by_raised_month,2025-09,queries_property,37
+by_raised_month,2025-09,queries_procurement,29
+by_raised_month,2025-09,queries_head-office,6
+by_raised_month,2025-09,mean_days_open,24.17
+by_raised_month,2025-10,queries,118
+by_raised_month,2025-10,queries_vendor,50
+by_raised_month,2025-10,queries_property,34
+by_raised_month,2025-10,queries_procurement,28
+by_raised_month,2025-10,queries_head-office,6
+by_raised_month,2025-10,mean_days_open,21.19
+by_raised_month,2025-11,queries,112
+by_raised_month,2025-11,queries_vendor,41
+by_raised_month,2025-11,queries_property,37
+by_raised_month,2025-11,queries_procurement,26
+by_raised_month,2025-11,queries_head-office,8
+by_raised_month,2025-11,mean_days_open,23.45
+by_raised_month,2025-12,queries,123
+by_raised_month,2025-12,queries_vendor,51
+by_raised_month,2025-12,queries_property,40
+by_raised_month,2025-12,queries_procurement,24
+by_raised_month,2025-12,queries_head-office,8
+by_raised_month,2025-12,mean_days_open,20.72
+by_raised_month,2026-01,queries,122
+by_raised_month,2026-01,queries_vendor,48
+by_raised_month,2026-01,queries_property,42
+by_raised_month,2026-01,queries_procurement,29
+by_raised_month,2026-01,queries_head-office,3
+by_raised_month,2026-01,mean_days_open,21.23
+by_raised_month,2026-02,queries,100
+by_raised_month,2026-02,queries_vendor,46
+by_raised_month,2026-02,queries_property,28
+by_raised_month,2026-02,queries_procurement,25
+by_raised_month,2026-02,queries_head-office,1
+by_raised_month,2026-02,mean_days_open,19.5
+by_raised_month,2026-03,queries,136
+by_raised_month,2026-03,queries_vendor,71
+by_raised_month,2026-03,queries_property,33
+by_raised_month,2026-03,queries_procurement,26
+by_raised_month,2026-03,queries_head-office,6
+by_raised_month,2026-03,mean_days_open,16.9
+by_raised_month,2026-04,queries,78
+by_raised_month,2026-04,queries_vendor,32
+by_raised_month,2026-04,queries_property,14
+by_raised_month,2026-04,queries_procurement,24
+by_raised_month,2026-04,queries_head-office,8
+by_raised_month,2026-04,mean_days_open,12.09
+by_invoice_month,2025-04,mean_days_open,24.33
+by_invoice_month,2025-05,mean_days_open,22.91
+by_invoice_month,2025-06,mean_days_open,22.97
+by_invoice_month,2025-07,mean_days_open,24.44
+by_invoice_month,2025-08,mean_days_open,24.69
+by_invoice_month,2025-09,mean_days_open,23.85
+by_invoice_month,2025-10,mean_days_open,21.74
+by_invoice_month,2025-11,mean_days_open,21.15
+by_invoice_month,2025-12,mean_days_open,21.2
+by_invoice_month,2026-01,mean_days_open,21.02
+by_invoice_month,2026-02,mean_days_open,17.47
+by_invoice_month,2026-03,mean_days_open,13.54

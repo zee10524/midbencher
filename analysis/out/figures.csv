@@ -1,0 +1,231 @@
+id,value,description
+rows.bill_register,11220,rows in bill_register.csv
+rows.vendors,900,rows in vendors.csv
+rows.properties,38,rows in properties.csv
+rows.work_orders,2092,rows in work_orders.csv
+rows.queries,1441,rows in queries.csv
+rows.biometric_export,352,rows in biometric_export.csv
+rows.gate_register_transcribed,384,rows in gate_register_transcribed.csv
+rows.vendor_claim,17,rows in vendor_claim.csv
+rows.sap.vendor_master,900,rows in sap_extract.sqlite:vendor_master
+rows.sap.work_orders,2092,rows in sap_extract.sqlite:work_orders
+rows.sap.properties,38,rows in sap_extract.sqlite:properties
+rows.sap.posted_invoices,11075,rows in sap_extract.sqlite:posted_invoices
+rows.sap.parsed_bill,0,rows in sap_extract.sqlite:parsed_bill
+bill_register.exact_dup_rows,220,rows removed as exact duplicates
+bill_register.rows_after_dedup,11000,rows kept
+bill_register.bill_ids_in_dup_groups,220,distinct bill_ids that appeared twice
+property_code.non_canonical_rows_raw,694,rows in the raw file (incl. duplicates)
+property_code.non_canonical_rows,683,rows kept after dedup whose property_code was changed
+property_code.distinct_raw,150,distinct property_code strings after dedup
+property_code.lowercase,340,
+property_code.space_instead_of_hyphen,225,
+property_code.leading_or_trailing_space,118,
+property_code.distinct_clean,38,distinct property_code after fix (properties.csv has 38)
+fk.vendor_missing,0,bills whose vendor_id is not in vendors.csv
+fk.wo_missing,0,bills whose wo_id is not in work_orders.csv
+fk.property_missing_after_fix,0,
+fk.bill_vendor_ne_wo_vendor,0,bills whose vendor differs from their work order's vendor
+fk.bill_property_ne_wo_property_raw,683,bills whose property_code as typed differs from the work order's (formatting only)
+fk.bill_property_ne_wo_property,0,bills whose property differs from the work order's after D02 fix
+fk.bill_category_ne_wo_category,0,
+fk.bill_category_ne_vendor_category,0,
+fk.wo_costcentre_ne_property,0,
+dateorder.desk_received_date_before_invoice_date,0,desk_received_date earlier than invoice_date
+dateorder.property_verified_date_before_desk_received_date,0,property_verified_date earlier than desk_received_date
+dateorder.property_head_signed_date_before_property_verified_date,0,property_head_signed_date earlier than property_verified_date
+dateorder.ho_received_date_before_property_head_signed_date,0,ho_received_date earlier than property_head_signed_date
+dateorder.ho_picked_date_before_ho_received_date,0,ho_picked_date earlier than ho_received_date
+dateorder.posted_date_before_ho_picked_date,0,posted_date earlier than ho_picked_date
+dateorder.paid_date_before_posted_date,113,paid_date earlier than posted_date
+nulls.bill_register.invoice_date,0,blank invoice_date after dedup
+future.invoice_date,0,invoice_date after 30 Apr 2026
+nulls.bill_register.desk_received_date,0,blank desk_received_date after dedup
+future.desk_received_date,0,desk_received_date after 30 Apr 2026
+nulls.bill_register.property_verified_date,0,blank property_verified_date after dedup
+future.property_verified_date,0,property_verified_date after 30 Apr 2026
+nulls.bill_register.property_head_signed_date,0,blank property_head_signed_date after dedup
+future.property_head_signed_date,0,property_head_signed_date after 30 Apr 2026
+nulls.bill_register.ho_received_date,4,blank ho_received_date after dedup
+future.ho_received_date,0,ho_received_date after 30 Apr 2026
+nulls.bill_register.ho_picked_date,31,blank ho_picked_date after dedup
+future.ho_picked_date,0,ho_picked_date after 30 Apr 2026
+nulls.bill_register.posted_date,104,blank posted_date after dedup
+future.posted_date,0,posted_date after 30 Apr 2026
+nulls.bill_register.paid_date,185,blank paid_date after dedup
+future.paid_date,0,paid_date after 30 Apr 2026
+nulls.bill_register.ho_verifier,31,
+dateorder.posted_without_picked,0,
+dateorder.paid_without_posted,0,
+dateorder.verifier_set_iff_picked,0,
+paid_before_posted.rows,113,paid_date earlier than posted_date
+paid_before_posted.also_before_invoice_date,113,
+paid_before_posted.also_before_ho_received,113,
+paid_before_posted.status_paid,113,
+paid_before_posted.credit_notes,3,
+paid_before_posted.gap_min_days,17,
+paid_before_posted.gap_median_days,40.0,
+paid_before_posted.gap_max_days,120,
+paid.on_non_payment_day,77,paid_date not a Tuesday or Friday
+paid.on_non_payment_day_within_D03,77,
+paid.on_payment_day_when_valid,10702,
+paid.valid_rows,10702,paid rows whose paid_date is not in D03
+dup_vendor_invoice.pairs,68,vendor+invoice_no combinations on more than one bill
+dup_vendor_invoice.bills,136,
+dup_vendor_invoice.max_bills_per_pair,2,
+dup_vendor_invoice.pairs_same_amount,0,
+dup_vendor_invoice.pairs_same_date,1,
+dup_vendor_invoice.pairs_same_date_and_amount,0,
+dup_vendor_invoice.pairs_diff_property,29,
+dup_vendor_invoice.pairs_diff_wo,29,
+dup_vendor_invoice.same_date_bills,2,
+dup_vendor_invoice.bills_with_any_query,72,
+invoice_no.shared_across_vendors,0,
+invoice_no.bad_format,0,
+dup_query.rows,130,queries categorised Duplicate bill
+dup_query.on_flagged_pair,68,
+dup_query.not_on_any_pair,62,Duplicate-bill queries on a bill with no vendor+invoice_no twin in the register
+dup_query.masked_tracker,63,query_text with a masked tracker like TRK2500xx
+msme.vendors_blank,137,vendors with blank msme_status
+msme.vendors_total,900,
+msme.vendors_micro,256,
+msme.vendors_small,188,
+msme.vendors_medium,75,
+msme.vendors_not_msme,244,
+msme.bills_unknown,1620,bills (after dedup) from vendors with blank msme_status
+msme.bills_unknown_amount_inr,414011276.0,
+wo.bills_after_valid_to,702,bills dated after their work order's valid_to
+wo.bills_after_valid_to_paid,661,
+wo.bills_before_valid_from,0,
+wo.expiry_queries,107,queries whose text says the work order expired
+wo.bills_after_valid_to_with_expiry_query,104,
+wo.bills_after_valid_to_days_late_median,79.0,
+wo.valid_to_before_valid_from,2,work orders with valid_to earlier than valid_from
+wo.bills_on_inverted_wo,12,
+wo.billed_gt_approved,601,work orders billed above approved value
+wo.billed_gt_approved_max_ratio,1.175,
+wo.billed_gt_approved_median_ratio,1.082,
+wo.bills_on_overbilled_wo,3144,
+wo.approved_le_zero,0,
+wo.per_property_median,55.0,
+wo.per_property_max,77,
+wo.per_property_min,41,
+wo.billed_eq_invoice_sum_dedup,2092,work orders whose billed_value_inr equals the sum of invoices (credit notes excluded) after dedup
+wo.billed_eq_invoice_sum_raw,1893,"same, if the 220 duplicate rows are left in"
+wo.without_any_bill,0,
+sap.posted_invoices_exact_dup_rows,219,posted_invoices rows identical to an earlier row
+sap.posted_invoices_distinct_bills,10856,
+sap.posted_not_in_register,0,
+sap.unposted_bills_in_posted_invoices,0,
+sap.register_posted_missing_from_sap,40,"register has a posted_date, SAP posted_invoices has no row"
+sap.register_posted_missing_from_sap_status_paid,40,
+sap.register_posted_total,10896,
+sap.mismatch_vendor_id,0,
+sap.mismatch_invoice_no,0,
+sap.mismatch_wo_id,0,
+sap.mismatch_invoice_date,0,
+sap.mismatch_posted_date,0,
+sap.mismatch_amount,0,
+sap.mismatch_gst,0,
+sap.vendor_master_vs_vendors_csv_cells_differ,0,
+sap.work_orders_vs_csv_cells_differ,0,
+sap.properties_vs_csv_cells_differ,0,
+sap.parsed_bill_rows,0,
+status.contradicts_dates,0,status differs from status derived from dates and open queries
+status.count.In Transit,4,
+status.count.With AP,41,
+status.count.Query,59,
+status.count.Posted,81,
+status.count.Paid,10815,
+status.in_transit_max_age_days,6,
+status.with_ap_max_age_days,55,
+status.query_max_age_days,188,
+status.with_ap_already_picked,14,
+queries.open,59,
+queries.open_not_status_query,0,
+queries.bills_with_query,1441,
+queries.bill_fk_missing,0,
+queries.bills_with_more_than_one,0,
+queries.resolved_before_raised,0,
+queries.raised_before_ho_received,0,
+queries.raised_by_ne_verifier,0,
+queries.raised_after_posted,0,
+queries.resolved_after_posted,0,
+queries.raised_after_paid,18,
+queries.raised_after_paid_within_D03,18,
+queries.category_other,94,queries categorised Other
+queries.other_distinct_texts,7,
+queries.other_wo_balance_text,18,
+queries.other_po_not_released_text,12,
+queries.other_se_amount_text,17,
+queries.other_hard_copy_text,8,
+queries.other_on_hold_text,20,
+queries.other_company_name_text,12,
+queries.other_bank_details_text,7,
+queries.templates,26,distinct query texts after masking numbers
+queries.templates_in_more_than_one_category,0,
+weekday.ho_received_not_friday,0,
+weekday.posted_on_saturday,1451,
+weekday.posted_on_sunday,1413,
+weekday.posted_weekend_share,0.263,
+gst.rate_18pct_rows,9912,
+gst.rate_zero_rows,1088,
+gst.rate_zero_all_diesel,True,
+gst.diesel_rows_nonzero_gst,0,
+gst.rate_other_rows,0,
+amount.invoice_negative_or_zero,0,
+amount.credit_note_positive_or_zero,0,
+amount.credit_notes,261,
+amount.invoice_min,3000.0,
+amount.invoice_max,1398460.0,
+amount.credit_note_min,-452960.0,
+amount.credit_note_max,-206.0,
+amount.gst_sign_differs_nonzero,0,
+vendors.gstin_bad_format,0,
+vendors.gstin_duplicate,0,
+vendors.name_duplicate_normalised,0,
+vendors.gstin_state_prefix_ne_state,0,
+vendors.no_bills,1,
+vendors.no_work_orders,1,
+vendors.name_repeated_word,16,"vendor names with a word repeated, e.g. 'Ojas Ojas Traders'"
+vendors.near_duplicate_name_pairs,36,pairs with name similarity above 0.9 once suffixes are removed
+vendors.near_pairs_same_state_and_category,7,
+properties.residential,28,
+properties.office,8,
+properties.mall,2,
+attendance.biometric_blank_punch_out,24,
+attendance.biometric_guards,14,
+attendance.biometric_days,28,
+attendance.biometric_missing_guard_days,40,
+attendance.biometric_duplicate_guard_day,0,
+attendance.gate_rows,384,
+attendance.gate_rows_reliever,21,
+attendance.gate_remarks_reliever,21,
+attendance.claim_people,17,
+attendance.claim_relievers_not_in_biometric,3,
+attendance.gate_duplicate,0,
+flag.f_paid_before_posted,113,
+flag.f_dup_vendor_invoice,136,
+flag.f_dup_vendor_invoice_same_date,2,
+flag.f_msme_unknown,1620,
+flag.f_invoice_after_wo_expiry,702,
+flag.f_wo_validity_inverted,12,
+flag.f_wo_overbilled,3144,
+flag.f_posted_not_in_sap,40,
+flag.f_query_raised_after_paid,18,
+flag.bills_with_any_flag,4839,
+flag.bills_with_no_flag,6161,
+flag.excl_f_msme_unknown_bills_with_any_flag,3863,
+bill_register.columns,19,columns in bill_register.csv
+msme.vendors_blank_pct,15.2,% of vendors with blank msme_status
+msme.bills_unknown_pct,14.7,% of bills from vendors with blank msme_status
+wo.bills_after_valid_to_pct,6.4,% of bills dated after WO valid_to
+wo.billed_gt_approved_pct,28.7,% of work orders billed above approved value
+queries.category_other_pct,6.5,% of queries categorised Other
+weekday.posted_weekend_count,2864,posted_date on Saturday or Sunday
+flag.bills_with_any_flag_pct,44.0,
+flag.bills_any_flag_excl_msme_pct,35.1,
+out.rows_in,11220,
+out.rows_excluded,220,
+out.rows_out,11000,
+out.values_changed,796,
