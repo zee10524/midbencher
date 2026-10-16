@@ -1,0 +1,39 @@
+property_code,property_name,property_type,city,state,units_or_sqft
+FBD-R01,"Residential Society, Sector 70, Faridabad",Residential Society,Faridabad,Haryana,1728
+NOI-R02,"Residential Society, Sector 37, Noida",Residential Society,Noida,Uttar Pradesh,1249
+DEL-R03,"Residential Society, Sector 67, New Delhi",Residential Society,New Delhi,Delhi,310
+GGN-R04,"Residential Society, Sector 36, Gurugram",Residential Society,Gurugram,Haryana,1325
+SNP-R05,"Residential Society, Sector 85, Sonipat",Residential Society,Sonipat,Haryana,1164
+GGN-R06,"Residential Society, Sector 39, Gurugram",Residential Society,Gurugram,Haryana,692
+GGN-R07,"Residential Society, Sector 78, Gurugram",Residential Society,Gurugram,Haryana,706
+NOI-R08,"Residential Society, Sector 41, Noida",Residential Society,Noida,Uttar Pradesh,424
+SNP-R09,"Residential Society, Sector 94, Sonipat",Residential Society,Sonipat,Haryana,1779
+SNP-R10,"Residential Society, Sector 28, Sonipat",Residential Society,Sonipat,Haryana,811
+GGN-R11,"Residential Society, Sector 68, Gurugram",Residential Society,Gurugram,Haryana,898
+NOI-R12,"Residential Society, Sector 99, Noida",Residential Society,Noida,Uttar Pradesh,573
+FBD-R13,"Residential Society, Sector 52, Faridabad",Residential Society,Faridabad,Haryana,581
+GZB-R14,"Residential Society, Sector 59, Ghaziabad",Residential Society,Ghaziabad,Uttar Pradesh,332
+GGN-R15,"Residential Society, Sector 41, Gurugram",Residential Society,Gurugram,Haryana,642
+DEL-R16,"Residential Society, Sector 77, New Delhi",Residential Society,New Delhi,Delhi,1514
+GGN-R17,"Residential Society, Sector 90, Gurugram",Residential Society,Gurugram,Haryana,444
+PKL-R18,"Residential Society, Sector 34, Panchkula",Residential Society,Panchkula,Haryana,914
+NOI-R19,"Residential Society, Sector 34, Noida",Residential Society,Noida,Uttar Pradesh,1462
+DEL-R20,"Residential Society, Sector 65, New Delhi",Residential Society,New Delhi,Delhi,1429
+SNP-R21,"Residential Society, Sector 27, Sonipat",Residential Society,Sonipat,Haryana,785
+GZB-R22,"Residential Society, Sector 56, Ghaziabad",Residential Society,Ghaziabad,Uttar Pradesh,1122
+NOI-R23,"Residential Society, Sector 60, Noida",Residential Society,Noida,Uttar Pradesh,1682
+DEL-R24,"Residential Society, Sector 51, New Delhi",Residential Society,New Delhi,Delhi,524
+GGN-R25,"Residential Society, Sector 101, Gurugram",Residential Society,Gurugram,Haryana,306
+NOI-R26,"Residential Society, Sector 36, Noida",Residential Society,Noida,Uttar Pradesh,368
+PKL-R27,"Residential Society, Sector 52, Panchkula",Residential Society,Panchkula,Haryana,789
+GZB-R28,"Residential Society, Sector 35, Ghaziabad",Residential Society,Ghaziabad,Uttar Pradesh,1160
+NOI-C29,"Office Tower, Sector 23, Noida",Office Tower,Noida,Uttar Pradesh,1177782
+SNP-C30,"Office Tower, Sector 67, Sonipat",Office Tower,Sonipat,Haryana,1116789
+GGN-C31,"Office Tower, Sector 48, Gurugram",Office Tower,Gurugram,Haryana,642506
+NOI-C32,"Office Tower, Sector 97, Noida",Office Tower,Noida,Uttar Pradesh,292439
+NOI-C33,"Office Tower, Sector 38, Noida",Office Tower,Noida,Uttar Pradesh,336697
+PKL-C34,"Office Tower, Sector 73, Panchkula",Office Tower,Panchkula,Haryana,474114
+PKL-C35,"Office Tower, Sector 76, Panchkula",Office Tower,Panchkula,Haryana,323422
+GZB-C36,"Office Tower, Sector 17, Ghaziabad",Office Tower,Ghaziabad,Uttar Pradesh,1037337
+GGN-M37,"Retail Mall, Sector 104, Gurugram",Retail Mall,Gurugram,Haryana,646309
+NOI-M38,"Retail Mall, Sector 44, Noida",Retail Mall,Noida,Uttar Pradesh,396077

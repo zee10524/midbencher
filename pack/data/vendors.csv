@@ -1,0 +1,901 @@
+vendor_id,vendor_name,category,state,gstin,msme_status
+V10001,Yamuna Elevator Care Pvt Ltd,Lift AMC,Delhi,07SBDPT4452Q1ZF,Micro
+V10002,Dhruv Hygiene Solutions Pvt Ltd,Cleaning Material,Delhi,07BTTFV3567V1Z1,Micro
+V10003,Hemkunt Traders Pvt Ltd,Diesel Supply,Delhi,07FOSFO5228F1ZN,Not MSME
+V10004,Vasundhara Engineering Works Pvt Ltd,Repairs and Maintenance,Delhi,07IPICN9086G1Z6,Small
+V10005,Indus Garud Enterprises Pvt Ltd,Cleaning Material,Uttar Pradesh,09JOPPW7501S1ZP,Micro
+V10006,Indus Ekta Enterprises Pvt Ltd,Repairs and Maintenance,Uttar Pradesh,09PNVFA9057E1ZK,Small
+V10007,Satluj Ekta Security Services,Security Manpower,Delhi,07JBDCY2671V1ZA,Not MSME
+V10008,Tejas Enterprises Pvt Ltd,Cleaning Material,Delhi,07PHFCM8858G1ZI,Small
+V10009,Indus Landscapes,Landscaping,Haryana,06XNPFF9013B1ZB,Micro
+V10010,Prakriti Pest Solutions,Pest Control,Haryana,06SCNPE5908A1ZL,Micro
+V10011,Ojas Ojas Traders,Diesel Supply,Rajasthan,08MLOCO5868Y1ZZ,
+V10012,Navdeep Saksham Pest Solutions,Pest Control,Delhi,07NTZCG7035I1ZC,Small
+V10013,Sarthak Manpower Solutions,Security Manpower,Haryana,06GXPCV8705D1ZH,Small
+V10014,Aravind Sarthak Manpower Solutions Pvt Ltd,Security Manpower,Haryana,06ZNMPY2794U1ZJ,Not MSME
+V10015,Ekta Enterprises Pvt Ltd,Cleaning Material,Haryana,06QKFCF5027N1ZK,Medium
+V10016,Trishul Shivalik Pest Solutions,Pest Control,Haryana,06EFFPA7982I1ZX,Small
+V10017,Amrit Garud Manpower Solutions Pvt Ltd,Security Manpower,Haryana,06PPTPU0050N1ZY,Not MSME
+V10018,Ojas Engineering Works,Repairs and Maintenance,Haryana,06APAFO2547U1ZD,Micro
+V10019,Abhay Nirmal Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06EJXCX8440B1ZR,Not MSME
+V10020,Satluj Indus Fire Safety Systems Pvt Ltd,Fire AMC,Haryana,06ZOCFJ5410X1Z0,
+V10021,Satluj Amrit Traders,Cleaning Material,Haryana,06VTYFC9570W1ZB,Micro
+V10022,Abhay Pratap Enterprises Pvt Ltd,Repairs and Maintenance,Uttar Pradesh,09BNBCQ2941B1ZW,Micro
+V10023,Satluj Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06TQPPZ4289I1ZF,Not MSME
+V10024,Tejas Engineering Works,Repairs and Maintenance,Delhi,07FUJPI8248U1Z7,
+V10025,Aravind Enterprises Pvt Ltd,Cleaning Material,Haryana,06EOHCF6914D1Z3,Not MSME
+V10026,Ekta Landscapes Pvt Ltd,Landscaping,Haryana,06KQRCS6464S1ZA,Small
+V10027,Abhay Pest Solutions,Pest Control,Haryana,06YLUCV4513F1Z4,Medium
+V10028,Trishul Facility Services,Housekeeping Manpower,Delhi,07DNKPC9481V1Z5,Small
+V10029,Abhay Aravind Enterprises Pvt Ltd,Cleaning Material,Haryana,06TBDPA7601G1ZK,Small
+V10030,Amrit Pest Solutions,Pest Control,Haryana,06AKUPH0722C1Z1,Micro
+V10031,Raksha Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06SPXCK4988R1ZM,Micro
+V10032,Hemkunt Agro Services,Landscaping,Uttar Pradesh,09WMVPH6095A1ZX,Not MSME
+V10033,Tejas Pest Solutions,Pest Control,Delhi,07TIBPQ0265R1ZQ,Micro
+V10034,Yamuna Traders,Diesel Supply,Delhi,07PDCFB7235U1ZS,Not MSME
+V10035,Shivalik Agro Services,Landscaping,Delhi,07NTSPU0718D1ZL,Small
+V10036,Indus Ekta Elevator Care Pvt Ltd,Lift AMC,Haryana,06KQNCR0371D1ZA,Medium
+V10037,Garud Kesari Engineering Works,Repairs and Maintenance,Delhi,07ZRKFI0356S1Z5,Micro
+V10038,Shivalik Abhay Security Services Pvt Ltd,Security Manpower,Haryana,06RTFFL5500L1Z5,
+V10039,Panchjanya Hygiene Solutions Pvt Ltd,Housekeeping Manpower,Haryana,06IXXFO6279K1ZU,Medium
+V10040,Ojas Elevator Care,Lift AMC,Haryana,06MQYPY5389X1ZM,Not MSME
+V10041,Dhruv Pest Solutions,Pest Control,Haryana,06MLBFG6973I1ZL,
+V10042,Trishul Pest Solutions,Pest Control,Haryana,06DZWPO1243I1Z8,Small
+V10043,Kailash Traders,Diesel Supply,Delhi,07KPFFH9409T1ZQ,
+V10044,Indus Tejas Agro Services,Landscaping,Haryana,06RBWPM4491O1Z8,Small
+V10045,Udaan Power Systems,DG Set AMC,Haryana,06JYLPV9425A1ZW,Small
+V10046,Sarthak Hemkunt Hygiene Solutions Pvt Ltd,Cleaning Material,Delhi,07SBRPO5201P1Z1,
+V10047,Abhay Abhay Enterprises,Cleaning Material,Haryana,06BBFPB1640S1ZR,Small
+V10048,Abhay Traders,Diesel Supply,Haryana,06BEUCH5816K1Z6,Not MSME
+V10049,Navdeep Sarthak Fire Safety Systems,Fire AMC,Delhi,07BYHCQ2497O1ZU,Micro
+V10050,Navdeep Agro Services Pvt Ltd,Landscaping,Haryana,06UJFFM8627J1ZJ,Micro
+V10051,Kailash Security Services,Security Manpower,Haryana,06ERLPS5165Y1Z8,Micro
+V10052,Hemkunt Fire Safety Systems Pvt Ltd,Fire AMC,Uttar Pradesh,09EATPD5232B1ZU,Medium
+V10053,Dhruv Enterprises,Repairs and Maintenance,Punjab,03CBHCE6942N1ZV,
+V10054,Tejas Agro Services,Landscaping,Delhi,07UVLPK1269U1Z2,
+V10055,Amrit Traders,Cleaning Material,Rajasthan,08WIFPN9865K1Z5,Medium
+V10056,Sanjivani Landscapes,Landscaping,Punjab,03AJVFJ5959X1ZP,Micro
+V10057,Vardhan Engineering Works Pvt Ltd,Repairs and Maintenance,Uttar Pradesh,09CLRCI4624F1Z2,Not MSME
+V10058,Satluj Raksha Enterprises,Cleaning Material,Delhi,07CHNCP9684W1ZF,Not MSME
+V10059,Kesari Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06NSIFW1725E1ZU,Micro
+V10060,Shivalik Labs Pvt Ltd,Water Testing,Haryana,06BUBPW7653E1Z3,Micro
+V10061,Vasundhara Fire Safety Systems,Fire AMC,Haryana,06OCHCV1249P1ZZ,Medium
+V10062,Trishul Engineering Works Pvt Ltd,Repairs and Maintenance,Delhi,07MIOPY4040U1ZM,Small
+V10063,Hemkunt Yamuna Pest Solutions Pvt Ltd,Pest Control,Haryana,06DVAFI7747N1Z0,Not MSME
+V10064,Kailash Prakriti Security Services Pvt Ltd,Security Manpower,Haryana,06NEICJ8327J1ZP,Micro
+V10065,Garud Hemkunt Enterprises,Cleaning Material,Rajasthan,08YSDPL6502N1ZZ,Micro
+V10066,Aravind Pest Solutions,Pest Control,Haryana,06VPXPP6945X1ZU,Micro
+V10067,Satluj Kesari Pest Solutions Pvt Ltd,Pest Control,Haryana,06HQTFZ2228Q1Z9,Micro
+V10068,Kesari Traders Pvt Ltd,Diesel Supply,Delhi,07PCNPK3465J1Z6,Not MSME
+V10069,Kesari Kesari Facility Services,Housekeeping Manpower,Punjab,03XNJCF2360G1Z2,
+V10070,Amrit Engineering Works Pvt Ltd,DG Set AMC,Haryana,06NBJCZ7265H1ZW,Micro
+V10071,Aravind Shivalik Pest Solutions,Pest Control,Uttar Pradesh,09CEPCZ6777V1ZR,
+V10072,Panchjanya Pest Solutions,Pest Control,Delhi,07SJECK9800V1ZA,Small
+V10073,Udaan Vardhan Security Services,Security Manpower,Uttar Pradesh,09FSGCU2296K1ZR,Small
+V10074,Garud Hygiene Solutions,Cleaning Material,Delhi,07UUQPO8454H1Z9,Small
+V10075,Garud Fire Safety Systems,Fire AMC,Haryana,06RMBPF0591Q1Z8,Not MSME
+V10076,Saksham Agro Services,Landscaping,Haryana,06JVPCM9137R1ZA,Not MSME
+V10077,Amrit Landscapes,Landscaping,Haryana,06VWEFP0459C1ZK,Micro
+V10078,Ekta Shivalik Fire Safety Systems,Fire AMC,Haryana,06FWTFD6319C1ZK,Not MSME
+V10079,Udaan Labs,Water Testing,Haryana,06WHOCK6474E1ZG,Micro
+V10080,Indus Aravind Pest Solutions Pvt Ltd,Pest Control,Delhi,07RSFFP7338K1ZN,Not MSME
+V10081,Hemkunt Hygiene Solutions,Cleaning Material,Haryana,06BUGFM4412C1ZZ,Micro
+V10082,Udaan Engineering Works,DG Set AMC,Uttar Pradesh,09GMNCI3145I1ZU,
+V10083,Amrit Agro Services,Landscaping,Haryana,06QEAFJ4367O1ZD,Not MSME
+V10084,Hemkunt Pest Solutions Pvt Ltd,Pest Control,Haryana,06MFBCF3351Q1ZA,Small
+V10085,Garud Nirmal Landscapes Pvt Ltd,Landscaping,Uttar Pradesh,09WMLCG8394Z1Z9,
+V10086,Aravind Navdeep Hygiene Solutions Pvt Ltd,Housekeeping Manpower,Punjab,03BWYFJ3350Q1ZS,
+V10087,Indus Facility Management Pvt Ltd,Housekeeping Manpower,Uttar Pradesh,09UBVFB3763W1ZL,Micro
+V10088,Udaan Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06DEWCH7517C1ZX,Micro
+V10089,Abhay Landscapes,Landscaping,Uttar Pradesh,09NHAFR2807O1ZC,Small
+V10090,Indus Udaan Fuels,Diesel Supply,Haryana,06UVYCE5138H1ZB,Small
+V10091,Udaan Agro Services Pvt Ltd,Landscaping,Haryana,06LWHPO8048G1ZX,Medium
+V10092,Saksham Fire Safety Systems,Fire AMC,Haryana,06ZZCCU4742L1Z2,Micro
+V10093,Ekta Agro Services,Landscaping,Delhi,07FDIPT4746V1Z0,Not MSME
+V10094,Satluj Pest Solutions,Pest Control,Uttar Pradesh,09IHHCO3530H1ZD,Medium
+V10095,Panchjanya Navdeep Fire Safety Systems,Fire AMC,Delhi,07QRICS4332H1ZZ,Small
+V10096,Hemkunt Fuels,Diesel Supply,Haryana,06GCYPY0855T1Z4,Micro
+V10097,Sanjivani Engineering Works Pvt Ltd,Lift AMC,Uttar Pradesh,09RSCFS0970Z1ZR,
+V10098,Sanjivani Vardhan Engineering Works,Repairs and Maintenance,Uttar Pradesh,09PNKCX3956N1Z6,
+V10099,Raksha Power Systems Pvt Ltd,DG Set AMC,Haryana,06JVKPT1994O1ZT,Micro
+V10100,Navdeep Hygiene Solutions,Housekeeping Manpower,Uttar Pradesh,09FZXPI8350A1ZO,Micro
+V10101,Ojas Manpower Solutions,Security Manpower,Haryana,06QGZPM0364S1Z7,Micro
+V10102,Prakriti Vardhan Pest Solutions,Pest Control,Haryana,06VRDFP9519T1ZG,Micro
+V10103,Nirmal Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06QPFPS2619H1ZJ,
+V10104,Kailash Garud Manpower Solutions,Security Manpower,Uttar Pradesh,09OUEPG3721E1ZH,Small
+V10105,Kailash Pest Solutions,Pest Control,Haryana,06GRIFJ9245X1ZV,Micro
+V10106,Sanjivani Fire Safety Systems,Fire AMC,Delhi,07YERPK8995D1ZY,Small
+V10107,Ojas Traders Pvt Ltd,Cleaning Material,Uttar Pradesh,09GIBPT3279J1ZP,
+V10108,Vasundhara Hygiene Solutions Pvt Ltd,Housekeeping Manpower,Delhi,07JWOPR1055X1ZT,Micro
+V10109,Ojas Landscapes,Landscaping,Delhi,07QQICB4767Q1Z9,Small
+V10110,Udaan Facility Services Pvt Ltd,Housekeeping Manpower,Uttar Pradesh,09QPQPY1488U1ZU,Micro
+V10111,Panchjanya Aravind Hygiene Solutions,Housekeeping Manpower,Uttar Pradesh,09HDYFP6668P1ZX,Small
+V10112,Satluj Aravind Engineering Works,Repairs and Maintenance,Haryana,06OHLFJ5315C1ZL,Not MSME
+V10113,Ekta Prakriti Fire Safety Systems,Fire AMC,Delhi,07ZYYFM5643T1ZX,
+V10114,Saksham Enterprises Pvt Ltd,Cleaning Material,Haryana,06VBHFE0704B1ZS,Not MSME
+V10115,Pratap Vasundhara Hygiene Solutions,Cleaning Material,Haryana,06EWECC8805G1ZA,Small
+V10116,Ojas Fire Safety Systems Pvt Ltd,Fire AMC,Delhi,07SOAFL6886F1ZQ,
+V10117,Amrit Indus Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06FZDCV1162J1ZF,Micro
+V10118,Amrit Ojas Engineering Works Pvt Ltd,Lift AMC,Haryana,06RBMPI5276C1Z9,Medium
+V10119,Vasundhara Facility Management Pvt Ltd,Housekeeping Manpower,Haryana,06MLQCT3465F1Z4,Small
+V10120,Ekta Security Services,Security Manpower,Haryana,06QRQFV6403C1ZW,Not MSME
+V10121,Nirmal Security Services Pvt Ltd,Security Manpower,Delhi,07SRKPI8758A1Z2,Medium
+V10122,Tejas Abhay Fire Safety Systems,Fire AMC,Haryana,06YFACN1170K1Z2,
+V10123,Pratap Power Systems Pvt Ltd,DG Set AMC,Haryana,06HURCA0542T1ZX,Small
+V10124,Satluj Power Systems,DG Set AMC,Haryana,06BRUCM5764C1ZZ,Micro
+V10125,Udaan Pest Solutions,Pest Control,Delhi,07KEOPD6201U1Z9,Not MSME
+V10126,Abhay Engineering Works,Repairs and Maintenance,Delhi,07ZDMCZ2787U1ZX,Medium
+V10127,Abhay Enterprises Pvt Ltd,Cleaning Material,Haryana,06KWNCO4002M1ZS,Not MSME
+V10128,Pratap Pest Solutions,Pest Control,Haryana,06RIIPT9564U1ZK,
+V10129,Panchjanya Saksham Power Systems,DG Set AMC,Uttar Pradesh,09HRACS4846B1ZX,Micro
+V10130,Vardhan Sarthak Pest Solutions Pvt Ltd,Pest Control,Haryana,06SROCI4167C1ZL,Micro
+V10131,Saksham Ekta Traders,Diesel Supply,Uttar Pradesh,09ZIFCJ2230E1ZW,Not MSME
+V10132,Amrit Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07YSMFW4560P1Z1,Micro
+V10133,Pratap Navdeep Pest Solutions,Pest Control,Uttar Pradesh,09PSSFD2040S1ZS,Not MSME
+V10134,Nirmal Shivalik Facility Management,Housekeeping Manpower,Haryana,06BYHFG7402L1Z4,Micro
+V10135,Ekta Aravind Engineering Works Pvt Ltd,DG Set AMC,Uttar Pradesh,09JFJPV0581L1ZK,Micro
+V10136,Navdeep Traders,Cleaning Material,Delhi,07ZGQCH1921B1ZQ,Micro
+V10137,Saksham Facility Services,Housekeeping Manpower,Uttar Pradesh,09UVHPF0906F1ZP,Small
+V10138,Aravind Security Services,Security Manpower,Haryana,06SHJCW4601Z1ZJ,Small
+V10139,Raksha Labs,Water Testing,Haryana,06BXVFC2885Y1ZI,Micro
+V10140,Indus Yamuna Enterprises,Repairs and Maintenance,Haryana,06WGFFN8575X1Z2,Not MSME
+V10141,Shivalik Hygiene Solutions,Cleaning Material,Haryana,06RVRCY9080G1Z3,Micro
+V10142,Indus Fire Safety Systems,Fire AMC,Haryana,06QMSPH8846H1ZB,Medium
+V10143,Satluj Engineering Works Pvt Ltd,DG Set AMC,Haryana,06ZVOCW3447H1ZU,Micro
+V10144,Navdeep Engineering Works,Repairs and Maintenance,Delhi,07IYVPO9577Y1ZT,Micro
+V10145,Vardhan Pest Solutions Pvt Ltd,Pest Control,Haryana,06GPNPS4187H1ZM,
+V10146,Aravind Hygiene Solutions,Cleaning Material,Haryana,06UHBFK4958L1Z4,
+V10147,Udaan Vardhan Hygiene Solutions,Cleaning Material,Delhi,07UAAFU3408D1ZC,
+V10148,Yamuna Panchjanya Pest Solutions,Pest Control,Haryana,06YGMPT4077V1ZS,Medium
+V10149,Saksham Aravind Traders,Cleaning Material,Haryana,06VNZCJ8428P1ZG,Medium
+V10150,Udaan Security Services,Security Manpower,Uttar Pradesh,09YAZFC9546S1Z3,
+V10151,Amrit Vasundhara Engineering Works Pvt Ltd,Lift AMC,Haryana,06KEMPS9040J1ZF,Medium
+V10152,Vasundhara Manpower Solutions Pvt Ltd,Security Manpower,Haryana,06NKNFR9333N1ZK,Small
+V10153,Sarthak Sarthak Labs,Water Testing,Delhi,07RZACV4462V1ZB,
+V10154,Aravind Sarthak Engineering Works,Lift AMC,Haryana,06IYIFZ8249J1Z5,Micro
+V10155,Sarthak Traders,Diesel Supply,Haryana,06YANPZ4963T1Z7,Micro
+V10156,Prakriti Enterprises Pvt Ltd,Cleaning Material,Haryana,06UHZFJ3704P1ZU,
+V10157,Kailash Power Systems Pvt Ltd,DG Set AMC,Delhi,07JFQPU1583A1ZK,Micro
+V10158,Sanjivani Ekta Manpower Solutions,Security Manpower,Delhi,07UTRCC2589I1ZG,Small
+V10159,Abhay Raksha Traders Pvt Ltd,Cleaning Material,Delhi,07EAYFE2325H1Z9,Not MSME
+V10160,Sarthak Labs,Water Testing,Delhi,07NYTCI8436H1ZP,Small
+V10161,Garud Labs Pvt Ltd,Water Testing,Haryana,06JEQFY8548L1ZI,Not MSME
+V10162,Vasundhara Enterprises Pvt Ltd,Cleaning Material,Delhi,07YOGCY0725N1Z3,Not MSME
+V10163,Kailash Vardhan Traders,Diesel Supply,Haryana,06CMAPU4432J1Z8,
+V10164,Garud Pest Solutions,Pest Control,Delhi,07XFOFF6968Y1ZL,Micro
+V10165,Satluj Trishul Manpower Solutions,Security Manpower,Haryana,06UJKCA4641Y1Z5,Micro
+V10166,Pratap Dhruv Engineering Works,Repairs and Maintenance,Delhi,07DOQCQ2056J1ZD,
+V10167,Kesari Power Systems Pvt Ltd,DG Set AMC,Haryana,06FGUCZ0484E1ZE,Micro
+V10168,Yamuna Hygiene Solutions,Housekeeping Manpower,Delhi,07CWPPU1208W1ZR,Small
+V10169,Sanjivani Ekta Fire Safety Systems Pvt Ltd,Fire AMC,Haryana,06QWMFO7224N1ZE,Medium
+V10170,Navdeep Security Services,Security Manpower,Haryana,06HAEPJ1902J1ZS,Not MSME
+V10171,Dhruv Facility Services,Housekeeping Manpower,Haryana,06STEFX7227P1Z7,
+V10172,Hemkunt Abhay Fire Safety Systems Pvt Ltd,Fire AMC,Delhi,07RJPFR9314S1ZD,Micro
+V10173,Raksha Facility Management Pvt Ltd,Housekeeping Manpower,Haryana,06OHPPI2797R1Z2,Small
+V10174,Udaan Vasundhara Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07ENGPS3882S1ZN,Micro
+V10175,Garud Enterprises Pvt Ltd,Cleaning Material,Haryana,06DSACZ9338E1ZI,
+V10176,Trishul Labs,Water Testing,Delhi,07NFGFJ2610V1ZE,Small
+V10177,Panchjanya Engineering Works,Lift AMC,Uttar Pradesh,09UFNFB5330U1Z4,Small
+V10178,Raksha Vasundhara Fuels,Diesel Supply,Uttar Pradesh,09ZMXPE5792N1ZX,Medium
+V10179,Aravind Fire Safety Systems Pvt Ltd,Fire AMC,Haryana,06VCRFS1843F1ZR,
+V10180,Trishul Traders Pvt Ltd,Cleaning Material,Uttar Pradesh,09VUJFM1086H1ZR,Micro
+V10181,Ekta Engineering Works,Repairs and Maintenance,Haryana,06ANGFK6060B1Z6,Medium
+V10182,Satluj Traders,Cleaning Material,Delhi,07YRUCT6973L1Z2,
+V10183,Sanjivani Nirmal Elevator Care Pvt Ltd,Lift AMC,Delhi,07FTRFR2357S1Z6,Micro
+V10184,Abhay Hemkunt Pest Solutions Pvt Ltd,Pest Control,Haryana,06MPPCO3302V1ZZ,Micro
+V10185,Indus Dhruv Agro Services,Landscaping,Haryana,06XERFP8305Z1ZZ,Not MSME
+V10186,Panchjanya Manpower Solutions Pvt Ltd,Security Manpower,Haryana,06JILFC8513X1ZC,Medium
+V10187,Aravind Power Systems Pvt Ltd,DG Set AMC,Haryana,06VQDFL3449A1ZU,Small
+V10188,Yamuna Navdeep Elevator Care,Lift AMC,Haryana,06MAVPG3867Z1ZZ,Not MSME
+V10189,Vardhan Indus Labs,Water Testing,Haryana,06ZAHPP8342D1ZC,Micro
+V10190,Udaan Ekta Agro Services Pvt Ltd,Landscaping,Haryana,06HFWPY8004D1ZE,Small
+V10191,Hemkunt Nirmal Labs,Water Testing,Uttar Pradesh,09ANOFP9791H1ZN,Not MSME
+V10192,Raksha Navdeep Fire Safety Systems Pvt Ltd,Fire AMC,Delhi,07ZJDPW2539F1ZG,Micro
+V10193,Yamuna Agro Services Pvt Ltd,Landscaping,Delhi,07GQNFY4178D1ZC,Micro
+V10194,Dhruv Fire Safety Systems Pvt Ltd,Fire AMC,Uttar Pradesh,09YIUFU8861M1ZH,Not MSME
+V10195,Shivalik Pest Solutions,Pest Control,Haryana,06CBBCA0515Z1Z3,Small
+V10196,Prakriti Fire Safety Systems Pvt Ltd,Fire AMC,Haryana,06DUKPF5533U1ZE,Micro
+V10197,Yamuna Engineering Works,Repairs and Maintenance,Punjab,03ERTFM1810S1ZD,Small
+V10198,Nirmal Traders,Diesel Supply,Uttar Pradesh,09GGLPN2331U1ZA,
+V10199,Vasundhara Vasundhara Fuels,Diesel Supply,Delhi,07LEMFQ8106J1ZS,Small
+V10200,Panchjanya Traders,Cleaning Material,Haryana,06JMIFE2252L1ZR,Small
+V10201,Indus Facility Services,Housekeeping Manpower,Rajasthan,08DWDCX1609V1ZA,Not MSME
+V10202,Aravind Abhay Engineering Works,DG Set AMC,Haryana,06XGBFM2683X1Z5,Medium
+V10203,Sanjivani Pest Solutions,Pest Control,Haryana,06DNJPZ1223L1Z9,
+V10204,Sarthak Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07CQZCR8255P1ZI,Not MSME
+V10205,Shivalik Vardhan Pest Solutions,Pest Control,Haryana,06RDUCF9135E1ZK,Micro
+V10206,Saksham Trishul Manpower Solutions,Security Manpower,Haryana,06EYXFH3662C1ZZ,Not MSME
+V10207,Pratap Enterprises Pvt Ltd,Cleaning Material,Delhi,07PIMFP6132R1ZZ,
+V10208,Prakriti Hygiene Solutions,Cleaning Material,Haryana,06CUGCO0635B1ZN,Small
+V10209,Hemkunt Satluj Traders Pvt Ltd,Cleaning Material,Delhi,07MYFFV2602Z1ZA,Small
+V10210,Nirmal Pest Solutions,Pest Control,Delhi,07IAECW6817K1Z6,Not MSME
+V10211,Yamuna Indus Fuels,Diesel Supply,Delhi,07DMJCR2265C1ZI,Not MSME
+V10212,Navdeep Pest Solutions,Pest Control,Uttar Pradesh,09ZZEPV5121J1Z7,Small
+V10213,Ekta Pest Solutions,Pest Control,Haryana,06QTQPX4618J1ZF,Medium
+V10214,Shivalik Vasundhara Pest Solutions,Pest Control,Delhi,07AHLPH7517J1ZT,
+V10215,Yamuna Labs,Water Testing,Delhi,07JBUPI4265G1ZQ,Micro
+V10216,Dhruv Labs,Water Testing,Haryana,06EKAPT5637K1Z0,Micro
+V10217,Nirmal Dhruv Pest Solutions,Pest Control,Delhi,07PQXPC6035O1Z7,
+V10218,Vardhan Enterprises,Cleaning Material,Delhi,07FWHFL0694S1Z9,Small
+V10219,Trishul Enterprises,Repairs and Maintenance,Haryana,06LFOPE6562J1ZW,
+V10220,Udaan Manpower Solutions,Security Manpower,Haryana,06WVYPU2670T1Z7,Medium
+V10221,Prakriti Engineering Works,DG Set AMC,Haryana,06FWJPX0109E1ZO,Small
+V10222,Trishul Abhay Traders,Cleaning Material,Haryana,06OLZFI8393Z1ZR,Not MSME
+V10223,Udaan Kesari Traders Pvt Ltd,Diesel Supply,Haryana,06XRXPY0193D1ZL,Not MSME
+V10224,Kesari Indus Facility Management Pvt Ltd,Housekeeping Manpower,Haryana,06EVRPZ4723G1ZI,Medium
+V10225,Amrit Abhay Labs Pvt Ltd,Water Testing,Haryana,06NWOFY1949U1ZQ,Not MSME
+V10226,Saksham Dhruv Labs,Water Testing,Haryana,06HACPX0530R1Z1,Micro
+V10227,Amrit Dhruv Pest Solutions,Pest Control,Punjab,03DGECJ4650D1ZG,Not MSME
+V10228,Raksha Vardhan Traders,Diesel Supply,Haryana,06IRSFQ9358X1ZA,Not MSME
+V10229,Nirmal Ojas Pest Solutions,Pest Control,Delhi,07PEXCN1803B1Z6,Micro
+V10230,Amrit Pratap Pest Solutions,Pest Control,Delhi,07EIBCO4067X1ZI,Small
+V10231,Pratap Labs Pvt Ltd,Water Testing,Uttar Pradesh,09UXPFW0066K1ZV,Small
+V10232,Amrit Manpower Solutions,Security Manpower,Punjab,03NDECT8389Q1Z3,Not MSME
+V10233,Dhruv Abhay Hygiene Solutions,Cleaning Material,Uttar Pradesh,09VANFP1419X1ZD,Not MSME
+V10234,Ojas Security Services Pvt Ltd,Security Manpower,Haryana,06AKWFH9514Y1Z7,Medium
+V10235,Tejas Labs,Water Testing,Haryana,06NGJCQ2992E1ZO,Not MSME
+V10236,Indus Kailash Pest Solutions,Pest Control,Haryana,06IGAFP6209J1ZC,Small
+V10237,Kesari Hemkunt Enterprises Pvt Ltd,Cleaning Material,Haryana,06DWGFR1260Q1Z4,Micro
+V10238,Dhruv Indus Agro Services Pvt Ltd,Landscaping,Haryana,06VWZPH8396L1ZT,Not MSME
+V10239,Yamuna Landscapes,Landscaping,Haryana,06PECCT4070B1ZM,Not MSME
+V10240,Tejas Landscapes Pvt Ltd,Landscaping,Haryana,06OIXFY3611H1ZG,Micro
+V10241,Saksham Panchjanya Enterprises,Cleaning Material,Uttar Pradesh,09QUFCZ8802V1ZE,Not MSME
+V10242,Navdeep Fire Safety Systems Pvt Ltd,Fire AMC,Haryana,06MEVCL9579P1ZC,Micro
+V10243,Vasundhara Kesari Labs,Water Testing,Haryana,06GMZPT2824Q1Z6,Not MSME
+V10244,Raksha Sanjivani Hygiene Solutions Pvt Ltd,Housekeeping Manpower,Haryana,06LIHCY5810I1ZW,
+V10245,Nirmal Engineering Works,Repairs and Maintenance,Delhi,07JHKCZ6677Q1Z2,Not MSME
+V10246,Panchjanya Trishul Enterprises Pvt Ltd,Cleaning Material,Uttar Pradesh,09DUUCV5931V1ZF,Micro
+V10247,Vasundhara Power Systems,DG Set AMC,Haryana,06NBKCW9986R1ZB,Micro
+V10248,Aravind Engineering Works,DG Set AMC,Delhi,07TXHCG9184K1ZA,Micro
+V10249,Saksham Engineering Works,Repairs and Maintenance,Delhi,07NAPPG6549V1ZE,Micro
+V10250,Hemkunt Vasundhara Hygiene Solutions,Cleaning Material,Haryana,06SJFPY9661C1ZZ,Micro
+V10251,Tejas Traders,Diesel Supply,Rajasthan,08FIVCM6112C1ZZ,Not MSME
+V10252,Satluj Enterprises,Cleaning Material,Uttar Pradesh,09EHFPW7908T1ZN,Not MSME
+V10253,Navdeep Enterprises Pvt Ltd,Repairs and Maintenance,Punjab,03BOEFQ1269N1ZE,Small
+V10254,Sarthak Garud Hygiene Solutions,Cleaning Material,Haryana,06LSDCM6612X1Z2,Micro
+V10255,Navdeep Dhruv Traders,Diesel Supply,Haryana,06MGXCT3525C1ZI,Small
+V10256,Prakriti Satluj Engineering Works,Repairs and Maintenance,Haryana,06GNQCA3991O1ZM,Micro
+V10257,Hemkunt Engineering Works,Repairs and Maintenance,Haryana,06ALHCK8786E1Z7,Micro
+V10258,Saksham Hygiene Solutions,Cleaning Material,Haryana,06LOFFU7427G1ZA,Not MSME
+V10259,Indus Hemkunt Security Services Pvt Ltd,Security Manpower,Haryana,06IEBCI4476A1ZW,Small
+V10260,Shivalik Aravind Fire Safety Systems,Fire AMC,Uttar Pradesh,09URXCF2242C1ZM,Not MSME
+V10261,Raksha Kesari Landscapes,Landscaping,Uttar Pradesh,09VEEFW8844P1ZV,Small
+V10262,Raksha Engineering Works,Repairs and Maintenance,Haryana,06HLNPY1349J1ZM,
+V10263,Saksham Abhay Fuels Pvt Ltd,Diesel Supply,Uttar Pradesh,09TTACU6165A1Z0,Not MSME
+V10264,Garud Engineering Works,Lift AMC,Haryana,06CURCL6855Z1ZS,
+V10265,Udaan Saksham Pest Solutions Pvt Ltd,Pest Control,Haryana,06JLPPH8519D1ZC,Not MSME
+V10266,Yamuna Udaan Hygiene Solutions,Cleaning Material,Haryana,06BKDCO9436K1ZA,Micro
+V10267,Navdeep Indus Pest Solutions,Pest Control,Haryana,06RNRFF3335B1ZR,Small
+V10268,Prakriti Pratap Engineering Works Pvt Ltd,Repairs and Maintenance,Uttar Pradesh,09BTNFC9244E1ZI,Micro
+V10269,Raksha Fire Safety Systems Pvt Ltd,Fire AMC,Uttar Pradesh,09GBSPM3695Q1ZE,
+V10270,Vasundhara Ojas Hygiene Solutions,Cleaning Material,Haryana,06ZZJPO1140W1Z1,Micro
+V10271,Abhay Raksha Hygiene Solutions Pvt Ltd,Housekeeping Manpower,Delhi,07KRRCM9031E1Z0,Small
+V10272,Tejas Security Services Pvt Ltd,Security Manpower,Haryana,06PCKFI1820Z1ZY,Micro
+V10273,Vardhan Traders,Cleaning Material,Delhi,07PGRPX6585A1Z5,Small
+V10274,Aravind Trishul Pest Solutions,Pest Control,Haryana,06VZMFC4805E1ZG,Not MSME
+V10275,Hemkunt Labs Pvt Ltd,Water Testing,Haryana,06PEEFG0808U1ZL,Not MSME
+V10276,Tejas Manpower Solutions,Security Manpower,Delhi,07DJIPV0286L1ZU,
+V10277,Abhay Manpower Solutions,Security Manpower,Haryana,06HJJFM9991A1Z1,
+V10278,Aravind Panchjanya Labs Pvt Ltd,Water Testing,Haryana,06HFHCQ4059G1ZT,
+V10279,Kesari Agro Services Pvt Ltd,Landscaping,Delhi,07OKAFX1306K1ZW,Small
+V10280,Sarthak Udaan Engineering Works,Repairs and Maintenance,Haryana,06HUMFV5967Z1ZE,Not MSME
+V10281,Abhay Security Services Pvt Ltd,Security Manpower,Uttar Pradesh,09CTZPT5376J1ZN,Not MSME
+V10282,Garud Nirmal Engineering Works,Repairs and Maintenance,Haryana,06ESKCE4143R1Z7,Not MSME
+V10283,Tejas Fire Safety Systems,Fire AMC,Delhi,07SPJCS5042J1ZX,
+V10284,Hemkunt Facility Management Pvt Ltd,Housekeeping Manpower,Haryana,06YKOFT4339O1Z9,Not MSME
+V10285,Panchjanya Fire Safety Systems,Fire AMC,Haryana,06AKJCE5873W1ZF,Not MSME
+V10286,Ojas Facility Management,Housekeeping Manpower,Delhi,07QDQCG4046K1Z6,Medium
+V10287,Udaan Vasundhara Manpower Solutions,Security Manpower,Haryana,06LECPQ3410H1ZI,Micro
+V10288,Hemkunt Ekta Labs Pvt Ltd,Water Testing,Haryana,06IGSPP1879C1ZX,Medium
+V10289,Shivalik Facility Services,Housekeeping Manpower,Haryana,06LXWPB6848I1ZO,Small
+V10290,Vasundhara Amrit Pest Solutions Pvt Ltd,Pest Control,Haryana,06TEGCA1691J1ZT,Not MSME
+V10291,Panchjanya Saksham Labs,Water Testing,Haryana,06RULFM2423B1ZH,Small
+V10292,Trishul Saksham Labs,Water Testing,Delhi,07KFSFZ4439H1ZU,Small
+V10293,Sarthak Abhay Enterprises,Repairs and Maintenance,Haryana,06UNLFQ4777U1Z2,
+V10294,Pratap Traders,Cleaning Material,Delhi,07PTAFS3585F1ZB,Small
+V10295,Saksham Pest Solutions Pvt Ltd,Pest Control,Haryana,06NHXPL1793A1Z1,
+V10296,Pratap Sanjivani Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06NGKCL8303Y1ZJ,
+V10297,Navdeep Facility Services,Housekeeping Manpower,Haryana,06KAOPK8260A1ZY,Micro
+V10298,Shivalik Kesari Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06ATLCO0314Q1ZQ,Not MSME
+V10299,Kesari Engineering Works,Repairs and Maintenance,Delhi,07LYYCG9292F1ZA,Not MSME
+V10300,Tejas Prakriti Pest Solutions Pvt Ltd,Pest Control,Delhi,07OPXFN2841L1ZN,Micro
+V10301,Vasundhara Landscapes,Landscaping,Haryana,06FKMCA0035A1ZM,
+V10302,Yamuna Power Systems Pvt Ltd,DG Set AMC,Delhi,07ZNOPN0946X1ZF,Small
+V10303,Navdeep Abhay Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06IHKFM9945Y1ZJ,Small
+V10304,Indus Indus Elevator Care Pvt Ltd,Lift AMC,Uttar Pradesh,09DUUCO0659P1ZY,Not MSME
+V10305,Prakriti Labs Pvt Ltd,Water Testing,Haryana,06YLPCJ7741N1ZL,Micro
+V10306,Kesari Labs,Water Testing,Delhi,07HIAFO3541C1ZD,
+V10307,Dhruv Engineering Works Pvt Ltd,DG Set AMC,Haryana,06EBDCK9474A1ZX,Not MSME
+V10308,Yamuna Pest Solutions Pvt Ltd,Pest Control,Uttar Pradesh,09TYUCL4769P1Z3,Micro
+V10309,Panchjanya Labs Pvt Ltd,Water Testing,Haryana,06NBNCE7876M1ZP,Not MSME
+V10310,Ojas Pest Solutions Pvt Ltd,Pest Control,Delhi,07SCSPY9015F1ZZ,Not MSME
+V10311,Udaan Shivalik Landscapes Pvt Ltd,Landscaping,Uttar Pradesh,09QMTCV3829N1ZU,Not MSME
+V10312,Aravind Indus Fire Safety Systems,Fire AMC,Haryana,06DKKPP4150N1ZM,Micro
+V10313,Udaan Navdeep Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06CZWCZ2079M1Z8,Medium
+V10314,Raksha Traders,Diesel Supply,Haryana,06KFTPJ6797H1ZV,Micro
+V10315,Dhruv Power Systems Pvt Ltd,DG Set AMC,Delhi,07QOHFG6280I1ZQ,Small
+V10316,Kailash Manpower Solutions Pvt Ltd,Security Manpower,Haryana,06LIKCF6276U1ZJ,Small
+V10317,Saksham Prakriti Landscapes Pvt Ltd,Landscaping,Delhi,07LOAPA6229X1ZQ,Micro
+V10318,Kailash Kailash Hygiene Solutions Pvt Ltd,Housekeeping Manpower,Delhi,07CDEPO4903Q1ZJ,Small
+V10319,Udaan Trishul Hygiene Solutions Pvt Ltd,Cleaning Material,Delhi,07QBOCX5563J1ZT,Small
+V10320,Kesari Kailash Labs,Water Testing,Delhi,07VCWFP8458S1ZV,Micro
+V10321,Vardhan Ojas Labs Pvt Ltd,Water Testing,Haryana,06WWYCH3122G1ZC,Not MSME
+V10322,Navdeep Udaan Facility Management,Housekeeping Manpower,Haryana,06UCVCR8362B1ZJ,Micro
+V10323,Indus Engineering Works Pvt Ltd,Repairs and Maintenance,Delhi,07QWJFT1003U1ZP,Not MSME
+V10324,Dhruv Fuels,Diesel Supply,Delhi,07WDWPY2248T1ZU,Small
+V10325,Vardhan Hygiene Solutions,Cleaning Material,Haryana,06XGFCH9971E1ZE,Not MSME
+V10326,Nirmal Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06PZZPS8567M1ZT,Micro
+V10327,Abhay Facility Management,Housekeeping Manpower,Uttar Pradesh,09APWPU1020G1Z2,Micro
+V10328,Kesari Panchjanya Enterprises,Cleaning Material,Haryana,06KXFCM9005A1Z5,
+V10329,Shivalik Aravind Enterprises,Repairs and Maintenance,Delhi,07ZKSPR4942J1ZO,Not MSME
+V10330,Ojas Hygiene Solutions,Cleaning Material,Haryana,06ZPRPF5098T1ZM,Micro
+V10331,Indus Sanjivani Enterprises,Repairs and Maintenance,Haryana,06ZHSFR7786H1ZI,
+V10332,Satluj Vardhan Engineering Works,Repairs and Maintenance,Delhi,07SWPFE3484J1ZC,Micro
+V10333,Indus Pest Solutions Pvt Ltd,Pest Control,Haryana,06KKVFJ1376N1ZS,Micro
+V10334,Satluj Landscapes,Landscaping,Punjab,03LKVFV1103W1Z0,Not MSME
+V10335,Saksham Nirmal Labs Pvt Ltd,Water Testing,Punjab,03SFHFH6528I1ZZ,
+V10336,Indus Agro Services Pvt Ltd,Landscaping,Haryana,06JPQFH7025X1ZV,
+V10337,Ojas Facility Services,Housekeeping Manpower,Haryana,06GFKFV3366E1ZS,Micro
+V10338,Shivalik Kesari Pest Solutions,Pest Control,Haryana,06IIRCT9627K1ZL,Small
+V10339,Indus Labs Pvt Ltd,Water Testing,Delhi,07RNMPA9338M1ZR,
+V10340,Saksham Prakriti Hygiene Solutions,Cleaning Material,Haryana,06KLHCW9931D1ZA,Not MSME
+V10341,Pratap Pratap Power Systems Pvt Ltd,DG Set AMC,Delhi,07ULYFB5016D1ZZ,Not MSME
+V10342,Vasundhara Prakriti Pest Solutions Pvt Ltd,Pest Control,Haryana,06XUJPY2039G1ZN,Small
+V10343,Amrit Hygiene Solutions,Cleaning Material,Delhi,07QBJCM9808B1ZS,Small
+V10344,Aravind Tejas Labs,Water Testing,Delhi,07BOPCX0599L1ZM,Medium
+V10345,Abhay Labs,Water Testing,Delhi,07XQTFI3788C1ZL,Micro
+V10346,Panchjanya Ekta Labs,Water Testing,Punjab,03ZCMCH2565H1ZI,
+V10347,Prakriti Agro Services Pvt Ltd,Landscaping,Haryana,06HDKFV0077L1ZB,Small
+V10348,Panchjanya Saksham Traders,Cleaning Material,Delhi,07OTUFM2131N1ZV,Small
+V10349,Sanjivani Pratap Engineering Works Pvt Ltd,DG Set AMC,Haryana,06ZKOPY6876E1ZH,Small
+V10350,Prakriti Facility Management Pvt Ltd,Housekeeping Manpower,Haryana,06QSPCI5164P1ZJ,
+V10351,Sarthak Indus Traders,Diesel Supply,Delhi,07FSTPO3706K1ZA,Micro
+V10352,Vasundhara Traders,Cleaning Material,Haryana,06HJQFB0783A1ZH,Micro
+V10353,Vardhan Dhruv Landscapes,Landscaping,Uttar Pradesh,09YPXPF7387W1ZM,Not MSME
+V10354,Panchjanya Facility Services,Housekeeping Manpower,Haryana,06QIAPL1108N1Z5,
+V10355,Sanjivani Enterprises Pvt Ltd,Cleaning Material,Haryana,06FBBCY1078P1ZO,Small
+V10356,Sarthak Navdeep Labs Pvt Ltd,Water Testing,Rajasthan,08HJZFW9933D1Z7,Micro
+V10357,Sanjivani Traders Pvt Ltd,Cleaning Material,Uttar Pradesh,09VEJFM2609I1ZN,Small
+V10358,Pratap Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06LTZCV0769U1ZA,Small
+V10359,Ekta Sarthak Elevator Care Pvt Ltd,Lift AMC,Uttar Pradesh,09SPJFM4347L1Z1,Not MSME
+V10360,Satluj Security Services,Security Manpower,Uttar Pradesh,09BKPFI8189V1Z6,Small
+V10361,Kesari Nirmal Facility Management Pvt Ltd,Housekeeping Manpower,Delhi,07UHWFG6851C1Z8,Micro
+V10362,Vardhan Agro Services Pvt Ltd,Landscaping,Haryana,06ICMCF0301T1Z7,Micro
+V10363,Dhruv Kesari Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06RXKCY9139L1Z9,Micro
+V10364,Raksha Enterprises,Repairs and Maintenance,Haryana,06KVBPK5966N1ZB,Micro
+V10365,Satluj Sanjivani Landscapes,Landscaping,Haryana,06IYBPA1426R1Z8,Small
+V10366,Shivalik Garud Fuels,Diesel Supply,Uttar Pradesh,09IPSPE1753M1ZN,Micro
+V10367,Indus Enterprises,Repairs and Maintenance,Haryana,06DTUPA4517D1ZQ,Not MSME
+V10368,Aravind Labs,Water Testing,Haryana,06LAYCS1148F1ZZ,Medium
+V10369,Panchjanya Sarthak Fire Safety Systems,Fire AMC,Haryana,06CIPPC4492Q1ZE,Small
+V10370,Kailash Labs,Water Testing,Haryana,06YAXPY5928V1ZT,Micro
+V10371,Dhruv Pratap Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06VXTCK2409T1ZS,Small
+V10372,Prakriti Traders,Cleaning Material,Haryana,06TNECR6842B1ZL,
+V10373,Garud Amrit Labs,Water Testing,Haryana,06MDHFV4091D1Z3,Micro
+V10374,Amrit Labs Pvt Ltd,Water Testing,Haryana,06QYHCI1649N1ZI,Small
+V10375,Yamuna Pratap Facility Management,Housekeeping Manpower,Uttar Pradesh,09OKZCY2252N1ZH,Medium
+V10376,Indus Traders,Diesel Supply,Haryana,06QHMFG3719F1ZJ,Micro
+V10377,Vasundhara Pest Solutions Pvt Ltd,Pest Control,Haryana,06GHFFB9457X1ZK,Micro
+V10378,Ekta Hygiene Solutions,Cleaning Material,Uttar Pradesh,09ZCAFB5151N1Z9,Micro
+V10379,Pratap Engineering Works,Repairs and Maintenance,Haryana,06HPPPV7932Z1ZH,
+V10380,Sarthak Kailash Enterprises Pvt Ltd,Cleaning Material,Haryana,06UPVPN8582S1Z4,Micro
+V10381,Kesari Enterprises,Repairs and Maintenance,Haryana,06UULPR0482B1ZZ,Not MSME
+V10382,Kailash Navdeep Landscapes,Landscaping,Haryana,06RLDPK9045N1Z4,Not MSME
+V10383,Kailash Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06KAVPF0706V1ZN,Not MSME
+V10384,Tejas Hygiene Solutions,Cleaning Material,Haryana,06PFICG6453R1Z3,Small
+V10385,Amrit Indus Facility Management,Housekeeping Manpower,Haryana,06LYZFP9018A1ZJ,Not MSME
+V10386,Kailash Satluj Labs,Water Testing,Haryana,06MHIFJ8035C1ZT,Small
+V10387,Dhruv Elevator Care,Lift AMC,Haryana,06RXLCR5103Q1ZL,Micro
+V10388,Ojas Enterprises Pvt Ltd,Cleaning Material,Rajasthan,08AVDFZ3399L1Z1,Medium
+V10389,Tejas Aravind Hygiene Solutions,Cleaning Material,Haryana,06LLSFI5103N1ZG,
+V10390,Sarthak Pratap Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06WNZCU4916X1Z6,Micro
+V10391,Abhay Udaan Pest Solutions,Pest Control,Delhi,07TDOCH1541H1ZU,Small
+V10392,Yamuna Raksha Traders Pvt Ltd,Diesel Supply,Haryana,06AOFFB3047U1ZK,Micro
+V10393,Shivalik Dhruv Hygiene Solutions,Housekeeping Manpower,Haryana,06RBHCX2659P1ZZ,Micro
+V10394,Ojas Nirmal Engineering Works,DG Set AMC,Haryana,06XRVFM9205J1Z6,Small
+V10395,Ekta Labs Pvt Ltd,Water Testing,Haryana,06QMNCT4918R1ZN,Not MSME
+V10396,Amrit Ekta Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06SKQCZ7795V1ZK,Micro
+V10397,Amrit Vardhan Engineering Works,Lift AMC,Haryana,06BVIPI9443U1ZV,Micro
+V10398,Sarthak Engineering Works,Lift AMC,Delhi,07NHWCF2268J1ZQ,Micro
+V10399,Sanjivani Hygiene Solutions,Cleaning Material,Haryana,06BYXCO2845S1ZQ,Not MSME
+V10400,Vardhan Security Services,Security Manpower,Uttar Pradesh,09DFVPK6923G1ZJ,Micro
+V10401,Vasundhara Sanjivani Engineering Works,Repairs and Maintenance,Haryana,06YBBPE8516Y1ZT,Micro
+V10402,Shivalik Indus Engineering Works,DG Set AMC,Haryana,06GNKFT2956W1ZE,
+V10403,Ekta Tejas Enterprises,Repairs and Maintenance,Haryana,06AOWFY5282N1ZW,Medium
+V10404,Aravind Shivalik Traders Pvt Ltd,Diesel Supply,Delhi,07WFZFY8342G1ZE,Micro
+V10405,Satluj Elevator Care,Lift AMC,Uttar Pradesh,09ZRLPS3433C1ZY,
+V10406,Dhruv Prakriti Enterprises,Cleaning Material,Haryana,06AUMFV2456J1Z0,Not MSME
+V10407,Kesari Sanjivani Fuels Pvt Ltd,Diesel Supply,Haryana,06OKPCB7417T1ZM,Micro
+V10408,Ojas Navdeep Agro Services Pvt Ltd,Landscaping,Haryana,06QZFFB1288E1ZI,Micro
+V10409,Garud Indus Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06PTFFE1430V1Z6,
+V10410,Kailash Pratap Landscapes Pvt Ltd,Landscaping,Uttar Pradesh,09RTVPF2154H1ZV,
+V10411,Satluj Agro Services,Landscaping,Haryana,06ETQFO3892C1Z5,Not MSME
+V10412,Navdeep Shivalik Engineering Works,Repairs and Maintenance,Haryana,06ZDBFZ5547Z1ZH,Not MSME
+V10413,Sarthak Sanjivani Engineering Works,Repairs and Maintenance,Uttar Pradesh,09CPSFW4806C1ZW,Not MSME
+V10414,Abhay Ekta Agro Services Pvt Ltd,Landscaping,Delhi,07MSLPM6383Z1Z4,Not MSME
+V10415,Vardhan Vasundhara Engineering Works,Repairs and Maintenance,Haryana,06THJCI5796O1ZH,
+V10416,Garud Manpower Solutions Pvt Ltd,Security Manpower,Haryana,06YUQCQ6749C1ZC,Micro
+V10417,Pratap Ekta Traders,Cleaning Material,Haryana,06PSJCA7604X1ZO,Small
+V10418,Indus Sanjivani Engineering Works,DG Set AMC,Delhi,07GUSFF7877T1Z6,Micro
+V10419,Kailash Enterprises Pvt Ltd,Cleaning Material,Punjab,03FPQFC4284Q1ZB,Not MSME
+V10420,Hemkunt Vasundhara Facility Management,Housekeeping Manpower,Haryana,06UZECK5620L1ZW,Small
+V10421,Panchjanya Sarthak Traders Pvt Ltd,Diesel Supply,Rajasthan,08WICFM5015M1Z7,Not MSME
+V10422,Udaan Hemkunt Pest Solutions,Pest Control,Haryana,06XYFFR9241Y1ZZ,Micro
+V10423,Panchjanya Indus Traders,Diesel Supply,Haryana,06FVJPI8138U1ZF,Small
+V10424,Indus Sarthak Facility Services Pvt Ltd,Housekeeping Manpower,Uttar Pradesh,09GGECM2421Y1Z7,
+V10425,Hemkunt Garud Pest Solutions,Pest Control,Haryana,06IAOFE1749A1Z8,Micro
+V10426,Dhruv Satluj Power Systems Pvt Ltd,DG Set AMC,Haryana,06HBLPI4359M1ZC,Not MSME
+V10427,Trishul Satluj Power Systems,DG Set AMC,Haryana,06CGPFP6413H1Z1,Not MSME
+V10428,Kesari Pest Solutions Pvt Ltd,Pest Control,Haryana,06DXXPB8440L1ZD,Micro
+V10429,Pratap Indus Enterprises Pvt Ltd,Repairs and Maintenance,Uttar Pradesh,09RSGFF2779V1ZO,Micro
+V10430,Aravind Sanjivani Hygiene Solutions,Cleaning Material,Haryana,06VJVCE0274S1ZP,
+V10431,Garud Aravind Enterprises,Repairs and Maintenance,Haryana,06NWDCG8358C1ZL,Not MSME
+V10432,Aravind Landscapes,Landscaping,Punjab,03QLHPS5987U1ZM,Medium
+V10433,Vardhan Labs Pvt Ltd,Water Testing,Haryana,06ZQKPI5323B1ZU,Not MSME
+V10434,Sanjivani Shivalik Pest Solutions Pvt Ltd,Pest Control,Haryana,06WIWFJ2224Q1ZS,Not MSME
+V10435,Kailash Garud Enterprises Pvt Ltd,Cleaning Material,Delhi,07DPRPR5116Q1ZV,Micro
+V10436,Dhruv Hemkunt Engineering Works,Repairs and Maintenance,Uttar Pradesh,09VOICN9237R1ZJ,Small
+V10437,Garud Traders Pvt Ltd,Cleaning Material,Punjab,03LDSPS4671U1ZZ,Medium
+V10438,Indus Hygiene Solutions,Cleaning Material,Haryana,06UKLPJ9111L1ZF,Small
+V10439,Vasundhara Pratap Pest Solutions Pvt Ltd,Pest Control,Haryana,06QTUPF1317O1Z2,
+V10440,Tejas Sanjivani Pest Solutions,Pest Control,Uttar Pradesh,09XNTFB5852Q1ZZ,Small
+V10441,Shivalik Abhay Hygiene Solutions,Cleaning Material,Punjab,03BKLCB7776O1Z2,Not MSME
+V10442,Sanjivani Elevator Care Pvt Ltd,Lift AMC,Uttar Pradesh,09ETXCE9134I1ZK,Small
+V10443,Abhay Fire Safety Systems,Fire AMC,Delhi,07GXLFY1333L1Z1,Medium
+V10444,Tejas Abhay Engineering Works Pvt Ltd,DG Set AMC,Haryana,06VCICW1738S1ZR,Small
+V10445,Vasundhara Shivalik Engineering Works,Lift AMC,Haryana,06KRGCH2191N1ZG,
+V10446,Nirmal Satluj Landscapes Pvt Ltd,Landscaping,Delhi,07NMHFQ6500F1ZT,Small
+V10447,Saksham Traders Pvt Ltd,Cleaning Material,Haryana,06ODJFT9138H1ZW,Small
+V10448,Raksha Ojas Labs,Water Testing,Haryana,06TVJFM7157O1ZV,
+V10449,Ekta Abhay Landscapes,Landscaping,Uttar Pradesh,09ISFCK0802F1Z5,Micro
+V10450,Satluj Indus Manpower Solutions,Security Manpower,Haryana,06LMGCD1380Q1Z1,Small
+V10451,Saksham Ekta Hygiene Solutions,Cleaning Material,Haryana,06DBLPJ2231M1Z8,Small
+V10452,Dhruv Saksham Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07FJDFW4178J1ZC,Small
+V10453,Kailash Raksha Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07NIWCR7632F1ZH,
+V10454,Pratap Fire Safety Systems Pvt Ltd,Fire AMC,Haryana,06GDPCQ6338J1Z8,Small
+V10455,Abhay Sarthak Enterprises,Cleaning Material,Haryana,06QXAFH8953Q1Z8,
+V10456,Ojas Fuels Pvt Ltd,Diesel Supply,Haryana,06SASPX2385H1ZD,Micro
+V10457,Kesari Trishul Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06OFYCM3479G1ZS,
+V10458,Saksham Facility Management,Housekeeping Manpower,Uttar Pradesh,09IMYCV1150T1Z3,Not MSME
+V10459,Garud Agro Services,Landscaping,Uttar Pradesh,09JHNCI9347Y1ZJ,Small
+V10460,Prakriti Kailash Engineering Works,Repairs and Maintenance,Haryana,06LATCX8015A1Z4,
+V10461,Udaan Traders,Cleaning Material,Haryana,06LBWCL1104P1ZZ,Small
+V10462,Ekta Aravind Fuels,Diesel Supply,Delhi,07QMAFK9044E1Z2,Micro
+V10463,Sanjivani Labs Pvt Ltd,Water Testing,Uttar Pradesh,09MGICR9514X1Z4,Micro
+V10464,Amrit Yamuna Enterprises,Repairs and Maintenance,Haryana,06FGHCQ9831Z1Z3,
+V10465,Shivalik Pratap Pest Solutions,Pest Control,Haryana,06RSUFZ5340U1ZM,Small
+V10466,Abhay Amrit Security Services,Security Manpower,Punjab,03BRCFN9304S1ZG,Micro
+V10467,Saksham Sanjivani Engineering Works Pvt Ltd,Repairs and Maintenance,Delhi,07NCPCP2094W1ZJ,Not MSME
+V10468,Trishul Satluj Fire Safety Systems Pvt Ltd,Fire AMC,Uttar Pradesh,09WBUFZ9953Z1Z9,Micro
+V10469,Aravind Fuels Pvt Ltd,Diesel Supply,Uttar Pradesh,09RMJFN2467T1ZE,Not MSME
+V10470,Sarthak Fire Safety Systems,Fire AMC,Haryana,06IXQPZ9809O1Z9,Medium
+V10471,Saksham Indus Engineering Works,Lift AMC,Haryana,06LGYCY6114D1ZQ,Small
+V10472,Kesari Udaan Engineering Works,Lift AMC,Haryana,06ZWNPO9224R1Z3,Small
+V10473,Kailash Aravind Agro Services,Landscaping,Haryana,06EYFFI1996D1Z7,Micro
+V10474,Raksha Manpower Solutions,Security Manpower,Haryana,06SZVCY3585K1ZS,Not MSME
+V10475,Hemkunt Vardhan Fuels,Diesel Supply,Delhi,07VJHPX8910V1Z0,Not MSME
+V10476,Ekta Garud Pest Solutions Pvt Ltd,Pest Control,Rajasthan,08MBZPE2418E1ZZ,Micro
+V10477,Prakriti Security Services,Security Manpower,Haryana,06HEYCH5312C1ZQ,Not MSME
+V10478,Kailash Abhay Pest Solutions Pvt Ltd,Pest Control,Delhi,07UQFFK4828C1Z1,
+V10479,Nirmal Agro Services Pvt Ltd,Landscaping,Haryana,06YJYCB0127H1ZK,Micro
+V10480,Kailash Prakriti Enterprises,Cleaning Material,Delhi,07MCGFL5517Q1Z1,Micro
+V10481,Saksham Vardhan Pest Solutions Pvt Ltd,Pest Control,Haryana,06XWVFE9098P1Z5,
+V10482,Sanjivani Shivalik Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06TJDPL1541G1ZM,Small
+V10483,Panchjanya Tejas Pest Solutions,Pest Control,Haryana,06QICCO2367R1Z1,Small
+V10484,Shivalik Udaan Engineering Works Pvt Ltd,DG Set AMC,Haryana,06ZROPX3078G1ZW,Small
+V10485,Tejas Abhay Power Systems,DG Set AMC,Delhi,07XMHPV7211J1ZY,
+V10486,Raksha Nirmal Enterprises Pvt Ltd,Cleaning Material,Delhi,07UFQFE7439D1ZE,Medium
+V10487,Kailash Facility Management,Housekeeping Manpower,Haryana,06DUMCV9219I1ZB,Small
+V10488,Pratap Udaan Security Services Pvt Ltd,Security Manpower,Haryana,06XNSFD1923N1Z6,Small
+V10489,Yamuna Indus Manpower Solutions,Security Manpower,Haryana,06CDUPB7216D1ZD,Medium
+V10490,Hemkunt Enterprises,Cleaning Material,Haryana,06QJVFY8353K1ZJ,Not MSME
+V10491,Sarthak Ojas Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06PLYPO2860I1ZP,Small
+V10492,Pratap Trishul Pest Solutions Pvt Ltd,Pest Control,Haryana,06JMMCM0167C1ZV,Micro
+V10493,Pratap Agro Services Pvt Ltd,Landscaping,Haryana,06OKVCU4043U1ZY,Not MSME
+V10494,Navdeep Prakriti Manpower Solutions,Security Manpower,Haryana,06CTGFL2096V1ZM,Micro
+V10495,Ekta Fire Safety Systems,Fire AMC,Haryana,06MOOPN7506H1Z5,Not MSME
+V10496,Panchjanya Sanjivani Pest Solutions,Pest Control,Delhi,07ORTPN6292P1ZC,Small
+V10497,Hemkunt Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06SBOCC1617F1ZC,Not MSME
+V10498,Indus Fuels,Diesel Supply,Uttar Pradesh,09XKFCB1018L1ZS,Not MSME
+V10499,Trishul Power Systems Pvt Ltd,DG Set AMC,Delhi,07VKYFC9074E1ZM,Not MSME
+V10500,Udaan Satluj Traders,Cleaning Material,Delhi,07JFJFS2582V1Z9,Not MSME
+V10501,Trishul Trishul Facility Management Pvt Ltd,Housekeeping Manpower,Punjab,03BZVPI7921M1ZV,Not MSME
+V10502,Aravind Indus Engineering Works Pvt Ltd,Repairs and Maintenance,Delhi,07SFYCH9739U1ZL,Small
+V10503,Kailash Shivalik Pest Solutions,Pest Control,Uttar Pradesh,09JOUFY5722E1Z0,Not MSME
+V10504,Ojas Vasundhara Enterprises,Cleaning Material,Haryana,06RPZPJ3265O1ZP,Small
+V10505,Nirmal Tejas Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06UMKCQ9723S1ZV,Medium
+V10506,Garud Kesari Fire Safety Systems,Fire AMC,Uttar Pradesh,09SMGPB4686E1ZD,Not MSME
+V10507,Satluj Labs Pvt Ltd,Water Testing,Haryana,06BPZPL5327S1Z0,Not MSME
+V10508,Vasundhara Elevator Care,Lift AMC,Delhi,07YONPL9064D1ZE,Not MSME
+V10509,Kailash Aravind Pest Solutions,Pest Control,Haryana,06WMCPI6895E1Z7,Small
+V10510,Ekta Indus Enterprises,Cleaning Material,Haryana,06JTCCK9868X1ZL,Not MSME
+V10511,Sanjivani Aravind Hygiene Solutions,Cleaning Material,Haryana,06GMLPG7996D1ZV,Not MSME
+V10512,Shivalik Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06FRMPU8271P1Z1,Small
+V10513,Raksha Pest Solutions Pvt Ltd,Pest Control,Haryana,06ICGPB1839Q1Z8,Not MSME
+V10514,Sarthak Facility Services,Housekeeping Manpower,Haryana,06OTZPL6040C1ZP,Not MSME
+V10515,Garud Satluj Traders,Cleaning Material,Haryana,06YBCCH7435N1Z7,Not MSME
+V10516,Shivalik Panchjanya Pest Solutions Pvt Ltd,Pest Control,Haryana,06KXXFF7367T1ZA,Small
+V10517,Kailash Dhruv Labs Pvt Ltd,Water Testing,Haryana,06CTFFL4158S1ZF,Micro
+V10518,Kailash Tejas Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06UKCCO3044O1ZT,Small
+V10519,Dhruv Udaan Labs,Water Testing,Haryana,06AUPCO2292G1ZN,Not MSME
+V10520,Vardhan Elevator Care Pvt Ltd,Lift AMC,Haryana,06HOOCI7811T1ZI,Micro
+V10521,Tejas Udaan Hygiene Solutions,Cleaning Material,Haryana,06BIBPG8727Z1ZG,Not MSME
+V10522,Vasundhara Labs,Water Testing,Haryana,06HPMCC6273Z1Z7,Small
+V10523,Dhruv Kesari Elevator Care Pvt Ltd,Lift AMC,Haryana,06FUYCM1577S1Z6,Not MSME
+V10524,Raksha Vardhan Manpower Solutions,Security Manpower,Haryana,06CCTCY3674S1Z6,
+V10525,Sarthak Elevator Care Pvt Ltd,Lift AMC,Rajasthan,08CSPFO9265W1ZP,
+V10526,Sanjivani Prakriti Power Systems Pvt Ltd,DG Set AMC,Delhi,07UZQFI1330D1ZT,Not MSME
+V10527,Pratap Landscapes,Landscaping,Delhi,07VJFCW6733D1ZN,Micro
+V10528,Garud Pratap Traders,Cleaning Material,Uttar Pradesh,09LGQFQ3122D1ZY,Small
+V10529,Aravind Saksham Engineering Works,Repairs and Maintenance,Delhi,07XPJPR4820D1ZA,
+V10530,Tejas Hemkunt Security Services,Security Manpower,Delhi,07DGEPX3372T1ZR,Not MSME
+V10531,Sarthak Landscapes Pvt Ltd,Landscaping,Haryana,06XDIFD5863F1Z5,Micro
+V10532,Aravind Dhruv Labs,Water Testing,Uttar Pradesh,09KVWFS3547W1ZH,Micro
+V10533,Vardhan Vasundhara Landscapes,Landscaping,Haryana,06PDJCQ4407G1ZP,Micro
+V10534,Sarthak Fuels,Diesel Supply,Haryana,06SYYCE4571R1ZP,Medium
+V10535,Raksha Aravind Agro Services,Landscaping,Delhi,07TMRPW0344L1ZP,Micro
+V10536,Trishul Shivalik Security Services,Security Manpower,Haryana,06NBOCZ0770N1ZR,Not MSME
+V10537,Hemkunt Indus Pest Solutions Pvt Ltd,Pest Control,Haryana,06MALFJ8935X1ZQ,Small
+V10538,Saksham Vardhan Engineering Works,Repairs and Maintenance,Uttar Pradesh,09ZAICY0222O1ZR,Small
+V10539,Aravind Dhruv Traders,Diesel Supply,Uttar Pradesh,09CKHFR1030J1ZM,Not MSME
+V10540,Sanjivani Udaan Enterprises Pvt Ltd,Cleaning Material,Haryana,06ALKPR1123J1ZT,Medium
+V10541,Yamuna Enterprises,Repairs and Maintenance,Uttar Pradesh,09VGPPL0816A1Z8,Small
+V10542,Yamuna Nirmal Traders,Cleaning Material,Delhi,07RJRPM8345C1Z7,Medium
+V10543,Dhruv Traders,Cleaning Material,Haryana,06SCHCA9363U1ZC,Not MSME
+V10544,Kailash Kailash Traders Pvt Ltd,Diesel Supply,Haryana,06NZSCN5454I1Z4,Micro
+V10545,Sanjivani Garud Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06LWOCA7338E1ZS,Small
+V10546,Vasundhara Hemkunt Security Services Pvt Ltd,Security Manpower,Haryana,06DPKFU9507K1Z0,Micro
+V10547,Indus Tejas Landscapes,Landscaping,Haryana,06WAZPL1203R1ZU,Not MSME
+V10548,Satluj Hygiene Solutions,Cleaning Material,Haryana,06UESFR5810Q1ZZ,Not MSME
+V10549,Raksha Shivalik Traders Pvt Ltd,Cleaning Material,Haryana,06LEIFM2669Y1ZH,Micro
+V10550,Hemkunt Yamuna Facility Services,Housekeeping Manpower,Haryana,06QVLCO1204A1Z3,Micro
+V10551,Kailash Dhruv Hygiene Solutions,Housekeeping Manpower,Delhi,07YMHFC5300Y1ZH,Not MSME
+V10552,Sarthak Abhay Labs,Water Testing,Delhi,07VFZCR3727G1ZV,Medium
+V10553,Vasundhara Sarthak Labs,Water Testing,Uttar Pradesh,09NZLCQ6065O1ZQ,
+V10554,Vardhan Fire Safety Systems,Fire AMC,Haryana,06VLDPM0415P1Z0,Not MSME
+V10555,Yamuna Vardhan Enterprises Pvt Ltd,Cleaning Material,Haryana,06KUFFA4579O1ZK,Medium
+V10556,Prakriti Ekta Enterprises,Repairs and Maintenance,Delhi,07DLFPT6965X1ZL,Small
+V10557,Raksha Landscapes Pvt Ltd,Landscaping,Delhi,07BQYCO3096E1ZD,Medium
+V10558,Kesari Facility Management,Housekeeping Manpower,Haryana,06GOJFC5622L1Z5,Small
+V10559,Ojas Indus Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07QARPV7589H1Z1,Micro
+V10560,Panchjanya Dhruv Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06KDTCU1199Q1ZV,Micro
+V10561,Tejas Power Systems Pvt Ltd,DG Set AMC,Delhi,07LSVCX9065V1ZH,Not MSME
+V10562,Ekta Traders,Diesel Supply,Delhi,07AJCCN2708R1ZQ,Medium
+V10563,Sanjivani Facility Management Pvt Ltd,Housekeeping Manpower,Uttar Pradesh,09RJLPL9390S1ZH,Micro
+V10564,Saksham Landscapes Pvt Ltd,Landscaping,Delhi,07BSZPK0077Q1ZT,Micro
+V10565,Udaan Hygiene Solutions,Cleaning Material,Uttar Pradesh,09TXXFM0194J1ZO,Micro
+V10566,Tejas Fuels,Diesel Supply,Haryana,06BCCFB9364A1ZD,Micro
+V10567,Kailash Nirmal Engineering Works,Repairs and Maintenance,Haryana,06RNLCK0392L1ZM,Micro
+V10568,Shivalik Tejas Labs,Water Testing,Haryana,06PHFCY3267W1Z8,Medium
+V10569,Satluj Panchjanya Labs Pvt Ltd,Water Testing,Punjab,03UBOFM6336E1ZO,Medium
+V10570,Yamuna Trishul Facility Management,Housekeeping Manpower,Delhi,07PVMCS3046P1Z4,Micro
+V10571,Tejas Sarthak Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06PKRFY9957H1ZG,Not MSME
+V10572,Trishul Hygiene Solutions,Housekeeping Manpower,Haryana,06BUKFE2637I1ZC,Micro
+V10573,Amrit Facility Management Pvt Ltd,Housekeeping Manpower,Uttar Pradesh,09ULAFC9691R1ZX,Micro
+V10574,Nirmal Udaan Pest Solutions Pvt Ltd,Pest Control,Haryana,06FPSCI0967W1ZL,Small
+V10575,Nirmal Nirmal Labs,Water Testing,Haryana,06GECCF3159S1ZM,Not MSME
+V10576,Satluj Vasundhara Hygiene Solutions,Cleaning Material,Haryana,06JZVCG7641I1ZZ,Not MSME
+V10577,Trishul Agro Services Pvt Ltd,Landscaping,Haryana,06ZBZPQ3825O1ZR,Not MSME
+V10578,Ekta Vasundhara Pest Solutions Pvt Ltd,Pest Control,Haryana,06LIWFJ5377X1Z6,Micro
+V10579,Dhruv Kesari Landscapes Pvt Ltd,Landscaping,Haryana,06ZZIPB0597B1ZT,Micro
+V10580,Panchjanya Dhruv Engineering Works Pvt Ltd,Repairs and Maintenance,Delhi,07SXRFS2584O1ZX,
+V10581,Satluj Abhay Enterprises Pvt Ltd,Cleaning Material,Haryana,06QPJFP9251K1ZS,Micro
+V10582,Pratap Shivalik Fire Safety Systems,Fire AMC,Delhi,07ZYGCY4169Z1Z6,Micro
+V10583,Yamuna Kailash Hygiene Solutions Pvt Ltd,Cleaning Material,Delhi,07HPECW2374S1ZL,Not MSME
+V10584,Trishul Ojas Fire Safety Systems,Fire AMC,Haryana,06NPGFC5540X1ZV,Micro
+V10585,Shivalik Fire Safety Systems,Fire AMC,Haryana,06YYSPU3622Q1ZU,Micro
+V10586,Raksha Abhay Enterprises,Cleaning Material,Haryana,06MSHFA2045D1ZG,Micro
+V10587,Indus Sanjivani Labs Pvt Ltd,Water Testing,Haryana,06UUBFU0313X1ZO,Micro
+V10588,Ojas Indus Fuels,Diesel Supply,Haryana,06IFYPE2244V1Z2,Not MSME
+V10589,Indus Abhay Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07VAIFN4656M1ZO,Micro
+V10590,Panchjanya Vardhan Labs,Water Testing,Haryana,06SPVFY8289Q1ZW,Small
+V10591,Trishul Pratap Fuels,Diesel Supply,Delhi,07IFFCH5826C1ZH,
+V10592,Pratap Kailash Enterprises,Cleaning Material,Haryana,06PBBPD1702I1ZC,Not MSME
+V10593,Ekta Panchjanya Engineering Works,Repairs and Maintenance,Delhi,07ZXLCX3651M1ZG,Micro
+V10594,Garud Kesari Pest Solutions Pvt Ltd,Pest Control,Haryana,06YZZFT9225T1ZJ,Micro
+V10595,Ekta Sarthak Traders,Cleaning Material,Uttar Pradesh,09UOWPB2787S1ZJ,Not MSME
+V10596,Satluj Yamuna Pest Solutions,Pest Control,Delhi,07NRGCO9273B1ZZ,Small
+V10597,Sanjivani Manpower Solutions,Security Manpower,Delhi,07FWUCV5087H1ZX,
+V10598,Ojas Labs Pvt Ltd,Water Testing,Haryana,06XJRPJ0593B1ZT,Micro
+V10599,Vasundhara Aravind Enterprises,Repairs and Maintenance,Haryana,06QTFCZ4257Y1Z1,Medium
+V10600,Ojas Amrit Traders,Cleaning Material,Delhi,07THPPW3273S1ZI,Micro
+V10601,Saksham Udaan Pest Solutions,Pest Control,Haryana,06JBBFT2002E1ZK,Not MSME
+V10602,Saksham Labs,Water Testing,Haryana,06GCYPB1016W1ZB,Medium
+V10603,Amrit Aravind Engineering Works Pvt Ltd,Repairs and Maintenance,Uttar Pradesh,09AKJPZ6780R1ZZ,Not MSME
+V10604,Dhruv Agro Services Pvt Ltd,Landscaping,Haryana,06GKZCI2127S1ZR,Not MSME
+V10605,Prakriti Nirmal Enterprises,Cleaning Material,Haryana,06TMMFW0440S1ZZ,Small
+V10606,Indus Raksha Pest Solutions,Pest Control,Uttar Pradesh,09XNAFH7742L1ZV,Small
+V10607,Sanjivani Dhruv Traders,Cleaning Material,Rajasthan,08VOHCG4772E1ZQ,
+V10608,Udaan Garud Fuels,Diesel Supply,Delhi,07LNHPD2938P1ZG,Small
+V10609,Panchjanya Garud Hygiene Solutions Pvt Ltd,Housekeeping Manpower,Delhi,07SCOFA0937R1ZZ,Small
+V10610,Udaan Yamuna Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07QKQFR3335E1ZS,Not MSME
+V10611,Garud Abhay Pest Solutions,Pest Control,Delhi,07GPYCS2936A1ZB,Small
+V10612,Amrit Tejas Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06IIYCY5062O1ZW,
+V10613,Shivalik Yamuna Labs,Water Testing,Delhi,07JNRFQ3269G1ZK,Micro
+V10614,Pratap Trishul Facility Management,Housekeeping Manpower,Haryana,06IGCPB8237X1ZS,Medium
+V10615,Kesari Shivalik Pest Solutions,Pest Control,Haryana,06EFNFT4398Q1ZY,Small
+V10616,Aravind Nirmal Enterprises Pvt Ltd,Cleaning Material,Haryana,06KKXPZ5847J1ZV,Not MSME
+V10617,Trishul Panchjanya Pest Solutions,Pest Control,Haryana,06AWJCD4401S1ZB,Not MSME
+V10618,Garud Facility Management Pvt Ltd,Housekeeping Manpower,Uttar Pradesh,09MMSFV0354S1ZB,Small
+V10619,Tejas Udaan Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06ENEPJ4792Y1ZA,Small
+V10620,Sanjivani Nirmal Enterprises,Repairs and Maintenance,Haryana,06LEUPA2740S1ZC,Micro
+V10621,Amrit Garud Labs,Water Testing,Haryana,06ZUZPC1284P1Z4,Micro
+V10622,Ekta Dhruv Landscapes,Landscaping,Haryana,06JOUPL1300E1ZR,
+V10623,Vasundhara Ekta Traders,Cleaning Material,Delhi,07JMLPC3480T1ZH,Not MSME
+V10624,Raksha Sanjivani Enterprises,Repairs and Maintenance,Uttar Pradesh,09RIUFS8478I1ZD,Small
+V10625,Shivalik Vardhan Enterprises,Cleaning Material,Haryana,06CBECK5297H1ZI,Medium
+V10626,Yamuna Prakriti Engineering Works,Repairs and Maintenance,Uttar Pradesh,09ZXUFT3539A1ZM,Medium
+V10627,Ekta Abhay Pest Solutions,Pest Control,Delhi,07FVHPA6514B1ZB,Not MSME
+V10628,Satluj Vardhan Agro Services,Landscaping,Delhi,07GMSFB8706B1ZZ,Not MSME
+V10629,Navdeep Elevator Care,Lift AMC,Haryana,06UXLFG2891A1ZA,
+V10630,Garud Fuels Pvt Ltd,Diesel Supply,Punjab,03QGHCG6551B1Z3,Not MSME
+V10631,Vardhan Facility Services,Housekeeping Manpower,Haryana,06ZMJPV4372F1Z4,Not MSME
+V10632,Navdeep Sanjivani Landscapes,Landscaping,Haryana,06WNJPB2606N1ZS,Micro
+V10633,Tejas Vardhan Traders,Cleaning Material,Delhi,07QAUFM6063F1Z6,Micro
+V10634,Yamuna Trishul Pest Solutions,Pest Control,Delhi,07WUNFB7278T1ZJ,Small
+V10635,Indus Raksha Hygiene Solutions,Cleaning Material,Punjab,03KRNCJ3750N1ZH,Small
+V10636,Satluj Facility Management,Housekeeping Manpower,Rajasthan,08LSLFO8955Y1ZG,
+V10637,Udaan Kailash Hygiene Solutions,Housekeeping Manpower,Delhi,07BOHCY0598Z1ZP,Micro
+V10638,Kesari Tejas Pest Solutions Pvt Ltd,Pest Control,Haryana,06LGQFK3112O1ZE,Small
+V10639,Yamuna Satluj Enterprises,Cleaning Material,Delhi,07OZUPH2860J1ZY,Medium
+V10640,Raksha Vasundhara Pest Solutions Pvt Ltd,Pest Control,Haryana,06IHACN4815T1Z3,Small
+V10641,Navdeep Sarthak Enterprises,Cleaning Material,Haryana,06QCDPJ2166Q1ZE,Micro
+V10642,Ekta Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06BAMPV3532V1Z7,Micro
+V10643,Shivalik Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06AJQCR2540X1Z0,Micro
+V10644,Sarthak Agro Services Pvt Ltd,Landscaping,Rajasthan,08SJMCF6628G1ZN,
+V10645,Shivalik Tejas Engineering Works,Repairs and Maintenance,Uttar Pradesh,09BPAPH5236Y1ZI,Micro
+V10646,Kesari Facility Services Pvt Ltd,Housekeeping Manpower,Uttar Pradesh,09EBZPL0128L1ZI,Micro
+V10647,Kesari Security Services,Security Manpower,Delhi,07IMPPV5574G1ZV,Not MSME
+V10648,Vardhan Aravind Labs,Water Testing,Uttar Pradesh,09LQNPV5590S1ZU,Not MSME
+V10649,Nirmal Sanjivani Pest Solutions,Pest Control,Haryana,06WVXPM2079N1Z6,Micro
+V10650,Ekta Indus Facility Services Pvt Ltd,Housekeeping Manpower,Uttar Pradesh,09QUDFA1686S1ZN,Not MSME
+V10651,Vasundhara Garud Facility Management,Housekeeping Manpower,Haryana,06WZMPA3441H1ZA,Micro
+V10652,Nirmal Tejas Enterprises,Repairs and Maintenance,Haryana,06COBFB1465C1ZP,Not MSME
+V10653,Aravind Shivalik Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06RYMPB3563A1ZN,Not MSME
+V10654,Indus Garud Labs,Water Testing,Haryana,06WRIPI3627W1ZC,
+V10655,Udaan Indus Elevator Care,Lift AMC,Rajasthan,08KPFCZ8600S1ZW,
+V10656,Trishul Udaan Engineering Works,Repairs and Maintenance,Haryana,06CJYCR8663I1ZY,Micro
+V10657,Vardhan Tejas Fuels,Diesel Supply,Haryana,06QBRFT1857I1Z5,Medium
+V10658,Indus Tejas Hygiene Solutions,Housekeeping Manpower,Uttar Pradesh,09THLPH8809M1ZD,Not MSME
+V10659,Maritar Traders,Cleaning Material,Haryana,06ZFYPF9372N1ZE,Micro
+V10660,Dhruv Udaan Manpower Solutions Pvt Ltd,Security Manpower,Haryana,06DRICX2188B1ZU,
+V10661,Kesari Amrit Manpower Solutions Pvt Ltd,Security Manpower,Rajasthan,08CHEFN4965O1Z1,Micro
+V10662,Navdeep Garud Agro Services,Landscaping,Delhi,07RACFX1003T1Z3,
+V10663,Kesari Landscapes,Landscaping,Uttar Pradesh,09ZOUFL6909Y1Z2,Small
+V10664,Panchjanya Yamuna Hygiene Solutions,Cleaning Material,Haryana,06BXJCS2124S1ZN,Medium
+V10665,Shivalik Manpower Solutions Pvt Ltd,Security Manpower,Delhi,07CLJPW3702U1ZN,Not MSME
+V10666,Trishul Fuels Pvt Ltd,Diesel Supply,Delhi,07VIMFM1627A1ZG,Medium
+V10667,Hemkunt Udaan Enterprises,Repairs and Maintenance,Haryana,06FSTPJ2781A1ZC,Not MSME
+V10668,Raksha Abhay Manpower Solutions Pvt Ltd,Security Manpower,Haryana,06EPVCF6069Z1ZZ,Not MSME
+V10669,Yamuna Udaan Enterprises Pvt Ltd,Cleaning Material,Delhi,07DRBFR3090N1ZB,Not MSME
+V10670,Vasundhara Garud Pest Solutions,Pest Control,Haryana,06MAZCH5076Q1ZK,Not MSME
+V10671,Vasundhara Satluj Hygiene Solutions,Cleaning Material,Delhi,07NFDCP3188V1ZC,Micro
+V10672,Saksham Abhay Power Systems,DG Set AMC,Delhi,07AGXCG1786S1ZM,
+V10673,Dhruv Kailash Traders,Cleaning Material,Haryana,06ZMBCQ3351O1Z1,Micro
+V10674,Trishul Sanjivani Pest Solutions,Pest Control,Delhi,07QKFPG8701U1Z7,Not MSME
+V10675,Panchjanya Tejas Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06VJWFQ2318V1ZS,Small
+V10676,Panchjanya Hemkunt Traders Pvt Ltd,Cleaning Material,Haryana,06CQSPL2867Z1ZO,Not MSME
+V10677,Amrit Power Systems,DG Set AMC,Haryana,06CBIFA9674L1Z7,Micro
+V10678,Trishul Aravind Traders,Cleaning Material,Delhi,07IPKPY9470Y1Z0,Not MSME
+V10679,Abhay Yamuna Security Services,Security Manpower,Haryana,06NFWPQ3358V1ZW,Micro
+V10680,Pratap Saksham Hygiene Solutions,Cleaning Material,Haryana,06XQDCJ0785B1Z9,Small
+V10681,Abhay Sarthak Hygiene Solutions,Cleaning Material,Uttar Pradesh,09EVTFN1518Z1ZS,Small
+V10682,Trishul Abhay Labs Pvt Ltd,Water Testing,Uttar Pradesh,09HPPCO0356O1ZR,Not MSME
+V10683,Navdeep Labs,Water Testing,Punjab,03DTSPP4502N1ZH,Micro
+V10684,Sanjivani Navdeep Fire Safety Systems Pvt Ltd,Fire AMC,Delhi,07YHXPK1048W1ZR,Micro
+V10685,Aravind Dhruv Agro Services Pvt Ltd,Landscaping,Haryana,06SVQPG8490B1ZD,Not MSME
+V10686,Prakriti Navdeep Enterprises,Repairs and Maintenance,Haryana,06JMBCD9754T1ZX,
+V10687,Panchjanya Raksha Pest Solutions,Pest Control,Haryana,06UWWFN7371R1ZW,Micro
+V10688,Panchjanya Fuels,Diesel Supply,Delhi,07DQNCQ5290J1Z7,Micro
+V10689,Pratap Kesari Pest Solutions Pvt Ltd,Pest Control,Haryana,06BPGFB4074T1ZS,Medium
+V10690,Amrit Aravind Enterprises,Repairs and Maintenance,Delhi,07TLJCM1780J1ZX,
+V10691,Indus Yamuna Facility Management,Housekeeping Manpower,Haryana,06QBUPD1977S1ZO,Micro
+V10692,Kailash Agro Services,Landscaping,Delhi,07TPYPF3151W1ZE,Small
+V10693,Sarthak Ekta Traders,Cleaning Material,Haryana,06MKKFV5889C1ZE,Micro
+V10694,Navdeep Raksha Fire Safety Systems Pvt Ltd,Fire AMC,Haryana,06DVXPM4848P1ZK,Not MSME
+V10695,Kailash Navdeep Fuels Pvt Ltd,Diesel Supply,Haryana,06WSZPA3950X1ZF,Not MSME
+V10696,Amrit Vasundhara Enterprises,Repairs and Maintenance,Haryana,06CQVPC6858L1ZC,Medium
+V10697,Yamuna Facility Services Pvt Ltd,Housekeeping Manpower,Uttar Pradesh,09AMOCK5205W1ZC,Micro
+V10698,Udaan Ojas Labs,Water Testing,Uttar Pradesh,09WOCPB6835P1ZY,Medium
+V10699,Tejas Udaan Traders,Cleaning Material,Delhi,07HAPCC1306Q1ZX,Small
+V10700,Vasundhara Raksha Labs Pvt Ltd,Water Testing,Haryana,06IOICM9187V1ZN,Not MSME
+V10701,Aravind Manpower Solutions Pvt Ltd,Security Manpower,Delhi,07KVEPF8213F1ZZ,Not MSME
+V10702,Sanjivani Tejas Pest Solutions,Pest Control,Delhi,07PNRPR8316U1ZE,Medium
+V10703,Indus Pratap Pest Solutions,Pest Control,Delhi,07UDRPN6668L1Z5,Small
+V10704,Saksham Sarthak Traders,Cleaning Material,Haryana,06VGMPV1272C1ZY,Small
+V10705,Dhruv Navdeep Fuels,Diesel Supply,Haryana,06ECUFI7700R1ZR,
+V10706,Aravind Traders,Diesel Supply,Haryana,06JIRPY2913W1ZX,Micro
+V10707,Raksha Satluj Elevator Care Pvt Ltd,Lift AMC,Delhi,07QBJFT6880K1Z2,Not MSME
+V10708,Kesari Nirmal Pest Solutions,Pest Control,Haryana,06CUUCG4193P1ZZ,Small
+V10709,Aravind Garud Landscapes,Landscaping,Haryana,06KXCFM9748I1ZN,Micro
+V10710,Hemkunt Vasundhara Facility Services,Housekeeping Manpower,Haryana,06LTPPI5961Y1ZI,
+V10711,Satluj Vasundhara Pest Solutions Pvt Ltd,Pest Control,Haryana,06QJJCC3463O1ZM,Small
+V10712,Prakriti Prakriti Facility Services,Housekeeping Manpower,Haryana,06CTSCO5338Q1ZY,
+V10713,Prakriti Prakriti Manpower Solutions,Security Manpower,Uttar Pradesh,09VGSFN8378Q1ZI,Micro
+V10714,Vardhan Prakriti Enterprises Pvt Ltd,Cleaning Material,Haryana,06YNYCR3804T1ZS,Micro
+V10715,Vasundhara Facility Services,Housekeeping Manpower,Haryana,06SHPPZ3654T1Z1,Small
+V10716,Indus Nirmal Hygiene Solutions,Housekeeping Manpower,Rajasthan,08LHZPA7746Z1ZE,Small
+V10717,Prakriti Sarthak Engineering Works,Repairs and Maintenance,Haryana,06XZCFU1389L1Z4,Not MSME
+V10718,Trishul Nirmal Manpower Solutions,Security Manpower,Haryana,06KRKPD6281U1Z5,
+V10719,Satluj Trishul Agro Services Pvt Ltd,Landscaping,Haryana,06FCZPW4811A1ZD,Not MSME
+V10720,Shivalik Navdeep Hygiene Solutions,Cleaning Material,Haryana,06ZSEFQ1918W1ZE,Not MSME
+V10721,Amrit Abhay Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06NVFFH3315W1ZS,Small
+V10722,Nirmal Elevator Care Pvt Ltd,Lift AMC,Punjab,03LFJFM2711H1ZC,Not MSME
+V10723,Vasundhara Ekta Enterprises,Cleaning Material,Haryana,06HTWPT6276Q1ZG,Not MSME
+V10724,Abhay Hygiene Solutions Pvt Ltd,Cleaning Material,Delhi,07OEOFF1455W1Z8,
+V10725,Sarthak Shivalik Pest Solutions,Pest Control,Delhi,07OPFCN5861L1ZC,Not MSME
+V10726,Raksha Security Services,Security Manpower,Uttar Pradesh,09WORCN1564S1Z0,Micro
+V10727,Tejas Elevator Care Pvt Ltd,Lift AMC,Haryana,06ZLMPC0507X1ZO,Micro
+V10728,Saksham Sarthak Pest Solutions Pvt Ltd,Pest Control,Rajasthan,08HJNPC6712T1ZI,Micro
+V10729,Udaan Garud Enterprises Pvt Ltd,Cleaning Material,Haryana,06NDTCG3127Z1Z6,Not MSME
+V10730,Raksha Trishul Pest Solutions,Pest Control,Haryana,06VMYPU6836X1ZE,
+V10731,Navdeep Trishul Pest Solutions Pvt Ltd,Pest Control,Delhi,07OZTFB6123D1ZA,Small
+V10732,Panchjanya Tejas Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06EZVFS7401T1ZX,Micro
+V10733,Panchjanya Yamuna Labs Pvt Ltd,Water Testing,Uttar Pradesh,09AQRPJ5566V1ZF,
+V10734,Raksha Hemkunt Traders,Cleaning Material,Haryana,06OTOPS8219M1ZF,Not MSME
+V10735,Dhruv Trishul Traders,Cleaning Material,Haryana,06LUYFV8610Q1Z0,Not MSME
+V10736,Panchjanya Raksha Landscapes Pvt Ltd,Landscaping,Uttar Pradesh,09KIRCM2650O1ZC,Micro
+V10737,Dhruv Ojas Labs Pvt Ltd,Water Testing,Delhi,07TEDFV2816G1Z3,Not MSME
+V10738,Ojas Abhay Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07DEGPO6275L1ZH,Small
+V10739,Satluj Panchjanya Facility Management,Housekeeping Manpower,Delhi,07OKSCW6595J1Z9,Micro
+V10740,Ekta Shivalik Facility Management Pvt Ltd,Housekeeping Manpower,Haryana,06SGAPU2264G1ZD,Micro
+V10741,Aravind Nirmal Hygiene Solutions Pvt Ltd,Housekeeping Manpower,Haryana,06GYIFK2181N1ZT,Micro
+V10742,Udaan Nirmal Engineering Works,Repairs and Maintenance,Delhi,07NGCCL8770V1ZV,Not MSME
+V10743,Nirmal Labs,Water Testing,Haryana,06GRXCU3394P1ZO,
+V10744,Ojas Shivalik Facility Management,Housekeeping Manpower,Haryana,06ZAOFM8336G1ZM,Not MSME
+V10745,Raksha Amrit Pest Solutions,Pest Control,Uttar Pradesh,09UNUCK5461D1Z9,Small
+V10746,Vasundhara Panchjanya Enterprises Pvt Ltd,Repairs and Maintenance,Uttar Pradesh,09AKTCA1218N1ZV,Not MSME
+V10747,Saksham Fuels,Diesel Supply,Haryana,06JIOFV9501W1Z3,Not MSME
+V10748,Garud Ojas Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06CLIPC1320X1ZO,Not MSME
+V10749,Panchjanya Agro Services Pvt Ltd,Landscaping,Haryana,06IVNFH7569A1Z4,Not MSME
+V10750,Sanjivani Saksham Landscapes Pvt Ltd,Landscaping,Uttar Pradesh,09LKNCN9331A1ZA,Micro
+V10751,Kesari Hemkunt Fire Safety Systems,Fire AMC,Delhi,07QXNPN2966U1ZT,Micro
+V10752,Kesari Nirmal Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06DUNPA9006H1ZC,Medium
+V10753,Vasundhara Dhruv Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06FNIFH8169B1ZD,
+V10754,Garud Yamuna Enterprises,Cleaning Material,Delhi,07WAJFM4659Y1ZE,Not MSME
+V10755,Indus Dhruv Traders Pvt Ltd,Diesel Supply,Uttar Pradesh,09AOHPU3288N1Z4,
+V10756,Tejas Kesari Labs,Water Testing,Haryana,06GDEPB0355X1ZF,Small
+V10757,Amrit Fire Safety Systems,Fire AMC,Uttar Pradesh,09XRWCY2313C1ZX,Not MSME
+V10758,Sarthak Security Services Pvt Ltd,Security Manpower,Haryana,06OCPCW1604Q1Z6,Not MSME
+V10759,Ekta Hemkunt Security Services,Security Manpower,Delhi,07BIUPE6953W1Z6,Micro
+V10760,Prakriti Udaan Facility Services,Housekeeping Manpower,Haryana,06VIYFZ3453Q1ZV,Small
+V10761,Vardhan Shivalik Landscapes,Landscaping,Haryana,06RUPCC8738W1ZT,
+V10762,Prakriti Ekta Labs Pvt Ltd,Water Testing,Delhi,07QEMCY8385M1Z8,Not MSME
+V10763,Yamuna Dhruv Enterprises,Repairs and Maintenance,Uttar Pradesh,09OYBPR8575N1ZU,Medium
+V10764,Prakriti Facility Services,Housekeeping Manpower,Haryana,06QXFFG6256R1ZZ,Micro
+V10765,Prakriti Hemkunt Manpower Solutions,Security Manpower,Uttar Pradesh,09WJBCM0995A1ZA,Medium
+V10766,Dhruv Shivalik Engineering Works,Repairs and Maintenance,Delhi,07CLFCX7746Y1ZT,Micro
+V10767,Navdeep Manpower Solutions,Security Manpower,Uttar Pradesh,09VWNCV4556X1Z8,Small
+V10768,Ekta Raksha Traders,Cleaning Material,Delhi,07YYCFB6435B1ZI,
+V10769,Amrit Abhay Hygiene Solutions Pvt Ltd,Cleaning Material,Haryana,06QCPCF2359N1ZU,
+V10770,Aravind Udaan Labs,Water Testing,Haryana,06RLVFP4095W1ZS,Not MSME
+V10771,Aravind Kailash Fuels Pvt Ltd,Diesel Supply,Haryana,06ZEMCQ8149A1ZV,Medium
+V10772,Pratap Security Services,Security Manpower,Haryana,06TBVPI0933D1Z6,Not MSME
+V10773,Ekta Panchjanya Labs,Water Testing,Haryana,06YOWPN8083M1ZH,Not MSME
+V10774,Pratap Nirmal Enterprises,Cleaning Material,Haryana,06WZQCU2464D1ZN,Not MSME
+V10775,Dhruv Landscapes,Landscaping,Haryana,06RTWCF9963Z1ZD,Not MSME
+V10776,Aravind Facility Services,Housekeeping Manpower,Delhi,07UOTCS9956A1Z3,Not MSME
+V10777,Ojas Raksha Traders Pvt Ltd,Cleaning Material,Haryana,06SNAPI9940N1ZM,
+V10778,Indus Sarthak Traders,Cleaning Material,Delhi,07EWDCP6975H1ZS,Micro
+V10779,Shivalik Landscapes Pvt Ltd,Landscaping,Haryana,06PLLFQ0609E1Z5,Small
+V10780,Yamuna Vardhan Security Services,Security Manpower,Delhi,07GPFPX2454P1Z1,Small
+V10781,Shivalik Pratap Security Services Pvt Ltd,Security Manpower,Haryana,06ULYFB3354D1Z3,Micro
+V10782,Kailash Sanjivani Pest Solutions,Pest Control,Haryana,06BWVPE3094R1ZV,Micro
+V10783,Saksham Vardhan Labs Pvt Ltd,Water Testing,Haryana,06VDQCK9055V1Z1,Not MSME
+V10784,Raksha Facility Services,Housekeeping Manpower,Haryana,06JQYPI6137W1ZF,Not MSME
+V10785,Panchjanya Garud Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07WNPCF8521Q1ZS,Not MSME
+V10786,Udaan Saksham Hygiene Solutions Pvt Ltd,Cleaning Material,Delhi,07UZNPB7065S1Z4,Medium
+V10787,Satluj Hemkunt Enterprises Pvt Ltd,Repairs and Maintenance,Delhi,07ZGXCS9380L1Z9,
+V10788,Vasundhara Vasundhara Traders,Cleaning Material,Punjab,03SHRCE5498R1Z3,Not MSME
+V10789,Abhay Satluj Enterprises,Cleaning Material,Haryana,06BOKPS1786J1Z1,Micro
+V10790,Satluj Fire Safety Systems,Fire AMC,Punjab,03KREPP7040J1Z2,Small
+V10791,Sanjivani Vasundhara Agro Services Pvt Ltd,Landscaping,Haryana,06YAYFW4227F1Z8,
+V10792,Nirmal Ekta Facility Services Pvt Ltd,Housekeeping Manpower,Haryana,06JEMPD3823P1ZR,Micro
+V10793,Amrit Shivalik Labs,Water Testing,Haryana,06JYDFL5755J1ZG,Not MSME
+V10794,Kesari Garud Facility Services,Housekeeping Manpower,Delhi,07CDFCV1619W1Z3,
+V10795,Vardhan Prakriti Elevator Care,Lift AMC,Haryana,06QCECL9881M1Z0,Micro
+V10796,Garud Prakriti Enterprises Pvt Ltd,Cleaning Material,Haryana,06HDICU5036V1Z5,Not MSME
+V10797,Udaan Yamuna Labs,Water Testing,Haryana,06SCNPB6075D1ZX,Not MSME
+V10798,Amrit Tejas Labs Pvt Ltd,Water Testing,Rajasthan,08FWFFR7689Q1Z2,Micro
+V10799,Aravind Prakriti Engineering Works,Repairs and Maintenance,Haryana,06QMOFX4638V1Z8,Small
+V10800,Nirmal Satluj Elevator Care,Lift AMC,Delhi,07XSWFH7384M1Z0,Micro
+V10801,Hemkunt Elevator Care,Lift AMC,Haryana,06CCHPE6335X1Z1,
+V10802,Vasundhara Nirmal Power Systems,DG Set AMC,Haryana,06QUUFK8122R1ZD,Medium
+V10803,Sarthak Pest Solutions Pvt Ltd,Pest Control,Punjab,03NGYCO8069R1ZK,Not MSME
+V10804,Amrit Satluj Labs Pvt Ltd,Water Testing,Haryana,06EDJPF0470S1ZI,Not MSME
+V10805,Shivalik Abhay Labs,Water Testing,Haryana,06VSIFW9891G1ZO,Micro
+V10806,Nirmal Landscapes Pvt Ltd,Landscaping,Delhi,07DAVPR9640H1ZC,Not MSME
+V10807,Hemkunt Raksha Traders,Cleaning Material,Delhi,07UNEPR6047O1ZS,Medium
+V10808,Udaan Sanjivani Pest Solutions,Pest Control,Haryana,06IAAPV0859P1Z7,Not MSME
+V10809,Kesari Vasundhara Engineering Works,DG Set AMC,Punjab,03JHHFE9167Y1ZQ,Not MSME
+V10810,Navdeep Garud Enterprises,Repairs and Maintenance,Punjab,03NJJFK0687G1ZS,Small
+V10811,Vasundhara Tejas Facility Services,Housekeeping Manpower,Haryana,06SXBFL5934A1ZL,
+V10812,Saksham Hemkunt Enterprises,Cleaning Material,Haryana,06QCUCT4334R1ZG,Micro
+V10813,Saksham Yamuna Manpower Solutions Pvt Ltd,Security Manpower,Delhi,07XGGPL3504N1ZQ,Not MSME
+V10814,Panchjanya Elevator Care,Lift AMC,Delhi,07HBLPG4143T1ZS,Micro
+V10815,Dhruv Manpower Solutions Pvt Ltd,Security Manpower,Uttar Pradesh,09DSPPW1454L1Z8,Not MSME
+V10816,Udaan Landscapes Pvt Ltd,Landscaping,Delhi,07PGCCK4068I1Z3,Small
+V10817,Vasundhara Tejas Engineering Works,Lift AMC,Haryana,06JZQCR4703J1ZI,Not MSME
+V10818,Indus Kailash Fuels,Diesel Supply,Uttar Pradesh,09RGKCG4988B1ZU,Micro
+V10819,Abhay Navdeep Facility Management Pvt Ltd,Housekeeping Manpower,Haryana,06IFSCV6015A1ZD,Not MSME
+V10820,Aravind Vasundhara Labs Pvt Ltd,Water Testing,Haryana,06POQPO8925T1ZD,Micro
+V10821,Sanjivani Security Services,Security Manpower,Haryana,06NTUFG0292C1ZM,
+V10822,Sarthak Tejas Pest Solutions Pvt Ltd,Pest Control,Haryana,06CMBFK1530J1ZV,Not MSME
+V10823,Udaan Elevator Care,Lift AMC,Delhi,07GPJPL8306F1ZU,Micro
+V10824,Pratap Navdeep Engineering Works Pvt Ltd,Lift AMC,Uttar Pradesh,09WCRPA0510P1ZP,Micro
+V10825,Tejas Pratap Pest Solutions,Pest Control,Uttar Pradesh,09AFWCD7897C1ZT,Micro
+V10826,Shivalik Indus Fire Safety Systems,Fire AMC,Uttar Pradesh,09PSEPT6514I1ZH,Small
+V10827,Vardhan Tejas Agro Services,Landscaping,Haryana,06MIYFE0227W1ZN,Not MSME
+V10828,Indus Navdeep Traders Pvt Ltd,Cleaning Material,Haryana,06BIPCN1081Q1ZS,Not MSME
+V10829,Udaan Prakriti Labs,Water Testing,Haryana,06NIRFE3216R1ZZ,Not MSME
+V10830,Panchjanya Pratap Fire Safety Systems,Fire AMC,Haryana,06TRBPP2194I1ZV,Medium
+V10831,Kailash Ojas Pest Solutions Pvt Ltd,Pest Control,Haryana,06MZVCT0877Y1ZN,Micro
+V10832,Garud Raksha Enterprises,Cleaning Material,Haryana,06KMJCS7262J1Z7,Micro
+V10833,Sarthak Kesari Hygiene Solutions,Housekeeping Manpower,Haryana,06SPXPW8612Q1Z3,Small
+V10834,Prakriti Nirmal Labs,Water Testing,Haryana,06NYOFF3947P1ZN,
+V10835,Kailash Fire Safety Systems,Fire AMC,Delhi,07KEXFS4499M1ZB,Small
+V10836,Navdeep Kesari Enterprises,Repairs and Maintenance,Haryana,06FWVFO9358R1ZF,
+V10837,Nirmal Kailash Fire Safety Systems Pvt Ltd,Fire AMC,Uttar Pradesh,09TQACY1793W1ZN,Micro
+V10838,Sarthak Facility Management Pvt Ltd,Housekeeping Manpower,Delhi,07NUACR2968W1ZU,Not MSME
+V10839,Saksham Indus Facility Services,Housekeeping Manpower,Delhi,07WGZCS5504R1Z2,Medium
+V10840,Navdeep Ekta Enterprises,Repairs and Maintenance,Delhi,07MHUFN4690D1ZU,Micro
+V10841,Amrit Tejas Enterprises,Repairs and Maintenance,Haryana,06NHZFB4542L1ZO,Small
+V10842,Dhruv Saksham Engineering Works Pvt Ltd,Repairs and Maintenance,Delhi,07IJFFV5964Q1ZL,Micro
+V10843,Sarthak Hygiene Solutions Pvt Ltd,Cleaning Material,Uttar Pradesh,09FPOCA6514X1ZI,Small
+V10844,Nirmal Sanjivani Labs,Water Testing,Delhi,07QWXFT8463O1ZY,Small
+V10845,Hemkunt Yamuna Enterprises Pvt Ltd,Cleaning Material,Haryana,06JXMPC0469U1ZF,Not MSME
+V10846,Satluj Kailash Pest Solutions,Pest Control,Haryana,06LFKCE5439I1ZR,Not MSME
+V10847,Kailash Raksha Labs Pvt Ltd,Water Testing,Delhi,07UHVFW9354L1Z1,Medium
+V10848,Kesari Shivalik Manpower Solutions,Security Manpower,Haryana,06FYYCD8757D1Z6,Not MSME
+V10849,Dhruv Sanjivani Engineering Works,Repairs and Maintenance,Haryana,06VTFCG1234J1ZH,Not MSME
+V10850,Panchjanya Trishul Pest Solutions Pvt Ltd,Pest Control,Haryana,06PXJPX8738H1ZW,
+V10851,Yamuna Sanjivani Engineering Works,Repairs and Maintenance,Delhi,07NWGFL1772B1Z7,Medium
+V10852,Dhruv Kesari Labs,Water Testing,Haryana,06GIACH0997A1Z5,Medium
+V10853,Kesari Raksha Traders,Cleaning Material,Haryana,06GTIFR9376Y1ZZ,Not MSME
+V10854,Ekta Vardhan Power Systems Pvt Ltd,DG Set AMC,Haryana,06IRUFE6309Y1ZQ,Not MSME
+V10855,Panchjanya Power Systems Pvt Ltd,DG Set AMC,Haryana,06NPKPO3297G1ZR,Micro
+V10856,Panchjanya Indus Hygiene Solutions,Cleaning Material,Delhi,07RMSPO7152I1ZI,Small
+V10857,Navdeep Navdeep Labs,Water Testing,Delhi,07SORCG5105C1ZA,Small
+V10858,Kesari Aravind Engineering Works,Repairs and Maintenance,Haryana,06EQDCE9599M1ZD,
+V10859,Saksham Udaan Hygiene Solutions Pvt Ltd,Cleaning Material,Delhi,07EHVCI0590C1ZN,Micro
+V10860,Navdeep Kesari Traders Pvt Ltd,Diesel Supply,Haryana,06GDTPL8461M1ZI,
+V10861,Indus Manpower Solutions,Security Manpower,Delhi,07BAQCI1042T1ZI,Not MSME
+V10862,Saksham Sarthak Manpower Solutions,Security Manpower,Delhi,07NCBCQ5783P1ZS,
+V10863,Ojas Trishul Manpower Solutions,Security Manpower,Delhi,07VZUFR8664H1ZQ,Micro
+V10864,Raksha Yamuna Enterprises,Cleaning Material,Haryana,06VHCFS7002G1ZR,
+V10865,Sarthak Nirmal Enterprises,Repairs and Maintenance,Rajasthan,08XONPZ0968X1ZH,Small
+V10866,Hemkunt Garud Hygiene Solutions,Housekeeping Manpower,Delhi,07FFWFT1642T1ZA,Not MSME
+V10867,Vardhan Nirmal Engineering Works,Repairs and Maintenance,Uttar Pradesh,09WQECY2000R1Z6,
+V10868,Dhruv Facility Management Pvt Ltd,Housekeeping Manpower,Haryana,06EGMPX8015M1ZC,Not MSME
+V10869,Vasundhara Yamuna Traders,Diesel Supply,Haryana,06DJAFU9099S1Z0,
+V10870,Saksham Yamuna Traders Pvt Ltd,Diesel Supply,Haryana,06XPHFD7284T1Z8,Micro
+V10871,Amrit Nirmal Traders,Cleaning Material,Delhi,07COVCO2905Q1Z2,Small
+V10872,Satluj Udaan Hygiene Solutions,Housekeeping Manpower,Haryana,06HUFCP8899J1ZI,Not MSME
+V10873,Ojas Vasundhara Hygiene Solutions,Cleaning Material,Delhi,07WGZPA1406J1Z5,Not MSME
+V10874,Sarthak Sanjivani Pest Solutions,Pest Control,Punjab,03GAFPC2453S1ZZ,Medium
+V10875,Panchjanya Prakriti Traders,Cleaning Material,Delhi,07LPKFM6023P1ZY,Micro
+V10876,Hemkunt Hemkunt Enterprises Pvt Ltd,Repairs and Maintenance,Haryana,06FCUCJ1092N1ZQ,
+V10877,Tejas Panchjanya Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06GCNFS9555E1ZD,Small
+V10878,Aravind Indus Hygiene Solutions,Housekeeping Manpower,Delhi,07WPLPS5565S1ZD,
+V10879,Saksham Ojas Enterprises,Cleaning Material,Haryana,06VOVCS9456P1ZE,Small
+V10880,Saksham Vasundhara Fire Safety Systems Pvt Ltd,Fire AMC,Haryana,06PTQCW5409R1ZS,
+V10881,Vardhan Sarthak Landscapes,Landscaping,Punjab,03GSNPI5677B1ZK,Small
+V10882,Dhruv Security Services Pvt Ltd,Security Manpower,Rajasthan,08WBGCN2797F1ZD,Micro
+V10883,Ojas Garud Agro Services,Landscaping,Haryana,06JQHPX1951W1ZR,Not MSME
+V10884,Saksham Trishul Pest Solutions,Pest Control,Uttar Pradesh,09GEEPE5286F1ZO,Micro
+V10885,Amrit Raksha Hygiene Solutions,Cleaning Material,Delhi,07JWOPK9285R1ZS,Small
+V10886,Abhay Elevator Care Pvt Ltd,Lift AMC,Haryana,06AVLFP5012H1Z5,Micro
+V10887,Garud Dhruv Fuels,Diesel Supply,Haryana,06HTCPG9152J1ZQ,Micro
+V10888,Aravind Sarthak Security Services Pvt Ltd,Security Manpower,Delhi,07WRLCF6715A1ZI,Small
+V10889,Pratap Tejas Labs Pvt Ltd,Water Testing,Uttar Pradesh,09QJTCD3545L1ZT,Not MSME
+V10890,Navdeep Facility Management,Housekeeping Manpower,Uttar Pradesh,09UWCCI9690O1ZR,Small
+V10891,Saksham Vasundhara Engineering Works Pvt Ltd,Repairs and Maintenance,Haryana,06ICQPI4574S1Z3,Small
+V10892,Sanjivani Hemkunt Landscapes,Landscaping,Delhi,07FIYPD6174Q1Z8,Micro
+V10893,Ekta Manpower Solutions,Security Manpower,Delhi,07OHEFI8404R1ZD,Not MSME
+V10894,Tejas Ojas Enterprises Pvt Ltd,Cleaning Material,Haryana,06DKLPN1851S1Z4,Micro
+V10895,Trishul Amrit Enterprises,Repairs and Maintenance,Delhi,07HDVFR8124N1ZK,
+V10896,Sarthak Amrit Pest Solutions,Pest Control,Haryana,06APFCX2930W1ZE,
+V10897,Amrit Tejas Pest Solutions Pvt Ltd,Pest Control,Uttar Pradesh,09NCDPU7009L1ZW,Not MSME
+V10898,Garud Amrit Traders,Diesel Supply,Delhi,07PIXCQ2572D1ZV,
+V10899,Hemkunt Vardhan Labs Pvt Ltd,Water Testing,Haryana,06UDSCD0855S1Z4,Small
+V10900,Navdeep Udaan Enterprises,Cleaning Material,Haryana,06AZRCA9403W1ZY,Not MSME
