@@ -1,0 +1,11 @@
+code,lever,setting,save,ms_late,ms_pct,p90,p90_inv,over,bills
+pay0,Pay on the first run after posting,list closes the same day (cut-off 0),3.716,370,7.246,42.0,50.0,802,7417
+pay1,Pay on the first run after posting,list closes 1 day before (cut-off 1),2.748,401,7.854,43.0,51.0,868,5662
+pay2,Pay on the first run after posting,list closes 2 days before (cut-off 2),1.969,430,8.421,44.0,52.0,928,4115
+queue,Balanced AP pick order,AP-1 matched to the other four,1.669,414,8.108,43.0,52.0,897,4221
+in3,Three intake rules,residual delay 3 days,0.24,497,9.734,46.0,54.0,1092,118
+in1,Three intake rules,residual delay 1 day,0.263,497,9.734,46.0,54.0,1092,121
+inopt,"Intake rules, optimistic","all layer A and B queries, residual 1 day",0.912,414,8.108,44.0,52.0,930,403
+low,All three combined,"cut-off 2, balanced order, residual 3",3.936,303,5.934,40.0,48.0,653,6690
+mid,All three combined,"cut-off 1, balanced order, residual 1",4.75,288,5.64,39.0,47.0,617,7601
+high,All three combined,"cut-off 0, balanced order, optimistic intake",6.34,200,3.917,37.0,45.0,447,8689

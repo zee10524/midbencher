@@ -1,0 +1,4 @@
+key,rule,query_rules,queries,caught,flagged,flagged_never_queried
+dup,Duplicate invoice number for the vendor (H13),R01,130,34,68,31
+exp,Work order expired on the invoice date (H3),R26,107,102,690,506
+bal,"Work order value exhausted (H3, as value headroom)","R25, R24, R10",219,9,694,611

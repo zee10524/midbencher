@@ -146,6 +146,23 @@ What to request for each NOT TESTABLE claim. Priority 1 would change what we bui
 | 3 | L42 | "I registered three years ago. I sent it to procurement by email. Nobody confirmed." | The vendor code of the agency, its Udyam certificate email to procurement with the date sent, and the vendor master change history for that code. | Procurement; the agency | Whether a certificate sent was ever recorded |
 | 3 | L52 | "If it is mandatory, they will." (use a portal) | Monthly active use after the employee self-service portal went live, which the IT head cites as the analogue; vendors' usage of other clients' portals if they will share it. | IT head; procurement (vendor survey owner) | Portal versus messaging |
 
+### From the MSME work
+
+Two further requests that come from the MSME payment analysis (`notes/msme-exposure.md`, `notes/research.md`, `notes/assumptions.md`) rather than from a single claim. Both are priority 1.
+
+| Priority | Request | Data to request (exact) | From | What it lets us settle |
+|---|---|---|---|---|
+| 1 | **Payment terms per work order** | The written payment term (in days, or none) in each work order, purchase order and vendor agreement: one field per work order id, or the contract clause. For work orders with no written term, say so. | Procurement; vendor agreements held by property or legal | Whether the limit for a Micro or Small vendor is 45 days or 15. Known Micro and Small paid invoices late at 45 days: 6.0% to 20.2% depending on the clock. At 15 days: 88.0% to 99.7%. The product sets its warning date from this field, so it is needed before the tracker is configured. |
+| 1 | **Acceptance or delivery date** | For each bill, the date the goods were delivered or the service rendered (for monthly services, the date or period the service ran), and the date and text of any written objection made to the vendor within 15 days of it. Sources: delivery challans, attendance month-ends, service reports, the queries and emails sent to vendors. | Property facility desks; commercial executives; central AP | The statutory clock starts at acceptance or deemed acceptance, which is earlier than any date in the register, so every clock used so far understates lateness. Each earlier start adds days: mean days to pay for known Micro and Small invoices is 25.3 from property verified, 31.1 from desk received and 37.5 from invoice date; the true start is earlier again and cannot be measured without this data. |
+
+### From the payment-run work
+
+One further request, from the register finding that payments happen only on Tuesday and Friday and that a bill's wait for a run depends on nothing but the days between posting and the run (`notes/payment-lag.md`). Priority 1.
+
+| Priority | Request | Data to request (exact) | From | What it lets us settle |
+|---|---|---|---|---|
+| 1 | **Payment-run rules and run lists** | For the last twelve months, for each Tuesday and Friday run: the date and time the run list was drawn, the date and time it was approved, the invoice numbers on it, and the written cut-off or approval rule. For each invoice: the date it became payable in SAP and the reason code for any hold. | Treasury; central AP lead | Whether the lag is a list cut-off, a batch approval, a funding limit, or a posting date that is not the payable date, and so whether a cut-off of 0, 1 or 2 days can be offered. The work queue's next-run list is built on this answer. |
+
 The same requests would also move other claims from *estimated from proxy* to *measured*:
 
 - **AP time data (L9)** would settle L10, L11 and L49, which today rest on elapsed days standing in for effort.

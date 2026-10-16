@@ -1,0 +1,64 @@
+sequenceDiagram
+    autonumber
+    participant V as Vendor
+    participant FD as Facility desk
+    participant CE as Commercial executive
+    participant PH as Property head
+    participant CR as Courier
+    participant AP as Central AP
+    participant PR as Procurement
+    participant TR as Treasury
+    participant IT as IT
+    rect rgb(240, 240, 240)
+    Note over V,CE: Before submission: informal pre-checks
+    V-->>CE: WhatsApp photo: is this OK before I print it? (reported)
+    V-->>CE: Email scan first, then the print (reported)
+    end
+    V->>FD: Paper bill, attendance, challans. Invoice to desk 6.4 d, median 5
+    FD->>FD: Stamp, tracker no., Excel register row
+    FD->>V: Photocopy of the stamped page
+    FD->>CE: Bill to the executive. Desk to verified 5.6 d, median 4
+    Note over CE,PH: P1 GSTIN, P2 entity, P3 WO no., P4 rate, P5 headcount vs attendance, P6 attendance signed, P7 PF and ESIC, P8 gate stamp, P9 service report
+    Note over IT,CE: P5 by hand: biometric + gate register photo + vendor claim
+    CE->>CE: Service entry in SAP (P10). WO balance first tested here
+    CE->>PH: Packet for signature. Verified to signed 1.5 d, max 3
+    Note over PH: P11 signs the packet
+    PH->>CR: Wait for the weekly pickup. Signed to HO 5.0 d (Wed 2, Thu 8)
+    CR->>AP: Arrives on a Friday (every packet)
+    Note over AP: Tray, then a verifier. Wait 8.8 d, median 7, p90 16
+    Note over AP,PR: H1 GSTIN, H2 entity, H3 WO valid + balance, H4 rate, H5 qty vs service entry, H6 attendance, H7 PF and ESIC, H8 gate stamp, H9 service report, H10 GST type, H11 HSN + rate, H12 GL + cost centre, H13 duplicate, H14 TDS
+    AP->>AP: Post in SAP. No query: 1.3 d
+    AP->>TR: Next Tue or Fri run. Posted to paid 6.0 d, median 5
+    TR->>V: Payment
+    rect rgb(253, 232, 232)
+    Note over AP,CE: QUERY LOOP: 13.1% of bills. Raised 22.2 d after the desk, 1.0 d after pick-up
+    AP->>CE: Query by email
+    AP-->>CE: WhatsApp photo: is this right? (not recorded)
+    Note over AP: Own Excel of open queries. Fortnightly call with properties
+    CE->>V: Ask for corrected bill, challan or credit note
+    V->>FD: Corrected paper bill back to the desk
+    CE->>CE: Redo the service entry
+    CE->>AP: Papers back. Query open 21.9 d, median 17, p90 44
+    end
+    rect rgb(255, 240, 220)
+    Note over CE,PR: WORK ORDER AMENDMENT LOOP: 338 queries on balance, quantity, expiry or missing PO
+    CE->>PR: Email: urgent WO amendment needed
+    AP-->>PR: Query forwarded: please check
+    PR->>CE: Asks for RWA letter or tenant approval
+    CE->>PR: RWA letter
+    PR->>PR: Budget note, approval note, amend in SAP. Not measured
+    PR->>CE: Amended: redo service entry, packet back to AP
+    Note over PR: Own sheet, sticky note of CFO-office cases
+    end
+    rect rgb(235, 245, 235)
+    Note over V,TR: Informal channels carrying status and escalations
+    PH-->>AP: WhatsApp complaint with tracker no.
+    Note over AP: CFO EA list of unpaid vendors on WhatsApp each Monday
+    CE-->>AP: Message to a friend: is my bill there?
+    V-->>AP: Phone calls, three or four per bill (reported)
+    V-->>TR: Phone calls to treasury (reported)
+    FD-->>AP: Weekly Excel register, not updated by head office
+    CE-->>IT: Phone call on the 1st: punches missing
+    PR-->>PH: Monthly 60-day expiry list, no replies
+    end
+    Note over IT: Runs SAP, the gate biometric network and a shared drive of 38 registers

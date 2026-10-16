@@ -1,0 +1,56 @@
+id,value,description
+p.n,10449.0,paid invoices analysed
+p.pay.schedule_wait_lead0,2.28,"mean days from posting to the first run, run list closing 0 day(s) before the run"
+p.pay.excess_lead0,3.72,"mean days paid later than that run, run list closing 0 day(s) before"
+p.pay.share_late_lead0,70.98,"% of bills paid later than that run, list closing 0 day(s) before"
+p.pay.schedule_wait_lead1,3.3,"mean days from posting to the first run, run list closing 1 day(s) before the run"
+p.pay.excess_lead1,2.75,"mean days paid later than that run, run list closing 1 day(s) before"
+p.pay.share_late_lead1,54.19,"% of bills paid later than that run, list closing 1 day(s) before"
+p.pay.schedule_wait_lead2,4.31,"mean days from posting to the first run, run list closing 2 day(s) before the run"
+p.pay.excess_lead2,1.97,"mean days paid later than that run, run list closing 2 day(s) before"
+p.pay.share_late_lead2,39.38,"% of bills paid later than that run, list closing 2 day(s) before"
+p.pay.actual_wait,5.99,mean days from posting to payment
+p.pay.per_missed_bill,5.24,mean days late per bill that missed the next run (list lead 0)
+p.courier.lag_friday_only,4.98,mean days from signature to head office with arrivals: friday_only
+p.courier.lag_tue_fri,3.28,mean days from signature to head office with arrivals: tue_fri
+p.courier.lag_mon_wed_fri,2.72,mean days from signature to head office with arrivals: mon_wed_fri
+p.courier.lag_daily,2.0,mean days from signature to head office with arrivals: daily
+p.courier.save_tue_fri,1.7,days off the mean with a second weekly arrival (Tue and Fri)
+p.courier.save_daily,2.98,days off the mean with a daily arrival
+p.queue.ap1_bills,4223.0,paid invoices handled by AP-1
+p.queue.ap1_share_pct,40.42,% of paid invoices handled by AP-1
+p.queue.ap1_wait,11.27,mean days AP-1's bills wait for pick-up
+p.queue.others_wait,7.2,mean days the other four verifiers' bills wait
+p.queue.gap_per_bill,4.07,extra days AP-1's bills wait
+p.queue.saving,1.65,days off the mean if AP-1's bills waited like the others'
+p.queue.wait_lightest_fridays,8.32,mean wait in the quarter of Fridays with the fewest bills
+p.queue.wait_heaviest_fridays,9.0,mean wait in the quarter of Fridays with the most bills
+p.queue.bills_lightest_fridays,116.07,mean bills arriving on those lightest Fridays
+p.queue.bills_heaviest_fridays,278.43,mean bills arriving on those heaviest Fridays
+p.query.days_on_mean,2.75,query-open days added to the mean of all paid invoices
+p.query.pct_bills,12.52,% of paid invoices with a query
+p.query.vendor.days_on_mean,1.17,"query-open days on the mean, vendor-side"
+p.query.vendor.pct_bills,5.32,% of paid invoices with a vendor-side query
+p.query.property.days_on_mean,0.77,"query-open days on the mean, property-side"
+p.query.property.pct_bills,3.62,% of paid invoices with a property-side query
+p.query.procurement.days_on_mean,0.64,"query-open days on the mean, procurement-side"
+p.query.procurement.pct_bills,2.87,% of paid invoices with a procurement-side query
+p.query.head-office.days_on_mean,0.17,"query-open days on the mean, head-office-side"
+p.query.head-office.pct_bills,0.71,% of paid invoices with a head-office-side query
+p.query.top_cause_days_on_mean,0.64,largest single query category: WO balance or validity
+p.query.top_cause_pct_bills,2.87,% of paid invoices with a WO balance or validity query
+p.vendor_ceiling,7.53,vendor-to-desk days plus vendor-side query days: the most a portal could touch
+p.typing.pct_of_total,4.2,AP verification (the ceiling for typing) as % of the mean days to pay
+p.flow.low,5.32,days off the mean: AP-1 queue + payment run (list lead 2) + second weekly courier
+p.flow.high,8.35,days off the mean: AP-1 queue + payment run (list lead 0) + daily courier
+p.flow.low_pct,14.13,"same, as % of the mean"
+p.flow.high_pct,22.18,"same, as % of the mean"
+p.head_office_fix.low,3.62,"days off the mean: AP-1 queue + payment run (list lead 2), the two proposed first"
+p.head_office_fix.high,5.37,"same, payment run with list lead 0"
+p.head_office_fix.low_pct,9.62,
+p.head_office_fix.high_pct,14.27,
+p.msme.late_desk_base,530.0,known Micro/Small paid invoices over 45 days from desk receipt
+p.msme.late_desk_after_pay,430.0,...if the payment-run fix (list lead 2) had applied
+p.msme.late_desk_after_queue,447.0,...if the AP-1 queue fix had applied
+p.msme.late_desk_after_both,366.0,...if both first fixes had applied
+p.msme.late_desk_after_all3,315.0,...if all three flow fixes had applied

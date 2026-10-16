@@ -1,0 +1,23 @@
+id,value,description
+w.dup.P1H1.queries,46,queries raised by head office on P1/H1 items (rule R08)
+w.dup.P2H2.queries,12,queries raised by head office on P2/H2 items (rule R13)
+w.dup.P4H4.queries,66,queries raised by head office on P4/H4 items (rule R17)
+w.dup.P5H5.queries,17,queries raised by head office on P5/H5 items (rule R11)
+w.dup.P6H6.queries,51,queries raised by head office on P6/H6 items (rule R23)
+w.dup.P7H7.queries,52,queries raised by head office on P7/H7 items (rule R22)
+w.dup.P8H8.queries,68,queries raised by head office on P8/H8 items (rule R21)
+w.dup.P9H9.queries,71,queries raised by head office on P9/H9 items (rule R20)
+w.dup.queries_total,383,queries on items the property checklist already requires
+w.dup.pairs,8,checks that appear on both the property and the head-office checklist
+w.q.gl,71,queries under rule R03
+w.q.costcentre,76,queries under rule R02
+w.q.wbs,61,queries under rule R04
+w.q.wo_expired,107,queries under rule R26
+w.q.wo_balance,96,queries under rule R25
+w.q.wo_quantity,105,queries under rule R24
+w.q.wo_bal_other,18,queries under rule R10
+w.q.po_not_released,12,queries under rule R12
+w.q.rate_agreed_by_phone,66,queries under rule R17
+w.q.overtime,72,queries under rule R16
+w.q.wo_all,338,"work-order balance, quantity, expiry and PO queries together"
+w.diagram.messages,32,numbered arrows in the swimlane

@@ -1,0 +1,113 @@
+id,value,description
+o.n,10449.0,paid invoices analysed
+o.hours.clock,30.067,hours from Fri 16 Oct 15:56 IST to Sat 17 Oct 22:00 IST
+o.hours.sleep,8.0,assumed sleep
+o.hours.life,5.0,"assumed meals, breaks and everything else"
+o.hours.slack,3.0,"assumed slack for debugging, repo set-up and the chat-history export"
+o.hours.budget,14.0,"build hours available by Saturday 10 pm, after the three deductions"
+o.pre.A.bills,201.0,"paid invoices with a query the pre-flight check could catch, layers A"
+o.pre.A.pct,1.924,
+o.pre.A.per_bill,14.771,"days saved per caught query, layers A"
+o.pre.A.days,0.284,"days off the mean, layers A"
+o.pre.A.days_with_scan,0.238,"days off the mean if scan-first has already removed the courier lag, layers A"
+o.pre.AB.bills,403.0,"paid invoices with a query the pre-flight check could catch, layers AB"
+o.pre.AB.pct,3.857,
+o.pre.AB.per_bill,14.849,"days saved per caught query, layers AB"
+o.pre.AB.days,0.573,"days off the mean, layers AB"
+o.pre.AB.days_with_scan,0.478,"days off the mean if scan-first has already removed the courier lag, layers AB"
+o.pre.ABC.bills,865.0,"paid invoices with a query the pre-flight check could catch, layers ABC"
+o.pre.ABC.pct,8.278,
+o.pre.ABC.per_bill,14.749,"days saved per caught query, layers ABC"
+o.pre.ABC.days,1.221,"days off the mean, layers ABC"
+o.pre.ABC.days_with_scan,1.019,"days off the mean if scan-first has already removed the courier lag, layers ABC"
+o.wo.expiry_bills,93.0,
+o.wo.expiry_pct,0.89,
+o.wo.expiry_days,0.216,"query-open days on the mean, work-order expiry queries"
+o.wo.all_bills,300.0,
+o.wo.all_pct,2.871,
+o.wo.all_days,0.638,"query-open days on the mean, all work-order queries"
+o.att.manpower_bills,4840.0,
+o.att.manpower_pct,46.32,
+o.att.manpower_check_days,8.075,"mean days desk to verified, manpower bills"
+o.att.other_check_days,3.513,"mean days desk to verified, all other bills"
+o.att.excess,4.562,extra days manpower bills spend in the property check
+o.att.days_high,2.113,days off the mean if the whole excess went
+o.att.days_low,0.528,25% of the excess
+o.att.days_central,1.056,50% of the excess
+o.queue.bills,8620.0,paid invoices that are AP-1's or are paid after a later run than the next
+o.queue.pct,82.496,
+o.portal.adopt,9.0,survey: % of vendors preferring a portal
+o.portal.days,0.572,9% x vendor-to-desk days
+o.portal.bills,940.0,"bills affected, Vendor portal"
+o.ocr.days,0.158,AP lead's reported 10% x AP verification days
+o.scan.days,4.98,courier lag removed from the booking path
+o.tracker.low,3.62,"conditional days if the AP lead and treasury act on it, conservative"
+o.tracker.high,5.37,"same, upper end"
+o.pair.low,5.32,"tracker as work queue plus a second weekly courier, conservative"
+o.pair.high,8.35,"tracker as work queue plus a daily courier, upper end"
+o.pair.low_pct,14.134,
+o.pair.high_pct,22.184,
+o.scan.central,4.98,
+o.scan.low,0.0,
+o.scan.high,4.98,
+o.scan.hours,10.0,"estimated build hours, Scan-first, original later"
+o.scan.bills,10449.0,"bills affected, Scan-first, original later"
+o.scan.per_affected,4.98,"central days per affected bill, Scan-first, original later"
+o.scan.days_per_hour,0.498,"central days saved per build hour, Scan-first, original later"
+o.track4b.central,3.62,
+o.track4b.low,0.0,
+o.track4b.high,5.37,
+o.track4b.hours,11.5,"estimated build hours, Live tracker as a work queue (extension of option 4)"
+o.track4b.bills,8620.0,"bills affected, Live tracker as a work queue (extension of option 4)"
+o.track4b.per_affected,4.388,"central days per affected bill, Live tracker as a work queue (extension of option 4)"
+o.track4b.days_per_hour,0.315,"central days saved per build hour, Live tracker as a work queue (extension of option 4)"
+o.courier.central,2.98,
+o.courier.low,1.7,
+o.courier.high,2.98,
+o.courier.hours,1.0,"estimated build hours, Daily courier"
+o.courier.bills,10449.0,"bills affected, Daily courier"
+o.courier.per_affected,2.98,"central days per affected bill, Daily courier"
+o.courier.days_per_hour,2.98,"central days saved per build hour, Daily courier"
+o.att.central,1.056,
+o.att.low,0.528,
+o.att.high,2.113,
+o.att.hours,7.0,"estimated build hours, Attendance three-way match"
+o.att.bills,4840.0,"bills affected, Attendance three-way match"
+o.att.per_affected,2.28,"central days per affected bill, Attendance three-way match"
+o.att.days_per_hour,0.151,"central days saved per build hour, Attendance three-way match"
+o.pre.central,0.573,
+o.pre.low,0.284,
+o.pre.high,1.221,
+o.pre.hours,14.5,"estimated build hours, Pre-flight checker at intake"
+o.pre.bills,403.0,"bills affected, Pre-flight checker at intake"
+o.pre.per_affected,14.857,"central days per affected bill, Pre-flight checker at intake"
+o.pre.days_per_hour,0.04,"central days saved per build hour, Pre-flight checker at intake"
+o.portal.central,0.572,
+o.portal.low,0.0,
+o.portal.high,6.36,
+o.portal.hours,17.0,"estimated build hours, Vendor portal"
+o.portal.per_affected,6.358,"central days per affected bill, Vendor portal"
+o.portal.days_per_hour,0.034,"central days saved per build hour, Vendor portal"
+o.wo.central,0.216,
+o.wo.low,0.0,
+o.wo.high,0.638,
+o.wo.hours,6.0,"estimated build hours, Work-order runway alert"
+o.wo.bills,93.0,"bills affected, Work-order runway alert"
+o.wo.per_affected,24.269,"central days per affected bill, Work-order runway alert"
+o.wo.days_per_hour,0.036,"central days saved per build hour, Work-order runway alert"
+o.ocr.central,0.158,
+o.ocr.low,0.0,
+o.ocr.high,1.58,
+o.ocr.hours,10.5,"estimated build hours, OCR at head office"
+o.ocr.bills,10449.0,"bills affected, OCR at head office"
+o.ocr.per_affected,0.158,"central days per affected bill, OCR at head office"
+o.ocr.days_per_hour,0.015,"central days saved per build hour, OCR at head office"
+o.track.central,0.0,
+o.track.low,0.0,
+o.track.high,0.0,
+o.track.hours,7.5,"estimated build hours, Live tracker with a vendor status message (as listed)"
+o.track.bills,10449.0,"bills affected, Live tracker with a vendor status message (as listed)"
+o.track.per_affected,0.0,"central days per affected bill, Live tracker with a vendor status message (as listed)"
+o.track.days_per_hour,0.0,"central days saved per build hour, Live tracker with a vendor status message (as listed)"
+o.pair.hours,12.5,hours for the recommended pair
+o.pair.spare,1.5,hours left in the budget

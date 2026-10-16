@@ -12,7 +12,7 @@ Verdicts:  CONFIRMED  the data supports the claim's central statement
            NOT TESTABLE  the pack holds nothing that can speak to it (shown with whatever context exists)
 Every number in the evidence is read from a figures file by id, so it cannot drift from the scripts.
 
-Run: python analysis/05_claims_tested.py   (after clean.py, 02_stage_times.py, 04_query_forensics.py)
+Run: python analysis/05_claims_tested.py   (after clean.py, 02_stage_times.py, 04_query_forensics.py and 06_msme_exposure.py)
 """
 import re
 from collections import Counter
@@ -206,7 +206,8 @@ pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in c.items() 
 # ------------------------------------------------------------------ lookup of every figure used in the evidence
 SRC, F = {}, {}
 for fname, script in [("figures.csv", "clean.py"), ("figures_stage_times.csv", "02_stage_times.py"),
-                      ("figures_query_forensics.csv", "04_query_forensics.py"), ("figures_claims_tested.csv", "05_claims_tested.py")]:
+                      ("figures_query_forensics.csv", "04_query_forensics.py"), ("figures_msme.csv", "06_msme_exposure.py"),
+                      ("figures_claims_tested.csv", "05_claims_tested.py")]:
     for r in pd.read_csv(OUT / fname, keep_default_na=False).itertuples():
         F[r.id] = r.value
         SRC[r.id] = script
@@ -508,6 +509,27 @@ for i in sorted(ASK, key=lambda k: (ASK[k][2], int(k[1:]))):
     r = res[res.id == i].iloc[0]
     a = ASK[i]
     md.append(f"| {a[2]} | {i} | {esc(r.claim)} | {esc(a[0])} | {esc(a[1])} | {esc(a[3])} |")
+md.append("\n### From the MSME work\n")
+md.append("Two further requests that come from the MSME payment analysis (`notes/msme-exposure.md`, `notes/research.md`, `notes/assumptions.md`) rather than from a single claim. Both are priority 1.\n")
+md.append("| Priority | Request | Data to request (exact) | From | What it lets us settle |")
+md.append("|---|---|---|---|---|")
+md.append("| 1 | **Payment terms per work order** | The written payment term (in days, or none) in each work order, purchase order and vendor agreement: one field per work order id, or the contract clause. "
+          "For work orders with no written term, say so. | Procurement; vendor agreements held by property or legal | "
+          f"Whether the limit for a Micro or Small vendor is 45 days or 15. Known Micro and Small paid invoices late at 45 days: {pct('e.paid.property_verified.microsmall_known.pct_late')} to {pct('e.paid.invoice.microsmall_known.pct_late')} depending on the clock. "
+          f"At 15 days: {pct('e.paid.property_verified.microsmall_known.pct_late_15')} to {pct('e.paid.invoice.microsmall_known.pct_late_15')}. "
+          "The product sets its warning date from this field, so it is needed before the tracker is configured. |")
+md.append("| 1 | **Acceptance or delivery date** | For each bill, the date the goods were delivered or the service rendered (for monthly services, the date or period the service ran), and the date and text of any written objection made to the vendor within 15 days of it. "
+          "Sources: delivery challans, attendance month-ends, service reports, the queries and emails sent to vendors. | Property facility desks; commercial executives; central AP | "
+          f"The statutory clock starts at acceptance or deemed acceptance, which is earlier than any date in the register, so every clock used so far understates lateness. "
+          f"Each earlier start adds days: mean days to pay for known Micro and Small invoices is {d1('e.paid.property_verified.microsmall_known.mean_days_to_pay')} from property verified, "
+          f"{d1('e.paid.desk_received.microsmall_known.mean_days_to_pay')} from desk received and {d1('e.paid.invoice.microsmall_known.mean_days_to_pay')} from invoice date; the true start is earlier again and cannot be measured without this data. |")
+md.append("\n### From the payment-run work\n")
+md.append("One further request, from the register finding that payments happen only on Tuesday and Friday and that a bill's wait for a run depends on nothing but the days between posting and the run (`notes/payment-lag.md`). Priority 1.\n")
+md.append("| Priority | Request | Data to request (exact) | From | What it lets us settle |")
+md.append("|---|---|---|---|---|")
+md.append("| 1 | **Payment-run rules and run lists** | For the last twelve months, for each Tuesday and Friday run: the date and time the run list was drawn, the date and time it was approved, the invoice numbers on it, and the written cut-off or approval rule. For each invoice: the date it became payable in SAP and the reason code for any hold. | Treasury; central AP lead | "
+          "Whether the lag is a list cut-off, a batch approval, a funding limit, or a posting date that is not the payable date, and so whether a cut-off of 0, 1 or 2 days can be offered. "
+          "The work queue's next-run list is built on this answer. |")
 md.append("\nThe same requests would also move other claims from *estimated from proxy* to *measured*:\n")
 md.append("- **AP time data (L9)** would settle L10, L11 and L49, which today rest on elapsed days standing in for effort.")
 md.append("- **The amendment log (L33, L37)** would settle L16, L35, L36 and L38, which today use queries and invoice totals as stand-ins for amendments and orders.")

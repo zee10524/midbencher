@@ -1,0 +1,182 @@
+id,value,description
+l.n,10449.0,paid invoices analysed
+l.n_msme_known,5106.0,known Micro and Small paid invoices
+l.chk.paid_on_run_pct,100.0,% of paid invoices paid on a Tuesday or a Friday
+l.chk.run_wait,2.278,mean days from posting to the next Tuesday or Friday run
+l.chk.actual_wait,5.994,mean days from posting to payment
+l.chk.first_run_pct,29.017,% of paid invoices paid on or before the first run after posting
+l.chk.ap1_share,40.415,AP-1's share of paid invoices (%)
+l.chk.ap1_wait,11.272,"mean days from head-office receipt to pick-up, AP-1"
+l.chk.others_wait,7.198,"mean days from head-office receipt to pick-up, the other four verifiers"
+l.chk.ap1_saving,1.647,days off the mean if each AP-1 bill waited the others' mean
+l.chk.queried_pct,12.518,% of paid invoices with a query
+l.chk.q_ceiling_open,2.746,days off the mean if every query's open days vanished (ceiling)
+l.chk.q_ceiling_added,3.024,"days off the mean if queried bills lost the extra days they carry over unqueried bills (the 24.2 extra, same category)"
+l.chk.q_diff_means,3.025,days off the mean if queried bills were as fast as unqueried bills (invoice clock)
+l.chk.over45,1153.0,paid invoices over 45 days from the desk date
+l.chk.over45_queried,754.0,...of which had a query
+l.chk.over45_queried_pct,65.395,...% of them
+l.chk.over45_share_among_queried,57.645,% of queried bills over 45 days
+l.chk.over45_share_among_unqueried,4.365,% of unqueried bills over 45 days
+l.chk.over45_if_no_queries,468.0,bills still over 45 days if every query's open days were removed
+l.chk.mean_over45_queried_removed,28.539,mean desk-to-paid days with every query's open days removed
+l.lag.missed_0,29.008,% of paid invoices that missed 0 runs after the first one open to them
+l.lag.missed_1,46.579,% of paid invoices that missed 1 runs after the first one open to them
+l.lag.missed_2,17.466,% of paid invoices that missed 2 runs after the first one open to them
+l.lag.missed_3,6.938,% of paid invoices that missed 3+ runs after the first one open to them
+l.lag.mean_runs_missed,1.056,mean runs missed after the first one open to the bill
+l.lag.days_per_run,3.519,mean days added per missed run
+l.lag.gap.adj_eta2,0.114,share of the spread in days past the first run explained by gap to the run (days) (adjusted for the number of groups)
+l.lag.gap.lowest,1.928,"lowest group mean of days past the first run, gap to the run (days)"
+l.lag.gap.highest,5.192,"highest group mean of days past the first run, gap to the run (days)"
+l.lag.dow.adj_eta2,0.114,share of the spread in days past the first run explained by posting weekday (adjusted for the number of groups)
+l.lag.dow.lowest,1.928,"lowest group mean of days past the first run, posting weekday"
+l.lag.dow.highest,5.262,"highest group mean of days past the first run, posting weekday"
+l.lag.amount.adj_eta2,-0.0,share of the spread in days past the first run explained by amount (fifths) (adjusted for the number of groups)
+l.lag.amount.lowest,3.681,"lowest group mean of days past the first run, amount (fifths)"
+l.lag.amount.highest,3.769,"highest group mean of days past the first run, amount (fifths)"
+l.lag.msme.adj_eta2,0.0,share of the spread in days past the first run explained by msme status (adjusted for the number of groups)
+l.lag.msme.lowest,3.617,"lowest group mean of days past the first run, msme status"
+l.lag.msme.highest,3.856,"highest group mean of days past the first run, msme status"
+l.lag.verifier.adj_eta2,0.0,share of the spread in days past the first run explained by verifier (adjusted for the number of groups)
+l.lag.verifier.lowest,3.574,"lowest group mean of days past the first run, verifier"
+l.lag.verifier.highest,3.766,"highest group mean of days past the first run, verifier"
+l.lag.category.adj_eta2,-0.001,share of the spread in days past the first run explained by spend category (adjusted for the number of groups)
+l.lag.category.lowest,3.595,"lowest group mean of days past the first run, spend category"
+l.lag.category.highest,3.813,"highest group mean of days past the first run, spend category"
+l.lag.ptype.adj_eta2,0.0,share of the spread in days past the first run explained by property type (adjusted for the number of groups)
+l.lag.ptype.lowest,3.494,"lowest group mean of days past the first run, property type"
+l.lag.ptype.highest,3.755,"highest group mean of days past the first run, property type"
+l.lag.property.adj_eta2,0.001,share of the spread in days past the first run explained by property (adjusted for the number of groups)
+l.lag.property.lowest,3.296,"lowest group mean of days past the first run, property"
+l.lag.property.highest,4.288,"highest group mean of days past the first run, property"
+l.lag.vendor.adj_eta2,-0.004,share of the spread in days past the first run explained by vendor (adjusted for the number of groups)
+l.lag.vendor.lowest,2.727,"lowest group mean of days past the first run, vendor"
+l.lag.vendor.highest,4.833,"highest group mean of days past the first run, vendor"
+l.lag.month.adj_eta2,0.001,share of the spread in days past the first run explained by posting month (adjusted for the number of groups)
+l.lag.month.lowest,3.296,"lowest group mean of days past the first run, posting month"
+l.lag.month.highest,3.919,"highest group mean of days past the first run, posting month"
+l.lag.gap1.n,3009.0,paid invoices whose first open run is 1 days after posting
+l.lag.gap1.first_pct,5.218,% of them paid on that first run
+l.lag.gap1.excess,5.192,mean days past that run
+l.lag.gap2.n,2993.0,paid invoices whose first open run is 2 days after posting
+l.lag.gap2.first_pct,23.154,% of them paid on that first run
+l.lag.gap2.excess,4.0,mean days past that run
+l.lag.gap3.n,2984.0,paid invoices whose first open run is 3 days after posting
+l.lag.gap3.first_pct,43.968,% of them paid on that first run
+l.lag.gap3.excess,2.82,mean days past that run
+l.lag.gap4.n,1463.0,paid invoices whose first open run is 4 days after posting
+l.lag.gap4.first_pct,59.467,% of them paid on that first run
+l.lag.gap4.excess,1.928,mean days past that run
+l.lag.runs_n,108.0,payment run dates in the register
+l.lag.bills_per_run_mean,96.75,mean paid invoices per run date
+l.lag.bills_per_run_tue,110.907,mean paid invoices per Tuesday run
+l.lag.bills_per_run_fri,82.593,mean paid invoices per Friday run
+l.lag.tue_share,57.316,% of paid invoices paid on a Tuesday
+l.bt.dup.queries,130.0,"backtest, Duplicate invoice number for the vendor (H13): queries"
+l.bt.dup.caught,34.0,"backtest, Duplicate invoice number for the vendor (H13): caught"
+l.bt.dup.flagged,68.0,"backtest, Duplicate invoice number for the vendor (H13): flagged"
+l.bt.dup.flagged_never_queried,31.0,"backtest, Duplicate invoice number for the vendor (H13): flagged never queried"
+l.bt.exp.queries,107.0,"backtest, Work order expired on the invoice date (H3): queries"
+l.bt.exp.caught,102.0,"backtest, Work order expired on the invoice date (H3): caught"
+l.bt.exp.flagged,690.0,"backtest, Work order expired on the invoice date (H3): flagged"
+l.bt.exp.flagged_never_queried,506.0,"backtest, Work order expired on the invoice date (H3): flagged never queried"
+l.bt.bal.queries,219.0,"backtest, Work order value exhausted (H3, as value headroom): queries"
+l.bt.bal.caught,9.0,"backtest, Work order value exhausted (H3, as value headroom): caught"
+l.bt.bal.flagged,694.0,"backtest, Work order value exhausted (H3, as value headroom): flagged"
+l.bt.bal.flagged_never_queried,611.0,"backtest, Work order value exhausted (H3, as value headroom): flagged never queried"
+l.bt.raw_rows,11220.0,rows in bill_register.csv
+l.bt.bills,11000.0,"distinct bills replayed (raw rows less the exact duplicate rows, data-audit D01)"
+l.bt.dropped,220.0,exact duplicate rows removed before the replay
+l.bt.flag_any,1392.0,bills flagged by at least one of the three rules
+l.bt.flag_any_pct,12.655,% of replayed bills flagged by at least one rule
+l.bt.q_total,1441.0,"queries last year, all rules"
+l.bt.q_testable,456.0,queries on the rules the backtest can test
+l.bt.q_caught,145.0,"of those, on bills flagged on the desk date"
+l.bt.extra,2.23,days a queried bill carries beyond the days its query stays open
+l.bt.n_caught_paid,121.0,queries on paid invoices that the three rules would have caught
+l.lever.queue.days,1.669,days off the mean: AP-1's pick-up waits matched to the other verifiers' at the same rank
+l.lever.queue.bills,4221.0,"Balanced AP pick order, AP-1 matched to the other four: bills"
+l.base.desk_mean,31.284,"mean days desk to paid, paid invoices, as run"
+l.base.inv_mean,37.641,"mean days invoice to paid, paid invoices, as run"
+l.base.ms_late,530.0,"known Micro and Small paid invoices over 45 days from the desk, as run"
+l.base.ms_late_pct,10.38,...as % of known Micro and Small paid invoices
+l.base.p90,47.0,"p90 days desk to paid, as run"
+l.base.p90_inv,54.0,"p90 days invoice to paid, as run"
+l.base.over45,1153.0,"all paid invoices over 45 days from the desk, as run"
+l.base.over45_pct,11.035,...as % of paid invoices
+l.lever.pay0.save,3.716,"Pay on the first run after posting, list closes the same day (cut-off 0): save"
+l.lever.pay0.ms_late,370.0,"Pay on the first run after posting, list closes the same day (cut-off 0): ms_late"
+l.lever.pay0.ms_pct,7.246,"Pay on the first run after posting, list closes the same day (cut-off 0): ms_pct"
+l.lever.pay0.p90,42.0,"Pay on the first run after posting, list closes the same day (cut-off 0): p90"
+l.lever.pay0.p90_inv,50.0,"Pay on the first run after posting, list closes the same day (cut-off 0): p90_inv"
+l.lever.pay0.over,802.0,"Pay on the first run after posting, list closes the same day (cut-off 0): over"
+l.lever.pay0.bills,7417.0,"Pay on the first run after posting, list closes the same day (cut-off 0): bills"
+l.lever.pay1.save,2.748,"Pay on the first run after posting, list closes 1 day before (cut-off 1): save"
+l.lever.pay1.ms_late,401.0,"Pay on the first run after posting, list closes 1 day before (cut-off 1): ms_late"
+l.lever.pay1.ms_pct,7.854,"Pay on the first run after posting, list closes 1 day before (cut-off 1): ms_pct"
+l.lever.pay1.p90,43.0,"Pay on the first run after posting, list closes 1 day before (cut-off 1): p90"
+l.lever.pay1.p90_inv,51.0,"Pay on the first run after posting, list closes 1 day before (cut-off 1): p90_inv"
+l.lever.pay1.over,868.0,"Pay on the first run after posting, list closes 1 day before (cut-off 1): over"
+l.lever.pay1.bills,5662.0,"Pay on the first run after posting, list closes 1 day before (cut-off 1): bills"
+l.lever.pay2.save,1.969,"Pay on the first run after posting, list closes 2 days before (cut-off 2): save"
+l.lever.pay2.ms_late,430.0,"Pay on the first run after posting, list closes 2 days before (cut-off 2): ms_late"
+l.lever.pay2.ms_pct,8.421,"Pay on the first run after posting, list closes 2 days before (cut-off 2): ms_pct"
+l.lever.pay2.p90,44.0,"Pay on the first run after posting, list closes 2 days before (cut-off 2): p90"
+l.lever.pay2.p90_inv,52.0,"Pay on the first run after posting, list closes 2 days before (cut-off 2): p90_inv"
+l.lever.pay2.over,928.0,"Pay on the first run after posting, list closes 2 days before (cut-off 2): over"
+l.lever.pay2.bills,4115.0,"Pay on the first run after posting, list closes 2 days before (cut-off 2): bills"
+l.lever.queue.save,1.669,"Balanced AP pick order, AP-1 matched to the other four: save"
+l.lever.queue.ms_late,414.0,"Balanced AP pick order, AP-1 matched to the other four: ms_late"
+l.lever.queue.ms_pct,8.108,"Balanced AP pick order, AP-1 matched to the other four: ms_pct"
+l.lever.queue.p90,43.0,"Balanced AP pick order, AP-1 matched to the other four: p90"
+l.lever.queue.p90_inv,52.0,"Balanced AP pick order, AP-1 matched to the other four: p90_inv"
+l.lever.queue.over,897.0,"Balanced AP pick order, AP-1 matched to the other four: over"
+l.lever.in3.save,0.24,"Three intake rules, residual delay 3 days: save"
+l.lever.in3.ms_late,497.0,"Three intake rules, residual delay 3 days: ms_late"
+l.lever.in3.ms_pct,9.734,"Three intake rules, residual delay 3 days: ms_pct"
+l.lever.in3.p90,46.0,"Three intake rules, residual delay 3 days: p90"
+l.lever.in3.p90_inv,54.0,"Three intake rules, residual delay 3 days: p90_inv"
+l.lever.in3.over,1092.0,"Three intake rules, residual delay 3 days: over"
+l.lever.in3.bills,118.0,"Three intake rules, residual delay 3 days: bills"
+l.lever.in1.save,0.263,"Three intake rules, residual delay 1 day: save"
+l.lever.in1.ms_late,497.0,"Three intake rules, residual delay 1 day: ms_late"
+l.lever.in1.ms_pct,9.734,"Three intake rules, residual delay 1 day: ms_pct"
+l.lever.in1.p90,46.0,"Three intake rules, residual delay 1 day: p90"
+l.lever.in1.p90_inv,54.0,"Three intake rules, residual delay 1 day: p90_inv"
+l.lever.in1.over,1092.0,"Three intake rules, residual delay 1 day: over"
+l.lever.in1.bills,121.0,"Three intake rules, residual delay 1 day: bills"
+l.lever.inopt.save,0.912,"Intake rules, optimistic, all layer A and B queries, residual 1 day: save"
+l.lever.inopt.ms_late,414.0,"Intake rules, optimistic, all layer A and B queries, residual 1 day: ms_late"
+l.lever.inopt.ms_pct,8.108,"Intake rules, optimistic, all layer A and B queries, residual 1 day: ms_pct"
+l.lever.inopt.p90,44.0,"Intake rules, optimistic, all layer A and B queries, residual 1 day: p90"
+l.lever.inopt.p90_inv,52.0,"Intake rules, optimistic, all layer A and B queries, residual 1 day: p90_inv"
+l.lever.inopt.over,930.0,"Intake rules, optimistic, all layer A and B queries, residual 1 day: over"
+l.lever.inopt.bills,403.0,"Intake rules, optimistic, all layer A and B queries, residual 1 day: bills"
+l.lever.low.save,3.936,"All three combined, cut-off 2, balanced order, residual 3: save"
+l.lever.low.ms_late,303.0,"All three combined, cut-off 2, balanced order, residual 3: ms_late"
+l.lever.low.ms_pct,5.934,"All three combined, cut-off 2, balanced order, residual 3: ms_pct"
+l.lever.low.p90,40.0,"All three combined, cut-off 2, balanced order, residual 3: p90"
+l.lever.low.p90_inv,48.0,"All three combined, cut-off 2, balanced order, residual 3: p90_inv"
+l.lever.low.over,653.0,"All three combined, cut-off 2, balanced order, residual 3: over"
+l.lever.low.bills,6690.0,"All three combined, cut-off 2, balanced order, residual 3: bills"
+l.lever.mid.save,4.75,"All three combined, cut-off 1, balanced order, residual 1: save"
+l.lever.mid.ms_late,288.0,"All three combined, cut-off 1, balanced order, residual 1: ms_late"
+l.lever.mid.ms_pct,5.64,"All three combined, cut-off 1, balanced order, residual 1: ms_pct"
+l.lever.mid.p90,39.0,"All three combined, cut-off 1, balanced order, residual 1: p90"
+l.lever.mid.p90_inv,47.0,"All three combined, cut-off 1, balanced order, residual 1: p90_inv"
+l.lever.mid.over,617.0,"All three combined, cut-off 1, balanced order, residual 1: over"
+l.lever.mid.bills,7601.0,"All three combined, cut-off 1, balanced order, residual 1: bills"
+l.lever.high.save,6.34,"All three combined, cut-off 0, balanced order, optimistic intake: save"
+l.lever.high.ms_late,200.0,"All three combined, cut-off 0, balanced order, optimistic intake: ms_late"
+l.lever.high.ms_pct,3.917,"All three combined, cut-off 0, balanced order, optimistic intake: ms_pct"
+l.lever.high.p90,37.0,"All three combined, cut-off 0, balanced order, optimistic intake: p90"
+l.lever.high.p90_inv,45.0,"All three combined, cut-off 0, balanced order, optimistic intake: p90_inv"
+l.lever.high.over,447.0,"All three combined, cut-off 0, balanced order, optimistic intake: over"
+l.lever.high.bills,8689.0,"All three combined, cut-off 0, balanced order, optimistic intake: bills"
+l.lever.low.sum_alone,3.878,"sum of the three levers' days off the mean taken separately, low case"
+l.lever.low.overlap,-0.058,"days the separate levers count twice, low case"
+l.lever.mid.sum_alone,4.679,"sum of the three levers' days off the mean taken separately, mid case"
+l.lever.mid.overlap,-0.071,"days the separate levers count twice, mid case"
+l.lever.high.sum_alone,6.297,"sum of the three levers' days off the mean taken separately, high case"
+l.lever.high.overlap,-0.043,"days the separate levers count twice, high case"
