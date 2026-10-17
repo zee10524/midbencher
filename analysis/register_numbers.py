@@ -53,9 +53,7 @@ SOURCES = [
 
 # the evaluation script is frozen and writes the platform line ending; keep the repository on LF
 for _p in (ROOT / "analysis" / "out").glob("figures_reader_eval.csv"):
-    _p.write_bytes(_p.read_bytes().replace(b"
-", b"
-"))
+    _p.write_bytes(_p.read_bytes().replace(b"\r\n", b"\n"))
 
 text = NUM.read_text(encoding="utf-8")
 total = 0
