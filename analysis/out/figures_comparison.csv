@@ -1,0 +1,7 @@
+id,value,description
+rc.labelled_bills,10,hand-labelled bills
+rc.vision_stored_of_labelled,0,"of those, bills with a stored vision reading"
+rc.tess_first.fields_correct,53,"Tesseract alone, first run: fields right (of 60)"
+rc.tess_first.key_bills,5,"Tesseract alone, first run: bills right on the four key fields"
+rc.tess_live.fields_correct,58,"Tesseract alone, stored reading now (tuned on these bills): fields right (of 60)"
+rc.tess_live.key_bills,8,"Tesseract alone, stored reading now (tuned on these bills): bills right on the four key fields"

@@ -2570,3 +2570,26 @@ Run from the project root with the project's virtual environment active (`.venv`
 | rw.dry_lifetime | 132 | for comparison: the same view using each order's lifetime-average burn (the earlier headline) |
 
 <!-- END 17_runway_90d.py -->
+
+<!-- BEGIN 18_reader_comparison.py -->
+
+### Figures from `analysis/18_reader_comparison.py` (used in notes/reader-comparison.md. Tesseract alone, the stored vision reading alone and the two together on the 10 hand-labelled bills (analysis/gold_labels.csv, read only by this script and by 15_reader_evaluation.py); the vision figures exist only once data/cache/vision holds the readings)
+
+Script: `analysis/18_reader_comparison.py`. Output: `analysis/out/figures_comparison.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
+
+```
+python -I analysis/18_reader_comparison.py
+```
+
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
+
+| Figure id | Value | What it counts |
+|---|---|---|
+| rc.labelled_bills | 10 | hand-labelled bills |
+| rc.vision_stored_of_labelled | 0 | of those, bills with a stored vision reading |
+| rc.tess_first.fields_correct | 53 | Tesseract alone, first run: fields right (of 60) |
+| rc.tess_first.key_bills | 5 | Tesseract alone, first run: bills right on the four key fields |
+| rc.tess_live.fields_correct | 58 | Tesseract alone, stored reading now (tuned on these bills): fields right (of 60) |
+| rc.tess_live.key_bills | 8 | Tesseract alone, stored reading now (tuned on these bills): bills right on the four key fields |
+
+<!-- END 18_reader_comparison.py -->

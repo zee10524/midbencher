@@ -49,6 +49,8 @@ SOURCES = [
      "notes/intake-run.md. All 40 inbox bills through the reader results, the checks, the routing and parsed_bill"),
     ("17_runway_90d.py", "figures_runway.csv", ["clean.py"],
      "app/ui (control tower headline and list of work orders likely to run dry), backtest/out/runway_90d.csv. Burn from the last 90 days of billing; the lifetime-average figure is kept for comparison"),
+    ("18_reader_comparison.py", "figures_comparison.csv", [],
+     "notes/reader-comparison.md. Tesseract alone, the stored vision reading alone and the two together on the 10 hand-labelled bills (analysis/gold_labels.csv, read only by this script and by 15_reader_evaluation.py); the vision figures exist only once data/cache/vision holds the readings"),
 ]
 
 # the evaluation script is frozen and writes the platform line ending; keep the repository on LF

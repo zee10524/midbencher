@@ -119,9 +119,16 @@ def unread_fields(res: dict) -> list[str]:
         x = (res.get("fields") or {}).get(key) or {}
         if key == "wo_id" and x.get("value") is None and "printed blank" in x.get("note", ""):
             continue
+        if (x.get("cross") or {}).get("state") == "differ":
+            continue                 # the two readers differ: not unread, a person settles it (see `disputed_fields`)
         if x.get("value") is None or float(x.get("conf", 0) or 0) < LOOK:
             out.append(label)
     return out
+
+
+def disputed_fields(res: dict) -> list[str]:
+    """The names of fields on which the stored vision reading and Tesseract differ. They are treated as not read until a person types the value."""
+    return [label for key, label in READ_FIELDS if ((res.get("fields") or {}).get(key) or {}).get("cross", {}).get("state") == "differ"]
 
 
 def run_available(b: BillRead, ctx: Context) -> tuple[list, list[dict]]:
@@ -155,6 +162,7 @@ def check_bill(res: dict, ctx: Context) -> dict:
     b = bill_read(res, own_bill_id=own)
     results, not_run = run_available(b, ctx)
     unread = unread_fields(res)
+    disputed = disputed_fields(res)
     routing = route(results) if results else Routing(RESEND, (), ("no check could run on what was read",))
     actions = list(routing.actions)
     if unread:
@@ -164,10 +172,13 @@ def check_bill(res: dict, ctx: Context) -> dict:
     if unread and label == AUTO:
         label = HUMAN
         reasons.append("the verdict is partial: " + ", ".join(unread) + " could not be read")
+    if disputed and label == AUTO:
+        label = HUMAN
+        reasons.append("the two readers differ on " + ", ".join(disputed) + ": a person decides")
     if soft and label == AUTO:
         label = HUMAN
         reasons.append(", ".join(soft) + " was not read cleanly from the bill (looked up or repaired from the vendor master): a person confirms it")
-    return dict(file=res["file"], bill=b, own_bill_id=own, results=results, not_run=not_run, unread=unread, partial=bool(not_run or unread),
+    return dict(file=res["file"], bill=b, own_bill_id=own, results=results, not_run=not_run, unread=unread, disputed=disputed, partial=bool(not_run or unread or disputed),
                 routing=Routing(label, tuple(actions), tuple(reasons)))
 
 

@@ -104,18 +104,34 @@ function renderCard(c) {
   const grid = el("div", "fields");
   const typed = {};
   c.fields.forEach((f) => {
-    const cell = el("div", f.state === "unread" ? "unread" : "");
+    const needsPerson = f.state === "unread" || f.state === "differ";
+    const cell = el("div", needsPerson ? "unread" : "");
     add(cell, el("div", "k", f.name), el("div", "v", f.value));
-    if (f.state === "unread") {
+    if (needsPerson) {
       const inp = el("input", "typein");
       inp.type = "text"; inp.placeholder = "type it here"; inp.setAttribute("aria-label", f.name);
       typed[f.key] = inp;
-      add(cell, el("span", "flag", "not read: needs human review"), inp);
+      add(cell, el("span", "flag", f.state === "differ" ? "the two readers differ: needs human review" : "not read: needs human review"));
+      if (f.cross) {
+        const side = el("div", "sidebyside");
+        const pick = (who, val) => {
+          const b = el("button", "pick", "Use this");
+          b.type = "button";
+          b.onclick = () => { inp.value = val; inp.focus(); };
+          return add(el("div", "col"), el("div", "who", who), el("div", "val", val), val === "not read" ? el("span") : b);
+        };
+        if (f.cross.state === "differ") add(side, pick("Tesseract", f.cross.tesseract), pick("Stored vision reading", f.cross.vision));
+        else add(side, pick("Stored vision reading (suggestion only)", f.cross.vision));
+        cell.appendChild(side);
+      }
+      cell.appendChild(inp);
     } else if (f.state === "typed") add(cell, el("span", "flag", "typed by a person"));
     else if (f.state !== "ok") add(cell, el("span", "flag", f.note || "needs human review"));
+    if (f.cross && f.cross.state === "agree" && !needsPerson) cell.appendChild(el("span", "agree", "two readers agree"));
     grid.appendChild(cell);
   });
   card.appendChild(grid);
+  if (c.vision_label) card.appendChild(el("p", "muted small", c.vision_label));
   if (Object.keys(typed).length && c.key) {
     const go = el("button", "btn quiet", "Run the checks again with my entries");
     const msg = el("span", "small muted");

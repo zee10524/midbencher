@@ -18,7 +18,7 @@ from datetime import date
 from pathlib import Path
 
 from app import intake
-from app.reader import ocr, pipeline
+from app.reader import crosscheck, ocr, pipeline, vision
 from app.rules import Context
 from app.rules.model import AUTO_CLEAR, LOOK
 from app.sap.adapter import AS_OF, SapAdapter
@@ -170,6 +170,10 @@ def normalise_typed(key: str, text: str):
     return " ".join(t.split())
 
 
+def _show(v) -> str:
+    return "not read" if v is None else (f"{v:,.2f}" if isinstance(v, (int, float)) and not isinstance(v, bool) else str(v))
+
+
 def field_rows(res: dict) -> list[dict]:
     """The read fields for the card. Below 0.70, or not found, the value is withheld: it is never shown as if it were known."""
     rows = []
@@ -178,6 +182,11 @@ def field_rows(res: dict) -> list[dict]:
         v, c = x.get("value"), float(x.get("conf", 0) or 0)
         if (key, name) in EXTRA_FIELDS and x.get("source") != "human_review" and v is not None and c >= LOOK:
             continue                 # an extra field is shown only when it was not read, or a person typed it
+        cr = x.get("cross")
+        side = dict(state=cr["state"], tesseract=_show(cr["tesseract"]), vision=_show(cr["vision"])) if cr else None
+        if cr and cr["state"] == "differ":
+            rows.append(dict(key=key, name=name, value="the two readers differ", state="differ", note="needs human review", cross=side))
+            continue
         if x.get("source") == "human_review":
             rows.append(dict(key=key, name=name, value=f"{v:,.2f}" if isinstance(v, float) else str(v), state="typed", note="typed by a person"))
         elif x.get("source") == "vendor_master":
@@ -187,10 +196,10 @@ def field_rows(res: dict) -> list[dict]:
         elif key == "wo_id" and v is None and "printed blank" in x.get("note", ""):
             rows.append(dict(key=key, name=name, value="printed blank on the bill", state="review", note="printed blank"))
         elif v is None or c < LOOK:
-            rows.append(dict(key=key, name=name, value="not read", state="unread", note=""))
+            rows.append(dict(key=key, name=name, value="not read", state="unread", note="", **({"cross": side} if side else {})))
         else:
             shown = f"{v:,.2f}" if isinstance(v, float) else str(v)
-            rows.append(dict(key=key, name=name, value=shown, state="ok" if c >= AUTO_CLEAR else "review", note=""))
+            rows.append(dict(key=key, name=name, value=shown, state="ok" if c >= AUTO_CLEAR else "review", note="", **({"cross": side} if side and cr["state"] == "agree" else {})))
     return rows
 
 
@@ -260,7 +269,16 @@ def messages(res: dict, out: dict) -> list[dict]:
     return msgs
 
 
+def vision_label(res: dict) -> str | None:
+    v = res.get("vision")
+    if not v:
+        return None
+    return (f"Stored vision reading ({v.get('model') or 'vision model'}, read {v.get('read_at') or 'earlier'}), not a live call. It is a second opinion only: where it agrees with Tesseract the field is marked "
+            "two readers agree; where they differ both values are shown and a person decides. Neither is picked automatically.")
+
+
 def card(S: State, res: dict, source: str, replay: bool, ms: float = 0.0) -> dict:
+    res = crosscheck.apply(res, vision.stored(res["file"], res.get("sha256")))
     with SapAdapter(pipeline.PACK_DB) as sap:
         ctx = Context(sap, S.bills, bill_counted_in_billed=replay)
         out = intake.check_bill(res, ctx)
@@ -276,7 +294,7 @@ def card(S: State, res: dict, source: str, replay: bool, ms: float = 0.0) -> dic
     return dict(file=res["file"], key=res.get("sha256"), bill_type=res.get("bill_type"), doc_type=res.get("doc_type", "invoice"), source=source, reading_label=reading_label(S, source),
                 route=out["routing"].route, headline=label, sub=sub, partial=out["partial"], checks_ran=ran, checks_total=total,
                 not_run=[dict(check=n["check"], title=n["title"], needs=n["needs"]) for n in out["not_run"]], issues=issues, more_issues=more, fields=rows,
-                inputs=[r["key"] for r in rows if r["state"] == "unread"], messages=messages(res, out), outbox_note="Simulated outbox. Nothing is sent.",
+                inputs=[r["key"] for r in rows if r["state"] in ("unread", "differ")], vision_label=vision_label(res), messages=messages(res, out), outbox_note="Simulated outbox. Nothing is sent.",
                 review_note="Fields marked needs human review are never guessed. A person can type the ones that were not read.", seconds=round(ms / 1000, 2))
 
 
