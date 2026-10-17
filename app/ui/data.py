@@ -388,13 +388,18 @@ def impact(S: State) -> dict:
     base = dict(mean=N("l.base.desk_mean"), ms=N("l.base.ms_late"), ms_pct=N("l.base.ms_late_pct"), over=N("l.base.over45"), p90=N("l.base.p90"), n_ms=N("l.n_msme_known"))
     cmb = {m: f("combined", m) for m in ("days_off_mean", "mean_days_desk_to_paid_after", "msme_over_45_days_count", "msme_over_45_days_pct", "all_over_45_days_count", "p90_days_desk_to_paid")}
     intake_days, intake_over, intake_ms = f("intake", "days_off_mean"), f("intake", "all_over_45_days_count"), f("intake", "msme_over_45_days_count")
-    note = lambda g: re.search(r"\((.*)\)", rows[(g, "days_off_mean")]["note"]).group(1) if re.search(r"\((.*)\)", rows[(g, "days_off_mean")]["note"]) else rows[(g, "days_off_mean")]["note"]
+    # the backtest notes say "cut-off 2 / 1 / 0" and "residual 3 days / 1 day / optimistic"; the numbers are read from them, the words are plain
+    cut = re.search(r"cut-off (\d+) / (\d+) / (\d+)", rows[("pay", "days_off_mean")]["note"]).groups()
+    resid = re.search(r"residual (\d+) days? / (\d+) days?", rows[("intake", "days_off_mean")]["note"]).groups()
+    days = lambda k: f"{k} day" if k == "1" else f"{k} days"
+    pay_words = f"the run list closes {days(cut[0])} before the run in the worst case, {days(cut[1])} in the middle case and {days(cut[2])} in the best case"
+    intake_words = f"a caught query still costs {days(resid[0])} in the worst case and {days(resid[1])} in the middle case, and the best case counts every query from the two early layers with {days(resid[1])} left"
     clerks = len(control_tower(S.bills))
     levers = []
     for g, title, cond in [
-        ("pay", "Pay on the first run after posting", f"Treasury sets the run-list cut-off ({note('pay')}). Why bills miss the first run is unconfirmed: Treasury's run lists are still a question for the client."),
+        ("pay", "Pay on the first run after posting", f"Treasury sets the run-list cut-off. In the replay {pay_words}. Why bills miss the first run is unconfirmed: Treasury's run lists are still a question for the client."),
         ("queue", "Balance the AP pick order", f"The AP lead works the order across the {clerks} clerks. This is a replay of last year's waits; the live queue holds only {n0(N('l.live.waiting'))} waiting bills."),
-        ("intake", "Check bills at intake", f"The desk and the executives fix problems at the source. The replay assumes a delay left over after a catch of {note('intake')}. Fewer queries, not a faster payment run.")]:
+        ("intake", "Check bills at intake", f"The desk and the executives fix problems at the source. The replay assumes that {intake_words}. Fewer queries, not a faster payment run.")]:
         d = f(g, "days_off_mean")
         levers.append(dict(title=title, days=rng(d[0], d[2], lambda x: f"{x:.2f}"), condition=cond))
     tail_pct = 100 * intake_days[2] / base["mean"]
@@ -405,7 +410,9 @@ def impact(S: State) -> dict:
                  unit="days", saved=rng(cmb["days_off_mean"][0], cmb["days_off_mean"][2], lambda x: f"{x:.1f}"),
                  condition="Needs Treasury and AP to act on all three levers. Payment-run cause unconfirmed.",
                  scale=dict(before=base["mean"], lo=base["mean"] - N("l.lever.high.save"), hi=base["mean"] - N("l.lever.low.save"), min=0, max=base["mean"])),
-            dict(name=f"Micro and Small bills over {LIMIT_DAYS} days", before=n0(base["ms"]), after=rng(cmb["msme_over_45_days_count"][2], cmb["msme_over_45_days_count"][0], n0), unit="bills",
+            dict(name=f"Micro and Small bills paid after more than {LIMIT_DAYS} days", before=n0(base["ms"]), after=rng(cmb["msme_over_45_days_count"][2], cmb["msme_over_45_days_count"][0], n0), unit="bills",
+                 sentence=(f"from {n1(base['ms_pct'])} per cent of Micro and Small bills ({n0(base['ms'])} of {n0(base['n_ms'])}) to "
+                           f"{rng(cmb['msme_over_45_days_pct'][2], cmb['msme_over_45_days_pct'][0])} per cent ({rng(cmb['msme_over_45_days_count'][2], cmb['msme_over_45_days_count'][0], n0)})"),
                  saved=f"{rng(cmb['msme_over_45_days_pct'][2], cmb['msme_over_45_days_pct'][0])} per cent of {n0(base['n_ms'])}, from {n1(base['ms_pct'])}",
                  condition="Counted from the date the desk logged the bill. The statutory clock starts earlier, so these are minimums.",
                  scale=dict(before=base["ms"], lo=cmb["msme_over_45_days_count"][2], hi=cmb["msme_over_45_days_count"][0], min=0, max=base["ms"])),
@@ -415,5 +422,5 @@ def impact(S: State) -> dict:
         levers=levers,
         intake_line=(f"The intake rules barely move the mean ({rng(intake_days[0], intake_days[2], lambda x: f'{x:.2f}')} days, at most {n1(tail_pct)} per cent of it) but protect the tail: "
                      f"bills over {LIMIT_DAYS} days fall from {n0(base['over'])} to {between(intake_over[2], intake_over[0], n0)}, and {n0(N('l.chk.over45_queried'))} of those {n0(base['over'])} bills had a query."),
-        low_middle_high=f"Low, middle and high pair {note('pay')} with {note('intake')}.",
+        low_middle_high=f"Best, middle and worst case: {pay_words}. For the intake rules, {intake_words}.",
         source="Backtest on last year's register (backtest/out/impact.csv). Figures are in notes/numbers.md.")

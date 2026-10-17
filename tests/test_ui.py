@@ -224,3 +224,13 @@ def test_the_cutoff_control_wraps_instead_of_clipping_in_a_narrow_window():
     head = re.search(r"\.head-row\s*\{([^}]*)\}", css).group(1)
     assert "flex-wrap: wrap" in head
     assert "flex: 0 0 auto" in re.search(r"\.seg\s*\{([^}]*)\}", css).group(1)
+
+
+def test_impact_msme_line_is_plain_and_from_the_files(server):
+    url, S = server
+    d = get(url + "/api/impact")
+    ms = next(h for h in d["headline"] if h["name"].startswith("Micro and Small"))
+    assert ms["sentence"] == "from 10.4 per cent of Micro and Small bills (530 of 5,106) to 3.9 to 5.9 per cent (200 to 303)"
+    assert ms["sentence"].startswith(f"from {S.numbers('l.base.ms_late_pct'):.1f} per cent")
+    text = d["low_middle_high"] + " ".join(l["condition"] for l in d["levers"])
+    assert "best case" in text and "worst case" in text and "residual" not in text and "optimistic" not in text and "cut-off 2 /" not in text

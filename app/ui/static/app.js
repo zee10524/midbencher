@@ -244,7 +244,7 @@ async function loadImpact() {
       const box = el("div", "metric");
       const after = el("div", "after", m.after);
       after.appendChild(el("small", "", " " + m.unit + " after"));
-      add(box, el("div", "name", m.name), after, el("div", "before", "Before: " + m.before + " " + m.unit + ". Change: " + m.saved + "."));
+      add(box, el("div", "name", m.name), after, el("div", "before", m.sentence ? m.sentence.charAt(0).toUpperCase() + m.sentence.slice(1) + "." : "Before: " + m.before + " " + m.unit + ". Change: " + m.saved + "."));
       const s = m.scale, span = s.max || 1;
       const track = el("div", "bar-track");
       const fill = el("div", "bar-fill");
