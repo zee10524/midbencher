@@ -158,7 +158,7 @@ lines.append("    end")
 note("IT", "Runs SAP, the gate biometric network and a shared drive of 38 registers")
 
 MMD = "\n".join(lines) + "\n"
-(NOTES / "workflows" / "swimlane.mmd").write_text(MMD, encoding="utf-8")
+(NOTES / "workflows" / "swimlane.mmd").write_text(MMD, encoding="utf-8", newline="\n")
 assert ";" not in MMD and "#" not in MMD, "mermaid separators in text"
 fig("w.diagram.messages", num["n"], "numbered arrows in the swimlane")
 K = keys
@@ -286,6 +286,6 @@ for lineno, line in enumerate(TEXT.splitlines(), 1):
 if bad:
     print("QUOTES NOT FOUND:"); [print(" ", b) for b in bad]
     raise SystemExit(1)
-(NOTES / "workflows.md").write_text(TEXT, encoding="utf-8")
-pd.DataFrame([dict(id=k, value=v, description=d) for k, (v, d) in own.items()]).to_csv(OUT / "figures_workflows.csv", index=False)
+(NOTES / "workflows.md").write_text(TEXT, encoding="utf-8", newline="\n")
+pd.DataFrame([dict(id=k, value=v, description=d) for k, (v, d) in own.items()]).to_csv(OUT / "figures_workflows.csv", index=False, lineterminator="\n")
 print("wrote notes/workflows/swimlane.mmd and notes/workflows.md;", num["n"], "arrows;", len(own), "figures")

@@ -426,7 +426,7 @@ fig("vendors.near_pairs_same_state_and_category",
     sum((nv.state[a] == nv.state[b]) and (nv.category[a] == nv.category[b]) for a, b in near))
 pd.DataFrame([dict(vendor_a=a, name_a=nv.vendor_name[a], vendor_b=b, name_b=nv.vendor_name[b],
                    same_state=nv.state[a] == nv.state[b], same_category=nv.category[a] == nv.category[b])
-              for a, b in near]).to_csv(OUT / "vendor_near_duplicates.csv", index=False)
+              for a, b in near]).to_csv(OUT / "vendor_near_duplicates.csv", index=False, lineterminator="\n")
 issue("D16", "vendors", "vendor_name has a repeated word (e.g. Ojas Ojas Traders)", rep.sum(), "FLAG", "Cosmetic; ids and GSTINs are unique.")
 issue("D17", "vendors", "name similarity above 0.9 to another vendor (suffixes ignored)", len(near), "FLAG for review, do not merge",
       "No two vendors share a GSTIN or a normalised name. These pairs differ in one word (for example Ojas vs Tejas "
@@ -478,10 +478,10 @@ fig("out.values_changed", len(changes))
 
 df = df.drop(columns=["source_row"]).reset_index(drop=True)
 df.to_parquet(OUT / "bills_clean.parquet", index=False)
-excl.to_csv(OUT / "exclusions.csv", index=False)
-pd.DataFrame(changes).to_csv(OUT / "changes.csv", index=False)
-pd.DataFrame(issues).to_csv(OUT / "issues.csv", index=False)
-pd.DataFrame([dict(id=k, value=v, description=d) for k, (v, d) in figs.items()]).to_csv(OUT / "figures.csv", index=False)
+excl.to_csv(OUT / "exclusions.csv", index=False, lineterminator="\n")
+pd.DataFrame(changes).to_csv(OUT / "changes.csv", index=False, lineterminator="\n")
+pd.DataFrame(issues).to_csv(OUT / "issues.csv", index=False, lineterminator="\n")
+pd.DataFrame([dict(id=k, value=v, description=d) for k, (v, d) in figs.items()]).to_csv(OUT / "figures.csv", index=False, lineterminator="\n")
 
 assert len(raw) == len(df) + len(excl), "rows lost without a log entry"
 print(f"in={len(raw)} excluded={len(excl)} out={len(df)} values_changed={len(changes)}")

@@ -37,7 +37,7 @@ figs.append(("rd.credit_notes", sum(r.get("doc_type") == "credit_note" for r in 
 figs.append(("rd.no_gst", sum(bool(r.get("no_gst_printed")) for r in res), "files that print 'GST not applicable'"))
 figs.append(("rd.text_layer_fast_path", sum(bool(r["reader"].get("text_layer_fast_path")) for r in res), "files read through the pdfplumber text-layer fast path (expected 0)"))
 figs.append(("rd.simulated", sum(bool(r["reader"].get("simulated")) for r in res), "cached results marked reader simulated"))
-pd.DataFrame(figs, columns=["id", "value", "description"]).to_csv(OUT / "figures_reader.csv", index=False)
+pd.DataFrame(figs, columns=["id", "value", "description"]).to_csv(OUT / "figures_reader.csv", index=False, lineterminator="\n")
 print(f"{len(res)} cached results; {len(figs)} figures")
 c = Counter(r["route_hint"] for r in res)
 print(dict(c))

@@ -40,6 +40,6 @@ figs = [
     ("ld.invoice_no.nonstandard", int((~standard).sum()), "bills whose invoice number is not in the form NNN/YY-YY/NNN, the only form the register uses when it is clean"),
     ("ld.invoice_no.distinct_forms_per_loose_key", int((b.groupby(b.vendor_id + "|" + b.invoice_no.map(norm_invoice_loose)).invoice_no.nunique() > 1).sum()), "vendor and invoice-number keys written in more than one way"),
 ]
-pd.DataFrame(figs, columns=["id", "value", "description"]).round(3).to_csv(OUT / "figures_loose.csv", index=False)
+pd.DataFrame(figs, columns=["id", "value", "description"]).round(3).to_csv(OUT / "figures_loose.csv", index=False, lineterminator="\n")
 for k, v, d in figs:
     print(f"{k:<45} {v}")

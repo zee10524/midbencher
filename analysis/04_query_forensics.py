@@ -400,10 +400,10 @@ cols = ["query_id", "bill_id", "doc_type", "category", "property_code", "propert
         "catch_layer", "catch_rule", "day_one_data_supports", "catchable_days_saved"]
 out = m[cols].copy()
 out["day_one_data_supports"] = out.day_one_data_supports.map({True: "yes", False: "no"}).fillna("not testable here")
-out.to_csv(OUT / "query_forensics.csv", index=False, date_format="%Y-%m-%d")
-pd.DataFrame(summ).to_csv(OUT / "query_forensics_summary.csv", index=False)
-pd.DataFrame([dict(id=k, value=v, description=d) for k, (v, d) in figs.items()]).to_csv(OUT / "figures_query_forensics.csv", index=False)
-rule_df.assign(n=rule_df.rule_id.map(m.rule_id.value_counts())).to_csv(OUT / "query_rules.csv", index=False)
+out.to_csv(OUT / "query_forensics.csv", index=False, date_format="%Y-%m-%d", lineterminator="\n")
+pd.DataFrame(summ).to_csv(OUT / "query_forensics_summary.csv", index=False, lineterminator="\n")
+pd.DataFrame([dict(id=k, value=v, description=d) for k, (v, d) in figs.items()]).to_csv(OUT / "figures_query_forensics.csv", index=False, lineterminator="\n")
+rule_df.assign(n=rule_df.rule_id.map(m.rule_id.value_counts())).to_csv(OUT / "query_rules.csv", index=False, lineterminator="\n")
 
 pd.set_option("display.width", 230, "display.max_columns", 30, "display.max_rows", 200, "display.max_colwidth", 60)
 print(f"wrote {len(out)} query rows")

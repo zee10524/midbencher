@@ -63,7 +63,7 @@ class H(http.server.BaseHTTPRequestHandler):
                 return
             if "xmlns=" not in body[:400]:
                 body = body.replace("<svg", '<svg xmlns="http://www.w3.org/2000/svg"', 1)
-            SVG.write_text(body, encoding="utf-8")
+            SVG.write_text(body, encoding="utf-8", newline="\n")
             self._send("ok")
             print(f"saved {SVG} ({len(body)} chars)", flush=True)
         else:

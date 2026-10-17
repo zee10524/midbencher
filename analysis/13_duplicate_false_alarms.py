@@ -81,7 +81,7 @@ figs = [
     ("da.intake.rate_per_1000", 1000 * len(P) / n, "intake flags (pairs) per 1,000 posted invoices"),
     ("da.queried_dup_not_flagged", len(dup_queried & set(by_id) - set(flagged)), "posted invoices with a duplicate-bill query that loose matching does not flag"),
 ]
-pd.DataFrame(figs, columns=["id", "value", "description"]).round(3).to_csv(OUT / "figures_dupalarm.csv", index=False)
+pd.DataFrame(figs, columns=["id", "value", "description"]).round(3).to_csv(OUT / "figures_dupalarm.csv", index=False, lineterminator="\n")
 F = {k: v for k, v, _ in figs}
 
 ex = P.sort_values(["same_amount", "same_date", "a"], ascending=[False, False, True]).head(10)
@@ -132,6 +132,6 @@ Ordered by how much they match (same amount first, then same date). "Matched on"
 - A duplicate-bill query is taken as the sign that a real duplicate or reuse was found. The register cannot show a duplicate that nobody queried.
 - Loose matching is used at intake only. The backtest uses exact matching: see `backtest/replay.py`.
 """
-(ROOT / "notes" / "duplicate-false-alarms.md").write_text(md, encoding="utf-8")
+(ROOT / "notes" / "duplicate-false-alarms.md").write_text(md, encoding="utf-8", newline="\n")
 print("\n".join(f"{k:<32} {v}" for k, v, _ in figs))
 print(ex[["a", "b", "same_date", "same_amount", "same_wo", "either_queried_dup"]].to_string(index=False))

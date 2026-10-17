@@ -150,7 +150,7 @@ CF_T = "\n".join(f"| {r.rule} | {r.flagged_and_queried:,} | {r.flagged_not_queri
 NOT_RUN_T = "\n".join(f"- **{a}:** {b_}" for a, b_ in NOT_RUN)
 LIMITS_T = "\n".join(f"{i}. {t}" for i, t in enumerate(LIMITS, 1))
 fig("d.hours.full", f("o.pre.hours") + f("o.track4b.hours"), "hours for the full checker plus the full work queue, which do not fit")
-pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in own.items()]).to_csv(OUT / "figures_design.csv", index=False)
+pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in own.items()]).to_csv(OUT / "figures_design.csv", index=False, lineterminator="\n")
 
 # ------------------------------------------------------------------ the note
 CHK = ["| ID | Check | Class | What it needs | Queries last year | Saturday prototype |", "|---|---|---|---|---|---|"]
@@ -440,6 +440,6 @@ for ln, line in enumerate(md.splitlines(), 1):
 if bad:
     print("QUOTES NOT FOUND:", bad)
     raise SystemExit(1)
-(ROOT / "notes" / "solution-design.md").write_text(md, encoding="utf-8")
+(ROOT / "notes" / "solution-design.md").write_text(md, encoding="utf-8", newline="\n")
 print("wrote notes/solution-design.md;", len(own), "figures")
 print(S[["file", "vendor", "master_ms", "wo_valid", "headroom", "own", "others"]].to_string(index=False))

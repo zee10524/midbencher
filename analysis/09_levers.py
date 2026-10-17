@@ -120,10 +120,10 @@ for name, col, minn in [("Gap to the run (days)", "gap_g", 1), ("Posting weekday
     fig(f"l.lag.{fid}.adj_eta2", adj, f"share of the spread in days past the first run explained by {name.lower()} (adjusted for the number of groups)")
     fig(f"l.lag.{fid}.lowest", big["mean"].min(), f"lowest group mean of days past the first run, {name.lower()}")
     fig(f"l.lag.{fid}.highest", big["mean"].max(), f"highest group mean of days past the first run, {name.lower()}")
-pd.DataFrame(rows).round(4).to_csv(OUT / "lag_factors.csv", index=False)
+pd.DataFrame(rows).round(4).to_csv(OUT / "lag_factors.csv", index=False, lineterminator="\n")
 fr = pr.groupby("gap").agg(n=("first", "size"), first_pct=("first", "mean"), mean_excess=("excess", "mean"), mean_runs_missed=("runs_missed", "mean"))
 fr["first_pct"] *= 100
-fr.round(3).to_csv(OUT / "lag_first_run.csv")
+fr.round(3).to_csv(OUT / "lag_first_run.csv", lineterminator="\n")
 for g, r in fr.iterrows():
     fig(f"l.lag.gap{g}.n", r.n, f"paid invoices whose first open run is {g} days after posting")
     fig(f"l.lag.gap{g}.first_pct", r.first_pct, f"% of them paid on that first run")
@@ -139,10 +139,10 @@ fig("l.lag.tue_share", 100 * (pop.paid_date.dt.dayofweek == 1).mean(), "% of pai
 R = run(OUT)
 figs.update(R.figs)
 ROWS = R.levers
-pd.DataFrame(R.rules).to_csv(OUT / "backtest_rules.csv", index=False)
-pd.DataFrame(ROWS).round(3).to_csv(OUT / "levers.csv", index=False)
+pd.DataFrame(R.rules).to_csv(OUT / "backtest_rules.csv", index=False, lineterminator="\n")
+pd.DataFrame(ROWS).round(3).to_csv(OUT / "levers.csv", index=False, lineterminator="\n")
 write_impact(R)
-pd.DataFrame([dict(id=k, value=v, description=d) for k, (v, d) in figs.items()]).to_csv(OUT / "figures_levers.csv", index=False)
+pd.DataFrame([dict(id=k, value=v, description=d) for k, (v, d) in figs.items()]).to_csv(OUT / "figures_levers.csv", index=False, lineterminator="\n")
 print("figures:", len(figs))
 print(pd.DataFrame(ROWS).round(2).to_string(index=False))
 print({k: v[0] for k, v in figs.items() if k.startswith("l.chk")})
@@ -204,5 +204,5 @@ A bill posted one day before a run is paid on it {fr.first_pct.iloc[0]:.0f}% of 
 
 **Payment-run rules (priority 1).** From Treasury, for the last twelve months: for each Tuesday and Friday run, the date and time the run list was drawn, the date and time it was approved, the list of invoice numbers on it, and the written cut-off or approval rule; for each invoice, the date it became payable in SAP (clearing date) and the reason code for any hold. This settles which of the four hypotheses is true and whether a cut-off of 0, 1 or 2 days is available. The same request is in `notes/claims-tested.md`.
 """
-(ROOT / "notes" / "payment-lag.md").write_text(md, encoding="utf-8")
+(ROOT / "notes" / "payment-lag.md").write_text(md, encoding="utf-8", newline="\n")
 print("wrote notes/payment-lag.md")

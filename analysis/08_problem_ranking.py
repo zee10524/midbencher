@@ -150,7 +150,7 @@ fig("p.msme.late_desk_after_pay", int(((tot - sv_pay) > 45).sum()), "...if the p
 fig("p.msme.late_desk_after_queue", int(((tot - sv_q) > 45).sum()), "...if the AP-1 queue fix had applied")
 fig("p.msme.late_desk_after_both", int(((tot - sv_pay - sv_q) > 45).sum()), "...if both first fixes had applied")
 fig("p.msme.late_desk_after_all3", int(((tot - sv_pay - sv_q - sv_c) > 45).sum()), "...if all three flow fixes had applied")
-pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in own.items()]).to_csv(OUT / "figures_problem.csv", index=False)
+pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in own.items()]).to_csv(OUT / "figures_problem.csv", index=False, lineterminator="\n")
 
 # ------------------------------------------------------------------ the ranking
 rows = [
@@ -274,6 +274,6 @@ Rows overlap with the table above (the query row is split by owner here), so the
 | Vendors would adopt a portal or WhatsApp intake that cuts the vendor-to-desk time, shown by a pilot | The portal gets a counterfactual from the pilot and may move up; today it has none |
 | A property head can show a second weekly courier costs little and needs no new packet work | Courier moves to the first fix: it is a {d2('p.courier.save_tue_fri')}-day gain on the same footing as the others |
 """
-(ROOT / "notes" / "problem.md").write_text(md, encoding="utf-8")
+(ROOT / "notes" / "problem.md").write_text(md, encoding="utf-8", newline="\n")
 print("wrote notes/problem.md;", len(own), "figures")
 print(pd.DataFrame([{k: r[k] for k in ("rank_ceiling", "cause", "ceil", "lo", "hi", "rank_removable")} for r in rows]).round(2).to_string(index=False))

@@ -201,7 +201,7 @@ cf("c.wo.over_dec_share_of_feb_pct", round(100 * c["c.wo.over_approved_by_dec"][
    "% of the work orders past approved value by 28 Feb that were already past it on 31 Dec")
 cf("c.sec.wo_queries_pct", round(100 * c["c.sec.wo_queries"][0] / c["c.sec.queries"][0], 1), "% of queries on security bills that are work-order queries")
 
-pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in c.items() if v_ is not None]).to_csv(OUT / "figures_claims_tested.csv", index=False)
+pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in c.items() if v_ is not None]).to_csv(OUT / "figures_claims_tested.csv", index=False, lineterminator="\n")
 
 # ------------------------------------------------------------------ lookup of every figure used in the evidence
 SRC, F = {}, {}
@@ -372,7 +372,7 @@ for i in list(ledger) + list(SUPP):
                      verdict=verdict, basis=BASIS[i], evidence=text, figure_ids=", ".join(R_ids[i]),
                      scripts=", ".join("analysis/" + s for s in scripts) if scripts else "none (nothing in the pack)"))
 res = pd.DataFrame(rows)
-res.to_csv(OUT / "claims_tested.csv", index=False)
+res.to_csv(OUT / "claims_tested.csv", index=False, lineterminator="\n")
 cnt = res.verdict.value_counts()
 print(cnt.to_string())
 print(res[["id", "verdict", "scripts"]].to_string(index=False))
@@ -540,7 +540,7 @@ md.append("- **Clock.** Where a claim does not say when the clock starts, the fi
 md.append("- **Proxies.** Elapsed days stand in for effort wherever a claim is about time spent (L9, L10, L11, L32, L49). They give an upper bound, not a measurement.")
 md.append("- **Signing and posting dates.** Signature dates and posting dates are spread across all seven days of the week, which makes weekday claims about them unreliable (data-audit D15). Weekday tests use the receipt date (always a Friday) and the payment date.")
 md.append("- **Extract limits.** The SAP extract has no service entries, work-order lines or amendment history; claims that depend on those are NOT TESTABLE rather than guessed.")
-(ROOT / "notes" / "claims-tested.md").write_text("\n".join(md) + "\n", encoding="utf-8")
-res.to_csv(OUT / "claims_tested.csv", index=False)
+(ROOT / "notes" / "claims-tested.md").write_text("\n".join(md) + "\n", encoding="utf-8", newline="\n")
+res.to_csv(OUT / "claims_tested.csv", index=False, lineterminator="\n")
 print("wrote notes/claims-tested.md;", len(ten), "claims with no number;", len(six), "with a context number")
 print(bcnt.to_string())

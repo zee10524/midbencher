@@ -135,7 +135,7 @@ res["_gsort"] = res.group.map({k: i for i, k in enumerate(WEEKDAYS)}).fillna(0)
 res = res.sort_values(["dimension", "_gsort", "group", "stage_order"]).drop(columns="_gsort")
 cols = ["dimension", "group", "stage_order", "stage", "kind", "owner", "n", "cal_mean", "cal_median", "cal_p90",
         "wd_mean", "wd_median", "wd_p90", "share_of_total_cal_mean"]
-res[cols].round(3).to_csv(OUT / "stage_times.csv", index=False)
+res[cols].round(3).to_csv(OUT / "stage_times.csv", index=False, lineterminator="\n")
 
 # headline figures
 ov = res[res.dimension == "overall"].set_index("stage_order")
@@ -187,14 +187,14 @@ for grp in ["Micro or Small", "Medium or Not MSME", "Unknown", "All", "All, invo
             n_unpaid_already_over_45=int((age > 45).sum()), n_unpaid_already_over_60=int((age > 60).sum()),
         ))
 pol = pd.DataFrame(pol)
-pol.round(2).to_csv(OUT / "policy_compliance.csv", index=False)
+pol.round(2).to_csv(OUT / "policy_compliance.csv", index=False, lineterminator="\n")
 for r in pol.itertuples():
     k = f"policy.{'matured' if r.msme_group.startswith('All,') else r.msme_group.split()[0].lower()}.{r.clock_starts.replace('_date', '')}"
     for m in ("n_paid", "mean", "median", "p90", "pct_over_45", "pct_over_60", "pct_in_cfo_band_45_to_50",
               "n_unpaid", "n_unpaid_already_over_45", "n_unpaid_already_over_60"):
         fig(f"{k}.{m}", round(float(getattr(r, m)), 2), f"{r.msme_group}, clock from {r.clock_starts}: {m}")
 
-pd.DataFrame([dict(id=k, value=v, description=dsc) for k, (v, dsc) in figs.items()]).to_csv(OUT / "figures_stage_times.csv", index=False)
+pd.DataFrame([dict(id=k, value=v, description=dsc) for k, (v, dsc) in figs.items()]).to_csv(OUT / "figures_stage_times.csv", index=False, lineterminator="\n")
 
 # ------------------------------------------------------------------ console summary
 pd.set_option("display.width", 220, "display.max_columns", 30)

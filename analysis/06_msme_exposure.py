@@ -170,7 +170,7 @@ for c in CLOCKS:
                 scen_rows.append(dict(table=f"scenario_{table}", group=sc, clock=c, metric=m, value=x))
                 fig(f"e.scen.{table}.{c.replace('_date', '')}.{m}.{sc}", round(x, 1))
 S_ = pd.DataFrame(scen_rows)
-pd.concat([R, S_], ignore_index=True).to_csv(OUT / "msme_exposure.csv", index=False)
+pd.concat([R, S_], ignore_index=True).to_csv(OUT / "msme_exposure.csv", index=False, lineterminator="\n")
 
 # ---------------------------------------------------------------- the open bills nearest to 45 days
 o = open_.copy()
@@ -189,7 +189,7 @@ cols = ["bill_id", "vendor_id", "vendor_name", "msme_status", "limit_applies", "
         "invoice_date", "desk_received_date", "property_verified_date", "age_desk", "days_left_desk", "deadline_desk", "runs_left_before_desk_deadline",
         "age_ver", "days_left_ver", "deadline_ver", "runs_left_before_ver_deadline", "age_inv", "days_left_inv"]
 o = o.sort_values(["days_left_desk", "bill_id"])
-o[cols].to_csv(OUT / "msme_open_bills.csv", index=False, date_format="%Y-%m-%d")
+o[cols].to_csv(OUT / "msme_open_bills.csv", index=False, date_format="%Y-%m-%d", lineterminator="\n")
 ms_open = o[o.msme_status.isin(["Micro", "Small", "Unknown"])]
 for g in ("Micro", "Small", "Unknown"):
     s = o[o.msme_status == g]
@@ -206,7 +206,7 @@ fig("open.ms_unknown.n_not_yet_breached_desk", len(near)); fig("open.ms_unknown.
 fig("open.ms_unknown.n_not_yet_breached_posted", int(near.payable_now.sum()), "...of those not yet past, with status Posted")
 fig("open.ms_unknown.near_max_days_left", int(near.days_left_desk.max()))
 fig("open.next_run", str(runs[0].date()), "first payment run after 30 Apr 2026")
-pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in figs.items()]).to_csv(OUT / "figures_msme.csv", index=False)
+pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in figs.items()]).to_csv(OUT / "figures_msme.csv", index=False, lineterminator="\n")
 
 # ---------------------------------------------------------------- the readable note (numbers read from the figures above)
 F = {k: v_[0] for k, v_ in figs.items()}
@@ -314,6 +314,6 @@ md.append("- **The register has no delivery date and no payment-terms field.** T
 md.append("- **The blank-status share is an assumption**, not a measurement (section 4). The known-status results do not depend on it.")
 md.append("- **Value is invoice value.** It is not the amount of any tax or interest; it is the size of the bills involved.")
 md.append("- **Unusable payment dates.** 110 invoices marked Paid cannot be placed on any clock (data-audit D03).")
-(ROOT / "notes" / "msme-exposure.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+(ROOT / "notes" / "msme-exposure.md").write_text("\n".join(md) + "\n", encoding="utf-8", newline="\n")
 print("wrote notes/msme-exposure.md")
 print(S_.pivot_table(index=["table", "metric"], columns=["clock", "group"], values="value").round(0).to_string())

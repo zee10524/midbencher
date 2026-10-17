@@ -49,7 +49,7 @@ for wid, bill in billing.items():
                          monthly_billing_inr=round(per_day * DAYS_PER_MONTH), runway_days=round(days, 1), days_to_expiry=to_end, vendor_has_bill_waiting=r.vendor_id in open_v, wo_has_bill_waiting=wid in open_w))
 D = pd.DataFrame(rows).sort_values(["monthly_billing_inr", "wo_id"], ascending=[False, True])
 (ROOT / "backtest" / "out").mkdir(parents=True, exist_ok=True)
-D.to_csv(ROOT / "backtest" / "out" / "runway_90d.csv", index=False)
+D.to_csv(ROOT / "backtest" / "out" / "runway_90d.csv", index=False, lineterminator="\n")
 
 with SapAdapter(ROOT / "pack" / "data" / "sap_extract.sqlite") as sap:
     old = [x for x in runway(seed(ROOT / "pack" / "data" / "bill_register.csv", ROOT / "pack" / "data" / "queries.csv", sap), sap)
@@ -62,7 +62,7 @@ figs = [("rw.window_days", WINDOW, "days of billing before 30 April 2026 that th
         ("rw.dry.wo_waiting", int(D.wo_has_bill_waiting.sum()), "of those, orders with a bill already waiting on that order itself"),
         ("rw.dry.monthly_billing_inr", int(D.monthly_billing_inr.sum()), "monthly billing, rupees, on those orders (last 90 days, per 30.4375 days)"),
         ("rw.dry_lifetime", len(old), "for comparison: the same view using each order's lifetime-average burn (the earlier headline)")]
-pd.DataFrame(figs, columns=["id", "value", "description"]).to_csv(OUT / "figures_runway.csv", index=False)
+pd.DataFrame(figs, columns=["id", "value", "description"]).to_csv(OUT / "figures_runway.csv", index=False, lineterminator="\n")
 for k, v, _ in figs:
     print(f"{k:<28} {v}")
 print(D.head(6).to_string(index=False))

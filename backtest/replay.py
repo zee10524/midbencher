@@ -247,8 +247,8 @@ def impact_rows(R: Replay) -> list[dict]:
 
 def write_impact(R: Replay, folder: Path = IMPACT_DIR) -> None:
     folder.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(impact_rows(R)).to_csv(folder / "impact.csv", index=False)
-    pd.DataFrame(R.confusion).round(2).to_csv(folder / "confusion.csv", index=False)
+    pd.DataFrame(impact_rows(R)).to_csv(folder / "impact.csv", index=False, lineterminator="\n")
+    pd.DataFrame(R.confusion).round(2).to_csv(folder / "confusion.csv", index=False, lineterminator="\n")
 
 
 def pick_order_note(R: Replay) -> str:

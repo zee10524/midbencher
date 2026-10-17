@@ -37,7 +37,7 @@ for k in ("def1", "def2"):
     sp = res[k]["spread"]
     figs.append((f"pb.{k}.spread_pct", 100 * sp if sp != float("inf") else -1, f"after the pick order, highest load above lowest as % of lowest, {k} (-1 = lowest is zero)"))
     figs.append((f"pb.{k}.within", int(res[k]["within_tolerance"]), f"1 if {k} is within the tolerance after the pick order, else 0"))
-pd.DataFrame(figs, columns=["id", "value", "description"]).round(3).to_csv(OUT / "figures_pickbalance.csv", index=False)
-pd.DataFrame(rows).to_csv(OUT / "pick_balance.csv", index=False)
+pd.DataFrame(figs, columns=["id", "value", "description"]).round(3).to_csv(OUT / "figures_pickbalance.csv", index=False, lineterminator="\n")
+pd.DataFrame(rows).to_csv(OUT / "pick_balance.csv", index=False, lineterminator="\n")
 print(pd.DataFrame(rows).to_string(index=False))
 print({k: (round(v["spread"], 3), v["within_tolerance"]) for k, v in res.items()})

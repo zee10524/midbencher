@@ -51,6 +51,12 @@ SOURCES = [
      "app/ui (control tower headline and list of work orders likely to run dry), backtest/out/runway_90d.csv. Burn from the last 90 days of billing; the lifetime-average figure is kept for comparison"),
 ]
 
+# the evaluation script is frozen and writes the platform line ending; keep the repository on LF
+for _p in (ROOT / "analysis" / "out").glob("figures_reader_eval.csv"):
+    _p.write_bytes(_p.read_bytes().replace(b"
+", b"
+"))
+
 text = NUM.read_text(encoding="utf-8")
 total = 0
 for script, fname, needs, used in SOURCES:
@@ -73,5 +79,5 @@ for script, fname, needs, used in SOURCES:
         text = head + block + rest.split(end, 1)[1]
     else:
         text = text.rstrip("\n") + "\n\n" + block + "\n"
-NUM.write_text(text, encoding="utf-8")
+NUM.write_text(text, encoding="utf-8", newline="\n")
 print(f"registered {total} figures in {NUM}")

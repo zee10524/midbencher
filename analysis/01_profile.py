@@ -55,5 +55,5 @@ for t in tables:
     profile(f"sqlite:{t}", df)
 con.close()
 
-(OUT / "profile.md").write_text("\n".join(lines), encoding="utf-8")
+(OUT / "profile.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
 print("wrote", OUT / "profile.md")

@@ -160,7 +160,7 @@ R = {r["k"]: r for r in O}
 pair_hours = R["track4b"]["hrs"] + R["courier"]["hrs"]
 fig("o.pair.hours", pair_hours, "hours for the recommended pair")
 fig("o.pair.spare", BUDGET - pair_hours, "hours left in the budget")
-pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in own.items()]).to_csv(OUT / "figures_options.csv", index=False)
+pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in own.items()]).to_csv(OUT / "figures_options.csv", index=False, lineterminator="\n")
 
 # ------------------------------------------------------------------ the note
 rng = lambda r: (f"{r['lo']:.2f} to {r['hi']:.2f}" if r["hi"] - r["lo"] > 0.004 else f"{r['ce']:.2f}")
@@ -251,6 +251,6 @@ for ln, line in enumerate(md.splitlines(), 1):
 if bad:
     print("QUOTES NOT FOUND:", bad)
     raise SystemExit(1)
-(ROOT / "notes" / "options.md").write_text(md, encoding="utf-8")
+(ROOT / "notes" / "options.md").write_text(md, encoding="utf-8", newline="\n")
 print("wrote notes/options.md;", len(own), "figures")
 print(pd.DataFrame([{k: r[k] for k in ("rank", "n", "lo", "ce", "hi", "aff", "hrs")} for r in O]).round(2).to_string(index=False))

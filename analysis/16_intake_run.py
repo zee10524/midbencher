@@ -59,7 +59,7 @@ h10 = [o for o in runs if res_of(o, "H10") and res_of(o, "H10").status == "warn"
 figs.append(("ir.h10.warn_two_readings_differ", sum(res_of(o, "H10").certainty < 1 for o in h10), "bills where H10 warns because the two place-of-supply readings give different tax types"))
 figs.append(("ir.reader_ok_but_flagged", sum(o["reader"]["status"] == "ok" and any(r.status in ("fail", "warn") for r in o["results"]) for o in runs), "bills the reader passes (status ok) that a check still fails or warns on"))
 figs.append(("ir.own_row_linked", sum(o["own_bill_id"] is not None for o in runs), "inbox bills linked to their own register row (needed to replay the duplicate check)"))
-pd.DataFrame(figs, columns=["id", "value", "description"]).to_csv(OUT / "figures_intake.csv", index=False)
+pd.DataFrame(figs, columns=["id", "value", "description"]).to_csv(OUT / "figures_intake.csv", index=False, lineterminator="\n")
 F = {k: v for k, v, _ in figs}
 
 
