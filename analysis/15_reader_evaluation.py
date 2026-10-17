@@ -17,6 +17,7 @@ Writes analysis/out/figures_reader_eval.csv and notes/reader-evaluation.md.   Ru
 import csv
 import json
 import re
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -144,6 +145,42 @@ L_second, df2, T2 = build(snap["results"], gold, "SECOND score")
 live = {g["file"]: json.loads((ROOT / "app" / "reader" / "cache" / f"{g['file']}.json").read_text(encoding="utf-8")) for g in gold}
 df_live = score(live, gold)
 changed = not df1[["file", "field", "read", "conf"]].reset_index(drop=True).equals(df_live[["file", "field", "read", "conf"]].reset_index(drop=True))
+POST_TITLE = "post-fix, tuned after seeing the first-run failures on these 10 bills"
+if changed:
+    L_post, df_post, T_post = build(live, gold, "POST-FIX: " + POST_TITLE)
+
+
+def effect() -> dict:
+    """The effect of the post-fix reader on all 40 bills, before (the cache saved just before the fixes) and after (the live cache), using the same checks and the same register."""
+    sys.path.insert(0, str(ROOT))
+    from app.intake import check_bill
+    from app.rules import Context
+    from app.sap.adapter import SapAdapter
+    from app.tracker import seed
+    req = ["vendor_gstin", "vendor_name", "invoice_no", "invoice_date", "wo_id", "taxable", "total"]
+    out = {}
+    with SapAdapter(ROOT / "pack" / "data" / "sap_extract.sqlite") as sap:
+        ctx = Context(sap, seed(ROOT / "pack" / "data" / "bill_register.csv", ROOT / "pack" / "data" / "queries.csv", sap), bill_counted_in_billed=True)
+        for tag, folder in (("before", ROOT / "analysis" / "reader_cache_before_part1c"), ("after", ROOT / "app" / "reader" / "cache")):
+            rs = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(folder.glob("*.json"))]
+            low = ok = full = some = complete = 0
+            for r in rs:
+                before_low = low
+                for k in req:
+                    x = (r["fields"].get(k) or {})
+                    if k == "wo_id" and x.get("value") is None and "printed blank" in x.get("note", ""):
+                        continue
+                    low += x.get("value") is None or float(x.get("conf", 0) or 0) < 0.70
+                complete += low == before_low
+                ok += r["status"] == "ok"
+                o = check_bill(r, ctx)
+                full += not o["not_run"]
+                some += bool(o["results"])
+            out[tag] = dict(files=len(rs), low=int(low), reader_ok=int(ok), full_verdict=int(full), some_verdict=int(some), complete_read=int(complete))
+    return out
+
+
+EFF = effect() if changed else None
 
 figs = []
 for t in [*TYPES, "all"]:
@@ -172,6 +209,21 @@ figs.append(("re.second.wrong_conf_070_plus", int(((~df2.correct) & (df2.conf >=
 figs.append(("re.first.suspect_label_errors", len(SUSPECT_LABEL), "first run: misses where the label, not the reader, was wrong (bill-28 amount; the user has since corrected it)"))
 if changed:
     figs.append(("re.post.changed", 1, "the live reader output differs from the first-run snapshot"))
+    for t in [*TYPES, "all"]:
+        sub = df_post if t == "all" else df_post[df_post.bill_type == t]
+        figs.append((f"re.post.{t}.fields_correct", int(sub.correct.sum()), f"post-fix (tuned on these 10 bills), {t}: field readings correct"))
+        figs.append((f"re.post.{t}.key_bills_correct", T_post["full"][t][0], f"post-fix (tuned on these 10 bills), {t}: bills correct on all four key fields"))
+        for lab in FIELDS:
+            figs.append((f"re.post.{t}.{lab}.correct", int(sub[sub.field == lab].correct.sum()), f"post-fix (tuned on these 10 bills), {t}: {lab} correct"))
+    for name, n, c in T_post["cal"]:
+        k = {"0.90 or more": "hi", "0.70 to 0.90": "mid"}.get(name, "lo")
+        figs += [(f"re.post.cal.{k}.n", n, f"post-fix: readings with confidence {name}"), (f"re.post.cal.{k}.correct", c, "post-fix: of those, correct")]
+    figs.append(("re.post.wrong_conf_070_plus", int(((~df_post.correct) & (df_post.conf >= 0.70)).sum()), "post-fix: wrong readings with confidence 0.70 or more"))
+    for tag in ("before", "after"):
+        for k, d in (("low", "required fields (7 per bill) not found or below 0.70 confidence"), ("reader_ok", "bills the reader passes (status ok)"),
+                     ("full_verdict", "bills on which all six checks could run"), ("some_verdict", "bills on which at least one check could run"),
+                     ("complete_read", "bills with every required field read at 0.70 or more (the bills that got a verdict under the old all-or-nothing rule)")):
+            figs.append((f"re.part1c.{tag}.{k}", EFF[tag][k], f"all 40 bills, {tag} the post-fix reader: {d}"))
 pd.DataFrame(figs, columns=["id", "value", "description"]).to_csv(OUT / "figures_reader_eval.csv", index=False)
 
 F = {k: v for k, v, _ in figs}
@@ -181,7 +233,7 @@ header = ["# Reader evaluation against the hand-labelled bills", "",
           "**Two scores, one reader output.** The **FIRST-RUN score** was taken from a frozen copy of the reader's output (`analysis/reader_first_run.json`) made before the labels were used for anything, "
           "with the labels as first given; the reader was not changed to chase it. After it, the `bill-28.jpg` amount label (4,41,616.60) was found to have two digits swapped (the page prints 4,14,616.60, taxable 3,51,370.00 + IGST 63,246.60) "
           "and the user corrected it by hand. The **SECOND score** uses the corrected label on the same frozen reader output. It is not tuned: no reader change has touched a scored field "
-          "(`analysis/15_reader_evaluation.py` checks the live reader against the snapshot and adds a POST-FIX section only if a scored value or confidence differs).", "",
+          "(`analysis/15_reader_evaluation.py` checks the live reader against the snapshot; when a scored value or confidence differs, a separate post-fix section follows the first-run tables, labelled as tuned after seeing the first-run failures).", "",
           "| Score | Labels | Field readings correct | Bills fully correct on the four key fields |", "|---|---|---|---|",
           f"| FIRST-RUN | as first given | {F['re.first.all.fields_correct']} of {F['re.first.all.fields_total']} | {F['re.first.all.key_bills_correct']} of {F['re.first.all.bills']} |",
           f"| SECOND | bill-28 amount corrected | {F['re.second.all.fields_correct']} of {F['re.first.all.fields_total']} | {F['re.second.all.key_bills_correct']} of {F['re.first.all.bills']} |", "",
@@ -192,8 +244,20 @@ header = ["# Reader evaluation against the hand-labelled bills", "",
           "The tables below are the first run; the second score differs from them only in that one amount.", ""]
 body = L1
 if changed:
-    body += ["", "---", "", "## POST-FIX score: tuned on these 10 bills, so not a fair measure", "", "The live reader output differs from the first-run snapshot. This section is computed from the live cache and must not be quoted as accuracy."]
-    L2, _, _ = build(live, gold, "POST-FIX (tuned on these 10 bills)")
-    body += L2
+    E = EFF
+    body += ["", "---", "", "## Effect of the post-fix reader on all 40 bills", "",
+             "The post-fix reader renders pages at the same 300 dpi (400 dpi was tried and made amounts worse, so it was reverted), reads the header again on its own, and, where the GSTIN is unclear, "
+             "repairs one confusable character or looks the vendor up by name in the vendor master, marking the result `repaired` or `vendor_master`, never `read`. "
+             "The GSTIN check digit was not used: none of the 900 GSTINs in the vendor master passes it, so it would reject every true GSTIN. Same checks, same register, before and after.", "",
+             "| Measure, all 40 bills | Before | After |", "|---|---|---|",
+             f"| Required fields (7 per bill) not found or below 0.70 confidence | {F['re.part1c.before.low']} | {F['re.part1c.after.low']} |",
+             f"| Bills the reader passes with every field at 0.90 or more | {F['re.part1c.before.reader_ok']} | {F['re.part1c.after.reader_ok']} |",
+             f"| Bills with every required field read at 0.70 or more (a verdict under the old all-or-nothing rule) | {F['re.part1c.before.complete_read']} | {F['re.part1c.after.complete_read']} |",
+             f"| Bills on which all six checks could run | {F['re.part1c.before.full_verdict']} | {F['re.part1c.after.full_verdict']} |",
+             f"| Bills on which at least one check could run (a verdict) | {F['re.part1c.before.some_verdict']} | {F['re.part1c.after.some_verdict']} |", "",
+             "---", "", "## POST-FIX score: " + POST_TITLE, "",
+             "**This is not a fair measure.** The fixes were chosen after the first-run failures on these 10 bills were seen, so these bills are no longer unseen. The first-run and second scores above are untouched. "
+             "Do not quote this section as accuracy; it shows only whether the fixes did what they were aimed at.", ""]
+    body += L_post[1:]
 (ROOT / "notes" / "reader-evaluation.md").write_text("\n".join(header + body) + "\n", encoding="utf-8", newline="\n")
 print("first run:", F["re.first.all.fields_correct"], "of", F["re.first.all.fields_total"], "| key bills", F["re.first.all.key_bills_correct"], "of 10 | second:", F["re.second.all.fields_correct"], "of 60 | key bills", F["re.second.all.key_bills_correct"], "| live differs:", changed)

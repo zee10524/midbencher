@@ -33,10 +33,10 @@ Figures from `analysis/clean.py` are generated into the block below. Add hand-ru
 Script: `analysis/clean.py`. Output: `analysis/out/figures.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
+python -I analysis/clean.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -280,11 +280,11 @@ Script: `analysis/clean.py`. Output: `analysis/out/figures.csv`, one row per fig
 Script: `analysis/02_stage_times.py`. Output: `analysis/out/figures_stage_times.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -544,12 +544,12 @@ Script: `analysis/02_stage_times.py`. Output: `analysis/out/figures_stage_times.
 Script: `analysis/04_query_forensics.py`. Output: `analysis/out/figures_query_forensics.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -809,14 +809,14 @@ Script: `analysis/04_query_forensics.py`. Output: `analysis/out/figures_query_fo
 Script: `analysis/05_claims_tested.py`. Output: `analysis/out/figures_claims_tested.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
-.venv\Scripts\python.exe -I analysis\06_msme_exposure.py
-.venv\Scripts\python.exe -I analysis\05_claims_tested.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
+python -I analysis/06_msme_exposure.py
+python -I analysis/05_claims_tested.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -976,11 +976,11 @@ Script: `analysis/05_claims_tested.py`. Output: `analysis/out/figures_claims_tes
 Script: `analysis/06_msme_exposure.py`. Output: `analysis/out/figures_msme.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\06_msme_exposure.py
+python -I analysis/clean.py
+python -I analysis/06_msme_exposure.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -1552,15 +1552,15 @@ Script: `analysis/06_msme_exposure.py`. Output: `analysis/out/figures_msme.csv`,
 Script: `analysis/07_workflow_map.py`. Output: `analysis/out/figures_workflows.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
-.venv\Scripts\python.exe -I analysis\06_msme_exposure.py
-.venv\Scripts\python.exe -I analysis\05_claims_tested.py
-.venv\Scripts\python.exe -I analysis\07_workflow_map.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
+python -I analysis/06_msme_exposure.py
+python -I analysis/05_claims_tested.py
+python -I analysis/07_workflow_map.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -1596,15 +1596,15 @@ Script: `analysis/07_workflow_map.py`. Output: `analysis/out/figures_workflows.c
 Script: `analysis/08_problem_ranking.py`. Output: `analysis/out/figures_problem.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
-.venv\Scripts\python.exe -I analysis\06_msme_exposure.py
-.venv\Scripts\python.exe -I analysis\05_claims_tested.py
-.venv\Scripts\python.exe -I analysis\08_problem_ranking.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
+python -I analysis/06_msme_exposure.py
+python -I analysis/05_claims_tested.py
+python -I analysis/08_problem_ranking.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -1673,16 +1673,16 @@ Script: `analysis/08_problem_ranking.py`. Output: `analysis/out/figures_problem.
 Script: `analysis/09_options.py`. Output: `analysis/out/figures_options.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
-.venv\Scripts\python.exe -I analysis\06_msme_exposure.py
-.venv\Scripts\python.exe -I analysis\05_claims_tested.py
-.venv\Scripts\python.exe -I analysis\08_problem_ranking.py
-.venv\Scripts\python.exe -I analysis\09_options.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
+python -I analysis/06_msme_exposure.py
+python -I analysis/05_claims_tested.py
+python -I analysis/08_problem_ranking.py
+python -I analysis/09_options.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -1808,18 +1808,18 @@ Script: `analysis/09_options.py`. Output: `analysis/out/figures_options.csv`, on
 Script: `analysis/10_solution_design.py`. Output: `analysis/out/figures_design.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
-.venv\Scripts\python.exe -I analysis\06_msme_exposure.py
-.venv\Scripts\python.exe -I analysis\05_claims_tested.py
-.venv\Scripts\python.exe -I analysis\08_problem_ranking.py
-.venv\Scripts\python.exe -I analysis\09_levers.py
-.venv\Scripts\python.exe -I analysis\09_options.py
-.venv\Scripts\python.exe -I analysis\10_solution_design.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
+python -I analysis/06_msme_exposure.py
+python -I analysis/05_claims_tested.py
+python -I analysis/08_problem_ranking.py
+python -I analysis/09_levers.py
+python -I analysis/09_options.py
+python -I analysis/10_solution_design.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -1853,16 +1853,16 @@ Script: `analysis/10_solution_design.py`. Output: `analysis/out/figures_design.c
 Script: `analysis/09_levers.py`. Output: `analysis/out/figures_levers.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
-.venv\Scripts\python.exe -I analysis\06_msme_exposure.py
-.venv\Scripts\python.exe -I analysis\05_claims_tested.py
-.venv\Scripts\python.exe -I analysis\08_problem_ranking.py
-.venv\Scripts\python.exe -I analysis\09_levers.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
+python -I analysis/06_msme_exposure.py
+python -I analysis/05_claims_tested.py
+python -I analysis/08_problem_ranking.py
+python -I analysis/09_levers.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -2085,10 +2085,10 @@ Script: `analysis/09_levers.py`. Output: `analysis/out/figures_levers.csv`, one 
 Script: `analysis/11_pick_balance.py`. Output: `analysis/out/figures_pickbalance.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\11_pick_balance.py
+python -I analysis/11_pick_balance.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -2133,13 +2133,13 @@ Script: `analysis/11_pick_balance.py`. Output: `analysis/out/figures_pickbalance
 Script: `analysis/12_loose_duplicates.py`. Output: `analysis/out/figures_loose.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
-.venv\Scripts\python.exe -I analysis\12_loose_duplicates.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
+python -I analysis/12_loose_duplicates.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -2164,13 +2164,13 @@ Script: `analysis/12_loose_duplicates.py`. Output: `analysis/out/figures_loose.c
 Script: `analysis/13_duplicate_false_alarms.py`. Output: `analysis/out/figures_dupalarm.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
-.venv\Scripts\python.exe -I analysis\13_duplicate_false_alarms.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
+python -I analysis/13_duplicate_false_alarms.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -2209,26 +2209,26 @@ Script: `analysis/13_duplicate_false_alarms.py`. Output: `analysis/out/figures_d
 Script: `analysis/14_reader_results.py`. Output: `analysis/out/figures_reader.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\14_reader_results.py
+python -I analysis/14_reader_results.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
 | rd.all.files | 40 | files read (all) |
-| rd.all.ok | 14 | files the reader passes with every required field at 0.90 or more and amounts that add up (all) |
-| rd.all.review | 26 | files that go to review (all) |
+| rd.all.ok | 21 | files the reader passes with every required field at 0.90 or more and amounts that add up (all) |
+| rd.all.review | 19 | files that go to review (all) |
 | rd.all.review.human_look | 9 | of the review files, lowest required confidence 0.70 to 0.90 (all) |
-| rd.all.review.resend | 17 | of the review files, a required field missing or below 0.70 (all) |
-| rd.all.vendor_gstin.not_found | 6 | files where vendor_gstin was not found (all) |
-| rd.all.vendor_gstin.below_090 | 15 | files where vendor_gstin was found with confidence below 0.90 (all) |
+| rd.all.review.resend | 10 | of the review files, a required field missing or below 0.70 (all) |
+| rd.all.vendor_gstin.not_found | 0 | files where vendor_gstin was not found (all) |
+| rd.all.vendor_gstin.below_090 | 9 | files where vendor_gstin was found with confidence below 0.90 (all) |
 | rd.all.vendor_name.not_found | 0 | files where vendor_name was not found (all) |
 | rd.all.vendor_name.below_090 | 0 | files where vendor_name was found with confidence below 0.90 (all) |
-| rd.all.invoice_no.not_found | 2 | files where invoice_no was not found (all) |
-| rd.all.invoice_no.below_090 | 4 | files where invoice_no was found with confidence below 0.90 (all) |
-| rd.all.invoice_date.not_found | 2 | files where invoice_date was not found (all) |
-| rd.all.invoice_date.below_090 | 1 | files where invoice_date was found with confidence below 0.90 (all) |
+| rd.all.invoice_no.not_found | 1 | files where invoice_no was not found (all) |
+| rd.all.invoice_no.below_090 | 1 | files where invoice_no was found with confidence below 0.90 (all) |
+| rd.all.invoice_date.not_found | 1 | files where invoice_date was not found (all) |
+| rd.all.invoice_date.below_090 | 0 | files where invoice_date was found with confidence below 0.90 (all) |
 | rd.all.wo_id.not_found | 3 | files where wo_id was not found (all) |
 | rd.all.wo_id.below_090 | 0 | files where wo_id was found with confidence below 0.90 (all) |
 | rd.all.taxable.not_found | 1 | files where taxable was not found (all) |
@@ -2237,16 +2237,16 @@ Script: `analysis/14_reader_results.py`. Output: `analysis/out/figures_reader.cs
 | rd.all.total.below_090 | 5 | files where total was found with confidence below 0.90 (all) |
 | rd.all.arithmetic_fail | 4 | files where taxable value plus tax does not equal the total, or a tax line does not match its rate (all) |
 | rd.pdf_single.files | 21 | files read (pdf_single) |
-| rd.pdf_single.ok | 10 | files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_single) |
-| rd.pdf_single.review | 11 | files that go to review (pdf_single) |
-| rd.pdf_single.review.human_look | 6 | of the review files, lowest required confidence 0.70 to 0.90 (pdf_single) |
-| rd.pdf_single.review.resend | 5 | of the review files, a required field missing or below 0.70 (pdf_single) |
-| rd.pdf_single.vendor_gstin.not_found | 1 | files where vendor_gstin was not found (pdf_single) |
-| rd.pdf_single.vendor_gstin.below_090 | 6 | files where vendor_gstin was found with confidence below 0.90 (pdf_single) |
+| rd.pdf_single.ok | 13 | files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_single) |
+| rd.pdf_single.review | 8 | files that go to review (pdf_single) |
+| rd.pdf_single.review.human_look | 4 | of the review files, lowest required confidence 0.70 to 0.90 (pdf_single) |
+| rd.pdf_single.review.resend | 4 | of the review files, a required field missing or below 0.70 (pdf_single) |
+| rd.pdf_single.vendor_gstin.not_found | 0 | files where vendor_gstin was not found (pdf_single) |
+| rd.pdf_single.vendor_gstin.below_090 | 4 | files where vendor_gstin was found with confidence below 0.90 (pdf_single) |
 | rd.pdf_single.vendor_name.not_found | 0 | files where vendor_name was not found (pdf_single) |
 | rd.pdf_single.vendor_name.below_090 | 0 | files where vendor_name was found with confidence below 0.90 (pdf_single) |
 | rd.pdf_single.invoice_no.not_found | 0 | files where invoice_no was not found (pdf_single) |
-| rd.pdf_single.invoice_no.below_090 | 1 | files where invoice_no was found with confidence below 0.90 (pdf_single) |
+| rd.pdf_single.invoice_no.below_090 | 0 | files where invoice_no was found with confidence below 0.90 (pdf_single) |
 | rd.pdf_single.invoice_date.not_found | 0 | files where invoice_date was not found (pdf_single) |
 | rd.pdf_single.invoice_date.below_090 | 0 | files where invoice_date was found with confidence below 0.90 (pdf_single) |
 | rd.pdf_single.wo_id.not_found | 3 | files where wo_id was not found (pdf_single) |
@@ -2257,16 +2257,16 @@ Script: `analysis/14_reader_results.py`. Output: `analysis/out/figures_reader.cs
 | rd.pdf_single.total.below_090 | 1 | files where total was found with confidence below 0.90 (pdf_single) |
 | rd.pdf_single.arithmetic_fail | 1 | files where taxable value plus tax does not equal the total, or a tax line does not match its rate (pdf_single) |
 | rd.pdf_packet.files | 10 | files read (pdf_packet) |
-| rd.pdf_packet.ok | 4 | files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_packet) |
-| rd.pdf_packet.review | 6 | files that go to review (pdf_packet) |
+| rd.pdf_packet.ok | 8 | files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_packet) |
+| rd.pdf_packet.review | 2 | files that go to review (pdf_packet) |
 | rd.pdf_packet.review.human_look | 2 | of the review files, lowest required confidence 0.70 to 0.90 (pdf_packet) |
-| rd.pdf_packet.review.resend | 4 | of the review files, a required field missing or below 0.70 (pdf_packet) |
-| rd.pdf_packet.vendor_gstin.not_found | 3 | files where vendor_gstin was not found (pdf_packet) |
+| rd.pdf_packet.review.resend | 0 | of the review files, a required field missing or below 0.70 (pdf_packet) |
+| rd.pdf_packet.vendor_gstin.not_found | 0 | files where vendor_gstin was not found (pdf_packet) |
 | rd.pdf_packet.vendor_gstin.below_090 | 2 | files where vendor_gstin was found with confidence below 0.90 (pdf_packet) |
 | rd.pdf_packet.vendor_name.not_found | 0 | files where vendor_name was not found (pdf_packet) |
 | rd.pdf_packet.vendor_name.below_090 | 0 | files where vendor_name was found with confidence below 0.90 (pdf_packet) |
 | rd.pdf_packet.invoice_no.not_found | 0 | files where invoice_no was not found (pdf_packet) |
-| rd.pdf_packet.invoice_no.below_090 | 2 | files where invoice_no was found with confidence below 0.90 (pdf_packet) |
+| rd.pdf_packet.invoice_no.below_090 | 0 | files where invoice_no was found with confidence below 0.90 (pdf_packet) |
 | rd.pdf_packet.invoice_date.not_found | 0 | files where invoice_date was not found (pdf_packet) |
 | rd.pdf_packet.invoice_date.below_090 | 0 | files where invoice_date was found with confidence below 0.90 (pdf_packet) |
 | rd.pdf_packet.wo_id.not_found | 0 | files where wo_id was not found (pdf_packet) |
@@ -2279,16 +2279,16 @@ Script: `analysis/14_reader_results.py`. Output: `analysis/out/figures_reader.cs
 | rd.phone_photo.files | 9 | files read (phone_photo) |
 | rd.phone_photo.ok | 0 | files the reader passes with every required field at 0.90 or more and amounts that add up (phone_photo) |
 | rd.phone_photo.review | 9 | files that go to review (phone_photo) |
-| rd.phone_photo.review.human_look | 1 | of the review files, lowest required confidence 0.70 to 0.90 (phone_photo) |
-| rd.phone_photo.review.resend | 8 | of the review files, a required field missing or below 0.70 (phone_photo) |
-| rd.phone_photo.vendor_gstin.not_found | 2 | files where vendor_gstin was not found (phone_photo) |
-| rd.phone_photo.vendor_gstin.below_090 | 7 | files where vendor_gstin was found with confidence below 0.90 (phone_photo) |
+| rd.phone_photo.review.human_look | 3 | of the review files, lowest required confidence 0.70 to 0.90 (phone_photo) |
+| rd.phone_photo.review.resend | 6 | of the review files, a required field missing or below 0.70 (phone_photo) |
+| rd.phone_photo.vendor_gstin.not_found | 0 | files where vendor_gstin was not found (phone_photo) |
+| rd.phone_photo.vendor_gstin.below_090 | 3 | files where vendor_gstin was found with confidence below 0.90 (phone_photo) |
 | rd.phone_photo.vendor_name.not_found | 0 | files where vendor_name was not found (phone_photo) |
 | rd.phone_photo.vendor_name.below_090 | 0 | files where vendor_name was found with confidence below 0.90 (phone_photo) |
-| rd.phone_photo.invoice_no.not_found | 2 | files where invoice_no was not found (phone_photo) |
+| rd.phone_photo.invoice_no.not_found | 1 | files where invoice_no was not found (phone_photo) |
 | rd.phone_photo.invoice_no.below_090 | 1 | files where invoice_no was found with confidence below 0.90 (phone_photo) |
-| rd.phone_photo.invoice_date.not_found | 2 | files where invoice_date was not found (phone_photo) |
-| rd.phone_photo.invoice_date.below_090 | 1 | files where invoice_date was found with confidence below 0.90 (phone_photo) |
+| rd.phone_photo.invoice_date.not_found | 1 | files where invoice_date was not found (phone_photo) |
+| rd.phone_photo.invoice_date.below_090 | 0 | files where invoice_date was found with confidence below 0.90 (phone_photo) |
 | rd.phone_photo.wo_id.not_found | 0 | files where wo_id was not found (phone_photo) |
 | rd.phone_photo.wo_id.below_090 | 0 | files where wo_id was found with confidence below 0.90 (phone_photo) |
 | rd.phone_photo.taxable.not_found | 1 | files where taxable was not found (phone_photo) |
@@ -2315,10 +2315,10 @@ Script: `analysis/14_reader_results.py`. Output: `analysis/out/figures_reader.cs
 Script: `analysis/15_reader_evaluation.py`. Output: `analysis/out/figures_reader_eval.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\15_reader_evaluation.py
+python -I analysis/15_reader_evaluation.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
@@ -2409,6 +2409,56 @@ Script: `analysis/15_reader_evaluation.py`. Output: `analysis/out/figures_reader
 | re.second.cal.lo.correct | 3 | second score: of those, correct |
 | re.second.wrong_conf_070_plus | 2 | second score: wrong readings with confidence 0.70 or more |
 | re.first.suspect_label_errors | 1 | first run: misses where the label, not the reader, was wrong (bill-28 amount; the user has since corrected it) |
+| re.post.changed | 1 | the live reader output differs from the first-run snapshot |
+| re.post.pdf_single.fields_correct | 18 | post-fix (tuned on these 10 bills), pdf_single: field readings correct |
+| re.post.pdf_single.key_bills_correct | 3 | post-fix (tuned on these 10 bills), pdf_single: bills correct on all four key fields |
+| re.post.pdf_single.vendor_name.correct | 3 | post-fix (tuned on these 10 bills), pdf_single: vendor_name correct |
+| re.post.pdf_single.invoice_number.correct | 3 | post-fix (tuned on these 10 bills), pdf_single: invoice_number correct |
+| re.post.pdf_single.invoice_date.correct | 3 | post-fix (tuned on these 10 bills), pdf_single: invoice_date correct |
+| re.post.pdf_single.amount.correct | 3 | post-fix (tuned on these 10 bills), pdf_single: amount correct |
+| re.post.pdf_single.gstin.correct | 3 | post-fix (tuned on these 10 bills), pdf_single: gstin correct |
+| re.post.pdf_single.po_or_wo_number.correct | 3 | post-fix (tuned on these 10 bills), pdf_single: po_or_wo_number correct |
+| re.post.pdf_packet.fields_correct | 18 | post-fix (tuned on these 10 bills), pdf_packet: field readings correct |
+| re.post.pdf_packet.key_bills_correct | 3 | post-fix (tuned on these 10 bills), pdf_packet: bills correct on all four key fields |
+| re.post.pdf_packet.vendor_name.correct | 3 | post-fix (tuned on these 10 bills), pdf_packet: vendor_name correct |
+| re.post.pdf_packet.invoice_number.correct | 3 | post-fix (tuned on these 10 bills), pdf_packet: invoice_number correct |
+| re.post.pdf_packet.invoice_date.correct | 3 | post-fix (tuned on these 10 bills), pdf_packet: invoice_date correct |
+| re.post.pdf_packet.amount.correct | 3 | post-fix (tuned on these 10 bills), pdf_packet: amount correct |
+| re.post.pdf_packet.gstin.correct | 3 | post-fix (tuned on these 10 bills), pdf_packet: gstin correct |
+| re.post.pdf_packet.po_or_wo_number.correct | 3 | post-fix (tuned on these 10 bills), pdf_packet: po_or_wo_number correct |
+| re.post.phone_photo.fields_correct | 22 | post-fix (tuned on these 10 bills), phone_photo: field readings correct |
+| re.post.phone_photo.key_bills_correct | 2 | post-fix (tuned on these 10 bills), phone_photo: bills correct on all four key fields |
+| re.post.phone_photo.vendor_name.correct | 4 | post-fix (tuned on these 10 bills), phone_photo: vendor_name correct |
+| re.post.phone_photo.invoice_number.correct | 4 | post-fix (tuned on these 10 bills), phone_photo: invoice_number correct |
+| re.post.phone_photo.invoice_date.correct | 4 | post-fix (tuned on these 10 bills), phone_photo: invoice_date correct |
+| re.post.phone_photo.amount.correct | 3 | post-fix (tuned on these 10 bills), phone_photo: amount correct |
+| re.post.phone_photo.gstin.correct | 3 | post-fix (tuned on these 10 bills), phone_photo: gstin correct |
+| re.post.phone_photo.po_or_wo_number.correct | 4 | post-fix (tuned on these 10 bills), phone_photo: po_or_wo_number correct |
+| re.post.all.fields_correct | 58 | post-fix (tuned on these 10 bills), all: field readings correct |
+| re.post.all.key_bills_correct | 8 | post-fix (tuned on these 10 bills), all: bills correct on all four key fields |
+| re.post.all.vendor_name.correct | 10 | post-fix (tuned on these 10 bills), all: vendor_name correct |
+| re.post.all.invoice_number.correct | 10 | post-fix (tuned on these 10 bills), all: invoice_number correct |
+| re.post.all.invoice_date.correct | 10 | post-fix (tuned on these 10 bills), all: invoice_date correct |
+| re.post.all.amount.correct | 9 | post-fix (tuned on these 10 bills), all: amount correct |
+| re.post.all.gstin.correct | 9 | post-fix (tuned on these 10 bills), all: gstin correct |
+| re.post.all.po_or_wo_number.correct | 10 | post-fix (tuned on these 10 bills), all: po_or_wo_number correct |
+| re.post.cal.hi.n | 53 | post-fix: readings with confidence 0.90 or more |
+| re.post.cal.hi.correct | 53 | post-fix: of those, correct |
+| re.post.cal.mid.n | 4 | post-fix: readings with confidence 0.70 to 0.90 |
+| re.post.cal.mid.correct | 3 | post-fix: of those, correct |
+| re.post.cal.lo.n | 3 | post-fix: readings with confidence below 0.70 (or not read) |
+| re.post.cal.lo.correct | 2 | post-fix: of those, correct |
+| re.post.wrong_conf_070_plus | 1 | post-fix: wrong readings with confidence 0.70 or more |
+| re.part1c.before.low | 24 | all 40 bills, before the post-fix reader: required fields (7 per bill) not found or below 0.70 confidence |
+| re.part1c.before.reader_ok | 14 | all 40 bills, before the post-fix reader: bills the reader passes (status ok) |
+| re.part1c.before.full_verdict | 27 | all 40 bills, before the post-fix reader: bills on which all six checks could run |
+| re.part1c.before.some_verdict | 40 | all 40 bills, before the post-fix reader: bills on which at least one check could run |
+| re.part1c.before.complete_read | 26 | all 40 bills, before the post-fix reader: bills with every required field read at 0.70 or more (the bills that got a verdict under the old all-or-nothing rule) |
+| re.part1c.after.low | 13 | all 40 bills, after the post-fix reader: required fields (7 per bill) not found or below 0.70 confidence |
+| re.part1c.after.reader_ok | 21 | all 40 bills, after the post-fix reader: bills the reader passes (status ok) |
+| re.part1c.after.full_verdict | 29 | all 40 bills, after the post-fix reader: bills on which all six checks could run |
+| re.part1c.after.some_verdict | 40 | all 40 bills, after the post-fix reader: bills on which at least one check could run |
+| re.part1c.after.complete_read | 33 | all 40 bills, after the post-fix reader: bills with every required field read at 0.70 or more (the bills that got a verdict under the old all-or-nothing rule) |
 
 <!-- END 15_reader_evaluation.py -->
 
@@ -2419,72 +2469,104 @@ Script: `analysis/15_reader_evaluation.py`. Output: `analysis/out/figures_reader
 Script: `analysis/16_intake_run.py`. Output: `analysis/out/figures_intake.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
 
 ```
-.venv\Scripts\python.exe -I analysis\clean.py
-.venv\Scripts\python.exe -I analysis\02_stage_times.py
-.venv\Scripts\python.exe -I analysis\04_query_forensics.py
-.venv\Scripts\python.exe -I analysis\16_intake_run.py
+python -I analysis/clean.py
+python -I analysis/02_stage_times.py
+python -I analysis/04_query_forensics.py
+python -I analysis/16_intake_run.py
 ```
 
-`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
 
 | Figure id | Value | What it counts |
 |---|---|---|
 | ir.files | 40 | bills run through reader results, checks, routing and parsed_bill |
 | ir.parsed_bill_rows | 40 | rows written to parsed_bill in the working copy |
 | ir.all.route.auto-clear | 1 | verdict auto-clear, all |
-| ir.all.route.fix-before-sending | 3 | verdict fix-before-sending, all |
+| ir.all.route.fix-before-sending | 4 | verdict fix-before-sending, all |
 | ir.all.route.fix-internal | 0 | verdict fix-internal, all |
-| ir.all.route.human-look | 22 | verdict human-look, all |
-| ir.all.route.resend | 14 | verdict resend, all |
+| ir.all.route.human-look | 35 | verdict human-look, all |
+| ir.all.route.resend | 0 | verdict resend, all |
 | ir.all.files | 40 | bills, all |
 | ir.pdf_single.route.auto-clear | 1 | verdict auto-clear, pdf_single |
 | ir.pdf_single.route.fix-before-sending | 3 | verdict fix-before-sending, pdf_single |
 | ir.pdf_single.route.fix-internal | 0 | verdict fix-internal, pdf_single |
-| ir.pdf_single.route.human-look | 15 | verdict human-look, pdf_single |
-| ir.pdf_single.route.resend | 2 | verdict resend, pdf_single |
+| ir.pdf_single.route.human-look | 17 | verdict human-look, pdf_single |
+| ir.pdf_single.route.resend | 0 | verdict resend, pdf_single |
 | ir.pdf_single.files | 21 | bills, pdf_single |
 | ir.pdf_packet.route.auto-clear | 0 | verdict auto-clear, pdf_packet |
 | ir.pdf_packet.route.fix-before-sending | 0 | verdict fix-before-sending, pdf_packet |
 | ir.pdf_packet.route.fix-internal | 0 | verdict fix-internal, pdf_packet |
-| ir.pdf_packet.route.human-look | 6 | verdict human-look, pdf_packet |
-| ir.pdf_packet.route.resend | 4 | verdict resend, pdf_packet |
+| ir.pdf_packet.route.human-look | 10 | verdict human-look, pdf_packet |
+| ir.pdf_packet.route.resend | 0 | verdict resend, pdf_packet |
 | ir.pdf_packet.files | 10 | bills, pdf_packet |
 | ir.phone_photo.route.auto-clear | 0 | verdict auto-clear, phone_photo |
-| ir.phone_photo.route.fix-before-sending | 0 | verdict fix-before-sending, phone_photo |
+| ir.phone_photo.route.fix-before-sending | 1 | verdict fix-before-sending, phone_photo |
 | ir.phone_photo.route.fix-internal | 0 | verdict fix-internal, phone_photo |
-| ir.phone_photo.route.human-look | 1 | verdict human-look, phone_photo |
-| ir.phone_photo.route.resend | 8 | verdict resend, phone_photo |
+| ir.phone_photo.route.human-look | 8 | verdict human-look, phone_photo |
+| ir.phone_photo.route.resend | 0 | verdict resend, phone_photo |
 | ir.phone_photo.files | 9 | bills, phone_photo |
-| ir.check.P1/H1.pass | 28 | bills where check P1/H1 returns pass |
-| ir.check.P1/H1.fail | 12 | bills where check P1/H1 returns fail |
-| ir.check.P1/H1.warn | 0 | bills where check P1/H1 returns warn |
+| ir.check.P1/H1.not_run | 5 | bills where check P1/H1 could not run (a field it needs was not read) |
+| ir.check.P1/H1.pass | 30 | bills where check P1/H1 returns pass |
+| ir.check.P1/H1.fail | 3 | bills where check P1/H1 returns fail |
+| ir.check.P1/H1.warn | 2 | bills where check P1/H1 returns warn |
 | ir.check.P1/H1.needs-document | 0 | bills where check P1/H1 returns needs-document |
+| ir.check.P3.not_run | 0 | bills where check P3 could not run (a field it needs was not read) |
 | ir.check.P3.pass | 37 | bills where check P3 returns pass |
 | ir.check.P3.fail | 3 | bills where check P3 returns fail |
 | ir.check.P3.warn | 0 | bills where check P3 returns warn |
 | ir.check.P3.needs-document | 0 | bills where check P3 returns needs-document |
-| ir.check.H3.pass | 24 | bills where check H3 returns pass |
-| ir.check.H3.fail | 11 | bills where check H3 returns fail |
+| ir.check.H3.not_run | 6 | bills where check H3 could not run (a field it needs was not read) |
+| ir.check.H3.pass | 21 | bills where check H3 returns pass |
+| ir.check.H3.fail | 10 | bills where check H3 returns fail |
 | ir.check.H3.warn | 0 | bills where check H3 returns warn |
-| ir.check.H3.needs-document | 5 | bills where check H3 returns needs-document |
-| ir.check.H13.pass | 27 | bills where check H13 returns pass |
+| ir.check.H3.needs-document | 3 | bills where check H3 returns needs-document |
+| ir.check.H13.not_run | 6 | bills where check H13 could not run (a field it needs was not read) |
+| ir.check.H13.pass | 26 | bills where check H13 returns pass |
 | ir.check.H13.fail | 0 | bills where check H13 returns fail |
-| ir.check.H13.warn | 13 | bills where check H13 returns warn |
+| ir.check.H13.warn | 8 | bills where check H13 returns warn |
 | ir.check.H13.needs-document | 0 | bills where check H13 returns needs-document |
-| ir.check.H11.pass | 32 | bills where check H11 returns pass |
-| ir.check.H11.fail | 3 | bills where check H11 returns fail |
+| ir.check.H11.not_run | 9 | bills where check H11 could not run (a field it needs was not read) |
+| ir.check.H11.pass | 28 | bills where check H11 returns pass |
+| ir.check.H11.fail | 0 | bills where check H11 returns fail |
 | ir.check.H11.warn | 3 | bills where check H11 returns warn |
-| ir.check.H11.needs-document | 2 | bills where check H11 returns needs-document |
-| ir.check.H10.pass | 23 | bills where check H10 returns pass |
+| ir.check.H11.needs-document | 0 | bills where check H11 returns needs-document |
+| ir.check.H10.not_run | 8 | bills where check H10 could not run (a field it needs was not read) |
+| ir.check.H10.pass | 20 | bills where check H10 returns pass |
 | ir.check.H10.fail | 0 | bills where check H10 returns fail |
-| ir.check.H10.warn | 11 | bills where check H10 returns warn |
-| ir.check.H10.needs-document | 6 | bills where check H10 returns needs-document |
+| ir.check.H10.warn | 12 | bills where check H10 returns warn |
+| ir.check.H10.needs-document | 0 | bills where check H10 returns needs-document |
 | ir.h3.expired | 1 | bills whose work order is expired (or not yet valid) on the bill date |
-| ir.h3.exhausted | 11 | bills whose work order is over its approved value after the bill |
+| ir.h3.exhausted | 10 | bills whose work order is over its approved value after the bill |
 | ir.h3.both | 1 | bills with both |
-| ir.h3.fail_any | 11 | bills where H3 fails |
+| ir.h3.fail_any | 10 | bills where H3 fails |
 | ir.h10.warn_two_readings_differ | 10 | bills where H10 warns because the two place-of-supply readings give different tax types |
-| ir.reader_ok_but_flagged | 7 | bills the reader passes (status ok) that a check still fails or warns on |
+| ir.reader_ok_but_flagged | 13 | bills the reader passes (status ok) that a check still fails or warns on |
 | ir.own_row_linked | 33 | inbox bills linked to their own register row (needed to replay the duplicate check) |
 
 <!-- END 16_intake_run.py -->
+
+<!-- BEGIN 17_runway_90d.py -->
+
+### Figures from `analysis/17_runway_90d.py` (used in app/ui (control tower headline and list of work orders likely to run dry), backtest/out/runway_90d.csv. Burn from the last 90 days of billing; the lifetime-average figure is kept for comparison)
+
+Script: `analysis/17_runway_90d.py`. Output: `analysis/out/figures_runway.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
+
+```
+python -I analysis/clean.py
+python -I analysis/17_runway_90d.py
+```
+
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
+
+| Figure id | Value | What it counts |
+|---|---|---|
+| rw.window_days | 90 | days of billing before 30 April 2026 that the burn rate is taken from |
+| rw.horizon_days | 45 | an order is likely to run dry when its balance covers this many days or fewer of its recent billing |
+| rw.orders_billed_90d | 1111 | work orders with any billing in the last 90 days |
+| rw.dry | 234 | work orders likely to run dry within 45 days, burn estimated from the last 90 days of billing |
+| rw.dry.vendor_waiting | 49 | of those, orders whose vendor has a bill already waiting (an open bill in the register) |
+| rw.dry.wo_waiting | 28 | of those, orders with a bill already waiting on that order itself |
+| rw.dry.monthly_billing_inr | 27206798 | monthly billing, rupees, on those orders (last 90 days, per 30.4375 days) |
+| rw.dry_lifetime | 132 | for comparison: the same view using each order's lifetime-average burn (the earlier headline) |
+
+<!-- END 17_runway_90d.py -->

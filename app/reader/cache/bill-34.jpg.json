@@ -3,7 +3,7 @@
  "sha256": "ca2de1d26db2d6625d07e2393a80cc8f4f78a3ded33ba44a8281b822f9a404a7",
  "bill_type": "phone_photo",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,85 +32,115 @@
   "vendor_name": {
    "value": "HEMKUNT AGRO SERVICES",
    "conf": 0.9700000000000001,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
-   "value": null,
-   "conf": 0.0,
-   "note": "printed text 'OSWVMVPH609SA1ZX' is not a valid GSTIN shape"
+   "value": "09WMVPH6095A1ZX",
+   "conf": 0.9,
+   "note": "resolved from the vendor master by the vendor's name; not read from the bill",
+   "source": "vendor_master",
+   "raw": "OSWVMVPH609SA1ZX"
   },
   "invoice_no": {
    "value": "032/25-26/633",
-   "conf": 0.91,
-   "note": "read as printed"
+   "conf": 0.9500000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2026-02-01",
-   "conf": 0.9500000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.99,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "GZB-R14",
    "conf": 0.99,
-   "note": "matched to SAP property 'Residential Society, Sector 59, Ghaziabad'"
+   "note": "matched to SAP property 'Residential Society, Sector 59, Ghaziabad'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4101142",
    "conf": 0.95,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 204530.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": 18407.7,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": 18407.7,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 241345.4,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "998134",
    "conf": 0.35,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Uttar Pradesh",
    "conf": 0.8475,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.51,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
  "arithmetic_ok": true,
  "status": "review",
- "route_hint": "resend",
- "overall_confidence": 0.0,
+ "route_hint": "human-look",
+ "overall_confidence": 0.9,
  "reasons": [
-  "vendor_gstin: not found"
+  "vendor_gstin: vendor master, not read from the bill (resolved from the vendor master by the vendor's name; not read from the bill)"
  ]
 }

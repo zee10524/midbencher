@@ -1,0 +1,116 @@
+{
+ "file": "bill-15.pdf",
+ "sha256": "6df46858c896135ca0cae68efa2902ef17112607948e737833c4e87542d0b643",
+ "bill_type": "pdf_single",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.0,
+   "background_cropped": false,
+   "mean_word_conf": 0.925,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "SATLUJ TRISHUL MANPOWER SOLUTIONS",
+   "conf": 0.9625000000000001,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "06UJKCA4641Y1Z5",
+   "conf": 0.95,
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+  },
+  "invoice_no": {
+   "value": "165/25-26/725",
+   "conf": 0.92,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-09-02",
+   "conf": 0.9600000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "DEL-R24",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Residential Society, Sector 51, New Delhi'"
+  },
+  "wo_id": {
+   "value": null,
+   "conf": 0.0,
+   "note": "printed blank: the label is on the bill and no number follows it"
+  },
+  "taxable": {
+   "value": 286150.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 51507.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "total": {
+   "value": 337657.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "998525",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Delhi",
+   "conf": 0.9285714285714286,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.92,
+   "note": "buyer's GSTIN; a second read of the word agrees"
+  },
+  "udyam": {
+   "value": "Micro",
+   "conf": 0.9466666666666667,
+   "note": "claim printed by the vendor, not proof"
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "review",
+ "route_hint": "resend",
+ "overall_confidence": 0.0,
+ "reasons": [
+  "wo_id: not found"
+ ]
+}

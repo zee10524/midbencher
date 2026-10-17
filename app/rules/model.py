@@ -29,6 +29,7 @@ class Field:
     """One value read from the bill and the reader's confidence in it (0 to 1). A value of None with high confidence means the reader is sure it is not on the bill."""
     value: Any = None
     confidence: float = 1.0
+    source: str = "read"   # read (from the page), repaired (one confusable character fixed and found in the vendor master), vendor_master (looked up from the vendor name), human_review (typed by a person)
 
 
 def read(source_file: str = "", confidence: float = 0.98, own_bill_id: str | None = None, **values) -> "BillRead":

@@ -1,17 +1,17 @@
 id,value,description
 rd.all.files,40,files read (all)
-rd.all.ok,14,files the reader passes with every required field at 0.90 or more and amounts that add up (all)
-rd.all.review,26,files that go to review (all)
+rd.all.ok,21,files the reader passes with every required field at 0.90 or more and amounts that add up (all)
+rd.all.review,19,files that go to review (all)
 rd.all.review.human_look,9,"of the review files, lowest required confidence 0.70 to 0.90 (all)"
-rd.all.review.resend,17,"of the review files, a required field missing or below 0.70 (all)"
-rd.all.vendor_gstin.not_found,6,files where vendor_gstin was not found (all)
-rd.all.vendor_gstin.below_090,15,files where vendor_gstin was found with confidence below 0.90 (all)
+rd.all.review.resend,10,"of the review files, a required field missing or below 0.70 (all)"
+rd.all.vendor_gstin.not_found,0,files where vendor_gstin was not found (all)
+rd.all.vendor_gstin.below_090,9,files where vendor_gstin was found with confidence below 0.90 (all)
 rd.all.vendor_name.not_found,0,files where vendor_name was not found (all)
 rd.all.vendor_name.below_090,0,files where vendor_name was found with confidence below 0.90 (all)
-rd.all.invoice_no.not_found,2,files where invoice_no was not found (all)
-rd.all.invoice_no.below_090,4,files where invoice_no was found with confidence below 0.90 (all)
-rd.all.invoice_date.not_found,2,files where invoice_date was not found (all)
-rd.all.invoice_date.below_090,1,files where invoice_date was found with confidence below 0.90 (all)
+rd.all.invoice_no.not_found,1,files where invoice_no was not found (all)
+rd.all.invoice_no.below_090,1,files where invoice_no was found with confidence below 0.90 (all)
+rd.all.invoice_date.not_found,1,files where invoice_date was not found (all)
+rd.all.invoice_date.below_090,0,files where invoice_date was found with confidence below 0.90 (all)
 rd.all.wo_id.not_found,3,files where wo_id was not found (all)
 rd.all.wo_id.below_090,0,files where wo_id was found with confidence below 0.90 (all)
 rd.all.taxable.not_found,1,files where taxable was not found (all)
@@ -20,16 +20,16 @@ rd.all.total.not_found,1,files where total was not found (all)
 rd.all.total.below_090,5,files where total was found with confidence below 0.90 (all)
 rd.all.arithmetic_fail,4,"files where taxable value plus tax does not equal the total, or a tax line does not match its rate (all)"
 rd.pdf_single.files,21,files read (pdf_single)
-rd.pdf_single.ok,10,files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_single)
-rd.pdf_single.review,11,files that go to review (pdf_single)
-rd.pdf_single.review.human_look,6,"of the review files, lowest required confidence 0.70 to 0.90 (pdf_single)"
-rd.pdf_single.review.resend,5,"of the review files, a required field missing or below 0.70 (pdf_single)"
-rd.pdf_single.vendor_gstin.not_found,1,files where vendor_gstin was not found (pdf_single)
-rd.pdf_single.vendor_gstin.below_090,6,files where vendor_gstin was found with confidence below 0.90 (pdf_single)
+rd.pdf_single.ok,13,files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_single)
+rd.pdf_single.review,8,files that go to review (pdf_single)
+rd.pdf_single.review.human_look,4,"of the review files, lowest required confidence 0.70 to 0.90 (pdf_single)"
+rd.pdf_single.review.resend,4,"of the review files, a required field missing or below 0.70 (pdf_single)"
+rd.pdf_single.vendor_gstin.not_found,0,files where vendor_gstin was not found (pdf_single)
+rd.pdf_single.vendor_gstin.below_090,4,files where vendor_gstin was found with confidence below 0.90 (pdf_single)
 rd.pdf_single.vendor_name.not_found,0,files where vendor_name was not found (pdf_single)
 rd.pdf_single.vendor_name.below_090,0,files where vendor_name was found with confidence below 0.90 (pdf_single)
 rd.pdf_single.invoice_no.not_found,0,files where invoice_no was not found (pdf_single)
-rd.pdf_single.invoice_no.below_090,1,files where invoice_no was found with confidence below 0.90 (pdf_single)
+rd.pdf_single.invoice_no.below_090,0,files where invoice_no was found with confidence below 0.90 (pdf_single)
 rd.pdf_single.invoice_date.not_found,0,files where invoice_date was not found (pdf_single)
 rd.pdf_single.invoice_date.below_090,0,files where invoice_date was found with confidence below 0.90 (pdf_single)
 rd.pdf_single.wo_id.not_found,3,files where wo_id was not found (pdf_single)
@@ -40,16 +40,16 @@ rd.pdf_single.total.not_found,0,files where total was not found (pdf_single)
 rd.pdf_single.total.below_090,1,files where total was found with confidence below 0.90 (pdf_single)
 rd.pdf_single.arithmetic_fail,1,"files where taxable value plus tax does not equal the total, or a tax line does not match its rate (pdf_single)"
 rd.pdf_packet.files,10,files read (pdf_packet)
-rd.pdf_packet.ok,4,files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_packet)
-rd.pdf_packet.review,6,files that go to review (pdf_packet)
+rd.pdf_packet.ok,8,files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_packet)
+rd.pdf_packet.review,2,files that go to review (pdf_packet)
 rd.pdf_packet.review.human_look,2,"of the review files, lowest required confidence 0.70 to 0.90 (pdf_packet)"
-rd.pdf_packet.review.resend,4,"of the review files, a required field missing or below 0.70 (pdf_packet)"
-rd.pdf_packet.vendor_gstin.not_found,3,files where vendor_gstin was not found (pdf_packet)
+rd.pdf_packet.review.resend,0,"of the review files, a required field missing or below 0.70 (pdf_packet)"
+rd.pdf_packet.vendor_gstin.not_found,0,files where vendor_gstin was not found (pdf_packet)
 rd.pdf_packet.vendor_gstin.below_090,2,files where vendor_gstin was found with confidence below 0.90 (pdf_packet)
 rd.pdf_packet.vendor_name.not_found,0,files where vendor_name was not found (pdf_packet)
 rd.pdf_packet.vendor_name.below_090,0,files where vendor_name was found with confidence below 0.90 (pdf_packet)
 rd.pdf_packet.invoice_no.not_found,0,files where invoice_no was not found (pdf_packet)
-rd.pdf_packet.invoice_no.below_090,2,files where invoice_no was found with confidence below 0.90 (pdf_packet)
+rd.pdf_packet.invoice_no.below_090,0,files where invoice_no was found with confidence below 0.90 (pdf_packet)
 rd.pdf_packet.invoice_date.not_found,0,files where invoice_date was not found (pdf_packet)
 rd.pdf_packet.invoice_date.below_090,0,files where invoice_date was found with confidence below 0.90 (pdf_packet)
 rd.pdf_packet.wo_id.not_found,0,files where wo_id was not found (pdf_packet)
@@ -62,16 +62,16 @@ rd.pdf_packet.arithmetic_fail,0,"files where taxable value plus tax does not equ
 rd.phone_photo.files,9,files read (phone_photo)
 rd.phone_photo.ok,0,files the reader passes with every required field at 0.90 or more and amounts that add up (phone_photo)
 rd.phone_photo.review,9,files that go to review (phone_photo)
-rd.phone_photo.review.human_look,1,"of the review files, lowest required confidence 0.70 to 0.90 (phone_photo)"
-rd.phone_photo.review.resend,8,"of the review files, a required field missing or below 0.70 (phone_photo)"
-rd.phone_photo.vendor_gstin.not_found,2,files where vendor_gstin was not found (phone_photo)
-rd.phone_photo.vendor_gstin.below_090,7,files where vendor_gstin was found with confidence below 0.90 (phone_photo)
+rd.phone_photo.review.human_look,3,"of the review files, lowest required confidence 0.70 to 0.90 (phone_photo)"
+rd.phone_photo.review.resend,6,"of the review files, a required field missing or below 0.70 (phone_photo)"
+rd.phone_photo.vendor_gstin.not_found,0,files where vendor_gstin was not found (phone_photo)
+rd.phone_photo.vendor_gstin.below_090,3,files where vendor_gstin was found with confidence below 0.90 (phone_photo)
 rd.phone_photo.vendor_name.not_found,0,files where vendor_name was not found (phone_photo)
 rd.phone_photo.vendor_name.below_090,0,files where vendor_name was found with confidence below 0.90 (phone_photo)
-rd.phone_photo.invoice_no.not_found,2,files where invoice_no was not found (phone_photo)
+rd.phone_photo.invoice_no.not_found,1,files where invoice_no was not found (phone_photo)
 rd.phone_photo.invoice_no.below_090,1,files where invoice_no was found with confidence below 0.90 (phone_photo)
-rd.phone_photo.invoice_date.not_found,2,files where invoice_date was not found (phone_photo)
-rd.phone_photo.invoice_date.below_090,1,files where invoice_date was found with confidence below 0.90 (phone_photo)
+rd.phone_photo.invoice_date.not_found,1,files where invoice_date was not found (phone_photo)
+rd.phone_photo.invoice_date.below_090,0,files where invoice_date was found with confidence below 0.90 (phone_photo)
 rd.phone_photo.wo_id.not_found,0,files where wo_id was not found (phone_photo)
 rd.phone_photo.wo_id.below_090,0,files where wo_id was found with confidence below 0.90 (phone_photo)
 rd.phone_photo.taxable.not_found,1,files where taxable was not found (phone_photo)

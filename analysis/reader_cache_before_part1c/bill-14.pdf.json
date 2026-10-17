@@ -1,0 +1,116 @@
+{
+ "file": "bill-14.pdf",
+ "sha256": "8a5a65c780f1e0b20826e53626671944965779bef247a700388df2949c06948d",
+ "bill_type": "pdf_single",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.4,
+   "background_cropped": false,
+   "mean_word_conf": 0.892,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "VARDHAN SARTHAK LANDSCAPES",
+   "conf": 0.9566666666666668,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": null,
+   "conf": 0.0,
+   "note": "printed text '0O3GSNPI5677B1ZK' is not a valid GSTIN shape"
+  },
+  "invoice_no": {
+   "value": "881/25-26/468",
+   "conf": 0.92,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-11-06",
+   "conf": 0.9600000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "NOI-C33",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Office Tower, Sector 38, Noida'"
+  },
+  "wo_id": {
+   "value": "4100214",
+   "conf": 0.96,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 249140.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": 22422.6,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "sgst": {
+   "value": 22422.6,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "total": {
+   "value": 293985.2,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "998134",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.94125,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.92,
+   "note": "buyer's GSTIN; a second read of the word agrees"
+  },
+  "udyam": {
+   "value": "Small",
+   "conf": 0.9400000000000001,
+   "note": "claim printed by the vendor, not proof"
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "review",
+ "route_hint": "resend",
+ "overall_confidence": 0.0,
+ "reasons": [
+  "vendor_gstin: not found"
+ ]
+}

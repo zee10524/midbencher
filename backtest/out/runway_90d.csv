@@ -1,0 +1,235 @@
+wo_id,vendor_id,vendor_name,property_code,balance_inr,billing_90d_inr,monthly_billing_inr,runway_days,days_to_expiry,vendor_has_bill_waiting,wo_has_bill_waiting
+4100300,V10120,Ekta Security Services,NOI-R12,1438762,4544030,1536766,28.5,113,False,False
+4100075,V10150,Udaan Security Services,GGN-M37,648676,4133050,1397775,14.1,52,False,False
+4100484,V10051,Kailash Security Services,DEL-R16,803143,4100930,1386912,17.6,120,False,False
+4100691,V10546,Vasundhara Hemkunt Security Services Pvt Ltd,GGN-R04,949515,4050300,1369789,21.1,46,False,False
+4100388,V10316,Kailash Manpower Solutions Pvt Ltd,GGN-R06,94567,3909360,1322124,2.2,112,False,False
+4100145,V10893,Ekta Manpower Solutions,GGN-R04,213370,3026330,1023488,6.3,71,True,False
+4100049,V10868,Dhruv Facility Management Pvt Ltd,NOI-C29,592126,1583100,535396,33.7,147,False,False
+4100236,V10469,Aravind Fuels Pvt Ltd,SNP-R05,507278,1553260,525304,29.4,22,False,False
+4100544,V10618,Garud Facility Management Pvt Ltd,GGN-R25,187279,1485301,502321,11.3,5,False,False
+4100857,V10498,Indus Fuels,GGN-R25,429889,1429840,483564,27.1,46,False,False
+4100631,V10658,Indus Tejas Hygiene Solutions,FBD-R01,392391,1403830,474768,25.2,106,False,False
+4100002,V10882,Dhruv Security Services Pvt Ltd,SNP-C30,88456,1398070,472820,5.7,30,False,False
+4101557,V10327,Abhay Facility Management,NOI-R02,323007,1394610,471649,20.8,105,True,False
+4100179,V10014,Aravind Sarthak Manpower Solutions Pvt Ltd,SNP-C30,120170,1390020,470097,7.8,121,True,False
+4100757,V10466,Abhay Amrit Security Services,SNP-R21,233744,1389720,469996,15.1,27,False,False
+4101561,V10232,Amrit Manpower Solutions,NOI-C29,106199,1342600,454060,7.1,115,False,False
+4101148,V10839,Saksham Indus Facility Services,GGN-R04,527098,1329060,449481,35.7,17,True,True
+4101846,V10014,Aravind Sarthak Manpower Solutions Pvt Ltd,SNP-R21,449960,1277420,432016,31.7,0,True,True
+4101147,V10284,Hemkunt Facility Management Pvt Ltd,DEL-R03,534816,1268340,428946,37.9,84,False,False
+4101819,V10544,Kailash Kailash Traders Pvt Ltd,NOI-R08,222650,1256380,424901,15.9,78,True,True
+4100542,V10327,Abhay Facility Management,NOI-C29,207504,1232650,416875,15.2,103,True,True
+4101737,V10870,Saksham Yamuna Traders Pvt Ltd,SNP-R05,257437,1232070,416679,18.8,92,False,False
+4100448,V10767,Navdeep Manpower Solutions,PKL-C35,346395,1228220,415377,25.4,144,True,True
+4100101,V10869,Vasundhara Yamuna Traders,SNP-R09,199561,1213440,410379,14.8,102,False,False
+4101431,V10821,Sanjivani Security Services,NOI-R23,244336,1198770,405417,18.3,10,False,False
+4101526,V10450,Satluj Indus Manpower Solutions,GZB-R14,495403,1175510,397551,37.9,9,False,False
+4100453,V10039,Panchjanya Hygiene Solutions Pvt Ltd,DEL-R24,300900,1128990,381818,24.0,84,False,False
+4100395,V10668,Raksha Abhay Manpower Solutions Pvt Ltd,GGN-R15,207804,1029290,348100,18.2,89,True,True
+4101244,V10780,Yamuna Vardhan Security Services,NOI-M38,112763,932590,315397,10.9,7,True,False
+4100797,V10818,Indus Kailash Fuels,PKL-R18,196509,900940,304693,19.6,119,False,False
+4101050,V10558,Kesari Facility Management,GZB-R22,340051,892380,301798,34.3,15,False,False
+4101001,V10781,Shivalik Pratap Security Services Pvt Ltd,GGN-R17,389758,871550,294753,40.2,19,False,False
+4100958,V10327,Abhay Facility Management,GGN-R11,178128,852700,288378,18.8,14,True,False
+4100877,V10360,Satluj Security Services,NOI-C33,288002,848010,286792,30.6,115,True,False
+4101062,V10064,Kailash Prakriti Security Services Pvt Ltd,PKL-C35,413367,842940,285078,44.1,31,True,False
+4100617,V10747,Saksham Fuels,SNP-R05,145863,779940,263771,16.8,3,True,True
+4101760,V10747,Saksham Fuels,FBD-R13,34903,724020,244860,4.3,81,True,False
+4100073,V10119,Vasundhara Facility Management Pvt Ltd,GGN-R06,62243,635740,215004,8.8,85,False,False
+4100552,V10361,Kesari Nirmal Facility Management Pvt Ltd,GGN-R17,232430,529200,178972,39.5,126,False,False
+4100888,V10263,Saksham Abhay Fuels Pvt Ltd,FBD-R13,76777,526930,178205,13.1,131,True,True
+4101516,V10462,Ekta Aravind Fuels,NOI-R08,100570,513190,173558,17.6,36,False,False
+4100645,V10860,Navdeep Kesari Traders Pvt Ltd,DEL-R20,48266,496150,167795,8.8,7,False,False
+4100240,V10475,Hemkunt Vardhan Fuels,NOI-R19,234963,494280,167163,42.8,16,False,False
+4101423,V10469,Aravind Fuels Pvt Ltd,GZB-R22,190082,474720,160548,36.0,5,False,False
+4100231,V10036,Indus Ekta Elevator Care Pvt Ltd,PKL-C35,189475,464510,157095,36.7,10,True,True
+4100291,V10244,Raksha Sanjivani Hygiene Solutions Pvt Ltd,GGN-R15,117092,454670,153767,23.2,149,False,False
+4101112,V10890,Navdeep Facility Management,GGN-R04,65950,446900,151139,13.3,140,False,False
+4100800,V10462,Ekta Aravind Fuels,GGN-R07,59553,419680,141933,12.8,148,False,False
+4100335,V10558,Kesari Facility Management,GGN-R04,148628,377900,127804,35.4,35,False,False
+4101652,V10489,Yamuna Indus Manpower Solutions,FBD-R01,111938,372350,125927,27.1,27,False,False
+4100864,V10334,Satluj Landscapes,GZB-R28,38203,370420,125274,9.3,8,False,False
+4100287,V10398,Sarthak Engineering Works,PKL-C34,126542,346550,117201,32.9,145,False,False
+4100874,V10726,Raksha Security Services,DEL-R24,71850,294710,99669,21.9,78,False,False
+4100561,V10891,Saksham Vasundhara Engineering Works Pvt Ltd,NOI-M38,9138,285800,96656,2.9,79,False,False
+4100817,V10086,Aravind Navdeep Hygiene Solutions Pvt Ltd,NOI-R23,59428,267280,90393,20.0,80,False,False
+4101015,V10240,Tejas Landscapes Pvt Ltd,NOI-R02,72728,264390,89415,24.8,55,False,False
+4100007,V10131,Saksham Ekta Traders,GGN-C31,97235,245200,82925,35.7,40,False,False
+4100402,V10371,Dhruv Pratap Engineering Works Pvt Ltd,SNP-R21,36262,239900,81133,13.6,56,False,False
+4101928,V10658,Indus Tejas Hygiene Solutions,GGN-R15,105207,236160,79868,40.1,11,False,False
+4101574,V10442,Sanjivani Elevator Care Pvt Ltd,GZB-R14,95404,234730,79384,36.6,127,False,False
+4100996,V10541,Yamuna Enterprises,SNP-R05,107634,234150,79188,41.4,138,False,False
+4100429,V10663,Kesari Landscapes,PKL-R18,81665,219970,74393,33.4,120,False,False
+4100456,V10154,Aravind Sarthak Engineering Works,NOI-M38,889,208830,70625,0.4,51,True,True
+4100486,V10748,Garud Ojas Enterprises Pvt Ltd,SNP-R10,20342,207260,70094,8.8,23,False,False
+4100723,V10319,Udaan Trishul Hygiene Solutions Pvt Ltd,PKL-C35,23190,205830,69611,10.1,55,True,True
+4101965,V10163,Kailash Vardhan Traders,GGN-M37,52973,203990,68988,23.4,44,False,False
+4101906,V10840,Navdeep Ekta Enterprises,PKL-C35,22006,199240,67382,9.9,5,False,False
+4101121,V10518,Kailash Tejas Engineering Works Pvt Ltd,DEL-R20,63892,194190,65674,29.6,120,False,False
+4101672,V10172,Hemkunt Abhay Fire Safety Systems Pvt Ltd,SNP-R09,15613,193190,65336,7.3,36,False,False
+4101697,V10069,Kesari Kesari Facility Services,DEL-R24,25519,185660,62789,12.4,35,False,False
+4100745,V10717,Prakriti Sarthak Engineering Works,SNP-R09,57380,180310,60980,28.6,76,False,False
+4100420,V10242,Navdeep Fire Safety Systems Pvt Ltd,DEL-R24,2712,179710,60777,1.4,25,False,False
+4101543,V10294,Pratap Traders,FBD-R01,62851,177990,60195,31.8,147,True,True
+4100112,V10562,Ekta Traders,NOI-R12,21233,175430,59329,10.9,143,False,False
+4100671,V10685,Aravind Dhruv Agro Services Pvt Ltd,GZB-C36,41043,174350,58964,21.2,54,False,False
+4100485,V10845,Hemkunt Yamuna Enterprises Pvt Ltd,PKL-R18,51587,168430,56962,27.6,129,False,False
+4101741,V10353,Vardhan Dhruv Landscapes,PKL-R27,39603,154760,52339,23.0,73,False,False
+4101578,V10301,Vasundhara Landscapes,FBD-R13,66048,151020,51074,39.4,110,True,True
+4100367,V10534,Sarthak Fuels,GGN-M37,18462,145820,49316,11.4,118,False,False
+4100614,V10593,Ekta Panchjanya Engineering Works,GGN-R17,22618,142690,48257,14.3,12,False,False
+4100462,V10768,Ekta Raksha Traders,DEL-R03,39598,141890,47986,25.1,108,False,False
+4102072,V10109,Ojas Landscapes,PKL-C34,10550,134570,45511,7.1,66,False,False
+4100897,V10099,Raksha Power Systems Pvt Ltd,NOI-R23,8488,133610,45186,5.7,114,False,False
+4102030,V10199,Vasundhara Vasundhara Fuels,NOI-C32,24765,130620,44175,17.1,42,False,False
+4101918,V10358,Pratap Hygiene Solutions Pvt Ltd,GGN-R11,45816,128060,43309,32.2,66,False,False
+4100647,V10219,Trishul Enterprises,NOI-R08,46780,121870,41216,34.5,120,False,False
+4100446,V10757,Amrit Fire Safety Systems,GGN-M37,42553,120850,40871,31.7,143,False,False
+4101888,V10812,Saksham Hemkunt Enterprises,NOI-M38,40981,119070,40269,31.0,23,False,False
+4101460,V10724,Abhay Hygiene Solutions Pvt Ltd,FBD-R01,15216,117050,39586,11.7,128,False,False
+4100878,V10788,Vasundhara Vasundhara Traders,DEL-R03,6714,114600,38757,5.3,128,False,False
+4100146,V10124,Satluj Power Systems,NOI-R02,53879,113680,38446,42.7,130,True,True
+4101454,V10410,Kailash Pratap Landscapes Pvt Ltd,NOI-C33,21996,106360,35970,18.6,75,False,False
+4101793,V10082,Udaan Engineering Works,GZB-R22,34606,104060,35193,29.9,52,True,False
+4100743,V10113,Ekta Prakriti Fire Safety Systems,DEL-R03,6589,103280,34929,5.7,44,False,False
+4100185,V10653,Aravind Shivalik Hygiene Solutions Pvt Ltd,NOI-C33,31282,101900,34462,27.6,83,False,False
+4100998,V10098,Sanjivani Vardhan Engineering Works,GZB-R28,16445,94640,32007,15.6,79,True,True
+4100190,V10429,Pratap Indus Enterprises Pvt Ltd,NOI-R02,44292,94180,31851,42.3,80,False,False
+4101266,V10469,Aravind Fuels Pvt Ltd,GGN-C31,2433,94040,31804,2.3,3,False,False
+4101549,V10091,Udaan Agro Services Pvt Ltd,FBD-R01,46197,93510,31625,44.5,80,False,False
+4101710,V10707,Raksha Satluj Elevator Care Pvt Ltd,GGN-R06,32028,93350,31570,30.9,49,False,False
+4100830,V10800,Nirmal Satluj Elevator Care,GGN-M37,32430,92870,31408,31.4,132,False,False
+4101493,V10359,Ekta Sarthak Elevator Care Pvt Ltd,GZB-R28,44749,92150,31165,43.7,0,True,False
+4101863,V10557,Raksha Landscapes Pvt Ltd,DEL-R20,1024,92050,31131,1.0,4,False,False
+4100226,V10470,Sarthak Fire Safety Systems,GGN-R06,15863,90270,30529,15.8,88,True,False
+4101204,V10467,Saksham Sanjivani Engineering Works Pvt Ltd,NOI-R23,24381,87280,29518,25.1,8,False,False
+4100137,V10554,Vardhan Fire Safety Systems,NOI-R08,13690,85850,29034,14.4,55,False,False
+4100568,V10795,Vardhan Prakriti Elevator Care,NOI-C33,24626,85300,28848,26.0,36,False,False
+4101728,V10130,Vardhan Sarthak Pest Solutions Pvt Ltd,NOI-C32,2453,85240,28828,2.6,28,True,True
+4101492,V10735,Dhruv Trishul Traders,GZB-C36,24807,84190,28473,26.5,57,False,False
+4101222,V10167,Kesari Power Systems Pvt Ltd,GZB-R22,18671,82830,28013,20.3,67,False,False
+4101627,V10116,Ojas Fire Safety Systems Pvt Ltd,NOI-C29,8238,82710,27972,9.0,23,False,False
+4100772,V10520,Vardhan Elevator Care Pvt Ltd,GGN-M37,3154,82640,27948,3.4,122,True,False
+4101360,V10019,Abhay Nirmal Engineering Works Pvt Ltd,NOI-C29,34520,82300,27833,37.7,69,True,True
+4100584,V10132,Amrit Enterprises Pvt Ltd,NOI-R12,419,80960,27380,0.5,77,True,True
+4101234,V10116,Ojas Fire Safety Systems Pvt Ltd,NOI-C32,31152,79750,26971,35.2,108,False,False
+4101548,V10241,Saksham Panchjanya Enterprises,SNP-R09,29592,79290,26815,33.6,146,True,True
+4101348,V10397,Amrit Vardhan Engineering Works,NOI-R26,24339,78310,26484,28.0,31,False,False
+4100982,V10831,Kailash Ojas Pest Solutions Pvt Ltd,FBD-R01,4626,77550,26227,5.4,94,True,False
+4101670,V10107,Ojas Traders Pvt Ltd,GZB-R22,23403,77280,26136,27.3,144,False,False
+4101258,V10560,Panchjanya Dhruv Enterprises Pvt Ltd,DEL-R20,16183,76580,25899,19.0,108,False,False
+4100274,V10592,Pratap Kailash Enterprises,NOI-R08,33400,74820,25304,40.2,137,False,False
+4101277,V10662,Navdeep Garud Agro Services,GGN-R15,27634,73450,24840,33.9,13,False,False
+4101209,V10367,Indus Enterprises,GGN-M37,23473,70150,23724,30.1,13,False,False
+4101044,V10686,Prakriti Navdeep Enterprises,PKL-R18,9507,69740,23586,12.3,10,False,False
+4102000,V10135,Ekta Aravind Engineering Works Pvt Ltd,NOI-R02,7609,68670,23224,10.0,52,False,False
+4100720,V10652,Nirmal Tejas Enterprises,GZB-R22,32392,68610,23204,42.5,52,False,False
+4100328,V10285,Panchjanya Fire Safety Systems,GZB-R28,32145,68080,23024,42.5,139,True,True
+4101501,V10729,Udaan Garud Enterprises Pvt Ltd,NOI-R12,16593,66730,22568,22.4,82,False,False
+4101979,V10299,Kesari Engineering Works,SNP-R09,19407,65790,22250,26.5,147,False,False
+4100960,V10585,Shivalik Fire Safety Systems,PKL-R18,13433,65120,22023,18.6,136,False,False
+4101644,V10402,Shivalik Indus Engineering Works,FBD-R13,2548,64580,21841,3.6,146,True,False
+4101210,V10526,Sanjivani Prakriti Power Systems Pvt Ltd,GGN-M37,92,64190,21709,0.1,21,False,False
+4102068,V10567,Kailash Nirmal Engineering Works,DEL-R16,10951,64050,21661,15.4,112,False,False
+4100823,V10652,Nirmal Tejas Enterprises,NOI-R19,19040,63320,21414,27.1,100,False,False
+4101924,V10859,Saksham Udaan Hygiene Solutions Pvt Ltd,GGN-R25,11576,61940,20948,16.8,145,True,False
+4101898,V10790,Satluj Fire Safety Systems,NOI-R19,9459,58840,19899,14.5,0,True,False
+4100511,V10006,Indus Ekta Enterprises Pvt Ltd,SNP-R21,23587,58470,19774,36.3,54,False,False
+4100883,V10061,Vasundhara Fire Safety Systems,GZB-R14,670,57280,19372,1.1,19,False,False
+4100585,V10796,Garud Prakriti Enterprises Pvt Ltd,NOI-R23,17669,57010,19280,27.9,27,False,False
+4101536,V10565,Udaan Hygiene Solutions,GGN-C31,5374,51620,17458,9.4,137,False,False
+4102003,V10437,Garud Traders Pvt Ltd,SNP-C30,17611,51300,17349,30.9,38,False,False
+4101951,V10312,Aravind Indus Fire Safety Systems,NOI-R19,24502,50940,17228,43.3,5,False,False
+4100382,V10707,Raksha Satluj Elevator Care Pvt Ltd,NOI-R12,3595,49700,16808,6.5,107,False,False
+4101939,V10871,Amrit Nirmal Traders,SNP-C30,7880,49660,16795,14.3,74,False,False
+4101206,V10616,Aravind Nirmal Enterprises Pvt Ltd,SNP-C30,5575,48550,16419,10.3,125,False,False
+4100310,V10076,Saksham Agro Services,SNP-C30,17176,46890,15858,33.0,22,False,False
+4101021,V10399,Sanjivani Hygiene Solutions,NOI-M38,343,46320,15665,0.7,15,False,False
+4100804,V10859,Saksham Udaan Hygiene Solutions Pvt Ltd,DEL-R20,14253,44330,14992,28.9,118,True,True
+4101669,V10480,Kailash Prakriti Enterprises,GGN-C31,595,44090,14911,1.2,46,False,False
+4101418,V10428,Kesari Pest Solutions Pvt Ltd,NOI-C29,9288,43650,14762,19.2,51,False,False
+4101093,V10067,Satluj Kesari Pest Solutions Pvt Ltd,GGN-R11,12607,43530,14722,26.1,71,False,False
+4100907,V10586,Raksha Abhay Enterprises,GGN-C31,13587,43310,14647,28.2,144,False,False
+4101892,V10304,Indus Indus Elevator Care Pvt Ltd,PKL-R18,16461,42820,14481,34.6,89,True,True
+4100436,V10853,Kesari Raksha Traders,DEL-R16,21221,42673,14432,44.8,19,True,True
+4100918,V10590,Panchjanya Vardhan Labs,GZB-R22,12639,39860,13480,28.5,6,False,False
+4100847,V10207,Pratap Enterprises Pvt Ltd,PKL-C34,6005,39330,13301,13.7,16,False,False
+4101650,V10599,Vasundhara Aravind Enterprises,GGN-R15,119,39170,13247,0.3,93,False,False
+4101395,V10074,Garud Hygiene Solutions,DEL-R03,10593,38740,13102,24.6,22,False,False
+4101814,V10149,Saksham Aravind Traders,SNP-R09,9179,38710,13092,21.3,53,False,False
+4101648,V10509,Kailash Aravind Pest Solutions,NOI-R08,13754,35630,12050,34.7,143,False,False
+4100892,V10574,Nirmal Udaan Pest Solutions Pvt Ltd,DEL-R20,4601,34300,11600,12.1,62,False,False
+4101902,V10290,Vasundhara Amrit Pest Solutions Pvt Ltd,PKL-R27,1696,34120,11539,4.5,139,False,False
+4101711,V10483,Panchjanya Tejas Pest Solutions,GGN-M37,6409,33820,11438,17.1,131,False,False
+4101803,V10831,Kailash Ojas Pest Solutions Pvt Ltd,NOI-R23,13512,33810,11434,36.0,17,True,False
+4100595,V10247,Vasundhara Power Systems,SNP-R09,2118,33260,11248,5.7,39,False,False
+4100722,V10877,Tejas Panchjanya Engineering Works Pvt Ltd,GGN-R07,4014,32800,11093,11.0,127,False,False
+4101777,V10323,Indus Engineering Works Pvt Ltd,GZB-R22,2034,32190,10886,5.7,127,True,True
+4101701,V10022,Abhay Pratap Enterprises Pvt Ltd,NOI-R02,7784,31880,10782,22.0,142,False,False
+4102074,V10850,Panchjanya Trishul Pest Solutions Pvt Ltd,NOI-R12,7555,29950,10129,22.7,30,False,False
+4101805,V10102,Prakriti Vardhan Pest Solutions,GGN-R15,7628,29870,10102,23.0,117,False,False
+4101473,V10164,Garud Pest Solutions,GGN-R07,12341,29780,10071,37.3,135,False,False
+4100819,V10106,Sanjivani Fire Safety Systems,DEL-R20,6605,29300,9909,20.3,60,True,True
+4101261,V10331,Indus Sanjivani Enterprises,GGN-R11,466,27660,9354,1.5,126,False,False
+4100329,V10689,Pratap Kesari Pest Solutions Pvt Ltd,GGN-R25,8835,26290,8891,30.2,14,False,False
+4101629,V10214,Shivalik Vasundhara Pest Solutions,NOI-R26,3003,25450,8607,10.6,80,False,False
+4100939,V10422,Udaan Hemkunt Pest Solutions,DEL-R20,4879,24090,8147,18.2,96,False,False
+4101750,V10433,Vardhan Labs Pvt Ltd,NOI-C33,134,23450,7931,0.5,86,False,False
+4100957,V10900,Navdeep Udaan Enterprises,FBD-R01,8099,22780,7704,32.0,31,False,False
+4101809,V10864,Raksha Yamuna Enterprises,GZB-C36,3236,22700,7677,12.8,67,False,False
+4102018,V10865,Sarthak Nirmal Enterprises,GGN-R15,6731,22610,7647,26.8,31,False,False
+4100623,V10072,Panchjanya Pest Solutions,SNP-R10,6599,21290,7200,27.9,37,True,False
+4100539,V10511,Sanjivani Aravind Hygiene Solutions,GZB-R14,8254,20800,7034,35.7,90,True,True
+4101961,V10059,Kesari Hygiene Solutions Pvt Ltd,DEL-R20,5936,20730,7011,25.8,84,False,False
+4101089,V10483,Panchjanya Tejas Pest Solutions,NOI-R02,9858,20020,6771,44.3,86,False,False
+4100598,V10207,Pratap Enterprises Pvt Ltd,SNP-R21,7425,19930,6740,33.5,3,False,False
+4100836,V10209,Hemkunt Satluj Traders Pvt Ltd,SNP-C30,8075,19520,6602,37.2,25,False,False
+4101353,V10829,Udaan Prakriti Labs,NOI-R26,3816,19450,6578,17.7,9,False,False
+4101837,V10455,Abhay Sarthak Enterprises,NOI-R02,6459,19350,6544,30.0,126,False,False
+4100510,V10386,Kailash Satluj Labs,FBD-R01,2155,18550,6274,10.5,135,False,False
+4101606,V10053,Dhruv Enterprises,NOI-R19,3718,17450,5901,19.2,64,False,False
+4101623,V10226,Saksham Dhruv Labs,GGN-R11,592,17220,5824,3.1,130,False,False
+4101676,V10783,Saksham Vardhan Labs Pvt Ltd,GZB-C36,1427,17120,5790,7.5,31,True,True
+4101620,V10822,Sarthak Tejas Pest Solutions Pvt Ltd,NOI-R12,6734,17070,5773,35.5,145,False,False
+4100149,V10059,Kesari Hygiene Solutions Pvt Ltd,GGN-R07,2863,16510,5584,15.6,55,False,False
+4100200,V10236,Indus Kailash Pest Solutions,PKL-R27,170,16400,5546,0.9,129,False,False
+4102048,V10509,Kailash Aravind Pest Solutions,NOI-C29,5045,16400,5546,27.7,128,False,False
+4100736,V10189,Vardhan Indus Labs,GGN-R11,3769,16030,5421,21.2,23,False,False
+4100661,V10864,Raksha Yamuna Enterprises,GGN-R25,1455,15850,5360,8.3,119,False,False
+4101877,V10266,Yamuna Udaan Hygiene Solutions,DEL-R24,3677,15740,5323,21.0,58,False,False
+4101519,V10160,Sarthak Labs,NOI-C33,5094,15370,5198,29.8,35,False,False
+4101138,V10515,Garud Satluj Traders,GGN-R04,5505,15350,5191,32.3,64,False,False
+4102058,V10273,Vardhan Traders,NOI-M38,1881,14720,4978,11.5,32,False,False
+4101280,V10310,Ojas Pest Solutions Pvt Ltd,SNP-C30,3346,14640,4951,20.6,10,False,False
+4101700,V10545,Sanjivani Garud Enterprises Pvt Ltd,NOI-R23,886,14620,4944,5.5,92,False,False
+4100120,V10889,Pratap Tejas Labs Pvt Ltd,SNP-R05,6103,14520,4911,37.8,97,True,False
+4101057,V10019,Abhay Nirmal Engineering Works Pvt Ltd,GGN-R25,5595,14390,4867,35.0,98,True,False
+4101317,V10505,Nirmal Tejas Hygiene Solutions Pvt Ltd,NOI-R08,3421,13890,4698,22.2,135,False,False
+4100031,V10532,Aravind Dhruv Labs,NOI-R26,1802,13680,4626,11.9,40,True,True
+4101963,V10852,Dhruv Kesari Labs,FBD-R13,217,13680,4626,1.4,9,False,False
+4101193,V10278,Aravind Panchjanya Labs Pvt Ltd,GGN-M37,2316,12960,4383,16.1,134,False,False
+4101364,V10874,Sarthak Sanjivani Pest Solutions,DEL-R20,3933,12050,4075,29.4,29,False,False
+4101635,V10598,Ojas Labs Pvt Ltd,NOI-R23,2172,11780,3984,16.6,49,False,False
+4101136,V10422,Udaan Hemkunt Pest Solutions,DEL-R03,4994,11700,3957,38.4,9,False,False
+4101662,V10415,Vardhan Vasundhara Engineering Works,NOI-C33,3024,11440,3869,23.8,110,False,False
+4100089,V10797,Udaan Yamuna Labs,DEL-R03,5016,11150,3771,40.5,18,False,False
+4101232,V10770,Aravind Udaan Labs,SNP-R05,2810,10770,3642,23.5,46,False,False
+4100364,V10867,Vardhan Nirmal Engineering Works,NOI-C29,1577,10740,3632,13.2,103,False,False
+4101466,V10623,Vasundhara Ekta Traders,DEL-R16,462,10340,3497,4.0,80,False,False
+4101195,V10568,Shivalik Tejas Labs,PKL-C34,1264,9930,3358,11.5,18,False,False
+4100625,V10330,Ojas Hygiene Solutions,NOI-R08,1712,9830,3324,15.7,61,False,False
+4100347,V10215,Yamuna Labs,DEL-R20,670,9780,3308,6.2,82,False,False
+4101970,V10160,Sarthak Labs,GZB-R28,2262,9730,3291,20.9,42,False,False
+4100249,V10777,Ojas Raksha Traders Pvt Ltd,SNP-R21,1260,8840,2990,12.8,5,False,False
+4101935,V10896,Sarthak Amrit Pest Solutions,GGN-C31,145,8830,2986,1.5,25,False,False
+4101404,V10363,Dhruv Kesari Engineering Works Pvt Ltd,GGN-R15,2735,8500,2875,29.0,53,False,False
+4100205,V10623,Vasundhara Ekta Traders,NOI-C33,1584,8340,2821,17.1,141,False,False
+4100956,V10021,Satluj Amrit Traders,GZB-R22,3610,8330,2817,39.0,111,False,False
+4102065,V10578,Ekta Vasundhara Pest Solutions Pvt Ltd,NOI-R19,1062,7590,2567,12.6,39,False,False
+4101527,V10037,Garud Kesari Engineering Works,SNP-R09,80,6940,2347,1.0,59,False,False
+4100061,V10850,Panchjanya Trishul Pest Solutions Pvt Ltd,NOI-R08,1749,6140,2077,25.6,4,False,False
+4101778,V10004,Vasundhara Engineering Works Pvt Ltd,NOI-R02,1765,5810,1965,27.3,59,False,False
+4100891,V10805,Shivalik Abhay Labs,GZB-C36,577,5020,1698,10.3,23,True,False
+4100038,V10683,Navdeep Labs,GGN-R06,1103,4970,1681,20.0,68,False,False
+4101854,V10060,Shivalik Labs Pvt Ltd,GZB-R28,434,3290,1113,11.9,125,False,False

@@ -51,6 +51,8 @@ class F:
     value: Any = None
     conf: float = 0.0
     note: str = ""
+    source: str = "read"       # read, repaired, vendor_master (looked up, not read), human_review
+    raw: str | None = None     # what the page printed, when the value was not taken as printed
 
 
 @dataclass
@@ -152,7 +154,7 @@ def read_gstin(page: OcrPage, ln: list[Word], line_text: str, m: re.Match) -> F:
     if len(raw) == 15 and code and sim >= 0.8 and fixed[:2] != code and all(raw[i].upper() in _CONFUSABLE[code[i]] for i in (0, 1)):
         fixed, note = code + fixed[2:], f"state code taken from the state name '{state_text.strip()}': the printed '{raw[:2]}' is confusable with {code}"
     if not (len(raw) == 15 and _GSTIN_SHAPE.match(fixed)):
-        return F(None, 0.0, f"printed text '{raw}' is not a valid GSTIN shape")
+        return F(None, 0.0, f"printed text '{raw}' is not a valid GSTIN shape", raw=raw)
     state_ok = code is not None and sim >= 0.8 and code == fixed[:2]
     agree, _ = second_read(page, w, WL_ID, fixed, lambda x: repair_gstin(x)[0])
     if base >= AUTO and n == 0 and state_ok:
@@ -195,6 +197,31 @@ def _state_of_line(text: str) -> tuple[str | None, float]:
         if r > best:
             best, code = r, c
     return code, best
+
+
+def merge_header(b: "BillFields", h: "BillFields") -> None:
+    """Fold a second read of the header into the main extraction, field by field. Two reads that agree raise the confidence a little; a field the main read missed is filled from
+    the header read; when they differ the more confident one is taken only if it is clearly more confident, and otherwise the main read stays with its confidence cut.
+    The vendor name is only replaced when the main read was weak: the main read also has the `For ...` line at the foot to check it against."""
+    for name in ("vendor_name", "vendor_gstin", "invoice_no", "invoice_date"):
+        m, x = getattr(b, name), getattr(h, name)
+        if x.value is None:
+            continue
+        if name == "vendor_name" and m.value is not None and m.conf >= AUTO:
+            continue
+        if m.value is None:
+            setattr(b, name, F(x.value, x.conf, "from the second read of the header; " + x.note, x.source, x.raw))
+        elif m.value == x.value:
+            if name == "vendor_gstin":
+                m.conf = max(m.conf, min(0.95, x.conf)) if x.conf >= 0.80 else m.conf
+            else:
+                m.conf = min(0.99, max(m.conf, x.conf) + 0.04)
+            m.note += "; the second read of the header agrees"
+        elif x.conf > m.conf + 0.10:
+            setattr(b, name, F(x.value, x.conf, "from the second read of the header, which was clearly more confident; the main read gave " + str(m.value), x.source, x.raw))
+        else:
+            m.conf = round(m.conf * 0.8, 3)
+            m.note += f"; the second read of the header differs ({x.value})"
 
 
 # ------------------------------------------------------------------------------------------------ extraction

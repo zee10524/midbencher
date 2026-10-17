@@ -1,0 +1,122 @@
+{
+ "file": "bill-29.jpg",
+ "sha256": "0821d8fc28614f5187d811aaa3463b72778e681e6330ed451aaed89d617bc3bf",
+ "bill_type": "phone_photo",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": -0.9,
+   "background_cropped": true,
+   "mean_word_conf": 0.777,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "SHIVALIK FACILITY SERVICES",
+   "conf": 0.9666666666666666,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": null,
+   "conf": 0.0,
+   "note": "printed text 'O6LXWPRBESI8IIZ0' is not a valid GSTIN shape"
+  },
+  "invoice_no": {
+   "value": "289/25-26/049",
+   "conf": 0.0,
+   "note": "read as printed; a second read of the word disagrees"
+  },
+  "invoice_date": {
+   "value": "2026-02-05",
+   "conf": 0.89,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "NOI-M38",
+   "conf": 0.946,
+   "note": "matched to SAP property 'Retail Mall, Sector 44, Noida'"
+  },
+  "wo_id": {
+   "value": "4100325",
+   "conf": 0.96,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 987150.0,
+   "conf": 0.2,
+   "note": "amounts do not add up"
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "total": {
+   "value": 1173837.0,
+   "conf": 0.5,
+   "note": "amounts do not add up"
+  },
+  "hsn_sac": {
+   "value": "996533",
+   "conf": 0.9,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.43,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": false,
+ "status": "review",
+ "route_hint": "resend",
+ "overall_confidence": 0.0,
+ "reasons": [
+  "no tax line and no 'GST not applicable' line found",
+  "vendor_gstin: not found",
+  "invoice_no: confidence 0.00 (read as printed; a second read of the word disagrees)",
+  "invoice_date: confidence 0.89 (day-month-year as printed; inside the financial year in the invoice number)",
+  "taxable: confidence 0.20 (amounts do not add up)",
+  "total: confidence 0.50 (amounts do not add up)",
+  "tax: no complete tax line found"
+ ]
+}

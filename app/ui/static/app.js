@@ -82,7 +82,7 @@ function renderCard(c) {
     if (c.tesseract) add(card, liveButton());
     return area.appendChild(card);
   }
-  add(card, el("p", "reading", c.reading_label), el("div", "verdict", c.headline), el("p", "verdict-sub", c.sub), el("div", "file", c.file + " · " + c.bill_type.replace("_", " ") + " · read in " + c.seconds + " s"));
+  add(card, el("p", "reading", c.reading_label), el("div", "verdict", c.headline), el("p", "verdict-sub", c.sub), el("div", "file", c.file + " · " + (c.doc_type === "credit_note" ? "credit note · " : "") + c.bill_type.replace("_", " ") + " · read in " + c.seconds + " s"));
   const h2a = el("h2", "", "The issues that matter");
   card.appendChild(h2a);
   if (!c.issues.length) card.appendChild(el("p", "muted", "Nothing to fix at intake."));
@@ -94,15 +94,44 @@ function renderCard(c) {
   });
   card.appendChild(ul);
   if (c.more_issues) card.appendChild(el("p", "muted small", c.more_issues + " more flagged: see the checks."));
+  if (c.not_run && c.not_run.length) {
+    card.appendChild(el("h2", "", "Checks that could not run"));
+    const nl = el("ul", "rows");
+    c.not_run.forEach((n) => add(nl, add(el("li", "row compact"), add(el("div"), el("div", "who", n.title), el("div", "meta", "Needs: " + n.needs.join(", "))))));
+    card.appendChild(nl);
+  }
   card.appendChild(el("h2", "", "What was read"));
   const grid = el("div", "fields");
+  const typed = {};
   c.fields.forEach((f) => {
     const cell = el("div", f.state === "unread" ? "unread" : "");
     add(cell, el("div", "k", f.name), el("div", "v", f.value));
-    if (f.state !== "ok") add(cell, el("span", "flag", "needs human review"));
+    if (f.state === "unread") {
+      const inp = el("input", "typein");
+      inp.type = "text"; inp.placeholder = "type it here"; inp.setAttribute("aria-label", f.name);
+      typed[f.key] = inp;
+      add(cell, el("span", "flag", "not read: needs human review"), inp);
+    } else if (f.state === "typed") add(cell, el("span", "flag", "typed by a person"));
+    else if (f.state !== "ok") add(cell, el("span", "flag", f.note || "needs human review"));
     grid.appendChild(cell);
   });
   card.appendChild(grid);
+  if (Object.keys(typed).length && c.key) {
+    const go = el("button", "btn quiet", "Run the checks again with my entries");
+    const msg = el("span", "small muted");
+    go.onclick = async () => {
+      const values = {};
+      Object.entries(typed).forEach(([k, i]) => { if (i.value.trim()) values[k] = i.value.trim(); });
+      if (!Object.keys(values).length) { msg.textContent = " Type at least one value first."; return; }
+      try {
+        msg.textContent = " Checking.";
+        const r = await api("/api/intake/review", { method: "POST", body: JSON.stringify({ key: c.key, values }) });
+        renderCard(r);
+      } catch (e) { msg.textContent = " " + e.message; }
+    };
+    add(card, add(el("div", "live-row"), go, msg));
+  }
+  if (c.saved) card.appendChild(el("p", "saved", c.saved.message));
   card.appendChild(el("p", "muted small", c.review_note));
   card.appendChild(el("h2", "", "Ready to send"));
   const ob = el("div", "outbox");
@@ -142,13 +171,13 @@ async function loadControl(cutoff) {
   } catch (e) { clear(body); showError(e); }
 }
 
-function stat(num, lab, miss) { return add(el("div", "stat"), el("div", miss ? "num miss" : "num", nf.format(num)), el("div", "lab", lab)); }
+function stat(num, lab, miss, extra) { return add(el("div", "stat"), el("div", miss ? "num miss" : "num", nf.format(num)), el("div", "lab", lab), extra ? el("div", "lab extra", extra) : null); }
 
 function renderControl(d) {
   const body = $("control-body");
   clear(body);
   const h = d.headline;
-  add(body, add(el("div", "stats"), stat(h.late, d.labels.late, true), stat(h.miss, d.labels.miss, true), stat(h.waiting, d.labels.waiting), stat(h.dry, d.labels.dry)));
+  add(body, add(el("div", "stats"), stat(h.late, d.labels.late, true), stat(h.miss, d.labels.miss, true), stat(h.waiting, d.labels.waiting), stat(h.dry, d.labels.dry, false, d.labels.dry_extra)));
   const jumps = el("div", "jumps");
   [["Oldest bills", "s-oldest"], ["Closest to the limit", "s-msme"], ["Pick order", "s-pick"], ["Work orders", "s-dry"]].forEach(([t, id]) => {
     const b = el("button", "", t); b.onclick = () => $(id).scrollIntoView({ behavior: "smooth", block: "start" }); jumps.appendChild(b);
@@ -191,13 +220,13 @@ function renderControl(d) {
   body.appendChild(cl);
   body.appendChild(el("p", "muted small", d.spread_pct === null ? "" : "Highest load is " + d.spread_pct + " per cent above the lowest after the order. The live queue holds " + nf.format(d.live_waiting) + " waiting bills."));
 
-  const h2d = el("h2", "", "Work orders about to run dry, biggest billing first"); h2d.id = "s-dry"; body.appendChild(h2d);
+  const h2d = el("h2", "", "Work orders likely to run dry, biggest billing first"); h2d.id = "s-dry"; body.appendChild(h2d);
   const w = el("ul", "rows");
   d.dry.forEach((x) => {
     const li = el("li", "row");
     const right = el("div", "big", nf.format(x.days));
-    right.appendChild(el("small", "", "days of balance"));
-    add(li, add(el("div"), el("div", "who", "Work order " + x.wo_id), el("div", "meta", x.property + " · bills about " + x.burn + " a month · balance left " + x.balance + (x.expires !== null ? " · ends in " + nf.format(x.expires) + " days" : ""))), right);
+    right.appendChild(el("small", "", "days of balance left"));
+    add(li, add(el("div"), el("div", "who", "Work order " + x.wo_id + " · " + x.vendor), el("div", "meta", x.property + " · bills about " + x.burn + " a month, last quarter · balance left " + x.balance + " · ends in " + nf.format(x.expires) + " days" + (x.vendor_waiting ? " · this vendor has a bill waiting" : ""))), right);
     w.appendChild(li);
   });
   body.appendChild(w);

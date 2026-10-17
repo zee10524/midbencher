@@ -3,7 +3,7 @@
  "sha256": "9db6be03ce5f11df7eb69a9af036cc48d5f73acb0e29344bb114eeaacdcbb969",
  "bill_type": "phone_photo",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,85 +32,115 @@
   "vendor_name": {
    "value": "PANCHJANYA HEMKUNT TRADERS PVT LTD",
    "conf": 0.9620000000000001,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
-   "value": "06COSPL2867Z1ZO",
-   "conf": 0.8,
-   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees; the last character could be a digit"
+   "value": "06CQSPL2867Z1ZO",
+   "conf": 0.9,
+   "note": "resolved from the vendor master by the vendor's name; not read from the bill",
+   "source": "vendor_master",
+   "raw": "06COSPL2867Z1ZO"
   },
   "invoice_no": {
    "value": "676/25-26/673",
-   "conf": 0.92,
-   "note": "read as printed"
+   "conf": 0.9600000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2025-06-14",
-   "conf": 0.9600000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.99,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "GZB-R22",
    "conf": 0.99,
-   "note": "matched to SAP property 'Residential Society, Sector 56, Ghaziabad'"
+   "note": "matched to SAP property 'Residential Society, Sector 56, Ghaziabad'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100415",
    "conf": 0.95,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 16980.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": 3056.4,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 20036.4,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "3402",
    "conf": 0.78,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Uttar Pradesh",
    "conf": 0.895,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.7,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
  "arithmetic_ok": true,
  "status": "review",
  "route_hint": "human-look",
- "overall_confidence": 0.8,
+ "overall_confidence": 0.9,
  "reasons": [
-  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees; the last character could be a digit)"
+  "vendor_gstin: vendor master, not read from the bill (resolved from the vendor master by the vendor's name; not read from the bill)"
  ]
 }

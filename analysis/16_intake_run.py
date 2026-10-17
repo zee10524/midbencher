@@ -37,21 +37,26 @@ for t in ["all", *TYPES]:
 checks = ["P1/H1", "P3", "H3", "H13", "H11", "H10"]
 cs = Counter((r.check_id, r.status) for o in runs for r in o["results"])
 for cid in checks:
+    figs.append((f"ir.check.{cid}.not_run", sum(any(n["check"] == cid for n in o["not_run"]) for o in runs), f"bills where check {cid} could not run (a field it needs was not read)"))
     for st in ["pass", "fail", "warn", "needs-document"]:
         figs.append((f"ir.check.{cid}.{st}", cs.get((cid, st), 0), f"bills where check {cid} returns {st}"))
 
 
+def res_of(o, cid):
+    return next((r for r in o["results"] if r.check_id == cid), None)
+
+
 def h3(o):
-    return next(r for r in o["results"] if r.check_id == "H3")
+    return res_of(o, "H3")
 
 
-exp = [o for o in runs if h3(o).status == "fail" and h3(o).evidence.get("validity") in ("expired", "not_yet_valid")]
-exh = [o for o in runs if h3(o).status == "fail" and (h3(o).evidence.get("headroom_after_inr") or 0) < 0]
+exp = [o for o in runs if h3(o) and h3(o).status == "fail" and h3(o).evidence.get("validity") in ("expired", "not_yet_valid")]
+exh = [o for o in runs if h3(o) and h3(o).status == "fail" and (h3(o).evidence.get("headroom_after_inr") or 0) < 0]
 both = [o for o in exp if o in exh]
 figs += [("ir.h3.expired", len(exp), "bills whose work order is expired (or not yet valid) on the bill date"), ("ir.h3.exhausted", len(exh), "bills whose work order is over its approved value after the bill"),
-         ("ir.h3.both", len(both), "bills with both"), ("ir.h3.fail_any", sum(h3(o).status == "fail" for o in runs), "bills where H3 fails")]
-h10 = [o for o in runs if next(r for r in o["results"] if r.check_id == "H10").status == "warn"]
-figs.append(("ir.h10.warn_two_readings_differ", sum(next(r for r in o["results"] if r.check_id == "H10").certainty < 1 for o in h10), "bills where H10 warns because the two place-of-supply readings give different tax types"))
+         ("ir.h3.both", len(both), "bills with both"), ("ir.h3.fail_any", sum(bool(h3(o)) and h3(o).status == "fail" for o in runs), "bills where H3 fails")]
+h10 = [o for o in runs if res_of(o, "H10") and res_of(o, "H10").status == "warn"]
+figs.append(("ir.h10.warn_two_readings_differ", sum(res_of(o, "H10").certainty < 1 for o in h10), "bills where H10 warns because the two place-of-supply readings give different tax types"))
 figs.append(("ir.reader_ok_but_flagged", sum(o["reader"]["status"] == "ok" and any(r.status in ("fail", "warn") for r in o["results"]) for o in runs), "bills the reader passes (status ok) that a check still fails or warns on"))
 figs.append(("ir.own_row_linked", sum(o["own_bill_id"] is not None for o in runs), "inbox bills linked to their own register row (needed to replay the duplicate check)"))
 pd.DataFrame(figs, columns=["id", "value", "description"]).to_csv(OUT / "figures_intake.csv", index=False)
@@ -107,21 +112,21 @@ auto = [o["file"] for o in runs if o["routing"].route == "auto-clear"]
 md += ["", (f"{len(auto)} bill(s) are `auto-clear`: " + ", ".join(f"`{a}`" for a in auto) + ". " if auto else "No bill is `auto-clear`. ") +
        "Every other bill has a check that is not a clean pass, or a field a check needs read below 0.90. "
        f"The reader passes {int(F['ir.reader_ok_but_flagged'])} bill(s) that a check still fails or warns on, which is what the checks are for.", "",
-       "## Check results across the 40 bills", "", "| Check | pass | fail | warn | needs-document |", "|---|---|---|---|---|"]
+       "## Check results across the 40 bills", "", "| Check | pass | fail | warn | needs-document | could not run |", "|---|---|---|---|---|---|"]
 for cid in checks:
-    md.append(f"| {cid} | " + " | ".join(str(int(F[f'ir.check.{cid}.{s}'])) for s in ["pass", "fail", "warn", "needs-document"]) + " |")
+    md.append(f"| {cid} | " + " | ".join(str(int(F[f'ir.check.{cid}.{s}'])) for s in ["pass", "fail", "warn", "needs-document", "not_run"]) + " |")
 md += ["", "## The two bills you asked about", "",
        f"**`packet-08-repeat-invoice.pdf`**: verdict **{p8['routing'].route}**. " + "; ".join(f"{r.check_id} {r.status} ({plain(r)})" for r in flags(p8)) + ". "
        f"Its reader confidence in the invoice number is {p8['reader']['fields']['invoice_no']['conf']:.2f}, which is what sends it to `resend`; the checks would otherwise route it to a human look.", "",
        f"**`packet-10-credit-note.pdf`**: verdict **{p10['routing'].route}**, read as a {p10['reader'].get('doc_type', 'unknown').replace('_', ' ')}. " + "; ".join(f"{r.check_id} {r.status}" for r in flags(p10)) +
        ". The vendor GSTIN was not read (the OCR added a character and the reader rejects a GSTIN that is not 15 characters), so the vendor-dependent checks cannot run and the verdict is `resend` for that reason, not because the credit note is wrong.", ""]
-md += block("Work orders expired or exhausted (check H3)", [o for o in runs if h3(o).status == "fail"], {"H3"}) + [""]
+md += block("Work orders expired or exhausted (check H3)", [o for o in runs if h3(o) and h3(o).status == "fail"], {"H3"}) + [""]
 md += [f"{int(F['ir.h3.fail_any'])} bills fail H3: {int(F['ir.h3.expired'])} on an expired work order, {int(F['ir.h3.exhausted'])} over the approved value, {int(F['ir.h3.both'])} both. "
        "An expiry may be stale (the extract may not carry an amendment), so the route is a task for procurement, not a block.", ""]
 md += block("Wrong GST rate or missing HSN/SAC (check H11)", [o for o in runs if any(r.check_id == "H11" and r.status != "pass" for r in o["results"])], {"H11"}) + [""]
 md += block("GST type against place of supply (check H10: facts, never a fail)", h10, {"H10"}) + [""]
 md += [f"H10 warns on {len(h10)} bills; on {int(F['ir.h10.warn_two_readings_differ'])} of them the two readings of the place of supply give different tax types, so the law does not settle it from the bill. "
-       f"On {int(F['ir.check.H10.needs-document'])} bills it needs the page: the recipient GSTIN or the place of supply was not read.", ""]
+       f"On {int(F['ir.check.H10.not_run'])} bills H10 could not run: the vendor GSTIN, the buyer GSTIN, the place of supply or the tax lines were not read.", ""]
 md += block("Invoice numbers already used (check H13)", [o for o in runs if any(r.check_id == "H13" and r.status != "pass" for r in o["results"])], {"H13"}) + [""]
 md += ["## Every bill and its flags", ""] + tab + ["", "## Limits", "",
        "- The verdicts are on the reader's output, and the reader got the vendor GSTIN wrong or not at all on a number of bills (`notes/reader-evaluation.md`). A `P1/H1` fail on a bill whose GSTIN was read at 0.80 may be the reader's error, not the vendor's.",

@@ -3,7 +3,7 @@
  "sha256": "25e61e4f5b45e5b428dc5d6cc1a33fbc977fa6fbf97ea6bc79936da77c7c10bf",
  "bill_type": "phone_photo",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,77 +32,107 @@
   "vendor_name": {
    "value": "ARAVIND ENGINEERING WORKS",
    "conf": 0.9833333333333333,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
-   "value": "07TXHCG9184KIZA",
-   "conf": 0.3,
-   "note": "2 character(s) repaired by position; the state printed beside it ('Deity') does not clearly agree with state code 07"
+   "value": "07TXHCG9184K1ZA",
+   "conf": 0.85,
+   "note": "read as '07TXHCG9184KIZA', one confusable or extra character away from exactly one GSTIN in the vendor master",
+   "source": "repaired",
+   "raw": "07TXHCG9184KIZA"
   },
   "invoice_no": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": null,
    "conf": 0.0,
-   "note": "'Residential Society, Sector 77, New Oeiti' matches 0 SAP properties by name"
+   "note": "'Residential Society, Sector 77, New Oeiti' matches 0 SAP properties by name",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100304",
    "conf": 0.95,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 99330.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": 8939.7,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": 8939.7,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 117209.4,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "998714",
    "conf": 0.95,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Delhi",
    "conf": 0.83625,
-   "note": "closest state name, similarity 0.80"
+   "note": "closest state name, similarity 0.80",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1Z0",
    "conf": 0.6100000000000001,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": "Micro",
    "conf": 0.5766666666666667,
-   "note": "claim printed by the vendor, not proof"
+   "note": "claim printed by the vendor, not proof",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
@@ -111,7 +141,7 @@
  "route_hint": "resend",
  "overall_confidence": 0.0,
  "reasons": [
-  "vendor_gstin: confidence 0.30 (2 character(s) repaired by position; the state printed beside it ('Deity') does not clearly agree with state code 07)",
+  "vendor_gstin: confidence 0.85 (read as '07TXHCG9184KIZA', one confusable or extra character away from exactly one GSTIN in the vendor master)",
   "invoice_no: not found",
   "invoice_date: not found"
  ]

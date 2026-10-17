@@ -3,7 +3,7 @@
  "sha256": "d1b1655af1c39e9f0f213dfb519409e8c2addcef7d60ce2ed10b1ab206d79e7f",
  "bill_type": "phone_photo",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,77 +32,107 @@
   "vendor_name": {
    "value": "KESARI HEMKUNT FIRE SAFETY SYSTEMS",
    "conf": 0.972,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
    "value": "07QXNPN2966U1ZT",
    "conf": 0.8,
-   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_no": {
-   "value": null,
-   "conf": 0.0,
-   "note": ""
+   "value": "751/25-26/346",
+   "conf": 0.92,
+   "note": "from the second read of the header; read as printed",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
-   "value": null,
-   "conf": 0.0,
-   "note": ""
+   "value": "2025-11-01",
+   "conf": 0.9600000000000001,
+   "note": "from the second read of the header; day-month-year as printed; inside the financial year in the invoice number",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "PKL-C34",
    "conf": 0.99,
-   "note": "matched to SAP property 'Office Tower, Sector 73, Panchkula'"
+   "note": "matched to SAP property 'Office Tower, Sector 73, Panchkula'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100393",
    "conf": 0.93,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": 15539.4,
    "conf": 0.81,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 110869.4,
    "conf": 0.82,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "998719",
    "conf": 0.96,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Haryana",
    "conf": 0.8342857142857143,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.5,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": "Micro",
    "conf": 0.8166666666666668,
-   "note": "claim printed by the vendor, not proof"
+   "note": "claim printed by the vendor, not proof",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
@@ -111,9 +141,7 @@
  "route_hint": "resend",
  "overall_confidence": 0.0,
  "reasons": [
-  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)",
-  "invoice_no: not found",
-  "invoice_date: not found",
+  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs; the second read of the header agrees)",
   "taxable: not found",
   "total: confidence 0.82 ()",
   "amounts: not all of taxable value and total were found"

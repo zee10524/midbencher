@@ -18,11 +18,12 @@ dependencies = [
     "pdfplumber>=0.11",   # fast path only: text of a PDF that does have a text layer (none in the pack does)
     "pillow>=10",         # open and prepare the photos and page images
     "numpy>=1.26",        # image arrays; also pulled in by pandas
-    "anthropic>=0.40",    # vision model that reads the bill fields (needs an API key)
 ]
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]
+# Not used in this build: the vision-model fallback is switched off and has no code that calls it. Needs an API key if it is ever built.
+vision = ["anthropic>=0.40"]
 
 [tool.setuptools.packages.find]
 include = ["app*", "backtest*"]

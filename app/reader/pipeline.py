@@ -25,9 +25,9 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import classify, fields, images, ocr
+from . import classify, fields, images, ocr, resolve
 
-READER_VERSION = "reader-2026.10.1"
+READER_VERSION = "reader-2026.10.2"
 VISION_FALLBACK = os.environ.get("RIKLR_VISION_FALLBACK", "0") == "1"   # OFF by default
 CACHE_DIR = Path(__file__).resolve().parent / "cache"
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -84,6 +84,8 @@ def judge(b: fields.BillFields) -> tuple[str, str, float, list[str]]:
             confs.append(f.conf)
             if f.conf < fields.AUTO:
                 reasons.append(f"{name}: confidence {f.conf:.2f} ({f.note})")
+            elif f.source != "read":
+                reasons.append(f"{name}: {f.source.replace('_', ' ')}, not read from the bill ({f.note})")
     if b.arithmetic_ok is None:
         reasons.append("amounts: not all of taxable value and total were found")
     taxed = (b.cgst.value is not None and b.sgst.value is not None) or b.igst.value is not None or b.no_gst_printed
@@ -121,7 +123,12 @@ def read_file(path: Path, sap=None, use_cache: bool = True, refresh: bool = Fals
         res = base | dict(pages=facts, supporting=classify.supporting_documents(classes), fields={}, status="review", route_hint="resend", overall_confidence=0.0,
                           reasons=["no page was recognised as the bill"])
     else:
+        pages[bill_idx].header = ocr.ocr_header(pages[bill_idx])
         b = fields.extract_bill(pages[bill_idx], sap)
+        if pages[bill_idx].header is not None:
+            fields.merge_header(b, fields.extract_bill(pages[bill_idx].header))
+        if sap is not None:
+            resolve.resolve_vendor(b, sap)
         status, hint, overall, reasons = judge(b)
         res = base | dict(pages=facts, bill_page=bill_idx + 1, doc_type=b.doc_type, supporting=classify.supporting_documents(classes),
                           other_pages=[c for c in classes if c.startswith("other")], fields={k: asdict(getattr(b, k)) for k in
@@ -155,17 +162,30 @@ def parsed_bill_args(res: dict) -> dict:
     if res.get("reader", {}).get("simulated"):
         notes.append("reader simulated: result from the cache, not read now")
     pn = f.get("property_name", {})
-    return dict(source_file=res["file"], vendor_gstin=val("vendor_gstin"), vendor_name=val("vendor_name"), invoice_no=val("invoice_no"), invoice_date=val("invoice_date"),
+    typed = {k: x["original"] for k, x in f.items() if x.get("source") == "human_review" and "original" in x}
+    if typed:
+        notes.append("typed by a person: " + ", ".join(sorted(typed)))
+    return dict(source=("human_review" if typed else "reader"), reader_original=(json.dumps(typed, ensure_ascii=False) if typed else None), source_file=res["file"], vendor_gstin=val("vendor_gstin"), vendor_name=val("vendor_name"), invoice_no=val("invoice_no"), invoice_date=val("invoice_date"),
                 property_code=pn.get("value") if pn.get("conf", 0) >= fields.RESEND and re.fullmatch(r"[A-Z]{3}-[A-Z]\d{2}", str(pn.get("value") or "")) else None,
                 wo_id=val("wo_id"), taxable_inr=val("taxable"), cgst_inr=val("cgst"), sgst_inr=val("sgst"), igst_inr=val("igst"), total_inr=val("total"),
                 confidence=res.get("overall_confidence"), check_status=res["status"], check_notes="; ".join(notes),
                 parsed_at=datetime.now(timezone.utc).isoformat(timespec="seconds"))
 
 
-def make_working_copy(src: Path = PACK_DB, dst: Path = WORKING_DB) -> Path:
+def make_working_copy(src: Path | None = None, dst: Path | None = None) -> Path:
     """A fresh copy of the SAP stand-in to write `parsed_bill` into. The pack is never written to."""
+    src, dst = Path(src or PACK_DB), Path(dst or WORKING_DB)
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(src, dst)
+    import sqlite3
+
+    con = sqlite3.connect(dst)          # this project's own copy: two columns the extract spec does not have, so a person's entry never overwrites the reader's reading
+    try:
+        for col in ("source TEXT", "reader_original TEXT"):
+            con.execute(f"ALTER TABLE parsed_bill ADD COLUMN {col}")
+        con.commit()
+    finally:
+        con.close()
     return dst
 
 

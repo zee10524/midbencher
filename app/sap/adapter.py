@@ -301,6 +301,13 @@ class SapAdapter:
         r = self._ro.execute("SELECT * FROM vendor_master WHERE vendor_id = ?", ((vendor_id or "").strip(),)).fetchone()
         return None if r is None else self._vendor(r)
 
+    def vendor_gstin_index(self) -> dict[str, str]:
+        """Every GSTIN in the vendor master, mapped to its vendor code. The reader uses it to check a repaired GSTIN; the master is small (hundreds of rows).
+
+        Real connection: the GSTIN column of the vendor master over RFC read access, as for `get_vendor`.
+        """
+        return {norm_gstin(r["gstin"]): r["vendor_id"] for r in self._ro.execute("SELECT vendor_id, gstin FROM vendor_master") if r["gstin"]}
+
     # ---------------------------------------------------------------- work orders
     def get_work_order(self, wo_id: str, on_date: date | str | None = None) -> WorkOrder | None:
         """Return a work order or purchase order with validity on `on_date` (normally the bill date), remaining balance and monthly burn.
@@ -357,6 +364,15 @@ class SapAdapter:
                              _num(r["gst_inr"]), r["wo_id"]) for r in rows if key(r["invoice_no"]) == want]
         return sorted(out, key=lambda p: (p.posted_date or date.max, p.bill_id))
 
+    def list_posted_invoices(self, vendor_id: str) -> list[PostedInvoice]:
+        """Every posted invoice of a vendor, duplicates collapsed (D11), oldest first. Used by the partial duplicate check, which has no invoice number to look up.
+
+        Real connection: as `find_posted_invoices`, without the reference filter.
+        """
+        rows = self._ro.execute("SELECT DISTINCT * FROM posted_invoices WHERE vendor_id = ?", ((vendor_id or "").strip(),)).fetchall()
+        out = [PostedInvoice(r["bill_id"], r["vendor_id"], r["invoice_no"], _date(r["invoice_date"]), _date(r["posted_date"]), _num(r["amount_inr"]), _num(r["gst_inr"]), r["wo_id"]) for r in rows]
+        return sorted(out, key=lambda p: (p.posted_date or date.max, p.bill_id))
+
     # ---------------------------------------------------------------- properties
     def get_property(self, code: str) -> Property | None:
         """Return a property by code, tolerating case, spaces for hyphens and stray spaces (D02). None if unknown.
@@ -389,10 +405,12 @@ class SapAdapter:
                           invoice_date: str | None = None, property_code: str | None = None, wo_id: str | None = None,
                           taxable_inr: float | None = None, cgst_inr: float | None = None, sgst_inr: float | None = None,
                           igst_inr: float | None = None, total_inr: float | None = None, confidence: float | None = None,
-                          check_status: str | None = None, check_notes: str | None = None, parsed_at: str | None = None) -> int:
+                          check_status: str | None = None, check_notes: str | None = None, parsed_at: str | None = None,
+                          source: str | None = None, reader_original: str | None = None) -> int:
         """Record a bill as read from the inbox, before any posting. Returns the new row id. The only write this adapter allows.
 
-        `source_file` is required and `confidence`, when given, must be between 0 and 1. `parsed_at` defaults to now in UTC. Values are stored as
+        `source_file` is required and `confidence`, when given, must be between 0 and 1. `source` (`reader` or `human_review`) and `reader_original` (JSON: the reader's value and
+        confidence for each field a person typed over) are written only if the table has those two columns, which this project adds to its working copy; the extract spec has neither. `parsed_at` defaults to now in UTC. Values are stored as
         printed on the bill. The write uses its own connection that can insert into `parsed_bill` and nothing else, and the file must already
         exist (it is never created).
 
@@ -409,8 +427,13 @@ class SapAdapter:
                 taxable_inr, cgst_inr, sgst_inr, igst_inr, total_inr, confidence, check_status, check_notes)
         rw = sqlite3.connect(f"file:{self.db_path.as_posix()}?mode=rw", uri=True)
         try:
+            cols = {r[1] for r in rw.execute("PRAGMA table_info(parsed_bill)")}
+            sql, args = _INSERT, vals
+            if {"source", "reader_original"} <= cols:
+                sql = _INSERT.replace("check_notes)", "check_notes, source, reader_original)").replace("?)", "?, ?, ?)")
+                args = vals + (source or "reader", reader_original)
             rw.set_authorizer(_parsed_bill_guard)
-            cur = rw.execute(_INSERT, vals)
+            cur = rw.execute(sql, args)
             rw.commit()
             return int(cur.lastrowid)
         finally:

@@ -1,0 +1,114 @@
+{
+ "file": "bill-19.pdf",
+ "sha256": "98b963c5354607c9ebc8dcd7c5cd0590060d63e023512fb7217dbba5fa6a28e4",
+ "bill_type": "pdf_single",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.0,
+   "background_cropped": false,
+   "mean_word_conf": 0.937,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "SARTHAK ELEVATOR CARE PVT LTD",
+   "conf": 0.982,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "08CSPFO9265W1ZP",
+   "conf": 0.95,
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+  },
+  "invoice_no": {
+   "value": "525/25-26/032",
+   "conf": 0.91,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-09-19",
+   "conf": 0.9500000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "NOI-C32",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Office Tower, Sector 97, Noida'"
+  },
+  "wo_id": {
+   "value": "4100632",
+   "conf": 0.96,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 30990.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 5578.2,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "total": {
+   "value": 36568.2,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "998717",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.9375,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.74,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "ok",
+ "route_hint": "auto-clear",
+ "overall_confidence": 0.91,
+ "reasons": []
+}

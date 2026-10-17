@@ -60,7 +60,7 @@ def test_a_card_has_a_verdict_at_most_three_issues_who_fixes_each_and_a_simulate
     t = time.time()
     code, c = post(url + "/api/intake?sample=packet-08-repeat-invoice.pdf")
     assert code == 200 and time.time() - t < 5
-    assert c["route"] == "resend" and c["headline"] and 1 <= len(c["issues"]) <= 3
+    assert c["route"] == "human-look" and c["headline"] and 1 <= len(c["issues"]) <= 3
     assert all(i["who"] and i["title"] and i["detail"] for i in c["issues"])
     assert c["outbox_note"] == "Simulated outbox. Nothing is sent." and c["messages"]
     assert {m["channel"].split(" ")[0] for m in c["messages"]} <= {"WhatsApp", "In-app"}
@@ -72,9 +72,12 @@ def test_the_simulated_reading_label_takes_its_numbers_from_the_figure_register(
     url, S = server
     _, c = post(url + "/api/intake?sample=bill-13.pdf")
     N = data.Numbers()
-    want = (f"Simulated reading: stored extraction from the reader ({N('re.second.all.key_bills_correct'):.0f} of {N('re.first.all.bills'):.0f} hand-labelled bills "
-            f"fully correct on the four key fields; weaker on phone photos, {N('re.first.phone_photo.key_bills_correct'):.0f} of {N('re.first.phone_photo.bills'):.0f})")
+    want = (f"Simulated reading: stored extraction from the reader. On the {N('re.first.all.bills'):.0f} hand-labelled bills it read {N('re.second.all.key_bills_correct'):.0f} fully right on the four key fields "
+            f"(first run, before any tuning; the stored readings come from a later version tuned on those bills; weaker on phone photos, {N('re.first.phone_photo.key_bills_correct'):.0f} of {N('re.first.phone_photo.bills'):.0f}). "
+            f"A person fills in any field it could not read. Its confident readings (0.90 and above) were {N('re.second.cal.hi.correct'):.0f} of {N('re.second.cal.hi.n'):.0f} right on those bills; "
+            f"{N('re.first.all.bills'):.0f} bills is a small sample, so read that as a hint, not a guarantee.")
     assert c["reading_label"] == want
+    assert "A person fills in any field it could not read" in c["reading_label"] and "small sample" in c["reading_label"] and "44 of 44" in c["reading_label"]
 
 
 def test_low_confidence_fields_are_marked_and_never_shown_as_known(server):
@@ -82,8 +85,8 @@ def test_low_confidence_fields_are_marked_and_never_shown_as_known(server):
     _, c = post(url + "/api/intake?sample=bill-16.jpg")                   # a phone photo whose invoice number and date the reader did not read
     unread = [f for f in c["fields"] if f["state"] == "unread"]
     assert unread and all(f["value"] == "not read" for f in unread)
-    assert c["review_note"] == "Fields marked needs human review are never guessed."
-    assert c["route"] == "resend" and c["issues"][0]["check"] == "read"
+    assert c["review_note"].startswith("Fields marked needs human review are never guessed.")
+    assert c["route"] == "human-look" and c["partial"] and c["issues"][-1]["check"] == "read" and "taxable" in c["inputs"]
 
 
 def test_a_clean_bill_can_clear_and_needs_no_message_to_the_vendor(server):
@@ -199,3 +202,25 @@ def test_the_app_starts_with_python_m_app_and_serves_the_page():
     finally:
         p.terminate()
         p.wait(timeout=10)
+
+
+def test_work_orders_running_dry_are_estimated_from_the_last_90_days_of_billing(server):
+    url, S = server
+    d = get(url + "/api/control")
+    N = S.numbers
+    assert d["headline"]["dry"] == int(N("rw.dry")) and d["headline"]["dry_vendor_waiting"] == int(N("rw.dry.vendor_waiting"))
+    assert d["labels"]["dry"] == f"work orders likely to run dry within {N('rw.horizon_days'):.0f} days, estimated from the last {N('rw.window_days'):.0f} days of billing"
+    assert d["labels"]["dry_extra"] == f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting"
+    rows = list(csv.DictReader(open(ROOT / "backtest" / "out" / "runway_90d.csv", encoding="utf-8")))
+    assert len(rows) == int(N("rw.dry")) and [r["wo_id"] for r in rows[:6]] == [x["wo_id"] for x in d["dry"]]
+    monthly = [int(r["monthly_billing_inr"]) for r in rows]
+    assert monthly == sorted(monthly, reverse=True)                                       # ranked by monthly billing
+    assert all(float(r["runway_days"]) <= N("rw.horizon_days") and int(r["balance_inr"]) > 0 for r in rows)
+    assert sum(r["vendor_has_bill_waiting"] == "True" for r in rows) == int(N("rw.dry.vendor_waiting"))
+
+
+def test_the_cutoff_control_wraps_instead_of_clipping_in_a_narrow_window():
+    css = (STATIC / "style.css").read_text(encoding="utf-8")
+    head = re.search(r"\.head-row\s*\{([^}]*)\}", css).group(1)
+    assert "flex-wrap: wrap" in head
+    assert "flex: 0 0 auto" in re.search(r"\.seg\s*\{([^}]*)\}", css).group(1)

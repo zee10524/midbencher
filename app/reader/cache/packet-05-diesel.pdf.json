@@ -3,7 +3,7 @@
  "sha256": "0f96e6f3d4f0028afabcc682271fc2569773321b5794d257f713fe698fdabac8",
  "bill_type": "pdf_packet",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -50,83 +50,113 @@
   "vendor_name": {
    "value": "RAKSHA VASUNDHARA FUELS",
    "conf": 0.9600000000000001,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
    "value": "09ZMXPE5792N1ZX",
    "conf": 0.95,
-   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_no": {
    "value": "178/25-26/656",
-   "conf": 0.92,
-   "note": "read as printed"
+   "conf": 0.9600000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2025-09-26",
-   "conf": 0.9600000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.99,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "SNP-R05",
    "conf": 0.99,
-   "note": "matched to SAP property 'Residential Society, Sector 85, Sonipat'"
+   "note": "matched to SAP property 'Residential Society, Sector 85, Sonipat'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100331",
    "conf": 0.95,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 179200.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 179200.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "27101944",
    "conf": 0.93,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Haryana",
    "conf": 0.8957142857142857,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.92,
-   "note": "buyer's GSTIN; a second read of the word agrees"
+   "note": "buyer's GSTIN; a second read of the word agrees",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": "Medium",
    "conf": 0.9466666666666667,
-   "note": "claim printed by the vendor, not proof"
+   "note": "claim printed by the vendor, not proof",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": true,
  "arithmetic_ok": true,
  "status": "ok",
  "route_hint": "auto-clear",
- "overall_confidence": 0.92,
+ "overall_confidence": 0.95,
  "reasons": []
 }

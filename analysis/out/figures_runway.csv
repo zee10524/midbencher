@@ -1,0 +1,9 @@
+id,value,description
+rw.window_days,90,days of billing before 30 April 2026 that the burn rate is taken from
+rw.horizon_days,45,an order is likely to run dry when its balance covers this many days or fewer of its recent billing
+rw.orders_billed_90d,1111,work orders with any billing in the last 90 days
+rw.dry,234,"work orders likely to run dry within 45 days, burn estimated from the last 90 days of billing"
+rw.dry.vendor_waiting,49,"of those, orders whose vendor has a bill already waiting (an open bill in the register)"
+rw.dry.wo_waiting,28,"of those, orders with a bill already waiting on that order itself"
+rw.dry.monthly_billing_inr,27206798,"monthly billing, rupees, on those orders (last 90 days, per 30.4375 days)"
+rw.dry_lifetime,132,for comparison: the same view using each order's lifetime-average burn (the earlier headline)

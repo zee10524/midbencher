@@ -1,0 +1,116 @@
+{
+ "file": "bill-25.jpg",
+ "sha256": "13ed6a2244e4267f806a65556888008674c4659548fc35494bfa193a3790b8e7",
+ "bill_type": "phone_photo",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": -0.4,
+   "background_cropped": true,
+   "mean_word_conf": 0.844,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "GARUD FACILITY MANAGEMENT PVT LTD",
+   "conf": 0.982,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "05MMSFV0354S1ZB",
+   "conf": 0.3,
+   "note": "3 character(s) repaired by position; the state printed beside it ('Uttar Pradesh') does not clearly agree with state code 05"
+  },
+  "invoice_no": {
+   "value": "618/25-26/959",
+   "conf": 0.9,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-12-06",
+   "conf": 0.9400000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "GGN-R07",
+   "conf": 0.9460000000000002,
+   "note": "matched to SAP property 'Residential Society, Sector 78, Gurugram'"
+  },
+  "wo_id": {
+   "value": "4100506",
+   "conf": 0.96,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 616720.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 111009.6,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "total": {
+   "value": 727729.6,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "998533",
+   "conf": 0.54,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.7814285714285715,
+   "note": "closest state name, similarity 0.86"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.71,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": "Small",
+   "conf": 0.7200000000000001,
+   "note": "claim printed by the vendor, not proof"
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "review",
+ "route_hint": "resend",
+ "overall_confidence": 0.3,
+ "reasons": [
+  "vendor_gstin: confidence 0.30 (3 character(s) repaired by position; the state printed beside it ('Uttar Pradesh') does not clearly agree with state code 05)"
+ ]
+}

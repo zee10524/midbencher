@@ -3,7 +3,7 @@
  "sha256": "ad875c13032113edfa36d737d035a4afad4f6db80cf0678b19dae315e8560e7b",
  "bill_type": "pdf_packet",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -48,85 +48,113 @@
   "vendor_name": {
    "value": "RAKSHA ABHAY MANPOWER SOLUTIONS PVT LTD",
    "conf": 0.9766666666666667,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
    "value": "06EPVCF6069Z1ZZ",
-   "conf": 0.8,
-   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+   "conf": 0.95,
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_no": {
    "value": "668/25-26/138",
-   "conf": 0.92,
-   "note": "read as printed"
+   "conf": 0.9600000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2026-03-04",
-   "conf": 0.9600000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.99,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "GGN-R15",
    "conf": 0.9660000000000001,
-   "note": "matched to SAP property 'Residential Society, Sector 41, Gurugram'"
+   "note": "matched to SAP property 'Residential Society, Sector 41, Gurugram'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100395",
    "conf": 0.95,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 420980.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": 37888.2,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": 37888.2,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 496756.4,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "998525",
    "conf": 0.96,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Haryana",
    "conf": 0.9114285714285716,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.92,
-   "note": "buyer's GSTIN; a second read of the word agrees"
+   "note": "buyer's GSTIN; a second read of the word agrees",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
  "arithmetic_ok": true,
- "status": "review",
- "route_hint": "human-look",
- "overall_confidence": 0.8,
- "reasons": [
-  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)"
- ]
+ "status": "ok",
+ "route_hint": "auto-clear",
+ "overall_confidence": 0.95,
+ "reasons": []
 }

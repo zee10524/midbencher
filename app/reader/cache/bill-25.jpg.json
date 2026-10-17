@@ -3,7 +3,7 @@
  "sha256": "13ed6a2244e4267f806a65556888008674c4659548fc35494bfa193a3790b8e7",
  "bill_type": "phone_photo",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,85 +32,115 @@
   "vendor_name": {
    "value": "GARUD FACILITY MANAGEMENT PVT LTD",
    "conf": 0.982,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
-   "value": "05MMSFV0354S1ZB",
-   "conf": 0.3,
-   "note": "3 character(s) repaired by position; the state printed beside it ('Uttar Pradesh') does not clearly agree with state code 05"
+   "value": "09MMSFV0354S1ZB",
+   "conf": 0.9,
+   "note": "resolved from the vendor master by the vendor's name; not read from the bill",
+   "source": "vendor_master",
+   "raw": "05MMSFV0354S1ZB"
   },
   "invoice_no": {
    "value": "618/25-26/959",
-   "conf": 0.9,
-   "note": "read as printed"
+   "conf": 0.9400000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2025-12-06",
    "conf": 0.9400000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "note": "day-month-year as printed; inside the financial year in the invoice number",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "GGN-R07",
    "conf": 0.9460000000000002,
-   "note": "matched to SAP property 'Residential Society, Sector 78, Gurugram'"
+   "note": "matched to SAP property 'Residential Society, Sector 78, Gurugram'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100506",
    "conf": 0.96,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 616720.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": 111009.6,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 727729.6,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "998533",
    "conf": 0.54,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Haryana",
    "conf": 0.7814285714285715,
-   "note": "closest state name, similarity 0.86"
+   "note": "closest state name, similarity 0.86",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.71,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": "Small",
    "conf": 0.7200000000000001,
-   "note": "claim printed by the vendor, not proof"
+   "note": "claim printed by the vendor, not proof",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
  "arithmetic_ok": true,
  "status": "review",
- "route_hint": "resend",
- "overall_confidence": 0.3,
+ "route_hint": "human-look",
+ "overall_confidence": 0.9,
  "reasons": [
-  "vendor_gstin: confidence 0.30 (3 character(s) repaired by position; the state printed beside it ('Uttar Pradesh') does not clearly agree with state code 05)"
+  "vendor_gstin: vendor master, not read from the bill (resolved from the vendor master by the vendor's name; not read from the bill)"
  ]
 }

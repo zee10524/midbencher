@@ -1,29 +1,28 @@
-# Riklr FDE case study: vendor-payments
-# Works with GNU make (Linux/macOS/Git Bash) and mingw32-make (Windows).
+# Convenience wrappers over tasks.py, which does the work in plain Python and is the same on Windows and Linux.
+# On Windows without GNU make you can run the same steps as `python tasks.py setup`, `analyse`, `test`, `run`.
+# (mingw32-make also works with this file.)
 
 ifeq ($(OS),Windows_NT)
-  BOOTSTRAP ?= py -3.11
-  VENV_PY   := .venv/Scripts/python.exe
+  PYTHON ?= py -3.11
 else
-  BOOTSTRAP ?= python3.11
-  VENV_PY   := .venv/bin/python
+  PYTHON ?= python3.11
 endif
 
-.PHONY: setup analyse test run
+.PHONY: setup analyse test run all
 
-# Create the Python 3.11 virtualenv and install the project with dev extras.
+# Create .venv and install the pinned dependencies (constraints.txt).
 setup:
-	$(BOOTSTRAP) -m venv .venv
-	"$(VENV_PY)" -m pip install --upgrade pip
-	"$(VENV_PY)" -m pip install -e ".[dev]"
+	$(PYTHON) tasks.py setup
 
-# Run the numbered scripts in analysis/ in order (none yet).
+# Run the numbered scripts in analysis/ in order and refresh notes/numbers.md.
 analyse:
-	"$(VENV_PY)" analysis/run_all.py
+	$(PYTHON) tasks.py analyse
 
 test:
-	"$(VENV_PY)" -m pytest
+	$(PYTHON) tasks.py test
 
-# Start the app (not built yet).
+# Start the app at http://127.0.0.1:8765/
 run:
-	"$(VENV_PY)" -m app
+	$(PYTHON) tasks.py run
+
+all: setup analyse test

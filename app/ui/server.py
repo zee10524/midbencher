@@ -5,6 +5,7 @@
     GET  /api/samples              the files in the bill inbox, for the picker
     POST /api/intake               a dropped file (raw body, X-Filename header) or ?sample=<file>: the stored reading, checked, as one card
     POST /api/intake/live          the same file read live by the reader (only when Tesseract is found)
+    POST /api/intake/review        values a clerk typed for fields that were not read ({key, values}): the checks run again and the result is saved to parsed_bill as human_review
     GET  /api/control?cutoff=1     the control tower
     GET  /api/impact               the backtest ranges
 
@@ -81,7 +82,7 @@ def make_handler(S: data.State):
             u = urlparse(self.path)
             q = parse_qs(u.query)
             try:
-                if u.path not in ("/api/intake", "/api/intake/live"):
+                if u.path not in ("/api/intake", "/api/intake/live", "/api/intake/review"):
                     return self._send(404, b"Not found", "text/plain; charset=utf-8")
                 if not self._wait():
                     return
@@ -89,6 +90,12 @@ def make_handler(S: data.State):
                 if n > MAX_BODY:
                     return self._json(dict(error="That file is too large."), 413)
                 body = self.rfile.read(n) if n else b""
+                if u.path == "/api/intake/review":
+                    req = json.loads(body.decode("utf-8") or "{}")
+                    try:
+                        return self._json(data.apply_review(S, req.get("key"), req.get("values") or {}))
+                    except ValueError as e:
+                        return self._json(dict(error=str(e)), 400)
                 name = q.get("sample", [None])[0] or self.headers.get("X-Filename") or "upload"
                 t = time.time()
                 if u.path == "/api/intake/live":

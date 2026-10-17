@@ -1,0 +1,114 @@
+{
+ "file": "bill-22.pdf",
+ "sha256": "e318947571203da66670881e1e5830153fd4e4c463d89552a3a0caa62d9c1148",
+ "bill_type": "pdf_single",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.0,
+   "background_cropped": false,
+   "mean_word_conf": 0.943,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "SATLUJ ARAVIND ENGINEERING WORKS",
+   "conf": 0.9775,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "06OHLFJ5315C1ZL",
+   "conf": 0.95,
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+  },
+  "invoice_no": {
+   "value": "112/25-26/754",
+   "conf": 0.91,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-09-30",
+   "conf": 0.9500000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "NOI-C29",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Office Tower, Sector 23, Noida'"
+  },
+  "wo_id": {
+   "value": "4101609",
+   "conf": 0.95,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 11560.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 2080.8,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "total": {
+   "value": 13640.8,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "995473",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.9400000000000001,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.74,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "ok",
+ "route_hint": "auto-clear",
+ "overall_confidence": 0.91,
+ "reasons": []
+}

@@ -1,7 +1,7 @@
 """Write every figure in the analysis/out/figures*.csv files into notes/numbers.md, with the script and the exact command that produced it.
 
 Each source gets its own block between marker lines; the rule and any hand-added rows are kept.
-Run after the analysis scripts:  .venv\\Scripts\\python.exe -I analysis\\register_numbers.py   (mingw32-make analyse does all of it)
+Run after the analysis scripts:  python -I analysis/register_numbers.py   (python tasks.py analyse does all of it)
 """
 from pathlib import Path
 
@@ -9,7 +9,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 NUM = ROOT / "notes" / "numbers.md"
-PY = r".venv\Scripts\python.exe -I"
+PY = "python -I"
 
 # (script, figures file, scripts it needs first, where the figures are used)
 SOURCES = [
@@ -47,6 +47,8 @@ SOURCES = [
      "notes/reader-evaluation.md. FIRST-RUN score of the reader against the 10 hand-labelled bills (analysis/gold_labels.csv, read only), from the frozen analysis/reader_first_run.json"),
     ("16_intake_run.py", "figures_intake.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py"],
      "notes/intake-run.md. All 40 inbox bills through the reader results, the checks, the routing and parsed_bill"),
+    ("17_runway_90d.py", "figures_runway.csv", ["clean.py"],
+     "app/ui (control tower headline and list of work orders likely to run dry), backtest/out/runway_90d.csv. Burn from the last 90 days of billing; the lifetime-average figure is kept for comparison"),
 ]
 
 text = NUM.read_text(encoding="utf-8")
@@ -56,14 +58,14 @@ for script, fname, needs, used in SOURCES:
     f = pd.read_csv(ROOT / "analysis" / "out" / fname, keep_default_na=False)
     rows = [f"| {r.id} | {r.value} | {r.description} |" for r in f.itertuples()]
     total += len(rows)
-    chain = [f"{PY} analysis\\{n}" for n in [*needs, script]]
+    chain = [f"{PY} analysis/{n}" for n in [*needs, script]]
     block = "\n".join([
         begin, "",
         f"### Figures from `analysis/{script}` (used in {used})", "",
         f"Script: `analysis/{script}`. Output: `analysis/out/{fname}`, one row per figure id below. "
         "Run from the project root. Exact commands to reproduce, in order:", "",
         "```", *chain, "```", "",
-        "`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).", "",
+        "Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).", "",
         "| Figure id | Value | What it counts |", "|---|---|---|", *rows, "", end,
     ])
     if begin in text:

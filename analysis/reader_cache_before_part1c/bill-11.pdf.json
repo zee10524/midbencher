@@ -1,0 +1,116 @@
+{
+ "file": "bill-11.pdf",
+ "sha256": "5765183f0020cd489bf034fe96781db88d6700563807a171f918db75c247f936",
+ "bill_type": "pdf_single",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.0,
+   "background_cropped": false,
+   "mean_word_conf": 0.937,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "GARUD NIRMAL LANDSCAPES PVT LTD",
+   "conf": 0.9700000000000001,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "09WMLCG8394Z1Z9",
+   "conf": 0.8,
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+  },
+  "invoice_no": {
+   "value": "085/25-26/730",
+   "conf": 0.92,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-08-02",
+   "conf": 0.9600000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "NOI-C32",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Office Tower, Sector 97, Noida'"
+  },
+  "wo_id": {
+   "value": "4101752",
+   "conf": 0.96,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 61610.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 11089.8,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "total": {
+   "value": 72699.8,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "998134",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.9400000000000001,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.74,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "review",
+ "route_hint": "human-look",
+ "overall_confidence": 0.8,
+ "reasons": [
+  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)"
+ ]
+}

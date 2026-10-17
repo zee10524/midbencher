@@ -3,7 +3,7 @@
  "sha256": "06e4adf7e5d692462a98706ccfb0733167720905ef374a6daa6902f8d72a248e",
  "bill_type": "pdf_single",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,77 +32,107 @@
   "vendor_name": {
    "value": "PANCHJANYA TEJAS FACILITY SERVICES PVT LTD",
    "conf": 0.9716666666666668,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
    "value": "06EZVFS7401T1ZX",
    "conf": 0.8,
-   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_no": {
    "value": "732/25-26/608",
-   "conf": 0.91,
-   "note": "read as printed"
+   "conf": 0.9500000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2025-12-01",
-   "conf": 0.9500000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.99,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "GGN-R15",
    "conf": 0.99,
-   "note": "matched to SAP property 'Residential Society, Sector 41, Gurugram'"
+   "note": "matched to SAP property 'Residential Society, Sector 41, Gurugram'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100250",
    "conf": 0.96,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 408480.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": 36763.2,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": 36763.2,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 482006.4,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "998533",
    "conf": 0.96,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Haryana",
    "conf": 0.9328571428571427,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.92,
-   "note": "buyer's GSTIN; a second read of the word agrees"
+   "note": "buyer's GSTIN; a second read of the word agrees",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": "Micro",
    "conf": 0.9466666666666667,
-   "note": "claim printed by the vendor, not proof"
+   "note": "claim printed by the vendor, not proof",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
@@ -111,6 +141,6 @@
  "route_hint": "human-look",
  "overall_confidence": 0.8,
  "reasons": [
-  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)"
+  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs; the second read of the header agrees)"
  ]
 }

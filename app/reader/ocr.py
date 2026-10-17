@@ -33,6 +33,7 @@ class Word:
 class OcrPage:
     words: list[Word] = field(default_factory=list)
     image: Image.Image | None = field(default=None, repr=False)   # the cleaned page, kept so that a single word can be read a second time
+    header: "OcrPage | None" = field(default=None, repr=False)    # the top of the page read again on its own, enlarged
 
     @property
     def lines(self) -> list[list[Word]]:
@@ -70,6 +71,24 @@ def ocr_page(img: Image.Image, psm: int = PSM) -> OcrPage:
             continue
         words.append(Word(t, conf / 100.0, line_no, d["left"][i], d["top"][i], d["width"][i], d["height"][i]))
     return OcrPage(words, img)
+
+
+def ocr_header(page: OcrPage, zoom: float = 1.6) -> OcrPage | None:
+    """Read the header of the page again on its own: from the top down to the line after `Bill to` (the supplier block, GSTIN, invoice number and date), enlarged. The header is
+    the part of a bill that holds the vendor and the invoice number, so a second, closer read of it is worth the extra second. Returns None if the page image was not kept."""
+    if page.image is None:
+        return None
+    bill = [i for i, ln in enumerate(page.lines) if ln and ln[0].text.lower().startswith(("bill", "bil", "b1l"))]
+    if bill:
+        lines = page.lines
+        nxt = lines[min(bill[0] + 1, len(lines) - 1)]
+        bottom = max(w.top + w.height for w in nxt) + 30
+    else:
+        bottom = int(page.image.height * 0.40)
+    crop = page.image.crop((0, 0, page.image.width, min(page.image.height, bottom)))
+    crop = crop.resize((int(crop.width * zoom), int(crop.height * zoom)), Image.LANCZOS)
+    out = ocr_page(crop)
+    return out
 
 
 def text_page(text: str) -> OcrPage:

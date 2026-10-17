@@ -3,7 +3,7 @@
  "sha256": "a6c2dc7687e279fabd28034ba62160b05502308e17fdd16905b2e59ae31b3e2b",
  "bill_type": "pdf_single",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,77 +32,107 @@
   "vendor_name": {
    "value": "INDUS AGRO SERVICES PVT LTD",
    "conf": 0.9780000000000001,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
    "value": "06JPQFH7025X1ZV",
    "conf": 0.95,
-   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_no": {
    "value": "336/25-26/739",
-   "conf": 0.92,
-   "note": "read as printed"
+   "conf": 0.9600000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2026-01-05",
-   "conf": 0.9600000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.99,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "NOI-M38",
    "conf": 0.99,
-   "note": "matched to SAP property 'Retail Mall, Sector 44, Noida'"
+   "note": "matched to SAP property 'Retail Mall, Sector 44, Noida'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": null,
    "conf": 0.0,
-   "note": "printed blank: the label is on the bill and no number follows it"
+   "note": "printed blank: the label is on the bill and no number follows it",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 144460.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": 26002.8,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 170462.8,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "998134",
    "conf": 0.96,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Uttar Pradesh",
    "conf": 0.9325,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.74,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,

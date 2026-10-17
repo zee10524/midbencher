@@ -22,15 +22,15 @@ from app.reader import ocr, pipeline
 from app.rules import Context
 from app.rules.model import AUTO_CLEAR, LOOK
 from app.sap.adapter import AS_OF, SapAdapter
-from app.tracker import countdown, oldest, pick_order, runway, seed
+from app.tracker import countdown, oldest, pick_order, seed
 from app.tracker.msme import LIMIT_DAYS
-from app.tracker.runway import HORIZON_DAYS
 from app.tracker.payruns import DEFAULT_CUTOFF_DAYS, label as date_label
 from app.tracker.pickorder import control_tower, spread
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 NUMBERS = ROOT / "notes" / "numbers.md"
 IMPACT = ROOT / "backtest" / "out" / "impact.csv"
+RUNWAY = ROOT / "backtest" / "out" / "runway_90d.csv"
 UPLOADS = ROOT / "app" / "data" / "uploads"
 
 
@@ -82,6 +82,7 @@ class State:
         self.ready = threading.Event()
         self.error: str | None = None
         self.cache = {}
+        self.session = {}       # readings made live in this session, by file hash, so a clerk's entries can be applied to them
         for p in sorted(pipeline.CACHE_DIR.glob("*.json")):
             r = json.loads(p.read_text(encoding="utf-8"))
             self.cache[r["sha256"]] = r
@@ -118,23 +119,78 @@ def reading_label(S: State, source: str) -> str:
     if source == "live":
         return "Live reading: Tesseract on this machine, just now. Fields marked needs human review are never guessed."
     N = S.numbers
-    return (f"Simulated reading: stored extraction from the reader ({n0(N('re.second.all.key_bills_correct'))} of {n0(N('re.first.all.bills'))} hand-labelled bills fully correct on the four key fields; "
-            f"weaker on phone photos, {n0(N('re.first.phone_photo.key_bills_correct'))} of {n0(N('re.first.phone_photo.bills'))})")
+    return (f"Simulated reading: stored extraction from the reader. On the {n0(N('re.first.all.bills'))} hand-labelled bills it read {n0(N('re.second.all.key_bills_correct'))} fully right on the four key fields "
+            f"(first run, before any tuning; the stored readings come from a later version tuned on those bills; weaker on phone photos, {n0(N('re.first.phone_photo.key_bills_correct'))} of {n0(N('re.first.phone_photo.bills'))}). "
+            f"A person fills in any field it could not read. Its confident readings ({AUTO_CLEAR:.2f} and above) were {n0(N('re.second.cal.hi.correct'))} of {n0(N('re.second.cal.hi.n'))} right on those bills; "
+            f"{n0(N('re.first.all.bills'))} bills is a small sample, so read that as a hint, not a guarantee.")
+
+
+# Shown beside the seven core fields only when the reader did not read them, so that a person can supply what a check that could not run needs.
+EXTRA_FIELDS = [("hsn_sac", "HSN or SAC code"), ("recipient_gstin", "Buyer GSTIN"), ("place_of_supply", "Place of supply")]
+TYPED = {"vendor_name": "text", "vendor_gstin": "gstin", "invoice_no": "text", "invoice_date": "date", "wo_id": "wo", "taxable": "amount", "total": "amount",
+         "hsn_sac": "hsn", "recipient_gstin": "gstin", "place_of_supply": "text"}
+
+
+def normalise_typed(key: str, text: str):
+    """A value a person typed, checked and put in the form the checks use. Raises ValueError with a plain message."""
+    t = (text or "").strip()
+    kind = TYPED[key]
+    if not t:
+        raise ValueError("empty")
+    if kind == "gstin":
+        g = re.sub(r"\s+", "", t).upper()
+        if not re.fullmatch(r"[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]", g):
+            raise ValueError("a GSTIN has 15 letters and digits, for example two digits, five letters, four digits, a letter, then three characters")
+        return g
+    if kind == "date":
+        m = re.fullmatch(r"(\d{4})-(\d{2})-(\d{2})", t) or re.fullmatch(r"(\d{2})[-/.](\d{2})[-/.](\d{4})", t)
+        if not m:
+            raise ValueError("write the date as day-month-year or year-month-day")
+        a, b, c = m.groups()
+        y, mo, d = (a, b, c) if len(a) == 4 else (c, b, a)
+        try:
+            return date(int(y), int(mo), int(d)).isoformat()
+        except ValueError:
+            raise ValueError("that is not a real date") from None
+    if kind == "hsn":
+        h = re.sub(r"\s+", "", t)
+        if not re.fullmatch(r"\d{4}(\d{2}(\d{2})?)?", h):
+            raise ValueError("an HSN or SAC code has 4, 6 or 8 digits")
+        return h
+    if kind == "wo":
+        w = re.sub(r"\s+", "", t)
+        if not re.fullmatch(r"\d{7,10}", w):
+            raise ValueError("a work order number is 7 to 10 digits")
+        return w
+    if kind == "amount":
+        try:
+            return float(t.replace(",", "").replace("Rs", "").replace("\u20b9", "").strip())
+        except ValueError:
+            raise ValueError("write the amount as a number") from None
+    return " ".join(t.split())
 
 
 def field_rows(res: dict) -> list[dict]:
     """The read fields for the card. Below 0.70, or not found, the value is withheld: it is never shown as if it were known."""
     rows = []
-    for key, name in FIELDS:
+    for key, name in FIELDS + EXTRA_FIELDS:
         x = (res.get("fields") or {}).get(key) or {}
         v, c = x.get("value"), float(x.get("conf", 0) or 0)
-        if key == "wo_id" and v is None and "printed blank" in x.get("note", ""):
-            rows.append(dict(name=name, value="printed blank on the bill", state="review"))
+        if (key, name) in EXTRA_FIELDS and x.get("source") != "human_review" and v is not None and c >= LOOK:
+            continue                 # an extra field is shown only when it was not read, or a person typed it
+        if x.get("source") == "human_review":
+            rows.append(dict(key=key, name=name, value=f"{v:,.2f}" if isinstance(v, float) else str(v), state="typed", note="typed by a person"))
+        elif x.get("source") == "vendor_master":
+            rows.append(dict(key=key, name=name, value=str(v), state="review", note="resolved from vendor master, not read from the bill"))
+        elif x.get("source") == "repaired":
+            rows.append(dict(key=key, name=name, value=str(v), state="review", note="read with one confusable character; matched to the vendor master"))
+        elif key == "wo_id" and v is None and "printed blank" in x.get("note", ""):
+            rows.append(dict(key=key, name=name, value="printed blank on the bill", state="review", note="printed blank"))
         elif v is None or c < LOOK:
-            rows.append(dict(name=name, value="not read", state="unread"))
+            rows.append(dict(key=key, name=name, value="not read", state="unread", note=""))
         else:
             shown = f"{v:,.2f}" if isinstance(v, float) else str(v)
-            rows.append(dict(name=name, value=shown, state="ok" if c >= AUTO_CLEAR else "review"))
+            rows.append(dict(key=key, name=name, value=shown, state="ok" if c >= AUTO_CLEAR else "review", note=""))
     return rows
 
 
@@ -150,28 +206,34 @@ def issue_for(r) -> dict:
         detail = " ".join(bits) or r.fix
     elif r.check_id == "H13" and ev.get("matches"):
         m = ev["matches"][0]
-        detail = f"The same number is on {m['bill_id']} dated {m['invoice_date']} for Rs {float(m['amount_inr']):,.0f}. A person decides whether it is a reused number or a duplicate."
+        detail = (f"Possible repeat, confirm the invoice number: {m['bill_id']} (dated {m['invoice_date']}, Rs {float(m['amount_inr']):,.0f}) matches on {m.get('basis', 'the invoice number')}. Read the number from the bill and compare."
+                  if ev.get("partial") else
+                  f"The same number is on {m['bill_id']} dated {m['invoice_date']} for Rs {float(m['amount_inr']):,.0f}. A person decides whether it is a reused number or a duplicate.")
     elif r.check_id == "H10":
         detail = (f"Supplier in {ev.get('supplier_state')}, buyer in {ev.get('recipient_state')}, printed place of supply {ev.get('place_of_supply')}, tax charged {ev.get('tax_charged')}. "
                   + ("The two readings of the place of supply give different tax types, so a person decides." if r.certainty < 1 else r.fix))
     who = "Executive" if r.status == "warn" else WHO.get(owner, "Executive")
-    return dict(check=r.check_id, title=TITLE.get(r.check_id, r.name), who=who, detail=detail, kind=r.status)
+    title = "Vendor GSTIN read with a confusable character" if r.check_id == "P1/H1" and "gstin_as_repaired" in ev else TITLE.get(r.check_id, r.name)
+    if r.check_id == "H13" and ev.get("partial"):
+        title = "Possible repeat: confirm the invoice number"
+    return dict(check=r.check_id, title=title, who=who, detail=detail, kind=r.status)
 
 
 def top_issues(res: dict, out: dict) -> tuple[list[dict], int]:
-    """The issues that matter, at most three: what could not be read first (nothing else can be trusted), then confident failures, then what a person must decide."""
-    issues = []
-    unread = [lab for (key, lab), row in zip(FIELDS, field_rows(res)) if row["state"] == "unread" and not (key == "wo_id" and "printed blank" in ((res.get("fields") or {}).get("wo_id") or {}).get("note", ""))]
-    if unread:
-        issues.append(dict(check="read", title="Parts of the bill could not be read", who="Vendor", detail="Not read: " + ", ".join(unread) + ". Ask for a clearer photo or scan; nothing is guessed.", kind="resend"))
+    """The issues that matter, at most three: confident failures first, then what a person must decide (a possible repeat, a tax type), then what could not be read.
+    If nothing else is wrong, what could not be read comes first. A field the reader could not read no longer hides the findings of the checks that did run."""
     rest = []
     for r in out["results"]:
-        if r.status == "pass" or r.field_confidence < LOOK:
+        if r.status == "pass":
             continue
         rank = 0 if (r.status == "fail" and r.confidence >= AUTO_CLEAR) else 1 if r.status == "fail" else 2 if r.status == "warn" else 3
         rest.append((rank, ["P1/H1", "P3", "H3", "H13", "H11", "H10"].index(r.check_id), r))
     rest.sort(key=lambda t: t[:2])
-    issues += [issue_for(r) for _, _, r in rest]
+    issues = [issue_for(r) for _, _, r in rest]
+    if out["unread"]:
+        nr = "; ".join(f"{n['check']} needs {', '.join(n['needs']).lower()}" for n in out["not_run"])
+        issues.append(dict(check="read", title="Parts of the bill could not be read", who="Vendor, or a person types them", kind="resend",
+                           detail="Not read: " + ", ".join(out["unread"]) + ". " + (f"Checks that could not run: {nr}. " if nr else "") + "Nothing is guessed: ask for a clearer photo or scan, or type the values below."))
     return issues[:3], max(0, len(issues) - 3)
 
 
@@ -180,16 +242,17 @@ def messages(res: dict, out: dict) -> list[dict]:
     f = res.get("fields") or {}
     name = (f.get("vendor_name") or {})
     vendor = name.get("value") if name.get("value") and name.get("conf", 0) >= LOOK else "Vendor"
+    noun = "credit note" if res.get("doc_type") == "credit_note" else "bill"
     inv = (f.get("invoice_no") or {})
-    ref = f"your bill {inv['value']}" if inv.get("value") and inv.get("conf", 0) >= LOOK else "your bill"
+    ref = f"your {noun} {inv['value']}" if inv.get("value") and inv.get("conf", 0) >= LOOK else f"your {noun}"
     msgs = []
     for a in out["routing"].actions:
         if a.kind == "resend":
-            fields = [lab for (key, lab), row in zip(FIELDS, field_rows(res)) if row["state"] == "unread"]
-            body = f"Hello {vendor}, we could not read these parts of {ref} clearly: {', '.join(fields)}. Please send a clearer photo or scan of the whole bill. Thank you."
+            body = (f"Hello {vendor}, we could not read these parts of {ref} clearly: {', '.join(out['unread'])}. Please send a clearer photo or scan of the whole {noun}. Thank you."
+                    if out["unread"] else f"Hello {vendor}, we could not read {ref} clearly. Please send a clearer photo or scan of the whole {noun}. Thank you.")
             msgs.append(dict(to=vendor, channel="WhatsApp to the vendor", text=body))
         elif a.kind == "tell-vendor":
-            msgs.append(dict(to=vendor, channel="WhatsApp to the vendor", text=f"Hello {vendor}, we checked {ref} on arrival. To pay it without delay please fix: {a.text} Please send the corrected bill today. Thank you."))
+            msgs.append(dict(to=vendor, channel="WhatsApp to the vendor", text=f"Hello {vendor}, we checked {ref} on arrival. To pay it without delay please fix: {a.text} Please send the corrected {noun} today. Thank you."))
         elif a.kind == "task":
             msgs.append(dict(to=WHO.get(a.to, a.to), channel=f"In-app task for {WHO.get(a.to, a.to)}", text=a.text))
         elif a.kind == "human-look":
@@ -202,10 +265,58 @@ def card(S: State, res: dict, source: str, replay: bool, ms: float = 0.0) -> dic
         ctx = Context(sap, S.bills, bill_counted_in_billed=replay)
         out = intake.check_bill(res, ctx)
     label, sub = LABEL[out["routing"].route]
+    ran = len(out["results"])
+    total = len(intake.CHECK_IDS)
+    if out["partial"]:
+        sub = f"Partial verdict: {ran} of {total} checks ran. " + sub
     issues, more = top_issues(res, out)
-    return dict(file=res["file"], bill_type=res.get("bill_type"), source=source, reading_label=reading_label(S, source), route=out["routing"].route, headline=label, sub=sub,
-                issues=issues, more_issues=more, fields=field_rows(res), messages=messages(res, out), outbox_note="Simulated outbox. Nothing is sent.",
-                review_note="Fields marked needs human review are never guessed.", seconds=round(ms / 1000, 2))
+    rows = field_rows(res)
+    if res.get("sha256") and res["sha256"] not in S.cache:
+        S.session[res["sha256"]] = res
+    return dict(file=res["file"], key=res.get("sha256"), bill_type=res.get("bill_type"), doc_type=res.get("doc_type", "invoice"), source=source, reading_label=reading_label(S, source),
+                route=out["routing"].route, headline=label, sub=sub, partial=out["partial"], checks_ran=ran, checks_total=total,
+                not_run=[dict(check=n["check"], title=n["title"], needs=n["needs"]) for n in out["not_run"]], issues=issues, more_issues=more, fields=rows,
+                inputs=[r["key"] for r in rows if r["state"] == "unread"], messages=messages(res, out), outbox_note="Simulated outbox. Nothing is sent.",
+                review_note="Fields marked needs human review are never guessed. A person can type the ones that were not read.", seconds=round(ms / 1000, 2))
+
+
+def apply_review(S: State, key: str, values: dict) -> dict:
+    """A clerk has typed values for fields the reader did not read: put them in, run the checks again, and save the result to `parsed_bill` with source `human_review`,
+    keeping the reader's own value and confidence for each typed field in the `reader_original` column. Returns the new card and what was saved."""
+    import copy
+
+    base = S.cache.get(key) or S.session.get(key)
+    if base is None:
+        raise ValueError("That bill is no longer held: drop or pick it again.")
+    res = copy.deepcopy(base)
+    errors = {}
+    for k, text in (values or {}).items():
+        if k not in TYPED or not str(text).strip():
+            continue
+        try:
+            v = normalise_typed(k, str(text))
+        except ValueError as e:
+            errors[k] = str(e)
+            continue
+        old = (res.get("fields") or {}).get(k) or {}
+        res.setdefault("fields", {})[k] = dict(value=v, conf=1.0, note="typed by a person", source="human_review", raw=None,
+                                                original=dict(value=old.get("value"), conf=float(old.get("conf", 0) or 0)))
+    if errors:
+        raise ValueError("; ".join(f"{dict(FIELDS + EXTRA_FIELDS)[k]}: {m}" for k, m in errors.items()))
+    if not any((x or {}).get("source") == "human_review" for x in res["fields"].values()):
+        raise ValueError("Nothing was typed.")
+    res["arithmetic_ok"] = None if ("taxable" in values or "total" in values) else res.get("arithmetic_ok")
+    c = card(S, res, "human_review", replay=True)
+    with SapAdapter(pipeline.PACK_DB) as sap:
+        out = intake.check_bill(res, Context(sap, S.bills, bill_counted_in_billed=True))
+    if not pipeline.WORKING_DB.exists():
+        pipeline.make_working_copy()
+    args = pipeline.parsed_bill_args(res)
+    args["check_status"], args["check_notes"] = out["routing"].route, intake.verdict_notes(res, out)
+    with SapAdapter(pipeline.WORKING_DB) as w:
+        rid = w.write_parsed_bill(**args)
+    c["saved"] = dict(table="parsed_bill", row=rid, source="human_review", typed=sorted(json.loads(args["reader_original"])), message=f"Saved to parsed_bill as human_review (row {rid}). The reader's own readings are kept in the reader_original column.")
+    return c
 
 
 def samples(S: State) -> list[dict]:
@@ -256,16 +367,16 @@ def control(S: State, cutoff: int = DEFAULT_CUTOFF_DAYS) -> dict:
         mine = [p for p in po if p["verifier"] == r["verifier"]]
         clerks.append(dict(clerk=r["verifier"], in_hand=r["in_hand"], new=r["new_from_pick_order"], after=r["in_hand_after"], queries=r["open_queries"],
                            first=(f"{mine[0]['bill_id']} ({mine[0]['msme_status']}, {mine[0]['days_since_desk']} days)" if mine else None)))
-    with SapAdapter(pipeline.PACK_DB) as sap:
-        wo_rows = runway(bills, sap)
-    ahead = [r for r in wo_rows if r["kind"] == "ahead" and any("balance runs out" in f for f in r["flags"])]
-    ahead.sort(key=lambda r: -(r["monthly_burn_inr"] or 0))          # the orders that will block the most billing first, not the ones with a few rupees left
-    dry = [dict(wo_id=r["wo_id"], property=r["property_code"], balance=f"Rs {r['balance_inr']:,.0f}", burn=f"Rs {r['monthly_burn_inr']:,.0f}", days=int(r["runway_days"]), expires=r["days_to_expiry"]) for r in ahead[:6]]
+    # work orders likely to run dry: from backtest/out/runway_90d.csv (analysis/17_runway_90d.py), burn estimated from the last 90 days of billing, ranked by monthly billing
+    wo = list(csv.DictReader(open(RUNWAY, encoding="utf-8", newline="")))
+    dry = [dict(wo_id=r["wo_id"], property=r["property_code"], vendor=r["vendor_name"], balance=f"Rs {int(r['balance_inr']):,}", burn=f"Rs {int(r['monthly_billing_inr']):,}",
+                days=int(float(r["runway_days"])), expires=int(r["days_to_expiry"]), vendor_waiting=r["vendor_has_bill_waiting"] == "True") for r in wo[:6]]
     return dict(as_of=date_label(AS_OF), cutoff=cutoff, cutoffs=[0, 1, 2], cutoff_note=f"Payment-run cut-off setting: {cutoff} day(s) before the run (Treasury's real rule is unconfirmed).",
                 headline=dict(late=sum(1 for r in known if r["state"] == "late"), miss=sum(1 for r in known if r["state"] == "will be late: no run left"), close=len(close),
-                              waiting=len(po), dry=len(ahead)),
+                              waiting=len(po), dry=int(N("rw.dry")), dry_vendor_waiting=int(N("rw.dry.vendor_waiting"))),
                 labels=dict(late=f"Micro and Small bills already past {LIMIT_DAYS} days", miss="more will miss it: no payment run left", waiting="bills waiting at head office for a clerk",
-                            dry=f"work orders whose balance runs out within {HORIZON_DAYS} days"),
+                            dry=f"work orders likely to run dry within {N('rw.horizon_days'):.0f} days, estimated from the last {N('rw.window_days'):.0f} days of billing",
+                            dry_extra=f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting"),
                 oldest=oldest20, msme=msme, clerks=clerks, spread_pct=(None if spread(after) == float("inf") else round(100 * spread(after), 1)), dry=dry, live_waiting=int(N("l.live.waiting")))
 
 

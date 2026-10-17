@@ -3,7 +3,7 @@
  "sha256": "5ec3d6df92f73e42ef48acf3043180c2603a998fb5f670dea1afc041c4d8fd3f",
  "bill_type": "pdf_packet",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,83 +32,113 @@
   "vendor_name": {
    "value": "NAVDEEP SARTHAK FIRE SAFETY SYSTEMS",
    "conf": 0.9680000000000001,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
    "value": "07BYHCQ2497O1ZU",
    "conf": 0.95,
-   "note": "2 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+   "note": "2 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_no": {
    "value": "049/25-26/074",
-   "conf": 0.9,
-   "note": "read as printed"
+   "conf": 0.9400000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2025-09-14",
-   "conf": 0.9400000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.9800000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "DEL-R03",
    "conf": 0.99,
-   "note": "matched to SAP property 'Residential Society, Sector 67, New Delhi'"
+   "note": "matched to SAP property 'Residential Society, Sector 67, New Delhi'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4101782",
    "conf": 0.96,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 39160.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": 7048.8,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 46208.8,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "998719",
    "conf": 0.96,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Delhi",
    "conf": 0.9314285714285714,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.74,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": "Micro",
    "conf": 0.9466666666666667,
-   "note": "claim printed by the vendor, not proof"
+   "note": "claim printed by the vendor, not proof",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
  "arithmetic_ok": true,
  "status": "ok",
  "route_hint": "auto-clear",
- "overall_confidence": 0.9,
+ "overall_confidence": 0.94,
  "reasons": []
 }

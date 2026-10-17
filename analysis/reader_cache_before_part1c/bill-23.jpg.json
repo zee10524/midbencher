@@ -1,0 +1,119 @@
+{
+ "file": "bill-23.jpg",
+ "sha256": "c2ce1895648bbb65a568c162c4ed135c01453f456665ba081fb39417cebcf81c",
+ "bill_type": "phone_photo",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.4,
+   "background_cropped": true,
+   "mean_word_conf": 0.838,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "PANCHJANYA HYGIENE SOLUTIONS PVT LTD",
+   "conf": 0.9740000000000002,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "06DOOFO6273K1ZU",
+   "conf": 0.8,
+   "note": "4 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+  },
+  "invoice_no": {
+   "value": "039/25-26/832",
+   "conf": 0.92,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-12-03",
+   "conf": 0.9600000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": null,
+   "conf": 0.0,
+   "note": "'Residential Society, Sector 51, New Dethi' matches 0 SAP properties by name"
+  },
+  "wo_id": {
+   "value": "4100453",
+   "conf": 0.96,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 454210.0,
+   "conf": 0.83,
+   "note": ""
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 81757.8,
+   "conf": 0.95,
+   "note": ""
+  },
+  "total": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "hsn_sac": {
+   "value": "998533",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.44999999999999996,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": null,
+ "status": "review",
+ "route_hint": "resend",
+ "overall_confidence": 0.0,
+ "reasons": [
+  "vendor_gstin: confidence 0.80 (4 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)",
+  "taxable: confidence 0.83 ()",
+  "total: not found",
+  "amounts: not all of taxable value and total were found"
+ ]
+}

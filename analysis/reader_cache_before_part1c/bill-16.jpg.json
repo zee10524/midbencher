@@ -1,0 +1,121 @@
+{
+ "file": "bill-16.jpg",
+ "sha256": "d1b1655af1c39e9f0f213dfb519409e8c2addcef7d60ce2ed10b1ab206d79e7f",
+ "bill_type": "phone_photo",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": -2.6,
+   "background_cropped": true,
+   "mean_word_conf": 0.796,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "KESARI HEMKUNT FIRE SAFETY SYSTEMS",
+   "conf": 0.972,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "07QXNPN2966U1ZT",
+   "conf": 0.8,
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+  },
+  "invoice_no": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "invoice_date": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "property_name": {
+   "value": "PKL-C34",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Office Tower, Sector 73, Panchkula'"
+  },
+  "wo_id": {
+   "value": "4100393",
+   "conf": 0.93,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 15539.4,
+   "conf": 0.81,
+   "note": ""
+  },
+  "total": {
+   "value": 110869.4,
+   "conf": 0.82,
+   "note": ""
+  },
+  "hsn_sac": {
+   "value": "998719",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.8342857142857143,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.5,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": "Micro",
+   "conf": 0.8166666666666668,
+   "note": "claim printed by the vendor, not proof"
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": null,
+ "status": "review",
+ "route_hint": "resend",
+ "overall_confidence": 0.0,
+ "reasons": [
+  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)",
+  "invoice_no: not found",
+  "invoice_date: not found",
+  "taxable: not found",
+  "total: confidence 0.82 ()",
+  "amounts: not all of taxable value and total were found"
+ ]
+}

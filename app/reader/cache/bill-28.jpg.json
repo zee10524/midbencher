@@ -3,7 +3,7 @@
  "sha256": "aa19f076c30c5d6c0ec70585c69536c524f426b84bb38e5566597efdeba1fcf0",
  "bill_type": "phone_photo",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,77 +32,107 @@
   "vendor_name": {
    "value": "KAILASH FACILITY MANAGEMENT",
    "conf": 0.9466666666666667,
-   "note": "first clean line of the bill"
+   "note": "first clean line of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
    "value": "06OUMCV9219I1ZB",
    "conf": 0.8,
-   "note": "2 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+   "note": "2 character(s) repaired by position; state name agrees with the state code; a second read of the word differs; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_no": {
    "value": "487/25-26/896",
-   "conf": 0.92,
-   "note": "read as printed"
+   "conf": 0.9600000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2025-10-02",
-   "conf": 0.9600000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.99,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "NOI-R12",
    "conf": 0.9500000000000001,
-   "note": "matched to SAP property 'Residential Society, Sector 99, Noida'"
+   "note": "matched to SAP property 'Residential Society, Sector 99, Noida'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100384",
    "conf": 0.96,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 351370.0,
    "conf": 0.5,
-   "note": "amounts do not add up"
+   "note": "amounts do not add up",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 414616.6,
    "conf": 0.5,
-   "note": "amounts do not add up"
+   "note": "amounts do not add up",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "9985331",
    "conf": 0.65,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Uttar Pradesh",
    "conf": 0.9225,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.74,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": "Small",
    "conf": 0.7633333333333333,
-   "note": "claim printed by the vendor, not proof"
+   "note": "claim printed by the vendor, not proof",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
@@ -112,7 +142,7 @@
  "overall_confidence": 0.5,
  "reasons": [
   "no tax line and no 'GST not applicable' line found",
-  "vendor_gstin: confidence 0.80 (2 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)",
+  "vendor_gstin: confidence 0.80 (2 character(s) repaired by position; state name agrees with the state code; a second read of the word differs; the second read of the header agrees)",
   "taxable: confidence 0.50 (amounts do not add up)",
   "total: confidence 0.50 (amounts do not add up)",
   "tax: no complete tax line found"

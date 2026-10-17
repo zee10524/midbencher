@@ -3,7 +3,7 @@
  "sha256": "8a5a65c780f1e0b20826e53626671944965779bef247a700388df2949c06948d",
  "bill_type": "pdf_single",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,85 +32,113 @@
   "vendor_name": {
    "value": "VARDHAN SARTHAK LANDSCAPES",
    "conf": 0.9566666666666668,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
-   "value": null,
-   "conf": 0.0,
-   "note": "printed text '0O3GSNPI5677B1ZK' is not a valid GSTIN shape"
+   "value": "03GSNPI5677B1ZK",
+   "conf": 0.95,
+   "note": "from the second read of the header; read as printed; state name agrees with the state code; a second read of the word agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_no": {
    "value": "881/25-26/468",
-   "conf": 0.92,
-   "note": "read as printed"
+   "conf": 0.9600000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2025-11-06",
-   "conf": 0.9600000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.99,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "NOI-C33",
    "conf": 0.99,
-   "note": "matched to SAP property 'Office Tower, Sector 38, Noida'"
+   "note": "matched to SAP property 'Office Tower, Sector 38, Noida'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100214",
    "conf": 0.96,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 249140.0,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": 22422.6,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": 22422.6,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 293985.2,
    "conf": 0.97,
-   "note": "taxable + tax = total, and each tax line matches its rate"
+   "note": "taxable + tax = total, and each tax line matches its rate",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "998134",
    "conf": 0.96,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Uttar Pradesh",
    "conf": 0.94125,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.92,
-   "note": "buyer's GSTIN; a second read of the word agrees"
+   "note": "buyer's GSTIN; a second read of the word agrees",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": "Small",
    "conf": 0.9400000000000001,
-   "note": "claim printed by the vendor, not proof"
+   "note": "claim printed by the vendor, not proof",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
  "arithmetic_ok": true,
- "status": "review",
- "route_hint": "resend",
- "overall_confidence": 0.0,
- "reasons": [
-  "vendor_gstin: not found"
- ]
+ "status": "ok",
+ "route_hint": "auto-clear",
+ "overall_confidence": 0.95,
+ "reasons": []
 }

@@ -64,6 +64,11 @@ def check_p1_h1(bill: BillRead, ctx: Context) -> CheckResult:
     warn: the GSTIN is in the master under a different name, or the vendor is not in the master at all (owner unclear).
     """
     g, n = bill.vendor_gstin, bill.vendor_name
+    if g.source == "repaired":
+        return CheckResult(check_id="P1/H1", name="Vendor name and GSTIN match the vendor master", status=WARN, owner="AP", field_confidence=_conf(g, n), certainty=0.8,
+                           evidence={"gstin_as_repaired": g.value, "name_on_bill": n.value},
+                           fix=f"The GSTIN was read with one character that looks confusable (O and 0, I and 1, S and 5, B and 8) and was matched to the vendor master as {g.value}. "
+                               "A person must confirm it against the bill: a one-character difference could also be the vendor's own mistake.")
     printed = (g.value or "").replace(" ", "").upper()
     ev = {"gstin_on_bill": printed or None, "name_on_bill": n.value}
     fc = _conf(g, n)
@@ -182,6 +187,40 @@ def check_h13(bill: BillRead, ctx: Context) -> CheckResult:
                            fix=f"A bill with {kind} number ({twin['invoice_no']}), the same date and the same amount is already booked. Confirm this is not a second copy; if it is a new bill, send it with a new invoice number.")
     return CheckResult(**base, status=WARN, evidence=ev, owner="AP",
                        fix=f"The invoice number is already used by {len(matches)} earlier bill(s) of this vendor with a different date or amount. A person must decide whether this is a reused number or a duplicate.")
+
+
+def check_h13_partial(bill: BillRead, ctx: Context, hint_invoice_no: str | None = None) -> CheckResult:
+    """The duplicate check when the invoice number could not be read: look for an earlier bill of the same vendor with the same invoice date and the same taxable value,
+    and, if the reader has a doubtful reading of the number (below the confidence at which it is shown as read), for an earlier bill with that number as well.
+
+    warn (AP): `possible repeat, confirm the invoice number`. pass: nothing earlier matches on date and amount (the number itself is still unchecked, so this is not a clean H13).
+    The doubtful reading is only a lead for a person to check; it is never shown as the invoice number.
+    """
+    d, a = bill.invoice_date, bill.taxable_inr
+    base = dict(check_id="H13", name="Possible repeat: invoice number not read", field_confidence=_conf(bill.vendor_gstin, d, a), certainty=0.8)
+    vid = _vendor_id(bill, ctx)
+    if vid is None or d.value is None or a.value is None:
+        return CheckResult(**base, status=WARN, evidence={"vendor_id": vid}, owner="AP", fix="The vendor, the date or the amount could not be identified, so earlier bills cannot be compared. A person must check for a repeat.")
+    pool = {}
+    for p in ctx.sap.list_posted_invoices(vid):
+        pool[p.bill_id] = dict(bill_id=p.bill_id, invoice_no=p.invoice_no, invoice_date=p.invoice_date, amount_inr=p.amount, source="posted in SAP")
+    for r in ctx.register_for(vid):
+        pool.setdefault(r.bill_id, dict(bill_id=r.bill_id, invoice_no=r.invoice_no, invoice_date=r.invoice_date, amount_inr=r.amount, source="register"))
+    want = norm_invoice_loose(hint_invoice_no) if hint_invoice_no else None
+    matches = []
+    for m in pool.values():
+        if m["bill_id"] == bill.own_bill_id:
+            continue
+        same_amt = m["amount_inr"] is not None and abs(float(m["amount_inr"]) - float(a.value)) < 0.5
+        by_date_amount = same_amt and m["invoice_date"] == d.value
+        by_hint = bool(want) and norm_invoice_loose(m["invoice_no"]) == want
+        if by_date_amount or by_hint:
+            matches.append(dict(m, basis="same date and amount" if by_date_amount else "same invoice number as the doubtful reading"))
+    ev = {"vendor_id": vid, "matches": matches, "partial": True, "doubtful_reading_used": bool(want)}
+    if matches:
+        return CheckResult(**base, status=WARN, evidence=ev, owner="AP",
+                           fix=f"Possible repeat, confirm the invoice number: {len(matches)} earlier bill(s) of this vendor match on {matches[0]['basis']} ({matches[0]['bill_id']}). Read the invoice number from the bill and compare.")
+    return CheckResult(**base, status=PASS, evidence=ev, owner=None, fix="")
 
 
 # ----------------------------------------------------------------------------------------------- H11

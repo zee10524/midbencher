@@ -3,7 +3,7 @@
  "sha256": "b739b12d02fb8805f87e0f8b7ac95c007dd9fb71ab61ec2c20b57e1d4ea0e455",
  "bill_type": "phone_photo",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,77 +32,107 @@
   "vendor_name": {
    "value": "TRISHUL NIRMAL MANPOWER SOLUTIONS",
    "conf": 0.9650000000000001,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
    "value": "06KRKPD6281U1Z5",
-   "conf": 0.8,
-   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+   "conf": 0.9,
+   "note": "resolved from the vendor master by the vendor's name; not read from the bill",
+   "source": "vendor_master",
+   "raw": "06KRKPD6281U1Z5"
   },
   "invoice_no": {
    "value": "718/25-26/543",
-   "conf": 0.91,
-   "note": "read as printed"
+   "conf": 0.9500000000000001,
+   "note": "read as printed; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2025-09-01",
-   "conf": 0.9500000000000001,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.99,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "SNP-C30",
    "conf": 0.99,
-   "note": "matched to SAP property 'Office Tower, Sector 67, Sonipat'"
+   "note": "matched to SAP property 'Office Tower, Sector 67, Sonipat'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100090",
    "conf": 0.96,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 1024440.0,
    "conf": 0.5,
-   "note": "amounts do not add up"
+   "note": "amounts do not add up",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": 92199.6,
    "conf": 0.5,
-   "note": "amounts do not add up"
+   "note": "amounts do not add up",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 1208839.2,
    "conf": 0.5,
-   "note": "amounts do not add up"
+   "note": "amounts do not add up",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": "Haryana",
    "conf": 0.9285714285714286,
-   "note": "closest state name, similarity 1.00"
+   "note": "closest state name, similarity 1.00",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.74,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
@@ -112,7 +142,7 @@
  "overall_confidence": 0.5,
  "reasons": [
   "taxable 1,024,440.00 + tax 92,199.60 does not equal total 1,208,839.20",
-  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)",
+  "vendor_gstin: vendor master, not read from the bill (resolved from the vendor master by the vendor's name; not read from the bill)",
   "taxable: confidence 0.50 (amounts do not add up)",
   "total: confidence 0.50 (amounts do not add up)",
   "tax: no complete tax line found"

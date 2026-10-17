@@ -3,7 +3,7 @@
  "sha256": "0821d8fc28614f5187d811aaa3463b72778e681e6330ed451aaed89d617bc3bf",
  "bill_type": "phone_photo",
  "reader": {
-  "version": "reader-2026.10.1",
+  "version": "reader-2026.10.2",
   "dpi": 300,
   "vision_fallback": false,
   "simulated": false,
@@ -32,89 +32,118 @@
   "vendor_name": {
    "value": "SHIVALIK FACILITY SERVICES",
    "conf": 0.9666666666666666,
-   "note": "agrees with the 'For ...' line at the foot of the bill"
+   "note": "agrees with the 'For ...' line at the foot of the bill",
+   "source": "read",
+   "raw": null
   },
   "vendor_gstin": {
-   "value": null,
-   "conf": 0.0,
-   "note": "printed text 'O6LXWPRBESI8IIZ0' is not a valid GSTIN shape"
+   "value": "06LXWPB6848I1ZO",
+   "conf": 0.9,
+   "note": "resolved from the vendor master by the vendor's name; not read from the bill",
+   "source": "vendor_master",
+   "raw": "O6LXWPRBESI8IIZ0"
   },
   "invoice_no": {
    "value": "289/25-26/049",
-   "conf": 0.0,
-   "note": "read as printed; a second read of the word disagrees"
+   "conf": 0.04,
+   "note": "read as printed; a second read of the word disagrees; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "invoice_date": {
    "value": "2026-02-05",
-   "conf": 0.89,
-   "note": "day-month-year as printed; inside the financial year in the invoice number"
+   "conf": 0.9600000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number; the second read of the header agrees",
+   "source": "read",
+   "raw": null
   },
   "property_name": {
    "value": "NOI-M38",
    "conf": 0.946,
-   "note": "matched to SAP property 'Retail Mall, Sector 44, Noida'"
+   "note": "matched to SAP property 'Retail Mall, Sector 44, Noida'",
+   "source": "read",
+   "raw": null
   },
   "wo_id": {
    "value": "4100325",
    "conf": 0.96,
-   "note": "read as printed"
+   "note": "read as printed",
+   "source": "read",
+   "raw": null
   },
   "taxable": {
    "value": 987150.0,
    "conf": 0.2,
-   "note": "amounts do not add up"
+   "note": "amounts do not add up",
+   "source": "read",
+   "raw": null
   },
   "cgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "sgst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "igst": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "total": {
    "value": 1173837.0,
    "conf": 0.5,
-   "note": "amounts do not add up"
+   "note": "amounts do not add up",
+   "source": "read",
+   "raw": null
   },
   "hsn_sac": {
    "value": "996533",
    "conf": 0.9,
-   "note": "code printed in the first item line"
+   "note": "code printed in the first item line",
+   "source": "read",
+   "raw": null
   },
   "place_of_supply": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   },
   "recipient_gstin": {
    "value": "06AAACX4421K1ZQ",
    "conf": 0.43,
-   "note": "buyer's GSTIN"
+   "note": "buyer's GSTIN",
+   "source": "read",
+   "raw": null
   },
   "udyam": {
    "value": null,
    "conf": 0.0,
-   "note": ""
+   "note": "",
+   "source": "read",
+   "raw": null
   }
  },
  "no_gst_printed": false,
  "arithmetic_ok": false,
  "status": "review",
  "route_hint": "resend",
- "overall_confidence": 0.0,
+ "overall_confidence": 0.04,
  "reasons": [
   "no tax line and no 'GST not applicable' line found",
-  "vendor_gstin: not found",
-  "invoice_no: confidence 0.00 (read as printed; a second read of the word disagrees)",
-  "invoice_date: confidence 0.89 (day-month-year as printed; inside the financial year in the invoice number)",
+  "vendor_gstin: vendor master, not read from the bill (resolved from the vendor master by the vendor's name; not read from the bill)",
+  "invoice_no: confidence 0.04 (read as printed; a second read of the word disagrees; the second read of the header agrees)",
   "taxable: confidence 0.20 (amounts do not add up)",
   "total: confidence 0.50 (amounts do not add up)",
   "tax: no complete tax line found"

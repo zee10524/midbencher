@@ -69,7 +69,9 @@ def test_a_blank_work_order_fails_p3_for_the_vendor_and_a_missing_one_asks_for_a
     p3 = next(r for r in blank["results"] if r.check_id == "P3")
     assert p3.status == "fail" and p3.owner == "vendor" and blank["routing"].route == "fix-before-sending"
     unread = intake.check_bill(result(fields=dict(wo_id=fld(None, 0.0, ""))), ctx)
-    assert unread["routing"].route == "resend"
+    assert unread["routing"].route == "human-look" and unread["unread"] == ["Work order"]          # a partial verdict, not a switched-off one
+    assert {n["check"] for n in unread["not_run"]} == {"P3", "H3", "H11"} and any(r.check_id == "P1/H1" for r in unread["results"])
+    assert any(a.kind == "resend" and "Work order" in a.text for a in unread["routing"].actions)
 
 
 def test_the_inbox_bill_is_linked_to_its_own_register_row_so_it_is_not_its_own_duplicate(world):
