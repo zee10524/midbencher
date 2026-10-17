@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vendor bill intake</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <span class="brand">Vendor bills</span>
+    <nav id="nav" aria-label="Screens">
+      <a href="#intake" data-view="intake">Intake</a>
+      <a href="#control" data-view="control">Control tower</a>
+      <a href="#impact" data-view="impact">Impact</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section id="view-intake" class="view" hidden>
+    <h1>Drop a bill or packet</h1>
+    <p class="lede">One card, a verdict, and a message ready to send. Nothing leaves this machine.</p>
+    <div id="drop" class="drop" tabindex="0">
+      <p class="drop-main">Drop a file here</p>
+      <p class="drop-sub">or <label class="link"><input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png" hidden>choose a file</label>, or pick a bill the reader has already read</p>
+      <div class="pick"><select id="sample" aria-label="A bill the reader has already read"></select><button id="pickgo" class="btn">Show the card</button></div>
+    </div>
+    <div id="card-area" aria-live="polite"></div>
+  </section>
+
+  <section id="view-control" class="view" hidden>
+    <div class="head-row"><div><h1>Control tower</h1><p id="control-as" class="lede"></p></div>
+      <div id="cutoff" class="seg" role="group" aria-label="Payment-run cut-off setting"></div></div>
+    <div id="control-body"></div>
+  </section>
+
+  <section id="view-impact" class="view" hidden>
+    <h1>What would change</h1>
+    <p id="impact-label" class="lede"></p>
+    <div id="impact-body"></div>
+  </section>
+  <p id="err" class="err" hidden></p>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

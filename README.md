@@ -27,5 +27,5 @@ Requires Python 3.11. On Windows without `make`, use `mingw32-make`.
 make setup     # create .venv, install deps
 make analyse   # run analysis scripts
 make test      # run tests
-make run       # start the app
+make run       # start the app at http://127.0.0.1:8765/ (three screens: intake, control tower, impact)
 ```
