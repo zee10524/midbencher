@@ -15,6 +15,7 @@ dependencies = [
     # the reader (app/reader)
     "pymupdf>=1.24",      # render or extract the page images of the image-only PDFs
     "pytesseract>=0.3.10",  # Python wrapper for the Tesseract OCR program (see README, System requirement)
+    "pdfplumber>=0.11",   # fast path only: text of a PDF that does have a text layer (none in the pack does)
     "pillow>=10",         # open and prepare the photos and page images
     "numpy>=1.26",        # image arrays; also pulled in by pandas
     "anthropic>=0.40",    # vision model that reads the bill fields (needs an API key)

@@ -1,0 +1,124 @@
+{
+ "file": "packet-03-lift-amc.pdf",
+ "sha256": "13467be6495715d9d43a436f6403e6d9963dc4ffefd300beeb2272b7d022f8a0",
+ "bill_type": "pdf_packet",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.0,
+   "background_cropped": false,
+   "mean_word_conf": 0.937,
+   "class": "bill"
+  },
+  {
+   "page": 2,
+   "source": "tesseract",
+   "skew_degrees": 0.0,
+   "background_cropped": false,
+   "mean_word_conf": 0.91,
+   "class": "service_report"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": true,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "INDUS EKTA ELEVATOR CARE PVT LTD",
+   "conf": 0.9783333333333334,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": null,
+   "conf": 0.0,
+   "note": "printed text 'O6KQNCRO0371D1ZA' is not a valid GSTIN shape"
+  },
+  "invoice_no": {
+   "value": "036/25-26/132",
+   "conf": 0.92,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-04-09",
+   "conf": 0.9600000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "PKL-C35",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Office Tower, Sector 76, Panchkula'"
+  },
+  "wo_id": {
+   "value": "4100231",
+   "conf": 0.95,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 151610.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": 13644.9,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "sgst": {
+   "value": 13644.9,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "total": {
+   "value": 178899.8,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "998717",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.9328571428571427,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.74,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": "Medium",
+   "conf": 0.9466666666666667,
+   "note": "claim printed by the vendor, not proof"
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "review",
+ "route_hint": "resend",
+ "overall_confidence": 0.0,
+ "reasons": [
+  "vendor_gstin: not found"
+ ]
+}

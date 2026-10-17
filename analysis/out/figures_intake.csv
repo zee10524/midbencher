@@ -1,0 +1,58 @@
+id,value,description
+ir.files,40,"bills run through reader results, checks, routing and parsed_bill"
+ir.parsed_bill_rows,40,rows written to parsed_bill in the working copy
+ir.all.route.auto-clear,1,"verdict auto-clear, all"
+ir.all.route.fix-before-sending,3,"verdict fix-before-sending, all"
+ir.all.route.fix-internal,0,"verdict fix-internal, all"
+ir.all.route.human-look,22,"verdict human-look, all"
+ir.all.route.resend,14,"verdict resend, all"
+ir.all.files,40,"bills, all"
+ir.pdf_single.route.auto-clear,1,"verdict auto-clear, pdf_single"
+ir.pdf_single.route.fix-before-sending,3,"verdict fix-before-sending, pdf_single"
+ir.pdf_single.route.fix-internal,0,"verdict fix-internal, pdf_single"
+ir.pdf_single.route.human-look,15,"verdict human-look, pdf_single"
+ir.pdf_single.route.resend,2,"verdict resend, pdf_single"
+ir.pdf_single.files,21,"bills, pdf_single"
+ir.pdf_packet.route.auto-clear,0,"verdict auto-clear, pdf_packet"
+ir.pdf_packet.route.fix-before-sending,0,"verdict fix-before-sending, pdf_packet"
+ir.pdf_packet.route.fix-internal,0,"verdict fix-internal, pdf_packet"
+ir.pdf_packet.route.human-look,6,"verdict human-look, pdf_packet"
+ir.pdf_packet.route.resend,4,"verdict resend, pdf_packet"
+ir.pdf_packet.files,10,"bills, pdf_packet"
+ir.phone_photo.route.auto-clear,0,"verdict auto-clear, phone_photo"
+ir.phone_photo.route.fix-before-sending,0,"verdict fix-before-sending, phone_photo"
+ir.phone_photo.route.fix-internal,0,"verdict fix-internal, phone_photo"
+ir.phone_photo.route.human-look,1,"verdict human-look, phone_photo"
+ir.phone_photo.route.resend,8,"verdict resend, phone_photo"
+ir.phone_photo.files,9,"bills, phone_photo"
+ir.check.P1/H1.pass,28,bills where check P1/H1 returns pass
+ir.check.P1/H1.fail,12,bills where check P1/H1 returns fail
+ir.check.P1/H1.warn,0,bills where check P1/H1 returns warn
+ir.check.P1/H1.needs-document,0,bills where check P1/H1 returns needs-document
+ir.check.P3.pass,37,bills where check P3 returns pass
+ir.check.P3.fail,3,bills where check P3 returns fail
+ir.check.P3.warn,0,bills where check P3 returns warn
+ir.check.P3.needs-document,0,bills where check P3 returns needs-document
+ir.check.H3.pass,24,bills where check H3 returns pass
+ir.check.H3.fail,11,bills where check H3 returns fail
+ir.check.H3.warn,0,bills where check H3 returns warn
+ir.check.H3.needs-document,5,bills where check H3 returns needs-document
+ir.check.H13.pass,27,bills where check H13 returns pass
+ir.check.H13.fail,0,bills where check H13 returns fail
+ir.check.H13.warn,13,bills where check H13 returns warn
+ir.check.H13.needs-document,0,bills where check H13 returns needs-document
+ir.check.H11.pass,32,bills where check H11 returns pass
+ir.check.H11.fail,3,bills where check H11 returns fail
+ir.check.H11.warn,3,bills where check H11 returns warn
+ir.check.H11.needs-document,2,bills where check H11 returns needs-document
+ir.check.H10.pass,23,bills where check H10 returns pass
+ir.check.H10.fail,0,bills where check H10 returns fail
+ir.check.H10.warn,11,bills where check H10 returns warn
+ir.check.H10.needs-document,6,bills where check H10 returns needs-document
+ir.h3.expired,1,bills whose work order is expired (or not yet valid) on the bill date
+ir.h3.exhausted,11,bills whose work order is over its approved value after the bill
+ir.h3.both,1,bills with both
+ir.h3.fail_any,11,bills where H3 fails
+ir.h10.warn_two_readings_differ,10,bills where H10 warns because the two place-of-supply readings give different tax types
+ir.reader_ok_but_flagged,7,bills the reader passes (status ok) that a check still fails or warns on
+ir.own_row_linked,33,inbox bills linked to their own register row (needed to replay the duplicate check)

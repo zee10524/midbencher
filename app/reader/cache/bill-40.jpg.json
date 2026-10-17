@@ -1,0 +1,118 @@
+{
+ "file": "bill-40.jpg",
+ "sha256": "25e61e4f5b45e5b428dc5d6cc1a33fbc977fa6fbf97ea6bc79936da77c7c10bf",
+ "bill_type": "phone_photo",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": -1.4,
+   "background_cropped": true,
+   "mean_word_conf": 0.765,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "ARAVIND ENGINEERING WORKS",
+   "conf": 0.9833333333333333,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "07TXHCG9184KIZA",
+   "conf": 0.3,
+   "note": "2 character(s) repaired by position; the state printed beside it ('Deity') does not clearly agree with state code 07"
+  },
+  "invoice_no": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "invoice_date": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "property_name": {
+   "value": null,
+   "conf": 0.0,
+   "note": "'Residential Society, Sector 77, New Oeiti' matches 0 SAP properties by name"
+  },
+  "wo_id": {
+   "value": "4100304",
+   "conf": 0.95,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 99330.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": 8939.7,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "sgst": {
+   "value": 8939.7,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "total": {
+   "value": 117209.4,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "998714",
+   "conf": 0.95,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Delhi",
+   "conf": 0.83625,
+   "note": "closest state name, similarity 0.80"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1Z0",
+   "conf": 0.6100000000000001,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": "Micro",
+   "conf": 0.5766666666666667,
+   "note": "claim printed by the vendor, not proof"
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "review",
+ "route_hint": "resend",
+ "overall_confidence": 0.0,
+ "reasons": [
+  "vendor_gstin: confidence 0.30 (2 character(s) repaired by position; the state printed beside it ('Deity') does not clearly agree with state code 07)",
+  "invoice_no: not found",
+  "invoice_date: not found"
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "file": "bill-30.pdf",
+ "sha256": "501b11ca57203dc9b8c5cc822aa88fe6c5a3641f1c1f9112d783c1bbe16c3a81",
+ "bill_type": "pdf_single",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.0,
+   "background_cropped": false,
+   "mean_word_conf": 0.93,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "NIRMAL ENGINEERING WORKS",
+   "conf": 0.9733333333333334,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "07JHKCZ6677Q1Z2",
+   "conf": 0.95,
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+  },
+  "invoice_no": {
+   "value": "245/25-26/699",
+   "conf": 0.91,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-11-08",
+   "conf": 0.9500000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "SNP-C30",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Office Tower, Sector 67, Sonipat'"
+  },
+  "wo_id": {
+   "value": "4101712",
+   "conf": 0.96,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 183060.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 32950.8,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "total": {
+   "value": 216010.8,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "995473",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.9371428571428572,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.74,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "ok",
+ "route_hint": "auto-clear",
+ "overall_confidence": 0.91,
+ "reasons": []
+}

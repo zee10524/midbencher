@@ -1,0 +1,118 @@
+{
+ "file": "bill-35.pdf",
+ "sha256": "7f33d3338853a519cc6adf32925e239b2622e561e4aa2f85378a34bdf9159c93",
+ "bill_type": "pdf_single",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.0,
+   "background_cropped": false,
+   "mean_word_conf": 0.937,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "INDUS DHRUV AGRO SERVICES",
+   "conf": 0.9650000000000001,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "06XERFP8305Z1ZZ",
+   "conf": 0.95,
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+  },
+  "invoice_no": {
+   "value": "185/25-26/850",
+   "conf": 0.92,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-10-04",
+   "conf": 0.9600000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "GGN-M37",
+   "conf": 0.988,
+   "note": "matched to SAP property 'Retail Mall, Sector 104, Gurugram'"
+  },
+  "wo_id": {
+   "value": "4100503",
+   "conf": 0.95,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 60670.0,
+   "conf": 0.5,
+   "note": "amounts do not add up"
+  },
+  "cgst": {
+   "value": 5460.3,
+   "conf": 0.5,
+   "note": "amounts do not add up"
+  },
+  "sgst": {
+   "value": 5460.3,
+   "conf": 0.5,
+   "note": "amounts do not add up"
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "total": {
+   "value": 71680.6,
+   "conf": 0.5,
+   "note": "amounts do not add up"
+  },
+  "hsn_sac": {
+   "value": "998134",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.9328571428571429,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.74,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": false,
+ "status": "review",
+ "route_hint": "resend",
+ "overall_confidence": 0.5,
+ "reasons": [
+  "taxable 60,670.00 + tax 10,920.60 does not equal total 71,680.60",
+  "taxable: confidence 0.50 (amounts do not add up)",
+  "total: confidence 0.50 (amounts do not add up)"
+ ]
+}

@@ -371,6 +371,19 @@ class SapAdapter:
         return Property(r["property_code"], r["property_name"], r["property_type"], r["city"], r["state"], _num(r["units_or_sqft"]),
                         (code or "") == r["property_code"])
 
+    def find_property_by_name(self, name: str) -> list[Property]:
+        """Properties whose name equals `name` once case, punctuation and spacing are ignored. One hit identifies the property from the name a bill prints
+        (for example `Residential Society, Sector 94, Sonipat`); no hit or several hits mean it cannot be told from the name. Nothing is guessed.
+
+        Real connection: the plant or business-place name over RFC read access, as for `get_property`.
+        """
+        want = re.sub(r"[^a-z0-9]+", " ", (name or "").casefold()).strip()
+        if not want:
+            return []
+        rows = self._ro.execute("SELECT * FROM properties").fetchall()
+        return [Property(r["property_code"], r["property_name"], r["property_type"], r["city"], r["state"], _num(r["units_or_sqft"]), True)
+                for r in rows if re.sub(r"[^a-z0-9]+", " ", (r["property_name"] or "").casefold()).strip() == want]
+
     # ---------------------------------------------------------------- the one write
     def write_parsed_bill(self, *, source_file: str, vendor_gstin: str | None = None, vendor_name: str | None = None, invoice_no: str | None = None,
                           invoice_date: str | None = None, property_code: str | None = None, wo_id: str | None = None,

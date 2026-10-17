@@ -1,0 +1,116 @@
+{
+ "file": "bill-39.jpg",
+ "sha256": "9db6be03ce5f11df7eb69a9af036cc48d5f73acb0e29344bb114eeaacdcbb969",
+ "bill_type": "phone_photo",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.2,
+   "background_cropped": true,
+   "mean_word_conf": 0.849,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "PANCHJANYA HEMKUNT TRADERS PVT LTD",
+   "conf": 0.9620000000000001,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "06COSPL2867Z1ZO",
+   "conf": 0.8,
+   "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees; the last character could be a digit"
+  },
+  "invoice_no": {
+   "value": "676/25-26/673",
+   "conf": 0.92,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-06-14",
+   "conf": 0.9600000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "GZB-R22",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Residential Society, Sector 56, Ghaziabad'"
+  },
+  "wo_id": {
+   "value": "4100415",
+   "conf": 0.95,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 16980.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 3056.4,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "total": {
+   "value": 20036.4,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "3402",
+   "conf": 0.78,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.895,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.7,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "review",
+ "route_hint": "human-look",
+ "overall_confidence": 0.8,
+ "reasons": [
+  "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees; the last character could be a digit)"
+ ]
+}

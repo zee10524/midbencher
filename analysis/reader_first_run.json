@@ -1,0 +1,1197 @@
+{
+ "note": "Frozen copy of the reader's cached output for the 10 hand-labelled bills, taken before the labels were read by any reader code. Never overwrite.",
+ "reader_version": "reader-2026.10.1",
+ "results": {
+  "bill-11.pdf": {
+   "file": "bill-11.pdf",
+   "sha256": "5765183f0020cd489bf034fe96781db88d6700563807a171f918db75c247f936",
+   "bill_type": "pdf_single",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": 0.0,
+     "background_cropped": false,
+     "mean_word_conf": 0.937,
+     "class": "bill"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "invoice",
+   "supporting": {
+    "attendance": false,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": false
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "GARUD NIRMAL LANDSCAPES PVT LTD",
+     "conf": 0.9700000000000001,
+     "note": "agrees with the 'For ...' line at the foot of the bill"
+    },
+    "vendor_gstin": {
+     "value": "09WMLCG8394Z1Z9",
+     "conf": 0.8,
+     "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+    },
+    "invoice_no": {
+     "value": "085/25-26/730",
+     "conf": 0.92,
+     "note": "read as printed"
+    },
+    "invoice_date": {
+     "value": "2025-08-02",
+     "conf": 0.9600000000000001,
+     "note": "day-month-year as printed; inside the financial year in the invoice number"
+    },
+    "property_name": {
+     "value": "NOI-C32",
+     "conf": 0.99,
+     "note": "matched to SAP property 'Office Tower, Sector 97, Noida'"
+    },
+    "wo_id": {
+     "value": "4101752",
+     "conf": 0.96,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": 61610.0,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "cgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "sgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "igst": {
+     "value": 11089.8,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "total": {
+     "value": 72699.8,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "hsn_sac": {
+     "value": "998134",
+     "conf": 0.96,
+     "note": "code printed in the first item line"
+    },
+    "place_of_supply": {
+     "value": "Uttar Pradesh",
+     "conf": 0.9400000000000001,
+     "note": "closest state name, similarity 1.00"
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.8800000000000001,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": true,
+   "status": "review",
+   "route_hint": "human-look",
+   "overall_confidence": 0.8,
+   "reasons": [
+    "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)"
+   ]
+  },
+  "bill-12.pdf": {
+   "file": "bill-12.pdf",
+   "sha256": "bcf5404e738f8e60e7da1920555d7b3b9ec9b58e784b19bdd6fd9cc5d4dea19f",
+   "bill_type": "pdf_single",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": 0.0,
+     "background_cropped": false,
+     "mean_word_conf": 0.934,
+     "class": "bill"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "invoice",
+   "supporting": {
+    "attendance": false,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": false
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "NAVDEEP AGRO SERVICES PVT LTD",
+     "conf": 0.974,
+     "note": "agrees with the 'For ...' line at the foot of the bill"
+    },
+    "vendor_gstin": {
+     "value": "06UJFFM8627J1ZJ",
+     "conf": 0.95,
+     "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+    },
+    "invoice_no": {
+     "value": "050/25-26/128",
+     "conf": 0.91,
+     "note": "read as printed"
+    },
+    "invoice_date": {
+     "value": "2025-06-04",
+     "conf": 0.9500000000000001,
+     "note": "day-month-year as printed; inside the financial year in the invoice number"
+    },
+    "property_name": {
+     "value": "GGN-R04",
+     "conf": 0.99,
+     "note": "matched to SAP property 'Residential Society, Sector 36, Gurugram'"
+    },
+    "wo_id": {
+     "value": "4100482",
+     "conf": 0.95,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": 181990.0,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "cgst": {
+     "value": 16379.1,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "sgst": {
+     "value": 16379.1,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "igst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "total": {
+     "value": 214748.2,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "hsn_sac": {
+     "value": "998134",
+     "conf": 0.96,
+     "note": "code printed in the first item line"
+    },
+    "place_of_supply": {
+     "value": "Haryana",
+     "conf": 0.9342857142857142,
+     "note": "closest state name, similarity 1.00"
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.8742857142857141,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": "Micro",
+     "conf": 0.9433333333333334,
+     "note": "claim printed by the vendor, not proof"
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": true,
+   "status": "ok",
+   "route_hint": "auto-clear",
+   "overall_confidence": 0.91,
+   "reasons": []
+  },
+  "bill-14.pdf": {
+   "file": "bill-14.pdf",
+   "sha256": "8a5a65c780f1e0b20826e53626671944965779bef247a700388df2949c06948d",
+   "bill_type": "pdf_single",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": 0.4,
+     "background_cropped": false,
+     "mean_word_conf": 0.892,
+     "class": "bill"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "invoice",
+   "supporting": {
+    "attendance": false,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": false
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "VARDHAN SARTHAK LANDSCAPES",
+     "conf": 0.9566666666666668,
+     "note": "agrees with the 'For ...' line at the foot of the bill"
+    },
+    "vendor_gstin": {
+     "value": null,
+     "conf": 0.0,
+     "note": "printed text '0O3GSNPI5677B1ZK' is not a valid GSTIN shape"
+    },
+    "invoice_no": {
+     "value": "881/25-26/468",
+     "conf": 0.92,
+     "note": "read as printed"
+    },
+    "invoice_date": {
+     "value": "2025-11-06",
+     "conf": 0.9600000000000001,
+     "note": "day-month-year as printed; inside the financial year in the invoice number"
+    },
+    "property_name": {
+     "value": "NOI-C33",
+     "conf": 0.99,
+     "note": "matched to SAP property 'Office Tower, Sector 38, Noida'"
+    },
+    "wo_id": {
+     "value": "4100214",
+     "conf": 0.96,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": 249140.0,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "cgst": {
+     "value": 22422.6,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "sgst": {
+     "value": 22422.6,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "igst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "total": {
+     "value": 293985.2,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "hsn_sac": {
+     "value": "998134",
+     "conf": 0.96,
+     "note": "code printed in the first item line"
+    },
+    "place_of_supply": {
+     "value": "Uttar Pradesh",
+     "conf": 0.94125,
+     "note": "closest state name, similarity 1.00"
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.8812500000000001,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": "Small",
+     "conf": 0.9400000000000001,
+     "note": "claim printed by the vendor, not proof"
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": true,
+   "status": "review",
+   "route_hint": "resend",
+   "overall_confidence": 0.0,
+   "reasons": [
+    "vendor_gstin: not found"
+   ]
+  },
+  "packet-01-security-manpower.pdf": {
+   "file": "packet-01-security-manpower.pdf",
+   "sha256": "ad875c13032113edfa36d737d035a4afad4f6db80cf0678b19dae315e8560e7b",
+   "bill_type": "pdf_packet",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": -0.8,
+     "background_cropped": false,
+     "mean_word_conf": 0.938,
+     "class": "bill"
+    },
+    {
+     "page": 2,
+     "source": "tesseract",
+     "skew_degrees": 1.2,
+     "background_cropped": false,
+     "mean_word_conf": 0.867,
+     "class": "attendance"
+    },
+    {
+     "page": 3,
+     "source": "tesseract",
+     "skew_degrees": -0.6,
+     "background_cropped": false,
+     "mean_word_conf": 0.941,
+     "class": "pf_esic"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "invoice",
+   "supporting": {
+    "attendance": true,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": true
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "RAKSHA ABHAY MANPOWER SOLUTIONS PVT LTD",
+     "conf": 0.9766666666666667,
+     "note": "agrees with the 'For ...' line at the foot of the bill"
+    },
+    "vendor_gstin": {
+     "value": "06EPVCF6069Z1ZZ",
+     "conf": 0.8,
+     "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+    },
+    "invoice_no": {
+     "value": "668/25-26/138",
+     "conf": 0.92,
+     "note": "read as printed"
+    },
+    "invoice_date": {
+     "value": "2026-03-04",
+     "conf": 0.9600000000000001,
+     "note": "day-month-year as printed; inside the financial year in the invoice number"
+    },
+    "property_name": {
+     "value": "GGN-R15",
+     "conf": 0.9660000000000001,
+     "note": "matched to SAP property 'Residential Society, Sector 41, Gurugram'"
+    },
+    "wo_id": {
+     "value": "4100395",
+     "conf": 0.95,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": 420980.0,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "cgst": {
+     "value": 37888.2,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "sgst": {
+     "value": 37888.2,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "igst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "total": {
+     "value": 496756.4,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "hsn_sac": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "place_of_supply": {
+     "value": "Haryana",
+     "conf": 0.9114285714285716,
+     "note": "closest state name, similarity 1.00"
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.8514285714285716,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": true,
+   "status": "review",
+   "route_hint": "human-look",
+   "overall_confidence": 0.8,
+   "reasons": [
+    "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)"
+   ]
+  },
+  "packet-08-repeat-invoice.pdf": {
+   "file": "packet-08-repeat-invoice.pdf",
+   "sha256": "43d7c7249ceea7bce017513d7609d73872add11584e7948df2dbe2de09689b41",
+   "bill_type": "pdf_packet",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": 0.0,
+     "background_cropped": false,
+     "mean_word_conf": 0.926,
+     "class": "bill"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "invoice",
+   "supporting": {
+    "attendance": false,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": false
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "HEMKUNT YAMUNA FACILITY SERVICES",
+     "conf": 0.9724999999999999,
+     "note": "agrees with the 'For ...' line at the foot of the bill"
+    },
+    "vendor_gstin": {
+     "value": "06QVLCO1204A1Z3",
+     "conf": 0.95,
+     "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+    },
+    "invoice_no": {
+     "value": "550/25-26/340",
+     "conf": 0.5389999999999999,
+     "note": "read as printed; a second read of the word disagrees"
+    },
+    "invoice_date": {
+     "value": "2025-06-04",
+     "conf": 0.93,
+     "note": "day-month-year as printed; inside the financial year in the invoice number"
+    },
+    "property_name": {
+     "value": "NOI-M38",
+     "conf": 0.99,
+     "note": "matched to SAP property 'Retail Mall, Sector 44, Noida'"
+    },
+    "wo_id": {
+     "value": "4100602",
+     "conf": 0.95,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": 190740.0,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "cgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "sgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "igst": {
+     "value": 34333.2,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "total": {
+     "value": 225073.2,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "hsn_sac": {
+     "value": "9985",
+     "conf": 0.96,
+     "note": "code printed in the first item line"
+    },
+    "place_of_supply": {
+     "value": "Uttar Pradesh",
+     "conf": 0.92125,
+     "note": "closest state name, similarity 1.00"
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.8612500000000001,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": "Micro",
+     "conf": 0.9433333333333334,
+     "note": "claim printed by the vendor, not proof"
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": true,
+   "status": "review",
+   "route_hint": "resend",
+   "overall_confidence": 0.539,
+   "reasons": [
+    "invoice_no: confidence 0.54 (read as printed; a second read of the word disagrees)"
+   ]
+  },
+  "packet-10-credit-note.pdf": {
+   "file": "packet-10-credit-note.pdf",
+   "sha256": "a18360da48b695011cb1cc2dd1707c857b2c78e5be8521142dd9d6a1f554bf87",
+   "bill_type": "pdf_packet",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": 0.0,
+     "background_cropped": false,
+     "mean_word_conf": 0.936,
+     "class": "bill"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "credit_note",
+   "supporting": {
+    "attendance": false,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": false
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "GARUD PRATAP TRADERS",
+     "conf": 0.9733333333333334,
+     "note": "agrees with the 'For ...' line at the foot of the bill"
+    },
+    "vendor_gstin": {
+     "value": null,
+     "conf": 0.0,
+     "note": "printed text '0O9LGQFQ3122D1ZY' is not a valid GSTIN shape"
+    },
+    "invoice_no": {
+     "value": "CN/528/25-26/207",
+     "conf": 0.89,
+     "note": "read as printed; a second read of the word agrees"
+    },
+    "invoice_date": {
+     "value": "2026-01-31",
+     "conf": 0.93,
+     "note": "day-month-year as printed; inside the financial year in the invoice number"
+    },
+    "property_name": {
+     "value": "NOI-C32",
+     "conf": 0.99,
+     "note": "matched to SAP property 'Office Tower, Sector 97, Noida'"
+    },
+    "wo_id": {
+     "value": "4101182",
+     "conf": 0.96,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": -872.0,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "cgst": {
+     "value": -78.48,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "sgst": {
+     "value": -78.48,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "igst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "total": {
+     "value": -1028.96,
+     "conf": 0.97,
+     "note": "taxable + tax = total, and each tax line matches its rate"
+    },
+    "hsn_sac": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "place_of_supply": {
+     "value": "Uttar Pradesh",
+     "conf": 0.9325,
+     "note": "closest state name, similarity 1.00"
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.8725,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": "Small",
+     "conf": 0.94,
+     "note": "claim printed by the vendor, not proof"
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": true,
+   "status": "review",
+   "route_hint": "resend",
+   "overall_confidence": 0.0,
+   "reasons": [
+    "vendor_gstin: not found",
+    "invoice_no: confidence 0.89 (read as printed; a second read of the word agrees)"
+   ]
+  },
+  "bill-16.jpg": {
+   "file": "bill-16.jpg",
+   "sha256": "d1b1655af1c39e9f0f213dfb519409e8c2addcef7d60ce2ed10b1ab206d79e7f",
+   "bill_type": "phone_photo",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": -2.6,
+     "background_cropped": true,
+     "mean_word_conf": 0.796,
+     "class": "bill"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "invoice",
+   "supporting": {
+    "attendance": false,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": false
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "KESARI HEMKUNT FIRE SAFETY SYSTEMS",
+     "conf": 0.972,
+     "note": "agrees with the 'For ...' line at the foot of the bill"
+    },
+    "vendor_gstin": {
+     "value": "07QXNPN2966U1ZT",
+     "conf": 0.8,
+     "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+    },
+    "invoice_no": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "invoice_date": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "property_name": {
+     "value": "PKL-C34",
+     "conf": 0.99,
+     "note": "matched to SAP property 'Office Tower, Sector 73, Panchkula'"
+    },
+    "wo_id": {
+     "value": "4100393",
+     "conf": 0.93,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "cgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "sgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "igst": {
+     "value": 15539.4,
+     "conf": 0.81,
+     "note": ""
+    },
+    "total": {
+     "value": 110869.4,
+     "conf": 0.82,
+     "note": ""
+    },
+    "hsn_sac": {
+     "value": "998719",
+     "conf": 0.96,
+     "note": "code printed in the first item line"
+    },
+    "place_of_supply": {
+     "value": "Haryana",
+     "conf": 0.8342857142857143,
+     "note": "closest state name, similarity 1.00"
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.7742857142857142,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": "Micro",
+     "conf": 0.8166666666666668,
+     "note": "claim printed by the vendor, not proof"
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": null,
+   "status": "review",
+   "route_hint": "resend",
+   "overall_confidence": 0.0,
+   "reasons": [
+    "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)",
+    "invoice_no: not found",
+    "invoice_date: not found",
+    "taxable: not found",
+    "total: confidence 0.82 ()",
+    "amounts: not all of taxable value and total were found"
+   ]
+  },
+  "bill-23.jpg": {
+   "file": "bill-23.jpg",
+   "sha256": "c2ce1895648bbb65a568c162c4ed135c01453f456665ba081fb39417cebcf81c",
+   "bill_type": "phone_photo",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": 0.4,
+     "background_cropped": true,
+     "mean_word_conf": 0.838,
+     "class": "bill"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "invoice",
+   "supporting": {
+    "attendance": false,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": false
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "PANCHJANYA HYGIENE SOLUTIONS PVT LTD",
+     "conf": 0.9740000000000002,
+     "note": "agrees with the 'For ...' line at the foot of the bill"
+    },
+    "vendor_gstin": {
+     "value": "06DOOFO6273K1ZU",
+     "conf": 0.8,
+     "note": "4 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+    },
+    "invoice_no": {
+     "value": "039/25-26/832",
+     "conf": 0.92,
+     "note": "read as printed"
+    },
+    "invoice_date": {
+     "value": "2025-12-03",
+     "conf": 0.9600000000000001,
+     "note": "day-month-year as printed; inside the financial year in the invoice number"
+    },
+    "property_name": {
+     "value": null,
+     "conf": 0.0,
+     "note": "'Residential Society, Sector 51, New Dethi' matches 0 SAP properties by name"
+    },
+    "wo_id": {
+     "value": "4100453",
+     "conf": 0.96,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": 454210.0,
+     "conf": 0.83,
+     "note": ""
+    },
+    "cgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "sgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "igst": {
+     "value": 81757.8,
+     "conf": 0.95,
+     "note": ""
+    },
+    "total": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "hsn_sac": {
+     "value": "998533",
+     "conf": 0.96,
+     "note": "code printed in the first item line"
+    },
+    "place_of_supply": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.4285714285714286,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": null,
+   "status": "review",
+   "route_hint": "resend",
+   "overall_confidence": 0.0,
+   "reasons": [
+    "vendor_gstin: confidence 0.80 (4 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)",
+    "taxable: confidence 0.83 ()",
+    "total: not found",
+    "amounts: not all of taxable value and total were found"
+   ]
+  },
+  "bill-28.jpg": {
+   "file": "bill-28.jpg",
+   "sha256": "aa19f076c30c5d6c0ec70585c69536c524f426b84bb38e5566597efdeba1fcf0",
+   "bill_type": "phone_photo",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": 1.5,
+     "background_cropped": true,
+     "mean_word_conf": 0.801,
+     "class": "bill"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "invoice",
+   "supporting": {
+    "attendance": false,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": false
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "KAILASH FACILITY MANAGEMENT",
+     "conf": 0.9466666666666667,
+     "note": "first clean line of the bill"
+    },
+    "vendor_gstin": {
+     "value": "06OUMCV9219I1ZB",
+     "conf": 0.8,
+     "note": "2 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+    },
+    "invoice_no": {
+     "value": "487/25-26/896",
+     "conf": 0.92,
+     "note": "read as printed"
+    },
+    "invoice_date": {
+     "value": "2025-10-02",
+     "conf": 0.9600000000000001,
+     "note": "day-month-year as printed; inside the financial year in the invoice number"
+    },
+    "property_name": {
+     "value": "NOI-R12",
+     "conf": 0.9500000000000001,
+     "note": "matched to SAP property 'Residential Society, Sector 99, Noida'"
+    },
+    "wo_id": {
+     "value": "4100384",
+     "conf": 0.96,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": 351370.0,
+     "conf": 0.5,
+     "note": "amounts do not add up"
+    },
+    "cgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "sgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "igst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "total": {
+     "value": 414616.6,
+     "conf": 0.5,
+     "note": "amounts do not add up"
+    },
+    "hsn_sac": {
+     "value": "9985331",
+     "conf": 0.65,
+     "note": "code printed in the first item line"
+    },
+    "place_of_supply": {
+     "value": "Uttar Pradesh",
+     "conf": 0.9225,
+     "note": "closest state name, similarity 1.00"
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.8625,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": "Small",
+     "conf": 0.7633333333333333,
+     "note": "claim printed by the vendor, not proof"
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": false,
+   "status": "review",
+   "route_hint": "resend",
+   "overall_confidence": 0.5,
+   "reasons": [
+    "no tax line and no 'GST not applicable' line found",
+    "vendor_gstin: confidence 0.80 (2 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)",
+    "taxable: confidence 0.50 (amounts do not add up)",
+    "total: confidence 0.50 (amounts do not add up)",
+    "tax: no complete tax line found"
+   ]
+  },
+  "bill-38.jpg": {
+   "file": "bill-38.jpg",
+   "sha256": "b739b12d02fb8805f87e0f8b7ac95c007dd9fb71ab61ec2c20b57e1d4ea0e455",
+   "bill_type": "phone_photo",
+   "reader": {
+    "version": "reader-2026.10.1",
+    "dpi": 300,
+    "vision_fallback": false,
+    "simulated": false,
+    "text_layer_fast_path": false
+   },
+   "pages": [
+    {
+     "page": 1,
+     "source": "tesseract",
+     "skew_degrees": -2.0,
+     "background_cropped": true,
+     "mean_word_conf": 0.871,
+     "class": "bill"
+    }
+   ],
+   "bill_page": 1,
+   "doc_type": "invoice",
+   "supporting": {
+    "attendance": false,
+    "challan": false,
+    "service_report": false,
+    "pf_esic": false
+   },
+   "other_pages": [],
+   "fields": {
+    "vendor_name": {
+     "value": "TRISHUL NIRMAL MANPOWER SOLUTIONS",
+     "conf": 0.9650000000000001,
+     "note": "agrees with the 'For ...' line at the foot of the bill"
+    },
+    "vendor_gstin": {
+     "value": "06KRKPD6281U1Z5",
+     "conf": 0.8,
+     "note": "1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs"
+    },
+    "invoice_no": {
+     "value": "718/25-26/543",
+     "conf": 0.91,
+     "note": "read as printed"
+    },
+    "invoice_date": {
+     "value": "2025-09-01",
+     "conf": 0.9500000000000001,
+     "note": "day-month-year as printed; inside the financial year in the invoice number"
+    },
+    "property_name": {
+     "value": "SNP-C30",
+     "conf": 0.99,
+     "note": "matched to SAP property 'Office Tower, Sector 67, Sonipat'"
+    },
+    "wo_id": {
+     "value": "4100090",
+     "conf": 0.96,
+     "note": "read as printed"
+    },
+    "taxable": {
+     "value": 1024440.0,
+     "conf": 0.5,
+     "note": "amounts do not add up"
+    },
+    "cgst": {
+     "value": 92199.6,
+     "conf": 0.5,
+     "note": "amounts do not add up"
+    },
+    "sgst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "igst": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "total": {
+     "value": 1208839.2,
+     "conf": 0.5,
+     "note": "amounts do not add up"
+    },
+    "hsn_sac": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    },
+    "place_of_supply": {
+     "value": "Haryana",
+     "conf": 0.9285714285714286,
+     "note": "closest state name, similarity 1.00"
+    },
+    "recipient_gstin": {
+     "value": "06AAACX4421K1ZQ",
+     "conf": 0.8685714285714285,
+     "note": "buyer's GSTIN"
+    },
+    "udyam": {
+     "value": null,
+     "conf": 0.0,
+     "note": ""
+    }
+   },
+   "no_gst_printed": false,
+   "arithmetic_ok": false,
+   "status": "review",
+   "route_hint": "resend",
+   "overall_confidence": 0.5,
+   "reasons": [
+    "taxable 1,024,440.00 + tax 92,199.60 does not equal total 1,208,839.20",
+    "vendor_gstin: confidence 0.80 (1 character(s) repaired by position; state name agrees with the state code; a second read of the word differs)",
+    "taxable: confidence 0.50 (amounts do not add up)",
+    "total: confidence 0.50 (amounts do not add up)",
+    "tax: no complete tax line found"
+   ]
+  }
+ }
+}

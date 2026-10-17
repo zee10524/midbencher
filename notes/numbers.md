@@ -2201,3 +2201,290 @@ Script: `analysis/13_duplicate_false_alarms.py`. Output: `analysis/out/figures_d
 | da.queried_dup_not_flagged | 59.0 | posted invoices with a duplicate-bill query that loose matching does not flag |
 
 <!-- END 13_duplicate_false_alarms.py -->
+
+<!-- BEGIN 14_reader_results.py -->
+
+### Figures from `analysis/14_reader_results.py` (used in app/reader/ (reader summary). What the reader did with the 40 inbox files; reads app/reader/cache/*.json (written by `python -m app.reader`); no label file is read)
+
+Script: `analysis/14_reader_results.py`. Output: `analysis/out/figures_reader.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
+
+```
+.venv\Scripts\python.exe -I analysis\14_reader_results.py
+```
+
+`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+
+| Figure id | Value | What it counts |
+|---|---|---|
+| rd.all.files | 40 | files read (all) |
+| rd.all.ok | 14 | files the reader passes with every required field at 0.90 or more and amounts that add up (all) |
+| rd.all.review | 26 | files that go to review (all) |
+| rd.all.review.human_look | 9 | of the review files, lowest required confidence 0.70 to 0.90 (all) |
+| rd.all.review.resend | 17 | of the review files, a required field missing or below 0.70 (all) |
+| rd.all.vendor_gstin.not_found | 6 | files where vendor_gstin was not found (all) |
+| rd.all.vendor_gstin.below_090 | 15 | files where vendor_gstin was found with confidence below 0.90 (all) |
+| rd.all.vendor_name.not_found | 0 | files where vendor_name was not found (all) |
+| rd.all.vendor_name.below_090 | 0 | files where vendor_name was found with confidence below 0.90 (all) |
+| rd.all.invoice_no.not_found | 2 | files where invoice_no was not found (all) |
+| rd.all.invoice_no.below_090 | 4 | files where invoice_no was found with confidence below 0.90 (all) |
+| rd.all.invoice_date.not_found | 2 | files where invoice_date was not found (all) |
+| rd.all.invoice_date.below_090 | 1 | files where invoice_date was found with confidence below 0.90 (all) |
+| rd.all.wo_id.not_found | 3 | files where wo_id was not found (all) |
+| rd.all.wo_id.below_090 | 0 | files where wo_id was found with confidence below 0.90 (all) |
+| rd.all.taxable.not_found | 1 | files where taxable was not found (all) |
+| rd.all.taxable.below_090 | 5 | files where taxable was found with confidence below 0.90 (all) |
+| rd.all.total.not_found | 1 | files where total was not found (all) |
+| rd.all.total.below_090 | 5 | files where total was found with confidence below 0.90 (all) |
+| rd.all.arithmetic_fail | 4 | files where taxable value plus tax does not equal the total, or a tax line does not match its rate (all) |
+| rd.pdf_single.files | 21 | files read (pdf_single) |
+| rd.pdf_single.ok | 10 | files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_single) |
+| rd.pdf_single.review | 11 | files that go to review (pdf_single) |
+| rd.pdf_single.review.human_look | 6 | of the review files, lowest required confidence 0.70 to 0.90 (pdf_single) |
+| rd.pdf_single.review.resend | 5 | of the review files, a required field missing or below 0.70 (pdf_single) |
+| rd.pdf_single.vendor_gstin.not_found | 1 | files where vendor_gstin was not found (pdf_single) |
+| rd.pdf_single.vendor_gstin.below_090 | 6 | files where vendor_gstin was found with confidence below 0.90 (pdf_single) |
+| rd.pdf_single.vendor_name.not_found | 0 | files where vendor_name was not found (pdf_single) |
+| rd.pdf_single.vendor_name.below_090 | 0 | files where vendor_name was found with confidence below 0.90 (pdf_single) |
+| rd.pdf_single.invoice_no.not_found | 0 | files where invoice_no was not found (pdf_single) |
+| rd.pdf_single.invoice_no.below_090 | 1 | files where invoice_no was found with confidence below 0.90 (pdf_single) |
+| rd.pdf_single.invoice_date.not_found | 0 | files where invoice_date was not found (pdf_single) |
+| rd.pdf_single.invoice_date.below_090 | 0 | files where invoice_date was found with confidence below 0.90 (pdf_single) |
+| rd.pdf_single.wo_id.not_found | 3 | files where wo_id was not found (pdf_single) |
+| rd.pdf_single.wo_id.below_090 | 0 | files where wo_id was found with confidence below 0.90 (pdf_single) |
+| rd.pdf_single.taxable.not_found | 0 | files where taxable was not found (pdf_single) |
+| rd.pdf_single.taxable.below_090 | 1 | files where taxable was found with confidence below 0.90 (pdf_single) |
+| rd.pdf_single.total.not_found | 0 | files where total was not found (pdf_single) |
+| rd.pdf_single.total.below_090 | 1 | files where total was found with confidence below 0.90 (pdf_single) |
+| rd.pdf_single.arithmetic_fail | 1 | files where taxable value plus tax does not equal the total, or a tax line does not match its rate (pdf_single) |
+| rd.pdf_packet.files | 10 | files read (pdf_packet) |
+| rd.pdf_packet.ok | 4 | files the reader passes with every required field at 0.90 or more and amounts that add up (pdf_packet) |
+| rd.pdf_packet.review | 6 | files that go to review (pdf_packet) |
+| rd.pdf_packet.review.human_look | 2 | of the review files, lowest required confidence 0.70 to 0.90 (pdf_packet) |
+| rd.pdf_packet.review.resend | 4 | of the review files, a required field missing or below 0.70 (pdf_packet) |
+| rd.pdf_packet.vendor_gstin.not_found | 3 | files where vendor_gstin was not found (pdf_packet) |
+| rd.pdf_packet.vendor_gstin.below_090 | 2 | files where vendor_gstin was found with confidence below 0.90 (pdf_packet) |
+| rd.pdf_packet.vendor_name.not_found | 0 | files where vendor_name was not found (pdf_packet) |
+| rd.pdf_packet.vendor_name.below_090 | 0 | files where vendor_name was found with confidence below 0.90 (pdf_packet) |
+| rd.pdf_packet.invoice_no.not_found | 0 | files where invoice_no was not found (pdf_packet) |
+| rd.pdf_packet.invoice_no.below_090 | 2 | files where invoice_no was found with confidence below 0.90 (pdf_packet) |
+| rd.pdf_packet.invoice_date.not_found | 0 | files where invoice_date was not found (pdf_packet) |
+| rd.pdf_packet.invoice_date.below_090 | 0 | files where invoice_date was found with confidence below 0.90 (pdf_packet) |
+| rd.pdf_packet.wo_id.not_found | 0 | files where wo_id was not found (pdf_packet) |
+| rd.pdf_packet.wo_id.below_090 | 0 | files where wo_id was found with confidence below 0.90 (pdf_packet) |
+| rd.pdf_packet.taxable.not_found | 0 | files where taxable was not found (pdf_packet) |
+| rd.pdf_packet.taxable.below_090 | 0 | files where taxable was found with confidence below 0.90 (pdf_packet) |
+| rd.pdf_packet.total.not_found | 0 | files where total was not found (pdf_packet) |
+| rd.pdf_packet.total.below_090 | 0 | files where total was found with confidence below 0.90 (pdf_packet) |
+| rd.pdf_packet.arithmetic_fail | 0 | files where taxable value plus tax does not equal the total, or a tax line does not match its rate (pdf_packet) |
+| rd.phone_photo.files | 9 | files read (phone_photo) |
+| rd.phone_photo.ok | 0 | files the reader passes with every required field at 0.90 or more and amounts that add up (phone_photo) |
+| rd.phone_photo.review | 9 | files that go to review (phone_photo) |
+| rd.phone_photo.review.human_look | 1 | of the review files, lowest required confidence 0.70 to 0.90 (phone_photo) |
+| rd.phone_photo.review.resend | 8 | of the review files, a required field missing or below 0.70 (phone_photo) |
+| rd.phone_photo.vendor_gstin.not_found | 2 | files where vendor_gstin was not found (phone_photo) |
+| rd.phone_photo.vendor_gstin.below_090 | 7 | files where vendor_gstin was found with confidence below 0.90 (phone_photo) |
+| rd.phone_photo.vendor_name.not_found | 0 | files where vendor_name was not found (phone_photo) |
+| rd.phone_photo.vendor_name.below_090 | 0 | files where vendor_name was found with confidence below 0.90 (phone_photo) |
+| rd.phone_photo.invoice_no.not_found | 2 | files where invoice_no was not found (phone_photo) |
+| rd.phone_photo.invoice_no.below_090 | 1 | files where invoice_no was found with confidence below 0.90 (phone_photo) |
+| rd.phone_photo.invoice_date.not_found | 2 | files where invoice_date was not found (phone_photo) |
+| rd.phone_photo.invoice_date.below_090 | 1 | files where invoice_date was found with confidence below 0.90 (phone_photo) |
+| rd.phone_photo.wo_id.not_found | 0 | files where wo_id was not found (phone_photo) |
+| rd.phone_photo.wo_id.below_090 | 0 | files where wo_id was found with confidence below 0.90 (phone_photo) |
+| rd.phone_photo.taxable.not_found | 1 | files where taxable was not found (phone_photo) |
+| rd.phone_photo.taxable.below_090 | 4 | files where taxable was found with confidence below 0.90 (phone_photo) |
+| rd.phone_photo.total.not_found | 1 | files where total was not found (phone_photo) |
+| rd.phone_photo.total.below_090 | 4 | files where total was found with confidence below 0.90 (phone_photo) |
+| rd.phone_photo.arithmetic_fail | 3 | files where taxable value plus tax does not equal the total, or a tax line does not match its rate (phone_photo) |
+| rd.packets.has_attendance | 2 | packets with a attendance page recognised |
+| rd.packets.has_challan | 2 | packets with a challan page recognised |
+| rd.packets.has_service_report | 1 | packets with a service_report page recognised |
+| rd.packets.has_pf_esic | 1 | packets with a pf_esic page recognised |
+| rd.packets.no_support | 5 | packets with no supporting page recognised |
+| rd.credit_notes | 1 | files read as a credit note |
+| rd.no_gst | 1 | files that print 'GST not applicable' |
+| rd.text_layer_fast_path | 0 | files read through the pdfplumber text-layer fast path (expected 0) |
+| rd.simulated | 0 | cached results marked reader simulated |
+
+<!-- END 14_reader_results.py -->
+
+<!-- BEGIN 15_reader_evaluation.py -->
+
+### Figures from `analysis/15_reader_evaluation.py` (used in notes/reader-evaluation.md. FIRST-RUN score of the reader against the 10 hand-labelled bills (analysis/gold_labels.csv, read only), from the frozen analysis/reader_first_run.json)
+
+Script: `analysis/15_reader_evaluation.py`. Output: `analysis/out/figures_reader_eval.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
+
+```
+.venv\Scripts\python.exe -I analysis\15_reader_evaluation.py
+```
+
+`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+
+| Figure id | Value | What it counts |
+|---|---|---|
+| re.first.pdf_single.fields_correct | 17 | first run, pdf_single: field readings correct |
+| re.first.pdf_single.fields_total | 18 | first run, pdf_single: field readings scored |
+| re.first.pdf_single.key_bills_correct | 2 | first run, pdf_single: bills correct on all four key fields |
+| re.first.pdf_single.bills | 3 | first run, pdf_single: bills |
+| re.first.pdf_single.vendor_name.correct | 3 | first run, pdf_single: vendor_name correct (of 3) |
+| re.first.pdf_single.invoice_number.correct | 3 | first run, pdf_single: invoice_number correct (of 3) |
+| re.first.pdf_single.invoice_date.correct | 3 | first run, pdf_single: invoice_date correct (of 3) |
+| re.first.pdf_single.amount.correct | 3 | first run, pdf_single: amount correct (of 3) |
+| re.first.pdf_single.gstin.correct | 2 | first run, pdf_single: gstin correct (of 3) |
+| re.first.pdf_single.po_or_wo_number.correct | 3 | first run, pdf_single: po_or_wo_number correct (of 3) |
+| re.first.pdf_packet.fields_correct | 17 | first run, pdf_packet: field readings correct |
+| re.first.pdf_packet.fields_total | 18 | first run, pdf_packet: field readings scored |
+| re.first.pdf_packet.key_bills_correct | 2 | first run, pdf_packet: bills correct on all four key fields |
+| re.first.pdf_packet.bills | 3 | first run, pdf_packet: bills |
+| re.first.pdf_packet.vendor_name.correct | 3 | first run, pdf_packet: vendor_name correct (of 3) |
+| re.first.pdf_packet.invoice_number.correct | 3 | first run, pdf_packet: invoice_number correct (of 3) |
+| re.first.pdf_packet.invoice_date.correct | 3 | first run, pdf_packet: invoice_date correct (of 3) |
+| re.first.pdf_packet.amount.correct | 3 | first run, pdf_packet: amount correct (of 3) |
+| re.first.pdf_packet.gstin.correct | 2 | first run, pdf_packet: gstin correct (of 3) |
+| re.first.pdf_packet.po_or_wo_number.correct | 3 | first run, pdf_packet: po_or_wo_number correct (of 3) |
+| re.first.phone_photo.fields_correct | 18 | first run, phone_photo: field readings correct |
+| re.first.phone_photo.fields_total | 24 | first run, phone_photo: field readings scored |
+| re.first.phone_photo.key_bills_correct | 1 | first run, phone_photo: bills correct on all four key fields |
+| re.first.phone_photo.bills | 4 | first run, phone_photo: bills |
+| re.first.phone_photo.vendor_name.correct | 4 | first run, phone_photo: vendor_name correct (of 4) |
+| re.first.phone_photo.invoice_number.correct | 3 | first run, phone_photo: invoice_number correct (of 4) |
+| re.first.phone_photo.invoice_date.correct | 3 | first run, phone_photo: invoice_date correct (of 4) |
+| re.first.phone_photo.amount.correct | 2 | first run, phone_photo: amount correct (of 4) |
+| re.first.phone_photo.gstin.correct | 2 | first run, phone_photo: gstin correct (of 4) |
+| re.first.phone_photo.po_or_wo_number.correct | 4 | first run, phone_photo: po_or_wo_number correct (of 4) |
+| re.first.all.fields_correct | 52 | first run, all: field readings correct |
+| re.first.all.fields_total | 60 | first run, all: field readings scored |
+| re.first.all.key_bills_correct | 5 | first run, all: bills correct on all four key fields |
+| re.first.all.bills | 10 | first run, all: bills |
+| re.first.all.vendor_name.correct | 10 | first run, all: vendor_name correct (of 10) |
+| re.first.all.invoice_number.correct | 9 | first run, all: invoice_number correct (of 10) |
+| re.first.all.invoice_date.correct | 9 | first run, all: invoice_date correct (of 10) |
+| re.first.all.amount.correct | 8 | first run, all: amount correct (of 10) |
+| re.first.all.gstin.correct | 6 | first run, all: gstin correct (of 10) |
+| re.first.all.po_or_wo_number.correct | 10 | first run, all: po_or_wo_number correct (of 10) |
+| re.first.cal.hi.n | 44 | first run: readings with confidence 0.90 or more |
+| re.first.cal.hi.correct | 44 | first run: of those, correct |
+| re.first.cal.mid.n | 8 | first run: readings with confidence 0.70 to 0.90 |
+| re.first.cal.mid.correct | 6 | first run: of those, correct |
+| re.first.cal.lo.n | 8 | first run: readings with confidence below 0.70 (or not read) |
+| re.first.cal.lo.correct | 2 | first run: of those, correct |
+| re.first.wrong_conf_070_plus | 2 | first run: wrong readings with confidence 0.70 or more |
+| re.second.pdf_single.fields_correct | 17 | second score (label corrected), pdf_single: field readings correct |
+| re.second.pdf_single.key_bills_correct | 2 | second score, pdf_single: bills correct on all four key fields |
+| re.second.pdf_single.vendor_name.correct | 3 | second score, pdf_single: vendor_name correct |
+| re.second.pdf_single.invoice_number.correct | 3 | second score, pdf_single: invoice_number correct |
+| re.second.pdf_single.invoice_date.correct | 3 | second score, pdf_single: invoice_date correct |
+| re.second.pdf_single.amount.correct | 3 | second score, pdf_single: amount correct |
+| re.second.pdf_single.gstin.correct | 2 | second score, pdf_single: gstin correct |
+| re.second.pdf_single.po_or_wo_number.correct | 3 | second score, pdf_single: po_or_wo_number correct |
+| re.second.pdf_packet.fields_correct | 17 | second score (label corrected), pdf_packet: field readings correct |
+| re.second.pdf_packet.key_bills_correct | 2 | second score, pdf_packet: bills correct on all four key fields |
+| re.second.pdf_packet.vendor_name.correct | 3 | second score, pdf_packet: vendor_name correct |
+| re.second.pdf_packet.invoice_number.correct | 3 | second score, pdf_packet: invoice_number correct |
+| re.second.pdf_packet.invoice_date.correct | 3 | second score, pdf_packet: invoice_date correct |
+| re.second.pdf_packet.amount.correct | 3 | second score, pdf_packet: amount correct |
+| re.second.pdf_packet.gstin.correct | 2 | second score, pdf_packet: gstin correct |
+| re.second.pdf_packet.po_or_wo_number.correct | 3 | second score, pdf_packet: po_or_wo_number correct |
+| re.second.phone_photo.fields_correct | 19 | second score (label corrected), phone_photo: field readings correct |
+| re.second.phone_photo.key_bills_correct | 1 | second score, phone_photo: bills correct on all four key fields |
+| re.second.phone_photo.vendor_name.correct | 4 | second score, phone_photo: vendor_name correct |
+| re.second.phone_photo.invoice_number.correct | 3 | second score, phone_photo: invoice_number correct |
+| re.second.phone_photo.invoice_date.correct | 3 | second score, phone_photo: invoice_date correct |
+| re.second.phone_photo.amount.correct | 3 | second score, phone_photo: amount correct |
+| re.second.phone_photo.gstin.correct | 2 | second score, phone_photo: gstin correct |
+| re.second.phone_photo.po_or_wo_number.correct | 4 | second score, phone_photo: po_or_wo_number correct |
+| re.second.all.fields_correct | 53 | second score (label corrected), all: field readings correct |
+| re.second.all.key_bills_correct | 5 | second score, all: bills correct on all four key fields |
+| re.second.all.vendor_name.correct | 10 | second score, all: vendor_name correct |
+| re.second.all.invoice_number.correct | 9 | second score, all: invoice_number correct |
+| re.second.all.invoice_date.correct | 9 | second score, all: invoice_date correct |
+| re.second.all.amount.correct | 9 | second score, all: amount correct |
+| re.second.all.gstin.correct | 6 | second score, all: gstin correct |
+| re.second.all.po_or_wo_number.correct | 10 | second score, all: po_or_wo_number correct |
+| re.second.cal.hi.n | 44 | second score: readings with confidence 0.90 or more |
+| re.second.cal.hi.correct | 44 | second score: of those, correct |
+| re.second.cal.mid.n | 8 | second score: readings with confidence 0.70 to 0.90 |
+| re.second.cal.mid.correct | 6 | second score: of those, correct |
+| re.second.cal.lo.n | 8 | second score: readings with confidence below 0.70 (or not read) |
+| re.second.cal.lo.correct | 3 | second score: of those, correct |
+| re.second.wrong_conf_070_plus | 2 | second score: wrong readings with confidence 0.70 or more |
+| re.first.suspect_label_errors | 1 | first run: misses where the label, not the reader, was wrong (bill-28 amount; the user has since corrected it) |
+
+<!-- END 15_reader_evaluation.py -->
+
+<!-- BEGIN 16_intake_run.py -->
+
+### Figures from `analysis/16_intake_run.py` (used in notes/intake-run.md. All 40 inbox bills through the reader results, the checks, the routing and parsed_bill)
+
+Script: `analysis/16_intake_run.py`. Output: `analysis/out/figures_intake.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
+
+```
+.venv\Scripts\python.exe -I analysis\clean.py
+.venv\Scripts\python.exe -I analysis\02_stage_times.py
+.venv\Scripts\python.exe -I analysis\04_query_forensics.py
+.venv\Scripts\python.exe -I analysis\16_intake_run.py
+```
+
+`mingw32-make analyse` runs the whole chain and refreshes this register (`mingw32-make setup` first on a new machine).
+
+| Figure id | Value | What it counts |
+|---|---|---|
+| ir.files | 40 | bills run through reader results, checks, routing and parsed_bill |
+| ir.parsed_bill_rows | 40 | rows written to parsed_bill in the working copy |
+| ir.all.route.auto-clear | 1 | verdict auto-clear, all |
+| ir.all.route.fix-before-sending | 3 | verdict fix-before-sending, all |
+| ir.all.route.fix-internal | 0 | verdict fix-internal, all |
+| ir.all.route.human-look | 22 | verdict human-look, all |
+| ir.all.route.resend | 14 | verdict resend, all |
+| ir.all.files | 40 | bills, all |
+| ir.pdf_single.route.auto-clear | 1 | verdict auto-clear, pdf_single |
+| ir.pdf_single.route.fix-before-sending | 3 | verdict fix-before-sending, pdf_single |
+| ir.pdf_single.route.fix-internal | 0 | verdict fix-internal, pdf_single |
+| ir.pdf_single.route.human-look | 15 | verdict human-look, pdf_single |
+| ir.pdf_single.route.resend | 2 | verdict resend, pdf_single |
+| ir.pdf_single.files | 21 | bills, pdf_single |
+| ir.pdf_packet.route.auto-clear | 0 | verdict auto-clear, pdf_packet |
+| ir.pdf_packet.route.fix-before-sending | 0 | verdict fix-before-sending, pdf_packet |
+| ir.pdf_packet.route.fix-internal | 0 | verdict fix-internal, pdf_packet |
+| ir.pdf_packet.route.human-look | 6 | verdict human-look, pdf_packet |
+| ir.pdf_packet.route.resend | 4 | verdict resend, pdf_packet |
+| ir.pdf_packet.files | 10 | bills, pdf_packet |
+| ir.phone_photo.route.auto-clear | 0 | verdict auto-clear, phone_photo |
+| ir.phone_photo.route.fix-before-sending | 0 | verdict fix-before-sending, phone_photo |
+| ir.phone_photo.route.fix-internal | 0 | verdict fix-internal, phone_photo |
+| ir.phone_photo.route.human-look | 1 | verdict human-look, phone_photo |
+| ir.phone_photo.route.resend | 8 | verdict resend, phone_photo |
+| ir.phone_photo.files | 9 | bills, phone_photo |
+| ir.check.P1/H1.pass | 28 | bills where check P1/H1 returns pass |
+| ir.check.P1/H1.fail | 12 | bills where check P1/H1 returns fail |
+| ir.check.P1/H1.warn | 0 | bills where check P1/H1 returns warn |
+| ir.check.P1/H1.needs-document | 0 | bills where check P1/H1 returns needs-document |
+| ir.check.P3.pass | 37 | bills where check P3 returns pass |
+| ir.check.P3.fail | 3 | bills where check P3 returns fail |
+| ir.check.P3.warn | 0 | bills where check P3 returns warn |
+| ir.check.P3.needs-document | 0 | bills where check P3 returns needs-document |
+| ir.check.H3.pass | 24 | bills where check H3 returns pass |
+| ir.check.H3.fail | 11 | bills where check H3 returns fail |
+| ir.check.H3.warn | 0 | bills where check H3 returns warn |
+| ir.check.H3.needs-document | 5 | bills where check H3 returns needs-document |
+| ir.check.H13.pass | 27 | bills where check H13 returns pass |
+| ir.check.H13.fail | 0 | bills where check H13 returns fail |
+| ir.check.H13.warn | 13 | bills where check H13 returns warn |
+| ir.check.H13.needs-document | 0 | bills where check H13 returns needs-document |
+| ir.check.H11.pass | 32 | bills where check H11 returns pass |
+| ir.check.H11.fail | 3 | bills where check H11 returns fail |
+| ir.check.H11.warn | 3 | bills where check H11 returns warn |
+| ir.check.H11.needs-document | 2 | bills where check H11 returns needs-document |
+| ir.check.H10.pass | 23 | bills where check H10 returns pass |
+| ir.check.H10.fail | 0 | bills where check H10 returns fail |
+| ir.check.H10.warn | 11 | bills where check H10 returns warn |
+| ir.check.H10.needs-document | 6 | bills where check H10 returns needs-document |
+| ir.h3.expired | 1 | bills whose work order is expired (or not yet valid) on the bill date |
+| ir.h3.exhausted | 11 | bills whose work order is over its approved value after the bill |
+| ir.h3.both | 1 | bills with both |
+| ir.h3.fail_any | 11 | bills where H3 fails |
+| ir.h10.warn_two_readings_differ | 10 | bills where H10 warns because the two place-of-supply readings give different tax types |
+| ir.reader_ok_but_flagged | 7 | bills the reader passes (status ok) that a check still fails or warns on |
+| ir.own_row_linked | 33 | inbox bills linked to their own register row (needed to replay the duplicate check) |
+
+<!-- END 16_intake_run.py -->

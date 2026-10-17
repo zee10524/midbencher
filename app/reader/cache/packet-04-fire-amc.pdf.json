@@ -1,0 +1,114 @@
+{
+ "file": "packet-04-fire-amc.pdf",
+ "sha256": "5ec3d6df92f73e42ef48acf3043180c2603a998fb5f670dea1afc041c4d8fd3f",
+ "bill_type": "pdf_packet",
+ "reader": {
+  "version": "reader-2026.10.1",
+  "dpi": 300,
+  "vision_fallback": false,
+  "simulated": false,
+  "text_layer_fast_path": false
+ },
+ "pages": [
+  {
+   "page": 1,
+   "source": "tesseract",
+   "skew_degrees": 0.0,
+   "background_cropped": false,
+   "mean_word_conf": 0.937,
+   "class": "bill"
+  }
+ ],
+ "bill_page": 1,
+ "doc_type": "invoice",
+ "supporting": {
+  "attendance": false,
+  "challan": false,
+  "service_report": false,
+  "pf_esic": false
+ },
+ "other_pages": [],
+ "fields": {
+  "vendor_name": {
+   "value": "NAVDEEP SARTHAK FIRE SAFETY SYSTEMS",
+   "conf": 0.9680000000000001,
+   "note": "agrees with the 'For ...' line at the foot of the bill"
+  },
+  "vendor_gstin": {
+   "value": "07BYHCQ2497O1ZU",
+   "conf": 0.95,
+   "note": "2 character(s) repaired by position; state name agrees with the state code; a second read of the word agrees"
+  },
+  "invoice_no": {
+   "value": "049/25-26/074",
+   "conf": 0.9,
+   "note": "read as printed"
+  },
+  "invoice_date": {
+   "value": "2025-09-14",
+   "conf": 0.9400000000000001,
+   "note": "day-month-year as printed; inside the financial year in the invoice number"
+  },
+  "property_name": {
+   "value": "DEL-R03",
+   "conf": 0.99,
+   "note": "matched to SAP property 'Residential Society, Sector 67, New Delhi'"
+  },
+  "wo_id": {
+   "value": "4101782",
+   "conf": 0.96,
+   "note": "read as printed"
+  },
+  "taxable": {
+   "value": 39160.0,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0,
+   "note": ""
+  },
+  "igst": {
+   "value": 7048.8,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "total": {
+   "value": 46208.8,
+   "conf": 0.97,
+   "note": "taxable + tax = total, and each tax line matches its rate"
+  },
+  "hsn_sac": {
+   "value": "998719",
+   "conf": 0.96,
+   "note": "code printed in the first item line"
+  },
+  "place_of_supply": {
+   "value": "Delhi",
+   "conf": 0.9314285714285714,
+   "note": "closest state name, similarity 1.00"
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.74,
+   "note": "buyer's GSTIN"
+  },
+  "udyam": {
+   "value": "Micro",
+   "conf": 0.9466666666666667,
+   "note": "claim printed by the vendor, not proof"
+  }
+ },
+ "no_gst_printed": false,
+ "arithmetic_ok": true,
+ "status": "ok",
+ "route_hint": "auto-clear",
+ "overall_confidence": 0.9,
+ "reasons": []
+}

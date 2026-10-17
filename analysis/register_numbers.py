@@ -41,6 +41,12 @@ SOURCES = [
      "notes/assumptions.md and the docstring of check H13 in app/rules/checks.py. What loose duplicate matching adds on the register; the backtest and impact figures use exact matching only"),
     ("13_duplicate_false_alarms.py", "figures_dupalarm.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py"],
      "notes/duplicate-false-alarms.md. Loose near-duplicate matching run on every posted invoice in the SAP extract"),
+    ("14_reader_results.py", "figures_reader.csv", [],
+     "app/reader/ (reader summary). What the reader did with the 40 inbox files; reads app/reader/cache/*.json (written by `python -m app.reader`); no label file is read"),
+    ("15_reader_evaluation.py", "figures_reader_eval.csv", [],
+     "notes/reader-evaluation.md. FIRST-RUN score of the reader against the 10 hand-labelled bills (analysis/gold_labels.csv, read only), from the frozen analysis/reader_first_run.json"),
+    ("16_intake_run.py", "figures_intake.csv", ["clean.py", "02_stage_times.py", "04_query_forensics.py"],
+     "notes/intake-run.md. All 40 inbox bills through the reader results, the checks, the routing and parsed_bill"),
 ]
 
 text = NUM.read_text(encoding="utf-8")
