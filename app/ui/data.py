@@ -19,6 +19,7 @@ from pathlib import Path
 
 from app import intake
 from app.reader import crosscheck, ocr, pipeline, vision
+from app.ui import chat
 from app.rules import Context
 from app.rules.model import AUTO_CLEAR, LOOK
 from app.sap.adapter import AS_OF, SapAdapter
@@ -253,15 +254,20 @@ def messages(res: dict, out: dict) -> list[dict]:
     vendor = name.get("value") if name.get("value") and name.get("conf", 0) >= LOOK else "Vendor"
     noun = "credit note" if res.get("doc_type") == "credit_note" else "bill"
     inv = (f.get("invoice_no") or {})
-    ref = f"your {noun} {inv['value']}" if inv.get("value") and inv.get("conf", 0) >= LOOK else f"your {noun}"
+    ok_inv = bool(inv.get("value") and inv.get("conf", 0) >= LOOK)
+    ref = f"your {noun} {inv['value']}" if ok_inv else f"your {noun}"
     msgs = []
     for a in out["routing"].actions:
         if a.kind == "resend":
             body = (f"Hello {vendor}, we could not read these parts of {ref} clearly: {', '.join(out['unread'])}. Please send a clearer photo or scan of the whole {noun}. Thank you."
                     if out["unread"] else f"Hello {vendor}, we could not read {ref} clearly. Please send a clearer photo or scan of the whole {noun}. Thank you.")
-            msgs.append(dict(to=vendor, channel="WhatsApp to the vendor", text=body))
+            ask, ask_hi = chat.ask_resend(noun, out["unread"])
+            msgs.append(dict(to=vendor, channel="WhatsApp to the vendor", text=body, kind="resend", ask=ask, ask_hi=ask_hi,
+                             hi=chat.hindi_resend(vendor, noun, inv.get("value") if ok_inv else None, out["unread"])))
         elif a.kind == "tell-vendor":
-            msgs.append(dict(to=vendor, channel="WhatsApp to the vendor", text=f"Hello {vendor}, we checked {ref} on arrival. To pay it without delay please fix: {a.text} Please send the corrected {noun} today. Thank you."))
+            ask, ask_hi = chat.ask_fix(noun, a.text, a.checks)
+            msgs.append(dict(to=vendor, channel="WhatsApp to the vendor", text=f"Hello {vendor}, we checked {ref} on arrival. To pay it without delay please fix: {a.text} Please send the corrected {noun} today. Thank you.",
+                             kind="tell-vendor", ask=ask, ask_hi=ask_hi, hi=chat.hindi_tell_vendor(vendor, noun, inv.get("value") if ok_inv else None, a.checks)))
         elif a.kind == "task":
             msgs.append(dict(to=WHO.get(a.to, a.to), channel=f"In-app task for {WHO.get(a.to, a.to)}", text=a.text))
         elif a.kind == "human-look":
@@ -278,6 +284,11 @@ def vision_label(res: dict) -> str | None:
 
 
 def card(S: State, res: dict, source: str, replay: bool, ms: float = 0.0) -> dict:
+    return _card(S, res, source, replay, ms)[0]
+
+
+def _card(S: State, res: dict, source: str, replay: bool, ms: float = 0.0) -> tuple[dict, dict, dict]:
+    """The card, the reader result it was made from (with the cross-check applied) and the intake outcome."""
     res = crosscheck.apply(res, vision.stored(res["file"], res.get("sha256")))
     with SapAdapter(pipeline.PACK_DB) as sap:
         ctx = Context(sap, S.bills, bill_counted_in_billed=replay)
@@ -295,7 +306,18 @@ def card(S: State, res: dict, source: str, replay: bool, ms: float = 0.0) -> dic
                 route=out["routing"].route, headline=label, sub=sub, partial=out["partial"], checks_ran=ran, checks_total=total,
                 not_run=[dict(check=n["check"], title=n["title"], needs=n["needs"]) for n in out["not_run"]], issues=issues, more_issues=more, fields=rows,
                 inputs=[r["key"] for r in rows if r["state"] in ("unread", "differ")], vision_label=vision_label(res), messages=messages(res, out), outbox_note="Simulated outbox. Nothing is sent.",
-                review_note="Fields marked needs human review are never guessed. A person can type the ones that were not read.", seconds=round(ms / 1000, 2))
+                review_note="Fields marked needs human review are never guessed. A person can type the ones that were not read.", seconds=round(ms / 1000, 2),
+                chat_note="Simulated: nothing is sent", hindi_note="The Hindi is a draft and needs a Hindi speaker's review before real use."), res, out
+
+
+def reply_card(S: State, res: dict, source: str, replay: bool, ms: float = 0.0) -> dict:
+    """A vendor's reply photo, read and checked: the full card for it, and the company's answer for the thread (English and Hindi). The status sentence comes from the tracker when the
+    bill is in the register, and is the register's own truth as of the as-of date; for a bill that is not in the register the answer says only that the vendor will be told of the next step."""
+    c, res2, out = _card(S, res, source, replay, ms)
+    own = out.get("own_bill_id")
+    bill = next((b for b in S.bills if b.bill_id == own), None) if own else None
+    vendor_msgs = [m for m in c["messages"] if m["channel"].startswith("WhatsApp")]
+    return dict(card=c, reply=chat.reply(res2, out, bill, vendor_msgs), status_from="tracker" if bill is not None else "none", file=c["file"])
 
 
 def apply_review(S: State, key: str, values: dict) -> dict:

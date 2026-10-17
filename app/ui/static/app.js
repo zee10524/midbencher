@@ -149,11 +149,15 @@ function renderCard(c) {
   }
   if (c.saved) card.appendChild(el("p", "saved", c.saved.message));
   card.appendChild(el("p", "muted small", c.review_note));
+  const toVendor = c.messages.filter((m) => m.channel.startsWith("WhatsApp"));
+  const others = c.messages.filter((m) => !m.channel.startsWith("WhatsApp"));
+  card.appendChild(el("h2", "", "Message to the vendor"));
+  card.appendChild(phone(c, toVendor));
   card.appendChild(el("h2", "", "Ready to send"));
   const ob = el("div", "outbox");
   ob.appendChild(el("p", "note", c.outbox_note));
-  if (!c.messages.length) ob.appendChild(el("p", "muted", "No message is needed."));
-  c.messages.forEach((m) => {
+  if (!others.length) ob.appendChild(el("p", "muted", "No task or other message is needed."));
+  others.forEach((m) => {
     const wrap = el("div", "msg");
     add(wrap, el("div", "to", "To " + m.to + " · " + m.channel), el("div", "bubble", m.text));
     ob.appendChild(wrap);
@@ -161,6 +165,83 @@ function renderCard(c) {
   card.appendChild(ob);
   if (c.source !== "live" && tesseract && lastFile) add(card, add(el("div", "live-row"), liveButton()));
   area.appendChild(card);
+}
+
+// A phone-style chat with the vendor. Simulated: nothing is sent. The drafted message is shown in English or Hindi; "Vendor replies with a photo" reads the photo
+// (the stored reading, or Tesseract when it is installed), re-runs the checks, and the answer is posted back to the thread in plain words.
+function phone(c, msgs) {
+  let lang = "en";
+  const items = msgs.map((m) => ({ who: "company", en: m.text, hi: m.hi || m.text }));
+  const wrap = el("div", "phone");
+  const top = add(el("div", "phone-top"), el("div", "phone-name", (msgs[0] && msgs[0].to) || "Vendor"), el("div", "phone-sim", c.chat_note));
+  const seg = el("div", "lang");
+  const bEn = el("button", "on", "English"), bHi = el("button", "", "हिन्दी");
+  [bEn, bHi].forEach((b) => { b.type = "button"; });
+  add(seg, bEn, bHi);
+  const log = el("div", "phone-log");
+  const note = el("p", "muted small");
+  note.hidden = true;
+  const render = () => {
+    clear(log);
+    if (!items.length) log.appendChild(el("p", "phone-empty", "No message to the vendor is needed."));
+    items.forEach((it) => {
+      const b = el("div", "chat " + it.who);
+      if (it.thumb) { const im = el("img", "thumb"); im.src = it.thumb; im.alt = "the photo the vendor sent"; b.appendChild(im); }
+      b.appendChild(el("div", "t", lang === "hi" ? it.hi : it.en));
+      if (it.card) {
+        const open = el("button", "pick", lang === "hi" ? "इस जवाब का पूरा कार्ड खोलें" : "Open the full card for this reply");
+        open.type = "button";
+        open.onclick = () => renderCard(it.card);
+        b.appendChild(open);
+      }
+      log.appendChild(b);
+    });
+    log.scrollTop = log.scrollHeight;
+    bEn.className = lang === "en" ? "on" : "";
+    bHi.className = lang === "hi" ? "on" : "";
+    note.hidden = lang !== "hi";
+    note.textContent = c.hindi_note;
+  };
+  bEn.onclick = () => { lang = "en"; render(); };
+  bHi.onclick = () => { lang = "hi"; render(); };
+  add(top, seg);
+  add(wrap, top, log, note);
+  const msg = el("span", "small muted");
+  const send = async (label, thumb, url, opts) => {
+    items.push({ who: "vendor", en: "Photo: " + label, hi: "फ़ोटो: " + label, thumb });
+    render();
+    msg.textContent = " Reading the photo.";
+    try {
+      const r = await api(url, opts);
+      items.push({ who: "company", en: r.reply.en, hi: r.reply.hi, card: r.card });
+      msg.textContent = "";
+    } catch (e) { msg.textContent = " " + e.message; items.pop(); }
+    render();
+  };
+  const file = el("input");
+  file.type = "file"; file.accept = "image/*,.pdf"; file.hidden = true;
+  file.onchange = () => {
+    const f = file.files[0];
+    if (!f) return;
+    send(f.name, f.type.startsWith("image/") ? URL.createObjectURL(f) : null, "/api/intake/reply", { method: "POST", headers: { "X-Filename": f.name }, body: f });
+    file.value = "";
+  };
+  const go = el("button", "btn quiet", "Vendor replies with a photo");
+  go.type = "button";
+  go.onclick = () => file.click();
+  const sel = el("select");
+  sel.setAttribute("aria-label", "or reply with a sample bill");
+  sel.appendChild(el("option", "", "or reply with a sample bill"));
+  JSON.parse($("sample").dataset.files || "[]").forEach((f) => sel.appendChild(el("option", "", f)));
+  sel.onchange = () => {
+    if (sel.selectedIndex < 1) return;
+    const f = sel.value;
+    sel.selectedIndex = 0;
+    send(f, null, "/api/intake/reply?sample=" + encodeURIComponent(f), { method: "POST" });
+  };
+  add(wrap, add(el("div", "phone-send"), go, sel, msg), file);
+  render();
+  return wrap;
 }
 
 function liveButton() {

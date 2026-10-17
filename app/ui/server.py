@@ -5,6 +5,7 @@
     GET  /api/samples              the files in the bill inbox, for the picker
     POST /api/intake               a dropped file (raw body, X-Filename header) or ?sample=<file>: the stored reading, checked, as one card
     POST /api/intake/live          the same file read live by the reader (only when Tesseract is found)
+    POST /api/intake/reply         a vendor's reply photo (raw body, X-Filename, or ?sample=<file>): the card for it and the answer posted to the simulated WhatsApp thread
     POST /api/intake/review        values a clerk typed for fields that were not read ({key, values}): the checks run again and the result is saved to parsed_bill as human_review
     GET  /api/control?cutoff=1     the control tower
     GET  /api/impact               the backtest ranges
@@ -82,7 +83,7 @@ def make_handler(S: data.State):
             u = urlparse(self.path)
             q = parse_qs(u.query)
             try:
-                if u.path not in ("/api/intake", "/api/intake/live", "/api/intake/review"):
+                if u.path not in ("/api/intake", "/api/intake/live", "/api/intake/review", "/api/intake/reply"):
                     return self._send(404, b"Not found", "text/plain; charset=utf-8")
                 if not self._wait():
                     return
@@ -98,6 +99,16 @@ def make_handler(S: data.State):
                         return self._json(dict(error=str(e)), 400)
                 name = q.get("sample", [None])[0] or self.headers.get("X-Filename") or "upload"
                 t = time.time()
+                if u.path == "/api/intake/reply":
+                    # the vendor's reply photo: the stored reading if there is one, else Tesseract live, else nothing (never a guess)
+                    if not body and name in S.by_name:
+                        body = (data.pipeline.INBOX / name).read_bytes()
+                    res = data.stored_for(S, None, body or None)
+                    if res is not None:
+                        return self._json(data.reply_card(S, res, "stored", replay=True, ms=(time.time() - t) * 1000))
+                    if not data.tesseract_found():
+                        return self._json(dict(error="This photo is not one of the stored sample bills and Tesseract is not installed on this machine, so it cannot be read here. Pick a sample, or install Tesseract."), 400)
+                    return self._json(data.reply_card(S, data.live_read(S, name, body), "live", replay=False, ms=(time.time() - t) * 1000))
                 if u.path == "/api/intake/live":
                     if not data.tesseract_found():
                         return self._json(dict(error="Tesseract is not installed on this machine, so the live reader is not available."), 400)
