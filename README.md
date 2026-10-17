@@ -20,7 +20,7 @@ Check Tesseract with `tesseract --version`. Nothing else is needed from outside 
 
 Every step works two ways: `python tasks.py <step>` (plain Python, same on both systems, nothing to install first) or `make <step>`. Run from the project root. Times are from a clean clone on a Windows laptop; Linux is similar.
 
-### 1. Set up: about N (needs the internet once)
+### 1. Set up: about 5 minutes (downloads the packages; needs the internet once)
 
 ```
 git clone <the repository URL> riklr-ai
@@ -31,21 +31,21 @@ python3.11 tasks.py setup        # Linux       (or: make setup)
 
 Creates `.venv` and installs the pinned versions in `constraints.txt`. Expected last lines: `Tesseract found: the live reader will be available.` (or the note that it is not found, which is fine) and `Setup done.`
 
-### 2. Analyse: about N
+### 2. Analyse: about 2.5 minutes
 
 ```
 python tasks.py analyse          # or: make analyse
 ```
 
-Runs the numbered scripts in `analysis/`, then refreshes `notes/numbers.md`. Expected: one line per script (`== clean.py`, `== 01_profile.py` and so on up to `== 17_runway_90d.py`) and, last, `registered N figures in .../notes/numbers.md`. It also rewrites the files in `analysis/out/`, `backtest/out/` and `notes/` that the app and the tests read; they are already in the repository, so the result should match what you cloned.
+Runs the numbered scripts in `analysis/`, then refreshes `notes/numbers.md`. Expected: one line per script (`== clean.py`, `== 01_profile.py` and so on up to `== 17_runway_90d.py`) and, last, `registered 2208 figures in .../notes/numbers.md` (the figure count grows as figures are added). It also rewrites the files in `analysis/out/`, `backtest/out/` and `notes/` that the app and the tests read; they are already in the repository, so the result should match what you cloned.
 
-### 3. Test: about N
+### 3. Test: about 1.5 minutes
 
 ```
 python tasks.py test             # or: make test
 ```
 
-Expected last line: `N passed`. Tests that need Tesseract are skipped if it is not installed.
+Expected last line: `185 passed` (the number grows as tests are added; there must be no failures). Tests that need Tesseract are skipped if it is not installed.
 
 ### 4. Run
 
@@ -53,7 +53,7 @@ Expected last line: `N passed`. Tests that need Tesseract are skipped if it is n
 python tasks.py run              # or: make run
 ```
 
-Expected: `Riklr intake is running at http://127.0.0.1:8765/  (Ctrl+C to stop)` and a line saying whether Tesseract was found. Open that address. The register loads in about N when the server starts, so the first screen may take that long. Stop with Ctrl+C. Change the port with the `RIKLR_PORT` environment variable. `python tasks.py run --open` also opens the browser.
+Expected: `Riklr intake is running at http://127.0.0.1:8765/  (Ctrl+C to stop)` and a line saying whether Tesseract was found. Open that address. The server answers within a second or two; the register (11,000 bills) loads in the background for about two seconds, so the first Control tower or Impact request may wait that long. Stop with Ctrl+C. Change the port with the `RIKLR_PORT` environment variable. `python tasks.py run --open` also opens the browser.
 
 
 ## What is simulated

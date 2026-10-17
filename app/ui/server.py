@@ -121,8 +121,8 @@ def serve(host: str = "127.0.0.1", port: int | None = None, open_browser: bool =
     S = data.State().start()
     httpd = ThreadingHTTPServer((host, port), make_handler(S))
     url = f"http://{host}:{port}/"
-    print(f"Riklr intake is running at {url}  (Ctrl+C to stop)")
-    print("Tesseract found: " + ("yes, the live reader is available" if data.tesseract_found() else "no, the app uses the stored readings"))
+    print(f"Riklr intake is running at {url}  (Ctrl+C to stop)", flush=True)
+    print("Tesseract found: " + ("yes, the live reader is available" if data.tesseract_found() else "no, the app uses the stored readings"), flush=True)
     if open_browser:
         import webbrowser
 

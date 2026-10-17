@@ -1,0 +1,11 @@
+# One line ending (LF) in the repository and in every checkout, so generated files do not show as modified on Windows.
+* text=auto eol=lf
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.parquet binary
+*.sqlite binary
+*.zip binary
+# The case pack is kept byte for byte as delivered (never edited, never converted).
+pack/** -text
