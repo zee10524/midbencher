@@ -95,3 +95,43 @@ The control tower data (`control_tower()` in `app/tracker/pickorder.py`) gives t
 
 The payment-run cut-off is also a setting, not a finding: the tracker defaults to 1 day (the middle of the 0, 1 and 2 days replayed in `notes/solution-design.md` part f) until Treasury's real rule is known (`notes/payment-lag.md`).
 
+
+
+## Known limits
+
+What the adversarial review (`notes/adversarial-review.md`) found and this build does not fix. Figures are registered in `notes/numbers.md` under the ids shown.
+
+### Third-party data disclosure (Google Gemini)
+
+- **What happened.** To test a second reader, bill files from the case pack were uploaded to Google's Gemini API on a **free tier**. Stored readings: `rc.vision.successful_reads`, over `rc.vision.distinct_files_read` distinct files. Further uploads were made and rejected (an early run that failed with HTTP 404, then quota errors), so assume that **every one of the 40 inbox files left this machine at least once**.
+- **Why it matters.** The case brief says to treat the pack "as you would treat real client data", and the head of IT asked for anything like this to stay "inside something we can control and audit". Google's free tier may use inputs to improve its products. The files cannot be recalled.
+- **What the pack contains.** Synthetic vendors and bills ("any resemblance to a real company is coincidental"), but the brief's instruction stands, so this is disclosed rather than argued away.
+- **What changed.** The vision command now sends nothing unless `--confirm-send` is given, and says why. The reader is off by default and the app runs from stored responses, with no key and no network.
+- **What a real deployment needs.** A paid tier with no training on inputs and a data-processing agreement, or a model run inside the client's own boundary. Until then the vision reader is an experiment, not a feature.
+- **The key.** It lives in the git-ignored `.env`, in plaintext. No commit has contained it and a test checks that no tracked file looks like one. Rotate it when the experiment is over.
+
+### Trust in the readers
+
+- The reader is not shown to be accurate. On ten bills, read once, the vision model had no error (`rc.vision.fields_correct`); both readers see the same image, so agreement is not independent evidence. The rule-of-three upper bound on trusted-and-wrong fields is `rc.comb.trusted_wrong_upper95_pct` per cent.
+- The cross-check was scored on Tesseract's first-run reading, but the app shows the later stored reading, which was tuned on those ten bills. The tuned 8 of 10 (`rc.tess_live.key_bills`) is not a measure of anything.
+- Only the labelled bills have a vision reading under the scored model (`rc.vision_stored_of_labelled`); for the rest the card says it has not been read yet. A free tier allows `rc.free_tier.requests_per_day_per_model` requests a day per model, a figure taken from Google's own error message and not checked against its documentation.
+- A person typing a value has confidence 1.0 and there is no second reviewer (no maker-checker).
+
+### Audit trail
+
+- Human reviews are logged to `app/data/audit_log.jsonl`, hash-chained, with a typed reviewer name. It is a local file, git-ignored, and rewritable by anyone with file access; the name is not authenticated.
+- The first-run score is protected by a frozen snapshot and the git history only. The first-run Tesseract score exists in two forms because one label was corrected afterwards: `re.first.all.fields_correct` (labels as first given) and `rc.tess_first.fields_correct` (labels as corrected).
+- Stored vision readings made before this review keep only the normalised result, not the model's raw answer (`rc.vision.successful_reads` of them).
+
+### Security and integration
+
+- The local web app has no login. It refuses requests addressed to other hosts or coming from other pages, but anyone using this machine can use it. Uploaded bills stay in `app/data/uploads` with no retention rule.
+- SAP is a SQLite stand-in. Nothing was tested against RFC, and master-data quality is the client's open question.
+- WhatsApp is simulated: no delivery failures, no wrong numbers, no template approval, no check that the replier is the vendor. The Hindi is a draft for a Hindi speaker to review.
+
+### What the money case does not know
+
+- The days saved (`l.lever.low.save` to `l.lever.high.save` against `l.base.desk_mean`) are scenario bounds from a replay, not a confidence interval, and there is no rupee value or build-and-run cost beside them.
+- The biggest lever depends on an unconfirmed Treasury rule; the combined range without it is not computed.
+- The "likely to run dry" headline (`rw.dry`) moves with the window used for the burn: `rw.sens.window_60d.dry` with 60 days, `rw.sens.window_120d.dry` with 120; and with the horizon (`rw.sens.horizon_30d.dry`, `rw.sens.horizon_60d.dry`). It is not a forecast and has no seasonality.
+- The payment-run cut-off (0, 1 or 2 days) is a setting, not a finding.

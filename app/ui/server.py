@@ -53,7 +53,19 @@ def make_handler(S: data.State):
                 return False
             return True
 
+        def _local_only(self) -> bool:
+            """The page and the API answer only requests addressed to this machine and, when the browser says where the request came from, only from this same page. This stops another
+            web page open in the same browser from posting to the local server (cross-site requests and DNS rebinding). There is still no login: anyone on this machine can use it."""
+            host = (self.headers.get("Host") or "").rsplit(":", 1)[0].strip("[]").lower()
+            origin = self.headers.get("Origin")
+            if host not in ("127.0.0.1", "localhost", "::1") or (origin and urlparse(origin).netloc.lower() != (self.headers.get("Host") or "").lower()):
+                self._json(dict(error="This request was refused: the app answers only its own page on this machine."), 403)
+                return False
+            return True
+
         def do_GET(self):
+            if not self._local_only():
+                return
             u = urlparse(self.path)
             q = parse_qs(u.query)
             try:
@@ -80,6 +92,8 @@ def make_handler(S: data.State):
                 return self._json(dict(error=f"{type(e).__name__}: {e}"), 500)
 
         def do_POST(self):
+            if not self._local_only():
+                return
             u = urlparse(self.path)
             q = parse_qs(u.query)
             try:
@@ -94,7 +108,7 @@ def make_handler(S: data.State):
                 if u.path == "/api/intake/review":
                     req = json.loads(body.decode("utf-8") or "{}")
                     try:
-                        return self._json(data.apply_review(S, req.get("key"), req.get("values") or {}))
+                        return self._json(data.apply_review(S, req.get("key"), req.get("values") or {}, req.get("reviewer") or ""))
                     except ValueError as e:
                         return self._json(dict(error=str(e)), 400)
                 name = q.get("sample", [None])[0] or self.headers.get("X-Filename") or "upload"

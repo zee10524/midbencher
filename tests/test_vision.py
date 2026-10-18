@@ -179,7 +179,7 @@ def test_typing_a_value_on_a_difference_saves_it_as_human_review(world, monkeypa
     monkeypatch.setattr(vision, "VISION_DIR", tmp_path)
     monkeypatch.setattr(pipeline, "WORKING_DB", tmp_path / "w.sqlite")
     pipeline.make_working_copy(PACK / "sap_extract.sqlite", tmp_path / "w.sqlite")
-    c = data.apply_review(S, res["sha256"], {"total": f"{total:.2f}"})
+    c = data.apply_review(S, res["sha256"], {"total": f"{total:.2f}"}, "A. Reviewer")
     assert c["saved"]["source"] == "human_review" and c["saved"]["typed"] == ["total"]
     assert {r["key"]: r for r in c["fields"]}["total"]["state"] == "typed"
 
@@ -277,11 +277,44 @@ def test_files_option_reads_only_those_files_and_stops_at_a_quota(monkeypatch, t
         return {}
 
     monkeypatch.setattr(vision, "read_file", fake_read)
-    rc = vision.main(["--files", "bill-11.pdf", "bill-12.pdf", "bill-14.pdf"])
+    rc = vision.main(["--files", "bill-11.pdf", "bill-12.pdf", "bill-14.pdf", "--confirm-send"])
     out = capsys.readouterr().out
     assert rc == 1 and seen == ["bill-11.pdf", "bill-12.pdf"] and "Stopped" in out and KEY not in out
     assert vision.main(["--files", "index.md-not-there.pdf"]) == 2
     seen.clear()
     monkeypatch.setattr(vision, "read_file", lambda p, force=False, folder=None: seen.append(p.name) or {})
-    vision.main(["--all"])
+    vision.main(["--all", "--confirm-send"])
     assert len(seen) == 40 and not any(n.endswith(".md") for n in seen)
+
+
+# ------------------------------------------------------------------ review findings: consent, raw answer, vendor-master values
+def test_nothing_is_sent_without_the_confirm_flag(monkeypatch, capsys):
+    monkeypatch.setenv("GEMINI_API_KEY", KEY)
+    monkeypatch.setattr(vision, "read_file", lambda *a, **k: pytest.fail("a bill was sent without --confirm-send"))
+    assert vision.main(["--all"]) == 3
+    out = capsys.readouterr().out
+    assert "third party" in out and "--confirm-send" in out and KEY not in out
+
+
+def test_the_models_own_answer_is_kept_in_the_cache(monkeypatch, tmp_path):
+    monkeypatch.setenv("GEMINI_API_KEY", KEY)
+    text = json.dumps({"doc_type": "invoice", "fields": {"total": {"value": 5, "confidence": 0.9}}})
+
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self): return json.dumps({"candidates": [{"content": {"parts": [{"text": text}]}}]}).encode()
+
+    monkeypatch.setattr(vision.urllib.request, "urlopen", lambda req, timeout=0: R())
+    f = tmp_path / "b.pdf"
+    f.write_bytes(b"%PDF")
+    rec = vision.read_file(f, folder=tmp_path / "c")
+    assert rec["model_answer"] == text and rec["fields"]["total"]["value"] == 5
+
+
+def test_a_value_taken_from_the_vendor_master_is_not_two_readers_agreeing():
+    res = cached("bill-11.pdf")
+    looked_up = copy.deepcopy(res)
+    looked_up["fields"]["vendor_gstin"]["source"] = "vendor_master"
+    got = crosscheck.compare(looked_up, vis_of(res))
+    assert got["vendor_gstin"]["state"] == "vision_confirms" and got["invoice_no"]["state"] == "agree"

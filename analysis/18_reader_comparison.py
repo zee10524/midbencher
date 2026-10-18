@@ -92,7 +92,10 @@ def combine(tess: dict, vis_: dict) -> pd.DataFrame:
 
 T1 = score(tess_first, "first")
 TL = score(tess_live, "live")
-figs = [("rc.free_tier.requests_per_day_per_model", FREE_REQUESTS, "free-tier limit per model per day, as stated in Google's 429 message (not computed here)"),
+_reads = sorted(p for p in vision.VISION_DIR.glob("*/*.json"))
+disclosure = [("rc.vision.successful_reads", len(_reads), "stored vision responses over all models: bill files sent to Google's Gemini API that came back with a reading"),
+              ("rc.vision.distinct_files_read", len({p.name for p in _reads}), "of those, distinct bill files (the same file was read by two models)")]
+figs = [*disclosure, ("rc.free_tier.requests_per_day_per_model", FREE_REQUESTS, "free-tier limit per model per day, as stated in Google's 429 message (not computed here)"),
         ("rc.labelled_bills", len(gold), "hand-labelled bills"),
         ("rc.vision_stored_of_labelled", len(have), "of those, bills with a stored vision reading"),
         ("rc.tess_first.fields_correct", int(T1.correct.sum()), "Tesseract alone, first run: fields right (of 60)"),
@@ -142,6 +145,8 @@ else:
              ("rc.comb.wrong_already_low", flagged_low, "of those, not caught by disagreement but already below 0.70 confidence"), ("rc.comb.wrong_trusted", trusted_wrong_t, "of those, trusted because the vision reader made the same error"),
              ("rc.comb.key_bills_trusted_right", key_trusted_right, "combination: bills with all four key fields agreed and right"), ("rc.comb.key_bills_trusted_wrong", key_trusted_wrong, "combination: bills with a key field agreed but wrong"),
              ("rc.comb.key_bills_to_person", key_to_person, "combination: bills with at least one key field that goes to a person")]
+    if n_trw == 0 and n_tr:
+        figs.append(("rc.comb.trusted_wrong_upper95_pct", round(100 * 3 / n_tr, 1), "rule of three: with no trusted-and-wrong field in the trusted fields, the 95% upper bound on the true rate of trusted-and-wrong fields, per cent"))
     secs = [float((v.get("reader") or {}).get("seconds")) for v in vis.values() if v and (v.get("reader") or {}).get("seconds") is not None]
     if secs:
         figs.append(("rc.vision.seconds_mean", round(sum(secs) / len(secs), 1), "vision: mean seconds per bill (one call, rate-limit pause excluded)"))
@@ -156,7 +161,7 @@ else:
           "## 2. The combination, field by field", "", "| | Fields |", "|---|---|", f"| Readers agree (trusted) | {n_tr} |", f"|   of those, wrong | {n_trw} |", f"| Readers differ (a person decides) | {n_diff} |",
           f"| Only the vision reader read it (a person decides) | {n_vo} |", f"| Only Tesseract read it (no second opinion) | {n_to} |", f"| Neither read it | {n_none} |", "",
           f"Of the {wrong_total} Tesseract readings that were wrong, {caught} were caught because the readers disagreed, {flagged_low} more were not caught by disagreement but already carried a confidence below 0.70, "
-          f"and {trusted_wrong_t} were trusted because both readers made the same error.", ""]
+          f"and {trusted_wrong_t} were trusted because both readers made the same error." + (f" Zero trusted-and-wrong fields among {n_tr} does not mean the true rate is zero: by the rule of three the 95% upper bound is about {100 * 3 / n_tr:.1f} per cent of trusted fields, and both readers saw the same image, so their mistakes are not independent." if n_trw == 0 and n_tr else ""), ""]
     dd = C[C.state == "differ"]
     if len(dd):
         L += ["## 3. Where the readers differed", "", "| Bill | Field | Label | Tesseract | Vision |", "|---|---|---|---|---|"]

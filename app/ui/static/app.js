@@ -128,24 +128,30 @@ function renderCard(c) {
     } else if (f.state === "typed") add(cell, el("span", "flag", "typed by a person"));
     else if (f.state !== "ok") add(cell, el("span", "flag", f.note || "needs human review"));
     if (f.cross && f.cross.state === "agree" && !needsPerson) cell.appendChild(el("span", "agree", "two readers agree"));
+    if (f.cross && f.cross.state === "vision_confirms" && !needsPerson) cell.appendChild(el("span", "agree", "vision reading matches the vendor master"));
     grid.appendChild(cell);
   });
   card.appendChild(grid);
   if (c.vision_label) card.appendChild(el("p", "muted small", c.vision_label));
   if (Object.keys(typed).length && c.key) {
     const go = el("button", "btn quiet", "Run the checks again with my entries");
+    const who = el("input", "typein who");
+    who.type = "text"; who.placeholder = "your name"; who.setAttribute("aria-label", "your name, so the entry can be traced");
+    try { who.value = localStorage.getItem("reviewer") || ""; } catch (e) { /* storage may be blocked */ }
     const msg = el("span", "small muted");
     go.onclick = async () => {
       const values = {};
       Object.entries(typed).forEach(([k, i]) => { if (i.value.trim()) values[k] = i.value.trim(); });
       if (!Object.keys(values).length) { msg.textContent = " Type at least one value first."; return; }
+      if (!who.value.trim()) { msg.textContent = " Type your name first, so the entry can be traced."; return; }
+      try { localStorage.setItem("reviewer", who.value.trim()); } catch (e) { /* storage may be blocked */ }
       try {
         msg.textContent = " Checking.";
-        const r = await api("/api/intake/review", { method: "POST", body: JSON.stringify({ key: c.key, values }) });
+        const r = await api("/api/intake/review", { method: "POST", body: JSON.stringify({ key: c.key, values, reviewer: who.value.trim() }) });
         renderCard(r);
       } catch (e) { msg.textContent = " " + e.message; }
     };
-    add(card, add(el("div", "live-row"), go, msg));
+    add(card, add(el("div", "live-row"), who, go, msg));
   }
   if (c.saved) card.appendChild(el("p", "saved", c.saved.message));
   card.appendChild(el("p", "muted small", c.review_note));

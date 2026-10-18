@@ -7,7 +7,7 @@ Every response is cached as JSON under `data/cache/vision/<model>/<file name>.js
 recorded inside every file), and that cache is meant to be committed, so the app, the analysis and the tests run with no key and
 no network. `stored(name)` reads the cache only; the app never calls the model. To fill the cache (one call per bill, sends the bill image to Google):
 
-    python -m app.reader.vision --all          # all 40 inbox bills, skipping any already cached
+    python -m app.reader.vision --all --confirm-send     # all 40 inbox bills, skipping any already cached; --confirm-send says you accept that the files go to Google
     python -m app.reader.vision --file bill-11.pdf [--force]
     python -m app.reader.vision --files bill-11.pdf bill-12.pdf ...     # just these files
 
@@ -152,7 +152,7 @@ def _call(body: bytes, mime: str, key: str, model: str) -> dict:
             raise RuntimeError(f"The vision model could not be reached ({type(e.reason).__name__}; model {model}).") from None
     try:
         text = out["candidates"][0]["content"]["parts"][0]["text"]
-        return json.loads(text)
+        return dict(json.loads(text), _raw=text)       # `_raw` is the model's own answer, kept in the cache so the normalising below can be audited
     except (KeyError, IndexError, TypeError, ValueError):
         raise RuntimeError("The vision model's answer was not the JSON that was asked for.") from None
 
@@ -183,9 +183,10 @@ def read_file(path: Path, force: bool = False, folder: Path | None = None) -> di
         raise RuntimeError("No GEMINI_API_KEY: put it in a .env file (see .env.example). The app and the tests do not need it; only filling the cache does.")
     mime = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
     t0 = time.time()
-    got = normalise_response(_call(body, mime, key, MODEL))
+    answer = _call(body, mime, key, MODEL)
+    got = normalise_response(answer)
     rec = dict(file=path.name, sha256=sha, reader=dict(name="vision", provider="Gemini", model=MODEL, prompt_version=PROMPT_VERSION, read_at=datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-                                                       seconds=round(time.time() - t0, 1)), **got)
+                                                       seconds=round(time.time() - t0, 1)), **got, model_answer=answer.get("_raw"))
     p = cache_path(path.name, folder)
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(rec, indent=1, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
@@ -211,6 +212,10 @@ def main(argv: list[str]) -> int:
     if not has_key():
         print("No GEMINI_API_KEY (environment or .env). Nothing was sent.")
         return 1
+    if "--confirm-send" not in argv:
+        print(f"Nothing was sent. This command uploads {len(files)} bill file(s) to Google's Gemini API, a third party. The free tier may use inputs to improve Google's products. The case pack says to treat its\n"
+              "data as real client data, so only run this if you have decided that is acceptable (see notes/assumptions.md, Known limits). To go ahead, add --confirm-send.")
+        return 3
     print(f"Reading {len(files)} file(s) with {MODEL}. Each bill image is sent to Google.", flush=True)
     for i, p in enumerate(files, 1):
         try:

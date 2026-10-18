@@ -6,4 +6,13 @@ rw.dry,234,"work orders likely to run dry within 45 days, burn estimated from th
 rw.dry.vendor_waiting,49,"of those, orders whose vendor has a bill already waiting (an open bill in the register)"
 rw.dry.wo_waiting,28,"of those, orders with a bill already waiting on that order itself"
 rw.dry.monthly_billing_inr,27206798,"monthly billing, rupees, on those orders (last 90 days, per 30.4375 days)"
+rw.sens.window_60d.dry,172,sensitivity: work orders likely to run dry within 45 days if the burn is taken from the last 60 days of billing
+rw.sens.window_90d.dry,234,sensitivity: work orders likely to run dry within 45 days if the burn is taken from the last 90 days of billing
+rw.sens.window_120d.dry,273,sensitivity: work orders likely to run dry within 45 days if the burn is taken from the last 120 days of billing
+rw.sens.window_180d.dry,281,sensitivity: work orders likely to run dry within 45 days if the burn is taken from the last 180 days of billing
+rw.sens.horizon_30d.dry,171,sensitivity: work orders whose balance covers 30 days or fewer of the last 90 days of billing
+rw.sens.horizon_45d.dry,234,sensitivity: work orders whose balance covers 45 days or fewer of the last 90 days of billing
+rw.sens.horizon_60d.dry,275,sensitivity: work orders whose balance covers 60 days or fewer of the last 90 days of billing
+rw.sens.window_lo_days,60,"sensitivity: the shortest burn window tried, days"
+rw.sens.window_hi_days,120,"sensitivity: the longer burn window shown beside the headline, days"
 rw.dry_lifetime,132,for comparison: the same view using each order's lifetime-average burn (the earlier headline)

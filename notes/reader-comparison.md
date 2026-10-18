@@ -29,7 +29,7 @@ For reference, the Tesseract stored readings as they are now (tuned on these 10 
 | Only Tesseract read it (no second opinion) | 0 |
 | Neither read it | 0 |
 
-Of the 2 Tesseract readings that were wrong, 2 were caught because the readers disagreed, 0 more were not caught by disagreement but already carried a confidence below 0.70, and 0 were trusted because both readers made the same error.
+Of the 2 Tesseract readings that were wrong, 2 were caught because the readers disagreed, 0 more were not caught by disagreement but already carried a confidence below 0.70, and 0 were trusted because both readers made the same error. Zero trusted-and-wrong fields among 50 does not mean the true rate is zero: by the rule of three the 95% upper bound is about 6.0 per cent of trusted fields, and both readers saw the same image, so their mistakes are not independent.
 
 ## 3. Where the readers differed
 

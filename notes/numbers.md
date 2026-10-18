@@ -2567,6 +2567,15 @@ Run from the project root with the project's virtual environment active (`.venv`
 | rw.dry.vendor_waiting | 49 | of those, orders whose vendor has a bill already waiting (an open bill in the register) |
 | rw.dry.wo_waiting | 28 | of those, orders with a bill already waiting on that order itself |
 | rw.dry.monthly_billing_inr | 27206798 | monthly billing, rupees, on those orders (last 90 days, per 30.4375 days) |
+| rw.sens.window_60d.dry | 172 | sensitivity: work orders likely to run dry within 45 days if the burn is taken from the last 60 days of billing |
+| rw.sens.window_90d.dry | 234 | sensitivity: work orders likely to run dry within 45 days if the burn is taken from the last 90 days of billing |
+| rw.sens.window_120d.dry | 273 | sensitivity: work orders likely to run dry within 45 days if the burn is taken from the last 120 days of billing |
+| rw.sens.window_180d.dry | 281 | sensitivity: work orders likely to run dry within 45 days if the burn is taken from the last 180 days of billing |
+| rw.sens.horizon_30d.dry | 171 | sensitivity: work orders whose balance covers 30 days or fewer of the last 90 days of billing |
+| rw.sens.horizon_45d.dry | 234 | sensitivity: work orders whose balance covers 45 days or fewer of the last 90 days of billing |
+| rw.sens.horizon_60d.dry | 275 | sensitivity: work orders whose balance covers 60 days or fewer of the last 90 days of billing |
+| rw.sens.window_lo_days | 60 | sensitivity: the shortest burn window tried, days |
+| rw.sens.window_hi_days | 120 | sensitivity: the longer burn window shown beside the headline, days |
 | rw.dry_lifetime | 132 | for comparison: the same view using each order's lifetime-average burn (the earlier headline) |
 
 <!-- END 17_runway_90d.py -->
@@ -2585,6 +2594,8 @@ Run from the project root with the project's virtual environment active (`.venv`
 
 | Figure id | Value | What it counts |
 |---|---|---|
+| rc.vision.successful_reads | 30.0 | stored vision responses over all models: bill files sent to Google's Gemini API that came back with a reading |
+| rc.vision.distinct_files_read | 24.0 | of those, distinct bill files (the same file was read by two models) |
 | rc.free_tier.requests_per_day_per_model | 20.0 | free-tier limit per model per day, as stated in Google's 429 message (not computed here) |
 | rc.labelled_bills | 10.0 | hand-labelled bills |
 | rc.vision_stored_of_labelled | 10.0 | of those, bills with a stored vision reading |
@@ -2607,6 +2618,7 @@ Run from the project root with the project's virtual environment active (`.venv`
 | rc.comb.key_bills_trusted_right | 3.0 | combination: bills with all four key fields agreed and right |
 | rc.comb.key_bills_trusted_wrong | 0.0 | combination: bills with a key field agreed but wrong |
 | rc.comb.key_bills_to_person | 7.0 | combination: bills with at least one key field that goes to a person |
+| rc.comb.trusted_wrong_upper95_pct | 6.0 | rule of three: with no trusted-and-wrong field in the trusted fields, the 95% upper bound on the true rate of trusted-and-wrong fields, per cent |
 | rc.vision.seconds_mean | 16.7 | vision: mean seconds per bill (one call, rate-limit pause excluded) |
 
 <!-- END 18_reader_comparison.py -->

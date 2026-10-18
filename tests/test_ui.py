@@ -210,7 +210,8 @@ def test_work_orders_running_dry_are_estimated_from_the_last_90_days_of_billing(
     N = S.numbers
     assert d["headline"]["dry"] == int(N("rw.dry")) and d["headline"]["dry_vendor_waiting"] == int(N("rw.dry.vendor_waiting"))
     assert d["labels"]["dry"] == f"work orders likely to run dry within {N('rw.horizon_days'):.0f} days, estimated from the last {N('rw.window_days'):.0f} days of billing"
-    assert d["labels"]["dry_extra"] == f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting"
+    assert d["labels"]["dry_extra"].startswith(f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting. It is an estimate")
+    assert f"{N('rw.sens.window_60d.dry'):,.0f} orders with the last {N('rw.sens.window_lo_days'):.0f} days" in d["labels"]["dry_extra"] and f"{N('rw.sens.window_120d.dry'):,.0f} with the last {N('rw.sens.window_hi_days'):.0f} days" in d["labels"]["dry_extra"]
     rows = list(csv.DictReader(open(ROOT / "backtest" / "out" / "runway_90d.csv", encoding="utf-8")))
     assert len(rows) == int(N("rw.dry")) and [r["wo_id"] for r in rows[:6]] == [x["wo_id"] for x in d["dry"]]
     monthly = [int(r["monthly_billing_inr"]) for r in rows]
@@ -234,3 +235,37 @@ def test_impact_msme_line_is_plain_and_from_the_files(server):
     assert ms["sentence"].startswith(f"from {S.numbers('l.base.ms_late_pct'):.1f} per cent")
     text = d["low_middle_high"] + " ".join(l["condition"] for l in d["levers"])
     assert "best case" in text and "worst case" in text and "residual" not in text and "optimistic" not in text and "cut-off 2 /" not in text
+
+
+# ------------------------------------------------------------------ review findings: only this machine's own page, and a traceable review
+def test_requests_for_another_host_or_from_another_page_are_refused(server):
+    url, _ = server
+    for hdrs in ({"Host": "evil.example"}, {"Origin": "http://evil.example"}):
+        req = urllib.request.Request(url + "/api/meta", headers=hdrs)
+        try:
+            urllib.request.urlopen(req)
+            raise AssertionError("request was not refused")
+        except urllib.error.HTTPError as e:
+            assert e.code == 403
+        code, body = post(url + "/api/intake/review", b"{}", hdrs)
+        assert code == 403 and "refused" in body["error"]
+    assert get(url + "/api/meta")["tesseract"] in (True, False)
+
+
+def test_a_review_needs_a_name_and_is_written_to_a_chained_audit_log(server, tmp_path, monkeypatch):
+    from app.ui import audit
+    url, S = server
+    monkeypatch.setattr(audit, "LOG", tmp_path / "log.jsonl")
+    key = next(k for k, r in S.cache.items() if r["file"] == "packet-10-credit-note.pdf")
+    code, body = post(url + "/api/intake/review", json.dumps({"key": key, "values": {"hsn_sac": "3304"}}).encode())
+    assert code == 400 and "your name" in body["error"] and not (tmp_path / "log.jsonl").exists()
+    code, body = post(url + "/api/intake/review", json.dumps({"key": key, "values": {"hsn_sac": "3304"}, "reviewer": "Asha Rao"}).encode())
+    assert code == 200
+    code, body = post(url + "/api/intake/review", json.dumps({"key": key, "values": {"hsn_sac": "3305"}, "reviewer": "Asha Rao"}).encode())
+    lines = [json.loads(x) for x in (tmp_path / "log.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert len(lines) == 2 and lines[0]["reviewer"] == "Asha Rao" and lines[0]["typed"]["hsn_sac"]["typed"] == "3304" and "reader_original" in lines[0]["typed"]["hsn_sac"]
+    assert audit.verify(tmp_path / "log.jsonl")[0] is True
+    text = (tmp_path / "log.jsonl").read_text(encoding="utf-8").splitlines()
+    (tmp_path / "log.jsonl").write_text(text[1] + "\n", encoding="utf-8")          # the first line removed
+    ok, n, msg = audit.verify(tmp_path / "log.jsonl")
+    assert ok is False and "edited or a line was removed" in msg

@@ -1,4 +1,6 @@
 id,value,description
+rc.vision.successful_reads,30.0,stored vision responses over all models: bill files sent to Google's Gemini API that came back with a reading
+rc.vision.distinct_files_read,24.0,"of those, distinct bill files (the same file was read by two models)"
 rc.free_tier.requests_per_day_per_model,20.0,"free-tier limit per model per day, as stated in Google's 429 message (not computed here)"
 rc.labelled_bills,10.0,hand-labelled bills
 rc.vision_stored_of_labelled,10.0,"of those, bills with a stored vision reading"
@@ -21,4 +23,5 @@ rc.comb.wrong_trusted,0.0,"of those, trusted because the vision reader made the 
 rc.comb.key_bills_trusted_right,3.0,combination: bills with all four key fields agreed and right
 rc.comb.key_bills_trusted_wrong,0.0,combination: bills with a key field agreed but wrong
 rc.comb.key_bills_to_person,7.0,combination: bills with at least one key field that goes to a person
+rc.comb.trusted_wrong_upper95_pct,6.0,"rule of three: with no trusted-and-wrong field in the trusted fields, the 95% upper bound on the true rate of trusted-and-wrong fields, per cent"
 rc.vision.seconds_mean,16.7,"vision: mean seconds per bill (one call, rate-limit pause excluded)"

@@ -126,7 +126,7 @@ def test_a_clerk_types_an_unread_field_and_the_result_is_saved_with_the_readers_
     key = cached("bill-16.jpg")["sha256"]
     first = data.card(S, S.cache[key], "stored", True)
     assert "taxable" in first["inputs"]
-    out = data.apply_review(S, key, {"taxable": "86,330.00"})
+    out = data.apply_review(S, key, {"taxable": "86,330.00"}, "A. Reviewer")
     assert out["saved"]["source"] == "human_review" and out["saved"]["typed"] == ["taxable"]
     typed = next(r for r in out["fields"] if r["key"] == "taxable")
     assert typed["state"] == "typed" and typed["value"] == "86,330.00" and out["checks_ran"] >= first["checks_ran"]
@@ -143,13 +143,13 @@ def test_typed_values_are_checked_and_nothing_empty_is_saved(world, tmp_path, mo
     monkeypatch.setattr(pipeline, "WORKING_DB", tmp_path / "work.sqlite")
     key = cached("packet-10-credit-note.pdf")["sha256"]
     with pytest.raises(ValueError, match="HSN"):
-        data.apply_review(S, key, {"hsn_sac": "12"})
+        data.apply_review(S, key, {"hsn_sac": "12"}, "A. Reviewer")
     with pytest.raises(ValueError, match="Nothing was typed"):
-        data.apply_review(S, key, {"hsn_sac": ""})
+        data.apply_review(S, key, {"hsn_sac": ""}, "A. Reviewer")
     with pytest.raises(ValueError, match="no longer held"):
-        data.apply_review(S, "nope", {"taxable": "1"})
+        data.apply_review(S, "nope", {"taxable": "1"}, "A. Reviewer")
     assert not (tmp_path / "work.sqlite").exists()
-    ok = data.apply_review(S, key, {"hsn_sac": "3304"})
+    ok = data.apply_review(S, key, {"hsn_sac": "3304"}, "A. Reviewer")
     assert any(r["key"] == "hsn_sac" and r["state"] == "typed" for r in ok["fields"]) and not any(n["check"] == "H11" for n in ok["not_run"])
 
 

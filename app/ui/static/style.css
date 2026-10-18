@@ -142,3 +142,4 @@ select { font: inherit; padding: 10px 12px; border: 1px solid var(--line); borde
 .chat .pick { font: inherit; font-size: 12px; margin-top: 6px; background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; }
 .phone-send { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 12px; border-top: 1px solid var(--line, #d9dde6); }
 .phone-send select { font: inherit; font-size: 13px; max-width: 100%; }
+.typein.who { display: inline-block; width: 180px; margin: 0 10px 0 0; }

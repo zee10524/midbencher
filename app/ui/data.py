@@ -19,7 +19,7 @@ from pathlib import Path
 
 from app import intake
 from app.reader import crosscheck, ocr, pipeline, vision
-from app.ui import chat
+from app.ui import audit, chat
 from app.rules import Context
 from app.rules.model import AUTO_CLEAR, LOOK
 from app.sap.adapter import AS_OF, SapAdapter
@@ -200,7 +200,7 @@ def field_rows(res: dict) -> list[dict]:
             rows.append(dict(key=key, name=name, value="not read", state="unread", note="", **({"cross": side} if side else {})))
         else:
             shown = f"{v:,.2f}" if isinstance(v, float) else str(v)
-            rows.append(dict(key=key, name=name, value=shown, state="ok" if c >= AUTO_CLEAR else "review", note="", **({"cross": side} if side and cr["state"] == "agree" else {})))
+            rows.append(dict(key=key, name=name, value=shown, state="ok" if c >= AUTO_CLEAR else "review", note="", **({"cross": side} if side and cr["state"] in ("agree", "vision_confirms") else {})))
     return rows
 
 
@@ -280,7 +280,7 @@ def vision_label(res: dict) -> str | None:
     if not v:
         return "Not read by the vision model yet."
     return (f"Stored vision reading ({v.get('model') or 'vision model'}, read {v.get('read_at') or 'earlier'}), not a live call. It is a second opinion only: where it agrees with Tesseract the field is marked "
-            "two readers agree; where they differ both values are shown and a person decides. Neither is picked automatically.")
+            "two readers agree; where they differ both values are shown and a person decides. Neither is picked automatically. Both readers saw the same image, so agreement is not proof: the checks against SAP still decide the verdict.")
 
 
 def card(S: State, res: dict, source: str, replay: bool, ms: float = 0.0) -> dict:
@@ -320,11 +320,14 @@ def reply_card(S: State, res: dict, source: str, replay: bool, ms: float = 0.0) 
     return dict(card=c, reply=chat.reply(res2, out, bill, vendor_msgs), status_from="tracker" if bill is not None else "none", file=c["file"])
 
 
-def apply_review(S: State, key: str, values: dict) -> dict:
+def apply_review(S: State, key: str, values: dict, reviewer: str = "") -> dict:
     """A clerk has typed values for fields the reader did not read: put them in, run the checks again, and save the result to `parsed_bill` with source `human_review`,
     keeping the reader's own value and confidence for each typed field in the `reader_original` column. Returns the new card and what was saved."""
     import copy
 
+    reviewer = " ".join(str(reviewer or "").split())
+    if not reviewer:
+        raise ValueError("Type your name first, so the entry can be traced to a person.")
     base = S.cache.get(key) or S.session.get(key)
     if base is None:
         raise ValueError("That bill is no longer held: drop or pick it again.")
@@ -352,9 +355,12 @@ def apply_review(S: State, key: str, values: dict) -> dict:
     if not pipeline.WORKING_DB.exists():
         pipeline.make_working_copy()
     args = pipeline.parsed_bill_args(res)
-    args["check_status"], args["check_notes"] = out["routing"].route, intake.verdict_notes(res, out)
+    args["check_status"], args["check_notes"] = out["routing"].route, intake.verdict_notes(res, out) + f" Typed by {reviewer} (human_review)."
     with SapAdapter(pipeline.WORKING_DB) as w:
         rid = w.write_parsed_bill(**args)
+    typed_fields = {k: dict(typed=x["value"], reader_original=x.get("original"), vision_value=(((vision.stored(res["file"], res.get("sha256")) or {}).get("fields") or {}).get(k) or {}).get("value")) for k, x in res["fields"].items() if x.get("source") == "human_review"}
+    audit.append(dict(kind="human_review", reviewer=reviewer, file=res["file"], sha256=res.get("sha256"), typed=typed_fields, route_after=out["routing"].route, parsed_bill_row=rid,
+                      reader_version=(res.get("reader") or {}).get("version")))
     c["saved"] = dict(table="parsed_bill", row=rid, source="human_review", typed=sorted(json.loads(args["reader_original"])), message=f"Saved to parsed_bill as human_review (row {rid}). The reader's own readings are kept in the reader_original column.")
     return c
 
@@ -416,7 +422,8 @@ def control(S: State, cutoff: int = DEFAULT_CUTOFF_DAYS) -> dict:
                               waiting=len(po), dry=int(N("rw.dry")), dry_vendor_waiting=int(N("rw.dry.vendor_waiting"))),
                 labels=dict(late=f"Micro and Small bills already past {LIMIT_DAYS} days", miss="more will miss it: no payment run left", waiting="bills waiting at head office for a clerk",
                             dry=f"work orders likely to run dry within {N('rw.horizon_days'):.0f} days, estimated from the last {N('rw.window_days'):.0f} days of billing",
-                            dry_extra=f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting"),
+                            dry_extra=(f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting. It is an estimate: it depends on how many days of billing set the burn "
+                                       f"({N('rw.sens.window_60d.dry'):,.0f} orders with the last {N('rw.sens.window_lo_days'):.0f} days, {N('rw.sens.window_120d.dry'):,.0f} with the last {N('rw.sens.window_hi_days'):.0f} days)")),
                 oldest=oldest20, msme=msme, clerks=clerks, spread_pct=(None if spread(after) == float("inf") else round(100 * spread(after), 1)), dry=dry, live_waiting=int(N("l.live.waiting")))
 
 

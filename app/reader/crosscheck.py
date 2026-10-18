@@ -1,7 +1,8 @@
 """Cross-check of the two readers, field by field. Neither reading is ever picked automatically.
 
 For each field both readers can read:
-- they agree          -> `agree`: the field is marked "two readers agree".
+- they agree          -> `agree`: the field is marked "two readers agree". (A value Tesseract did not read but took from the vendor master gives `vision_confirms` instead: the vision reading
+                         matches the master, which is weaker than two independent readings.)
 - they disagree       -> `differ`: the field is marked "needs human review", both values are shown side by side, and the field is treated as not read (so the checks that need
                          it do not run) until a person types the value. A person can click either value to fill the box, but still has to run the checks.
 - only the vision reader has a value (Tesseract did not read it, or read it below 0.70) -> `vision_only`: the field stays unread; the vision value is offered as a suggestion.
@@ -17,7 +18,7 @@ import re
 
 from app.rules.model import LOOK
 
-AGREE, DIFFER, VISION_ONLY, TESS_ONLY = "agree", "differ", "vision_only", "tesseract_only"
+AGREE, DIFFER, VISION_ONLY, TESS_ONLY, CONFIRMS = "agree", "differ", "vision_only", "tesseract_only", "vision_confirms"
 COMPARED = ["vendor_name", "vendor_gstin", "invoice_no", "invoice_date", "wo_id", "taxable", "total", "cgst", "sgst", "igst", "hsn_sac", "place_of_supply", "recipient_gstin"]
 AMOUNTS = {"taxable", "cgst", "sgst", "igst", "total"}
 TAX_LINES = {"cgst", "sgst", "igst"}
@@ -66,7 +67,9 @@ def compare(res: dict, vision: dict | None) -> dict[str, dict]:
         if k in TAX_LINES and (t is None or v is None):
             continue
         if t is not None and v is not None:
-            state = AGREE if norm(k, t) == norm(k, v) else DIFFER
+            same = norm(k, t) == norm(k, v)
+            # a GSTIN or name looked up from the vendor master (or repaired to it) was not read by Tesseract: a matching vision reading confirms it, but it is not "two readers agree"
+            state = (CONFIRMS if tx.get("source") in ("vendor_master", "repaired") else AGREE) if same else DIFFER
         elif v is not None:
             state = VISION_ONLY
         else:

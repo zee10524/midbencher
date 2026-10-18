@@ -51,6 +51,24 @@ D = pd.DataFrame(rows).sort_values(["monthly_billing_inr", "wo_id"], ascending=[
 (ROOT / "backtest" / "out").mkdir(parents=True, exist_ok=True)
 D.to_csv(ROOT / "backtest" / "out" / "runway_90d.csv", index=False, lineterminator="\n")
 
+def dry_count(window: int, horizon: int) -> int:
+    """How many orders would be called likely to run dry with a different burn window or horizon (same rules as above): the sensitivity of the headline to those two choices."""
+    since_w = pd.Timestamp(AS_OF - timedelta(days=window))
+    bw = b[(b.desk_received_date > since_w) & (b.desk_received_date <= pd.Timestamp(AS_OF))].groupby("wo_id").amount_inr.sum()
+    n = 0
+    for wid, bill in bw.items():
+        r = wo.loc[wid]
+        remaining = float(r.approved_value_inr) - float(r.billed_value_inr)
+        vt, vf = pd.Timestamp(r.valid_to), pd.Timestamp(r.valid_from)
+        if remaining <= 0 or vt < vf or (vt - pd.Timestamp(AS_OF)).days < 0 or bill <= 0:
+            continue
+        n += remaining / (bill / window) <= horizon
+    return int(n)
+
+
+SENS_WINDOWS, SENS_HORIZONS = (60, 90, 120, 180), (30, 45, 60)
+assert dry_count(WINDOW, HORIZON) == len(D)
+
 with SapAdapter(ROOT / "pack" / "data" / "sap_extract.sqlite") as sap:
     old = [x for x in runway(seed(ROOT / "pack" / "data" / "bill_register.csv", ROOT / "pack" / "data" / "queries.csv", sap), sap)
            if x["kind"] == "ahead" and any("balance runs out" in f for f in x["flags"])]
@@ -61,6 +79,9 @@ figs = [("rw.window_days", WINDOW, "days of billing before 30 April 2026 that th
         ("rw.dry.vendor_waiting", int(D.vendor_has_bill_waiting.sum()), "of those, orders whose vendor has a bill already waiting (an open bill in the register)"),
         ("rw.dry.wo_waiting", int(D.wo_has_bill_waiting.sum()), "of those, orders with a bill already waiting on that order itself"),
         ("rw.dry.monthly_billing_inr", int(D.monthly_billing_inr.sum()), "monthly billing, rupees, on those orders (last 90 days, per 30.4375 days)"),
+        *[(f"rw.sens.window_{w}d.dry", dry_count(w, HORIZON), f"sensitivity: work orders likely to run dry within 45 days if the burn is taken from the last {w} days of billing") for w in SENS_WINDOWS],
+        *[(f"rw.sens.horizon_{h}d.dry", dry_count(WINDOW, h), f"sensitivity: work orders whose balance covers {h} days or fewer of the last 90 days of billing") for h in SENS_HORIZONS],
+        ("rw.sens.window_lo_days", SENS_WINDOWS[0], "sensitivity: the shortest burn window tried, days"), ("rw.sens.window_hi_days", SENS_WINDOWS[2], "sensitivity: the longer burn window shown beside the headline, days"),
         ("rw.dry_lifetime", len(old), "for comparison: the same view using each order's lifetime-average burn (the earlier headline)")]
 pd.DataFrame(figs, columns=["id", "value", "description"]).to_csv(OUT / "figures_runway.csv", index=False, lineterminator="\n")
 for k, v, _ in figs:
