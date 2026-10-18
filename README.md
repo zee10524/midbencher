@@ -63,11 +63,11 @@ The app can show a second, vision-model reading next to Tesseract's and mark eac
 ```
 copy .env.example .env           # Windows   (cp .env.example .env on Linux)
 # put your key after GEMINI_API_KEY= in .env  (.env is git-ignored, and the key is never printed or logged)
-.venv\Scripts\python -m app.reader.vision --all     # Linux: .venv/bin/python -m app.reader.vision --all
+.venv\Scripts\python -m app.reader.vision --all --confirm-send     # Linux: .venv/bin/python -m app.reader.vision --all --confirm-send
 .venv\Scripts\python -I analysis/18_reader_comparison.py   # scores both readers on the 10 labelled bills, writes notes/reader-comparison.md
 ```
 
-This sends each bill image to Google (about 40 calls, paused between calls for free-tier limits). The pack is synthetic; real vendor bills would need a paid no-training tier or an in-house model (see `notes/reader-comparison.md`). Until it is run, `notes/reader-comparison.md` says the vision reader has not been scored.
+--confirm-send says you accept that each bill image goes to a third party (see notes/assumptions.md, Known limits). This sends each bill image to Google (about 40 calls, paused between calls for free-tier limits). The pack is synthetic; real vendor bills would need a paid no-training tier or an in-house model (see `notes/reader-comparison.md`). Until it is run, `notes/reader-comparison.md` says the vision reader has not been scored.
 
 ## What is simulated
 
