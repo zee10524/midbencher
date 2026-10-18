@@ -3,38 +3,74 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0e5e6f">
 <title>Paypath: From desk to paid.</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e5e6f'/%3E%3Cpath d='M11 23V9h6a4.5 4.5 0 0 1 0 9h-6' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href="#intake"><span class="brand-name">Paypath</span><span class="brand-tag">From desk to paid.</span></a>
+    <a class="brand" href="#intake" aria-label="Paypath, From desk to paid. Go to Intake">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 18V6h5a3.5 3.5 0 0 1 0 7H8"/></svg></span>
+      <span class="brand-text"><span class="brand-name">Paypath</span><span class="brand-tag">From desk to paid.</span></span>
+    </a>
     <nav id="nav" aria-label="Screens">
-      <a href="#intake" data-view="intake">Intake</a>
-      <a href="#control" data-view="control">Control tower</a>
-      <a href="#impact" data-view="impact">Impact</a>
+      <a href="#intake" data-view="intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13h5l1.5 3h5l1.5-3h5"/><path d="M5.5 5h13L21 13v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5z"/></svg><span>Intake</span></a>
+      <a href="#control" data-view="control"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Control tower</span></a>
+      <a href="#impact" data-view="impact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span>Impact</span></a>
     </nav>
+    <span class="local-pill" title="The app answers only this machine. Messages are composed and shown, never sent."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>Local only</span>
   </div>
 </header>
-<main class="wrap">
-  <section id="view-intake" class="view" hidden>
-    <h1>Check a bill</h1>
-    <p class="lede">Drop a bill or packet. You get a verdict, the issues that matter and a message ready to send. Nothing leaves this machine.</p>
-    <div id="drop" class="drop" tabindex="0">
-      <p class="drop-main">Drop a bill here</p>
-      <p class="drop-sub">or <label class="link"><input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png" hidden>choose a file</label>, or pick one the reader has already read</p>
-      <div class="pick"><select id="sample" aria-label="A bill the reader has already read"></select><button id="pickgo" class="btn">Show the card</button></div>
+<main class="wrap" id="main">
+  <p id="err" class="err" role="alert" hidden></p>
+
+  <section id="view-intake" class="view" aria-labelledby="h-intake" hidden>
+    <header class="page-head">
+      <p class="eyebrow">Intake</p>
+      <h1 id="h-intake">Check a bill</h1>
+      <p class="lede">Drop a bill or packet. You get a verdict, the issues that matter and a message ready to send. Nothing leaves this machine.</p>
+    </header>
+    <ol class="steps" aria-label="How it works">
+      <li><span><strong>Add a bill</strong>Drop a file, or pick one the reader has already read.</span></li>
+      <li><span><strong>Read the verdict</strong>The issues that matter, and who must fix each one.</span></li>
+      <li><span><strong>Fix and send</strong>Type what was not read, then review the drafted messages.</span></li>
+    </ol>
+    <div class="start">
+      <div id="drop" class="drop" tabindex="0" aria-label="Drop a bill here, or press Enter to choose a file" aria-describedby="drop-help">
+        <span class="drop-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4"/><path d="m7 9 5-5 5 5"/><path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/></svg></span>
+        <p class="drop-main">Drop a bill here</p>
+        <p class="drop-sub" id="drop-help">A single bill or a packet, as a PDF or a photo.</p>
+        <input id="file" class="sr-only" type="file" accept=".pdf,.jpg,.jpeg,.png">
+        <label class="btn" for="file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>Choose a file</label>
+        <p class="drop-types" aria-label="Accepted file types"><span class="ftype">PDF</span><span class="ftype">JPG</span><span class="ftype">JPEG</span><span class="ftype">PNG</span></p>
+      </div>
+      <div class="pick-panel">
+        <h2 class="panel-title">Or pick a bill already read</h2>
+        <p class="panel-sub">The reader's stored extraction is used, so the card appears at once.</p>
+        <div class="pick">
+          <label class="field-label" for="sample">Bill or packet</label>
+          <select id="sample"></select>
+          <button id="pickgo" class="btn" type="button">Show the card</button>
+        </div>
+      </div>
     </div>
     <div id="card-area" aria-live="polite"></div>
     <p class="next"><a class="next-link" href="#control">Next: Control tower <span aria-hidden="true">&rarr;</span></a></p>
   </section>
 
-  <section id="view-control" class="view" hidden>
-    <h1>Control tower</h1>
-    <p id="control-as" class="lede"></p>
+  <section id="view-control" class="view" aria-labelledby="h-control" hidden>
+    <header class="page-head page-head-row">
+      <div>
+        <p class="eyebrow">Operations</p>
+        <h1 id="h-control">Control tower</h1>
+      </div>
+      <div class="as-of"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p id="control-as" class="lede"></p></div>
+    </header>
     <div class="scenario">
       <div class="sc-main">
+        <p class="eyebrow">Scenario</p>
         <p class="sc-q" id="sc-q">When does Treasury close the run list?</p>
         <div id="cutoff" class="sc-opts" role="radiogroup" aria-labelledby="sc-q"></div>
       </div>
@@ -47,14 +83,33 @@
     <p class="next"><a class="next-link" href="#impact">Next: Impact <span aria-hidden="true">&rarr;</span></a></p>
   </section>
 
-  <section id="view-impact" class="view" hidden>
-    <h1>What would change</h1>
-    <p id="impact-label" class="lede"></p>
+  <section id="view-impact" class="view" aria-labelledby="h-impact" hidden>
+    <header class="page-head">
+      <p class="eyebrow">Backtest</p>
+      <h1 id="h-impact">What would change</h1>
+    </header>
+    <div class="notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5h.01"/></svg><p id="impact-label" class="lede"></p></div>
     <div id="impact-body"></div>
     <p class="next"><a class="next-link" href="#intake">Back to Intake <span aria-hidden="true">&rarr;</span></a></p>
   </section>
-  <p id="err" class="err" hidden></p>
 </main>
+
+<!-- Icons the script clones by name (presentation only). -->
+<div id="icons" hidden>
+  <svg data-icon="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+  <svg data-icon="check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16 10"/></svg>
+  <svg data-icon="alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.8 19.5a1 1 0 0 0 .9 1.5h16.6a1 1 0 0 0 .9-1.5z"/><path d="M12 10v4"/><path d="M12 17.5h.01"/></svg>
+  <svg data-icon="eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg>
+  <svg data-icon="user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+  <svg data-icon="info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5h.01"/></svg>
+  <svg data-icon="file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+  <svg data-icon="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-11.8 7L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg>
+  <svg data-icon="send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3 10 14"/><path d="M21 3l-6.5 18-4.5-7-7-4.5z"/></svg>
+  <svg data-icon="camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h2l1.5-2h5L16 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>
+  <svg data-icon="refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.6-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.6 4.5L20 16"/><path d="M20 20v-4h-4"/></svg>
+  <svg data-icon="edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+  <svg data-icon="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+</div>
 <script src="/app.js"></script>
 </body>
 </html>
