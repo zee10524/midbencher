@@ -2,6 +2,131 @@
 
 Decisions made while building the case, each with the reason, what it changes, and what would change it. Figures are registered in `notes/numbers.md` under the ids shown. Where a decision rests on a legal reading it points to `notes/research.md`, which is a reading of public sources and not legal advice.
 
+## The assumptions that matter most
+
+This is the part to read first. For each assumption I say what I assumed and why, what happens to the results if I am wrong, and how to find out from the client. Every figure is registered in `notes/numbers.md`; the id is beside it. The older sections further down (the MSME clock, blank MSME status, the tracker's judgement calls) are the detail behind some of these.
+
+How big is each one? In order: the payment-run cut-off and the intake residual move the "days saved" answer the most, the 90-day burn moves the control-tower headline the most, and the other four change what we can trust or what we have disclosed, not the headline numbers.
+
+### 1. The payment-run cut-off (0, 1 or 2 days) and the intake residual (3 days, 1 day or optimistic)
+
+**What I assumed.** Treasury pays on Tuesdays and Fridays (that is what the register shows). A bill is paid on the first run after it is posted, unless the run list has already closed. I do not know when the list closes, so I replayed last year with the list closing 0, 1 or 2 days before the run. For the intake rules, I do not know how long a bill still takes once a problem has been caught at the desk, so I replayed it with 3 days, with 1 day, and with an optimistic case that counts every query the early checks could catch, with 1 day left.
+
+**Why.** The pack has posting dates and payment dates but not the run lists or their closing times. The default in the tracker is 1 day, the middle one. This is a setting, not a finding.
+
+**If I am wrong, this is what moves.** The "as run" figures are the real last year: a mean of 31.3 days from the desk to paid (`l.base.desk_mean`), 530 known Micro and Small bills over 45 days (`l.base.ms_late`) and 1,153 paid invoices over 45 days (`l.base.over45`).
+
+*The payment-run cut-off, on its own (the biggest single lever):*
+
+| Cut-off | Days off the mean | Bills moved to an earlier run | Micro and Small over 45 days (was 530) | All paid over 45 days (was 1,153) |
+|---|---|---|---|---|
+| List closes the same day (0) | 3.72 (`l.lever.pay0.save`) | 7,417 (`l.lever.pay0.bills`) | 370 (`l.lever.pay0.ms_late`) | 802 (`l.lever.pay0.over`) |
+| List closes 1 day before (1) | 2.75 (`l.lever.pay1.save`) | 5,662 (`l.lever.pay1.bills`) | 401 (`l.lever.pay1.ms_late`) | 868 (`l.lever.pay1.over`) |
+| List closes 2 days before (2) | 1.97 (`l.lever.pay2.save`) | 4,115 (`l.lever.pay2.bills`) | 430 (`l.lever.pay2.ms_late`) | 928 (`l.lever.pay2.over`) |
+
+*The intake residual, on its own:*
+
+| Residual after a catch | Days off the mean | Bills affected | Micro and Small over 45 days (was 530) | All paid over 45 days (was 1,153) |
+|---|---|---|---|---|
+| 3 days | 0.24 (`l.lever.in3.save`) | 118 (`l.lever.in3.bills`) | 497 (`l.lever.in3.ms_late`) | 1,092 (`l.lever.in3.over`) |
+| 1 day | 0.26 (`l.lever.in1.save`) | 121 (`l.lever.in1.bills`) | 497 (`l.lever.in1.ms_late`) | 1,092 (`l.lever.in1.over`) |
+| Optimistic (every early-catchable query, 1 day) | 0.91 (`l.lever.inopt.save`) | 403 (`l.lever.inopt.bills`) | 414 (`l.lever.inopt.ms_late`) | 930 (`l.lever.inopt.over`) |
+
+*All three levers together (cut-off, balanced pick order and intake), worst, middle and best case:*
+
+| Case | Settings | Days off the mean | Mean days desk to paid after | Micro and Small over 45 days (was 530) | All paid over 45 days (was 1,153) |
+|---|---|---|---|---|---|
+| Worst | cut-off 2, residual 3 days | 3.94 (`l.lever.low.save`) | 27.3 (`d.after.desk_mean_high`) | 303 (`l.lever.low.ms_late`) | 653 (`l.lever.low.over`) |
+| Middle | cut-off 1, residual 1 day | 4.75 (`l.lever.mid.save`) | | 288 (`l.lever.mid.ms_late`) | 617 (`l.lever.mid.over`) |
+| Best | cut-off 0, optimistic intake | 6.34 (`l.lever.high.save`) | 24.9 (`d.after.desk_mean_low`) | 200 (`l.lever.high.ms_late`) | 447 (`l.lever.high.over`) |
+
+**What this tells me.** The cut-off decides most of the answer: moving from 2 days to 0 days changes the days saved from 1.97 to 3.72, nearly double. The intake residual barely matters unless the optimistic case is true: with 3 days or 1 day left, the intake rules touch only about 120 bills and save a quarter of a day. Be careful with the best case: it stacks the most favourable setting of every assumption at once, so it is a ceiling, not a forecast. The range 24.9 to 27.3 days is the spread between my scenarios, not a confidence interval.
+
+**How to confirm with the client.** Ask Treasury for last year's run lists with the date and time each list closed and the date and time each bill was added. That gives the real cut-off in one afternoon. Ask the AP lead how many days a bill still takes after a vendor sends a corrected one, from 20 recent examples. Then replace the three settings with the real ones and re-run `analysis/09_levers.py`.
+
+### 2. Treasury's run rule is unconfirmed (and the biggest lever may not exist)
+
+**What I assumed.** That the delay between a bill being posted and being paid is caused by the run list closing before the bill is ready. This is the lever "pay on the first run after posting".
+
+**Why.** It is the only cause I can see in the data: the gap between posting and the next Tuesday or Friday explains the delay, and none of amount, vendor type, category, property, verifier or month does. Posting dates are day-accurate at best, and the pack has no approval step between posting and the run.
+
+**If I am wrong.** If the real cause is Treasury's approval time or cash timing, not the list closing, the cut-off lever is worth nothing and the combined range above is too high. I have **not** computed the combined range without this lever. That would need a new replay with the cut-off lever switched off, which I did not run because I wanted the results to stay as they are. What I can say from the figures I have: the other two levers alone are 1.67 days for the balanced pick order (`l.lever.queue.save`) and between 0.24 and 0.91 days for the intake rules, so the combined answer without the payment-run lever is in the low single digits of days at most, and I would not quote it before it is computed.
+
+**How to confirm with the client.** One question to Treasury: "When does the list for a Tuesday or Friday run close, and who approves it?" Then compare ten bills posted two days before a run: which were on the list and which were not.
+
+### 3. The 90-day burn rate for work orders
+
+**What I assumed.** A work order is "likely to run dry" if its remaining balance covers 45 days or fewer of what it was billed in the last 90 days before 30 April 2026 (`rw.window_days`, `rw.horizon_days`). I replaced my first version, which used each order's lifetime average, because it flagged orders with a few rupees left.
+
+**Why.** Recent billing is a better guide to what happens next than the average over a work order's whole life. The 90 days is a judgement. Orders with no billing in the window cannot be flagged at all.
+
+**If I am wrong.** The headline is 234 orders (`rw.dry`), of which 49 have a vendor with a bill already waiting (`rw.dry.vendor_waiting`) and 28 have a bill waiting on that very order (`rw.dry.wo_waiting`). It moves a lot with the choice of window and horizon:
+
+| Burn window (horizon 45 days) | Orders likely to run dry |
+|---|---|
+| 60 days | 172 (`rw.sens.window_60d.dry`) |
+| 90 days (the headline) | 234 (`rw.dry`) |
+| 120 days | 273 (`rw.sens.window_120d.dry`) |
+| 180 days | 281 (`rw.sens.window_180d.dry`) |
+
+| Horizon (window 90 days) | Orders likely to run dry |
+|---|---|
+| 30 days | 171 (`rw.sens.horizon_30d.dry`) |
+| 45 days (the headline) | 234 (`rw.dry`) |
+| 60 days | 275 (`rw.sens.horizon_60d.dry`) |
+
+For comparison, my first version using each order's lifetime-average burn gave 132 (`rw.dry_lifetime`). So the honest statement is "between about 170 and about 280 depending on how you set it", and the control tower shows the 60-day and 120-day counts beside the headline. It is an estimate, not a forecast, and it has no seasonality in it.
+
+**How to confirm with the client.** Ask procurement for the planned monthly spend on the 20 biggest orders on the list, and compare it with the burn I estimated. Ask whether there are known busy and quiet months.
+
+### 4. The blank MSME vendors
+
+**What I assumed.** Of 900 vendors, 137 have no MSME status (`msme.vendors_blank`). Among the 763 with a known status (`assume.vendors_known`), 444 are Micro or Small (`assume.known_micro_small`), which is 58.2 per cent (`assume.share_micro_small_known`). I assume the blank vendors are Micro or Small at that same share, and I also show 0 per cent and 100 per cent as the bounds. The money-case headline counts only the known vendors, so it understates the exposure.
+
+**Why.** I have nothing else to go on. The blank vendors bill a little less than the known ones (a median of Rs 3,68,800 a year against Rs 4,50,630: `assume.blank_median_billed`, `assume.known_median_billed`), and the Micro or Small share is steady across billing sizes (57.1 to 59.7 per cent: `assume.share_by_billing_quartile_min`, `assume.share_by_billing_quartile_max`), so the 58.2 per cent is not obviously wrong, but it is not known.
+
+**If I am wrong.** On the desk-received clock, the number of Micro and Small bills paid over 45 days is:
+
+| If the blank vendors are | Bills paid over 45 days | Value before GST |
+|---|---|---|
+| none of them Micro or Small (0 per cent) | 530 (`e.scen.paid_late.desk_received.n_late.low`) | Rs 16.83 crore (`e.scen.paid_late.desk_received.val_late_ex_gst.low`) |
+| 58.2 per cent of them (central) | 620 (`e.scen.paid_late.desk_received.n_late.central`) | Rs 19.31 crore (`e.scen.paid_late.desk_received.val_late_ex_gst.central`) |
+| all of them Micro or Small (100 per cent) | 684 (`e.scen.paid_late.desk_received.n_late.high`) | Rs 21.10 crore (`e.scen.paid_late.desk_received.val_late_ex_gst.high`) |
+
+The product treats a blank vendor as "could be Micro or Small" and puts it on the countdown, so nothing is missed; the cost of being wrong is warning about a vendor the rule does not cover.
+
+**How to confirm with the client.** Ask for each blank vendor's Udyam registration number and date. It is 137 lookups, and it is the single change that turns a scenario into a count.
+
+### 5. The synthetic GSTINs fail the real check digit
+
+**What I found.** A real GSTIN ends in a check character computed from the first 14. All 900 vendor GSTINs have the right shape (`g.shape_valid`), and none passes the check (`g.check_digit_pass` is 0, `g.check_digit_fail` is 900). That is what synthetic data looks like.
+
+**What I did about it.** I did not build check-digit validation into the reader. It would reject every true GSTIN in this pack. I use the vendor master as the validator instead: a GSTIN that is wrongly read with one confusable character (O and 0, I and 1, S and 5, B and 8) is repaired only if the repaired value is in the vendor master, and a GSTIN looked up from the vendor by name is marked "resolved from vendor master", never "read". Either way a person confirms it.
+
+**If I am wrong, i.e. real data does pass the check.** Then I have left a free safety net unused, and more bills go to a person than needed, because the check digit could separate a repaired GSTIN from a wrong one without the master. Nothing in the days-saved figures changes. The check is a ten-line function and the script `analysis/19_gstin_check_digit.py` already contains it, so adding it is small.
+
+**How to confirm with the client.** Run that script on a real vendor master. If most GSTINs pass, turn the check on in the reader; if not, the master has data-quality problems that are worth knowing about anyway.
+
+### 6. The corrected bill-28 label
+
+**What happened.** I scored the reader against ten bills I labelled by hand. After the first score, one amount label (bill-28) turned out to have two digits swapped; the bill image shows the right total, and the reader had read it correctly. I corrected the label. The result is two first-run scores for the same reader: 52 of 60 fields on the labels as first given (`re.first.all.fields_correct`) and 53 of 60 after the correction (`re.second.all.fields_correct`). Bills right on the four key fields are 5 of 10 both ways (`re.first.all.key_bills_correct`, `re.second.all.key_bills_correct`).
+
+**If I am wrong about the correction.** It would change one field in one bill, and no bill's key-field result. I kept both scores in the reader note so the change is visible, and the original value survives only as a constant in the evaluation script, not in a change log, which is a weakness.
+
+**How to confirm.** Have a second person label the ten bills without seeing my labels or the readers' output, and compare.
+
+### 7. A third-party API on 30 of the pack's bills
+
+**What happened.** To test a second reader, I let bill files from the pack go to Google's Gemini API on a free tier. Thirty readings came back (`rc.vision.successful_reads`) over 24 distinct files (`rc.vision.distinct_files_read`). More uploads were attempted and rejected, so assume all 40 inbox files left the machine at least once. The brief says to treat the pack as real client data, and the free tier may use inputs to improve Google's products. I chose to test it without asking the client first, and the files cannot be recalled.
+
+**What it does to the results.** Nothing in the days-saved numbers. It changes what I can claim about the vision reader: on ten bills, read once, it had no error (`rc.vision.fields_correct` is 60 of 60), but the 95 per cent upper bound on its true error rate is still about 5 per cent (`rc.vision.error_upper95_pct`), and it did not read the other bills because the free tier allows 20 requests a day per model (`rc.free_tier.requests_per_day_per_model`, a figure from Google's own error message, not checked against its documentation).
+
+**What I changed.** The vision command now sends nothing unless `--confirm-send` is added. The app runs from stored responses with no key and no network. The key is in a git-ignored `.env`, and I should rotate it.
+
+**How to confirm with the client.** Tell the client's data owner and head of IT what was sent, ask whether the synthetic pack counts as client data for this purpose, and get the answer in writing. For any real deployment, a paid tier with no training on inputs and a data-processing agreement, or a model inside the client's own boundary.
+
+## Detail behind the assumptions above
+
 ## MSME payment clock
 
 ### Decision
@@ -65,7 +190,7 @@ Choices made while building the ledger, payment list and pick order, seeded from
 |---|---|---|---|---|
 | 1 | **Credit notes are left out of the oldest-20, ageing, MSME countdown and payment list.** They stay in the ledger and in the AP pick order. A posted credit note's vendor sentence says only that it has been booked, with no payment-run date | A credit note is not an amount owed to the vendor, and the countdown is about what the company owes. The register does mark some credit notes as paid, so how Treasury handles them is not known | Five open credit notes are not counted in the CFO views. If Treasury pays them as run items, they would need to be added to the next-run list | How Treasury treats credit notes (netted against an invoice, or paid on their own) |
 | 2 | **Verifier load counts bills in hand, not rupee value, and does not count bills blocked by an open query** | A query waits on someone else, so the verifier is not working it. The register shows the wait is not driven by volume or size but by who holds the bill (`notes/problem.md`) | Pick order gives the next bills to the verifiers with fewest active bills. A value-weighted load would move large bills away from the busiest verifier | AP time data per bill, or a rule that large bills take longer to check |
-| 3 | **Runway burn is the work order's lifetime average**: value billed to date divided by the months from its start date to the extract date (or its end date if earlier), at least one month | The extract holds no period balance, open quantity or billing history by month. The adapter says so | Runway days are rough. An order that billed heavily early and slowly since looks worse than it is, and the reverse | Period balances and work-order lines over RFC (`app/sap/adapter.py`, `get_work_order`) |
+| 3 | **The tracker's own runway view still uses the work order's lifetime average** (the control-tower headline no longer does: it uses the last 90 days of billing, see assumption 3 above). value billed to date divided by the months from its start date to the extract date (or its end date if earlier), at least one month | The extract holds no period balance, open quantity or billing history by month. The adapter says so | Runway days are rough. An order that billed heavily early and slowly since looks worse than it is, and the reverse | Period balances and work-order lines over RFC (`app/sap/adapter.py`, `get_work_order`) |
 | 4 | **A bill not yet posted is counted as if it could post at the as-of date** when counting payment runs left | Without it, no run could be counted for the bills still with the desk, property or AP. It is the best case, so runs left is an upper bound for those bills | The MSME countdown may show a run left for a bill that cannot in fact post in time. It never shows fewer runs than are possible | Real posting dates for open bills, from SAP |
 | 5 | **A bill paid before it was posted (D03) keeps its stage as Paid, is flagged `paid_before_posted`, and its sentence says the payment date is being confirmed** | `notes/data-audit.md` D03: the payment date is the field that is wrong, not the posting date. The bill itself is real and was paid | No open-bill figure changes, because the bill is not open. A vendor is not told a date that cannot be right | The reason for the early payment dates, from Treasury |
 
@@ -135,3 +260,21 @@ What the adversarial review (`notes/adversarial-review.md`) found and this build
 - The biggest lever depends on an unconfirmed Treasury rule; the combined range without it is not computed.
 - The "likely to run dry" headline (`rw.dry`) moves with the window used for the burn: `rw.sens.window_60d.dry` with 60 days, `rw.sens.window_120d.dry` with 120; and with the horizon (`rw.sens.horizon_30d.dry`, `rw.sens.horizon_60d.dry`). It is not a forecast and has no seasonality.
 - The payment-run cut-off (0, 1 or 2 days) is a setting, not a finding.
+
+## What I did not do, and why
+
+Plainly, so nobody has to find these out later.
+
+- **I did not connect to SAP.** The brief says a connection is not needed, reading would need an RFC user, and writing invoices into SAP is a separate project with the SAP partner and audit sign-off. The "SAP" here is a SQLite file, opened read-only.
+- **I did not send a single WhatsApp message.** It needs the business API on a company number, approved templates in each language, the vendor's recorded opt-in and files kept on the company side. The chat on the intake card is a simulation, and the Hindi in it is my draft, not reviewed by a Hindi speaker.
+- **I did not compute the combined days saved without the payment-run lever.** That needs a new replay, and I wanted the results to stay put while I wrote the assumptions down.
+- **I did not put a rupee value or a cost on the days saved.** The pack has no interest rate, no penalty terms and no cost of the AP team's time, and I would have had to invent them.
+- **I did not score the readers on more than ten bills.** I labelled those ten by hand. Ten is too few to say whether a reader's confidence is calibrated, and the Tesseract reader was tuned on the same ten, so its later score is not a fair measure.
+- **I did not read the other bills with the vision model.** The free tier allows 20 requests a day per model, and, after what happened with the data, I did not want to send more. So the two-reader view covers the ten labelled bills only.
+- **I did not tune the vision prompt.** I kept the first prompt so that the ten-bill result stays a clean first run.
+- **I did not check Google's terms or the free-tier limit against its documentation.** The 20 a day is what Google's own error message said.
+- **I did not build the GSTIN check digit into the reader.** It would reject every GSTIN in this pack (section 5 above).
+- **I did not add a login, a second reviewer for typed values or a tamper-proof audit store.** The audit log is a local file; the reviewer's name is typed, not verified. A production version needs all three.
+- **I did not read the statutes and circulars in full.** `notes/research.md` lists what I read in full and what I read second-hand. Nothing here is legal advice.
+- **I did not build the deck or the video.** The `deck/` and `video/` folders are empty.
+- **I did not push anything to GitHub.** Everything is committed locally.

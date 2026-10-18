@@ -37,7 +37,7 @@ Creates `.venv` and installs the pinned versions in `constraints.txt`. Expected 
 python tasks.py analyse          # or: make analyse
 ```
 
-Runs the numbered scripts in `analysis/`, then refreshes `notes/numbers.md`. Expected: one line per script (`== clean.py`, `== 01_profile.py` and so on up to `== 18_reader_comparison.py`) and, last, `registered 2250 figures in .../notes/numbers.md` (the figure count grows as figures are added). It also rewrites the files in `analysis/out/`, `backtest/out/` and `notes/` that the app and the tests read; they are already in the repository, so the result should match what you cloned.
+Runs the numbered scripts in `analysis/`, then refreshes `notes/numbers.md`. Expected: one line per script (`== clean.py`, `== 01_profile.py` and so on up to `== 19_gstin_check_digit.py`) and, last, `registered 2254 figures in .../notes/numbers.md` (the figure count grows as figures are added). It also rewrites the files in `analysis/out/`, `backtest/out/` and `notes/` that the app and the tests read; they are already in the repository, so the result should match what you cloned.
 
 ### 3. Test: about 1.5 minutes
 

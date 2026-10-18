@@ -2629,3 +2629,24 @@ Run from the project root with the project's virtual environment active (`.venv`
 | rc.vision.seconds_mean | 16.7 | vision: mean seconds per bill (one call, rate-limit pause excluded) |
 
 <!-- END 18_reader_comparison.py -->
+
+<!-- BEGIN 19_gstin_check_digit.py -->
+
+### Figures from `analysis/19_gstin_check_digit.py` (used in notes/assumptions.md (synthetic GSTINs). Whether the vendor master's GSTINs pass the real GSTIN check digit; reads pack/data only)
+
+Script: `analysis/19_gstin_check_digit.py`. Output: `analysis/out/figures_gstin.csv`, one row per figure id below. Run from the project root. Exact commands to reproduce, in order:
+
+```
+python -I analysis/19_gstin_check_digit.py
+```
+
+Run from the project root with the project's virtual environment active (`.venv`). `python tasks.py analyse` (or `make analyse`) runs the whole chain and refreshes this register (`python tasks.py setup` first on a new machine).
+
+| Figure id | Value | What it counts |
+|---|---|---|
+| g.vendors | 900 | vendors in the vendor master |
+| g.shape_valid | 900 | vendor GSTINs with the right shape (15 characters, state code, PAN, entity, Z, check character) |
+| g.check_digit_pass | 0 | vendor GSTINs whose last character is the correct check digit |
+| g.check_digit_fail | 900 | vendor GSTINs with the right shape whose last character is not the correct check digit |
+
+<!-- END 19_gstin_check_digit.py -->

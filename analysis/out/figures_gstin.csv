@@ -1,0 +1,5 @@
+id,value,description
+g.vendors,900,vendors in the vendor master
+g.shape_valid,900,"vendor GSTINs with the right shape (15 characters, state code, PAN, entity, Z, check character)"
+g.check_digit_pass,0,vendor GSTINs whose last character is the correct check digit
+g.check_digit_fail,900,vendor GSTINs with the right shape whose last character is not the correct check digit

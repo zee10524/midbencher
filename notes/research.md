@@ -15,6 +15,7 @@ Secondary research from public web sources, **16 October 2026** (every source be
 | 5 | Keep TDS section and tax rules as dated reference data; store the TDS section per work order and flag mismatches rather than decide | Contractor versus professional/technical is a judgement for AMCs; the Income-tax Act 2025 renumbers TDS from 1 April 2026 `[S]` | Medium |
 | 6 | Check invoices against the work order and SAP on the day they reach the desk, route each exception to its owner, and measure first-time-right rate and touchless rate, not field accuracy | Exceptions, not extraction, drive AP cost; the earlier OCR pilot failed the same way `[S][V]` | Medium: sources are mostly vendors |
 | 7 | If WhatsApp is used for intake: official Business API on a company-owned number, download each file within hours (not days), store it in company storage in India with its hash, and plan for DPDP consent and safeguards | Webhook media IDs expire after 7 days; Meta keeps media only briefly; DPDP core duties start about May 2027 `[P][S]` | High on Meta's docs; medium on legal characterisation |
+| 8 | Do not send real vendor bills to a hosted AI model on a free tier; use a paid no-training tier with a data-processing agreement, or a model inside the client's own boundary | The DPDP duties in section 9.2 apply to personal data in bills (names, GSTINs, bank details), and a free tier may use inputs to improve the provider's products. I did send pack bills to a free tier during testing (`notes/assumptions.md`, assumption 7) | Medium: I did not read the provider's terms; this follows from the brief's instruction and section 9.2 |
 
 ## 1. What the pack says
 
@@ -213,6 +214,10 @@ Read from Meta's developer pages [29][30]:
 - The **72-hour DPDP breach notice**, the penalty ceiling and the exact 18-month date.
 - **Responsibility for personal data** sent over WhatsApp under the DPDP Act.
 - The Bombay High Court decision on deemed acceptance (summary only).
+
+- **Google's Gemini free-tier terms.** I did not open them. That inputs may be used to improve the products is what I understood from the provider's published position, not something I read in the terms. The limit of 20 requests a day per model comes only from the provider's own error message.
+- **The GSTIN check-digit rule.** I wrote it from memory and tested it on one published example GSTIN, which passes. I did not check it against the official specification.
+- **Whether the pack is "real client data" in the legal sense.** The brief says to treat it that way and also says any resemblance to a real company is coincidental. I treated that as a question for the client, not one I can settle.
 
 ## 11. Sources
 
