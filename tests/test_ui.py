@@ -210,8 +210,10 @@ def test_work_orders_running_dry_are_estimated_from_the_last_90_days_of_billing(
     N = S.numbers
     assert d["headline"]["dry"] == int(N("rw.dry")) and d["headline"]["dry_vendor_waiting"] == int(N("rw.dry.vendor_waiting"))
     assert d["labels"]["dry"] == f"work orders likely to run dry within {N('rw.horizon_days'):.0f} days, estimated from the last {N('rw.window_days'):.0f} days of billing"
-    assert d["labels"]["dry_extra"].startswith(f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting. It is an estimate")
-    assert f"{N('rw.sens.window_60d.dry'):,.0f} orders with the last {N('rw.sens.window_lo_days'):.0f} days" in d["labels"]["dry_extra"] and f"{N('rw.sens.window_120d.dry'):,.0f} with the last {N('rw.sens.window_hi_days'):.0f} days" in d["labels"]["dry_extra"]
+    assert d["labels"]["dry_extra"] == f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting"
+    assert d["labels"]["dry_note"].startswith("An estimate, not a forecast")
+    assert f"{N('rw.sens.window_60d.dry'):,.0f} orders with the last {N('rw.sens.window_lo_days'):.0f} days" in d["labels"]["dry_note"] and f"{N('rw.sens.window_120d.dry'):,.0f} with the last {N('rw.sens.window_hi_days'):.0f} days" in d["labels"]["dry_note"]
+    assert d["preview"] == 5 and len(d["oldest"]) > d["preview"]
     rows = list(csv.DictReader(open(ROOT / "backtest" / "out" / "runway_90d.csv", encoding="utf-8")))
     assert len(rows) == int(N("rw.dry")) and [r["wo_id"] for r in rows[:6]] == [x["wo_id"] for x in d["dry"]]
     monthly = [int(r["monthly_billing_inr"]) for r in rows]
@@ -220,11 +222,30 @@ def test_work_orders_running_dry_are_estimated_from_the_last_90_days_of_billing(
     assert sum(r["vendor_has_bill_waiting"] == "True" for r in rows) == int(N("rw.dry.vendor_waiting"))
 
 
-def test_the_cutoff_control_wraps_instead_of_clipping_in_a_narrow_window():
+def test_the_scenario_strip_stacks_instead_of_clipping_in_a_narrow_window():
     css = (STATIC / "style.css").read_text(encoding="utf-8")
-    head = re.search(r"\.head-row\s*\{([^}]*)\}", css).group(1)
-    assert "flex-wrap: wrap" in head
-    assert "flex: 0 0 auto" in re.search(r"\.seg\s*\{([^}]*)\}", css).group(1)
+    assert re.search(r"@media \(max-width: 1000px\)\s*\{[^}]*\.scenario\s*\{[^}]*grid-template-columns: 1fr", css)
+    assert re.search(r"@media \(max-width: 640px\)\s*\{[^}]*\.sc-opts\s*\{[^}]*grid-template-columns: 1fr", css)
+    html = (STATIC / "index.html").read_text(encoding="utf-8")
+    assert "When does Treasury close the run list?" in html and "Treasury's real rule is unconfirmed; this is a scenario, not a result." in html and 'href="#impact"' in html
+
+
+def test_the_scenario_options_map_to_the_cutoffs_and_the_effect_line_uses_the_pages_own_counts(server):
+    url, S = server
+    d = {c: get(url + f"/api/control?cutoff={c}") for c in (0, 1, 2)}
+    sc = {x["cutoff"]: x for x in d[1]["scenarios"]}
+    assert [x["cutoff"] for x in d[1]["scenarios"]] == [2, 1, 0]                       # worst, middle, best
+    assert (sc[2]["label"], sc[2]["case"]) == ("Two days before the run", "worst case") and (sc[1]["label"], sc[1]["case"]) == ("One day before", "middle case") and (sc[0]["label"], sc[0]["case"]) == ("Same day", "best case")
+    miss = {c: d[c]["headline"]["miss"] for c in d}
+    assert "middle case" in d[1]["effect"] and f"{miss[1]:,}" in d[1]["effect"]
+    for c, word in ((2, "worst case"), (0, "best case")):
+        e = d[c]["effect"]
+        assert word in e and f"{miss[c]:,}" in e and f"{miss[1]:,}" in e
+        diff = miss[c] - miss[1]
+        assert (f"{abs(diff):,} {'more' if diff > 0 else 'fewer'} than" in e) if diff else "the same as in the middle case" in e
+    assert miss[2] >= miss[1] >= miss[0]                                              # an earlier closing can only make more bills miss
+    # nothing else on the page changes with the option except what the cut-off drives
+    assert d[0]["headline"]["late"] == d[1]["headline"]["late"] == d[2]["headline"]["late"] and d[0]["headline"]["dry"] == d[2]["headline"]["dry"]
 
 
 def test_impact_msme_line_is_plain_and_from_the_files(server):

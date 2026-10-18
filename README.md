@@ -1,6 +1,8 @@
-# Riklr AI FDE case study: vendor-payments
+# Paypath: From desk to paid.
 
-Vendor bills arrive on paper, as scans and as phone photos, and take a mean of about 31 days from the desk to payment. This project reads a bill when it arrives, checks it against SAP data, tells the right person the one fix that matters, and tracks every bill to payment. It has three screens: **Intake** (drop a bill, get a verdict and a message ready to send), **Control tower** (the oldest bills, Micro and Small bills close to the 45-day limit, the pick order across the AP clerks, work orders about to run dry) and **Impact** (a backtest on last year's register, as ranges, with the condition beside each).
+The Riklr AI FDE case study (vendor payments).
+
+Bills from vendors arrive on paper, as scans and as phone photos, and take a mean of about 31 days from the desk to payment. This project reads a bill when it arrives, checks it against SAP data, tells the right person the one fix that matters, and tracks every bill to payment. It has three screens: **Intake** (drop a bill, get a verdict and a message ready to send), **Control tower** (the oldest bills, Micro and Small bills close to the 45-day limit, the pick order across the AP clerks, work orders about to run dry) and **Impact** (a backtest on last year's register, as ranges, with the condition beside each).
 
 The thinking behind it is in `notes/`: `notes/understanding.md`, `notes/problem.md`, `notes/options.md`, `notes/solution-design.md`, and the reader's scores in `notes/reader-evaluation.md`. Every figure used anywhere is listed in `notes/numbers.md` with the script and command that produced it.
 
@@ -53,7 +55,7 @@ Expected last line: `218 passed` (the number grows as tests are added; there mus
 python tasks.py run              # or: make run
 ```
 
-Expected: `Riklr intake is running at http://127.0.0.1:8765/  (Ctrl+C to stop)` and a line saying whether Tesseract was found. Open that address. On the intake card pick a sample bill; the vendor message appears in a phone-style panel (English or Hindi), and **Vendor replies with a photo** answers it. The server answers within a second or two; the register (11,000 bills) loads in the background for about two seconds, so the first Control tower or Impact request may wait that long. Stop with Ctrl+C. Change the port with the `RIKLR_PORT` environment variable. `python tasks.py run --open` also opens the browser.
+Expected: `Riklr intake is running at http://127.0.0.1:8765/  (Ctrl+C to stop)` and a line saying whether Tesseract was found. Open that address. On the intake card pick a sample bill; the vendor message appears in a phone-style panel (English or Hindi), and **Vendor replies with a photo** answers it. The server answers within a second or two; the register (11,000 bills) loads in the background for about two seconds, so the first Control tower or Impact request may wait that long. On the Impact page, hover or tab to the small ? beside a figure to see where it comes from (a file in `backtest/out/` and the ids in `notes/numbers.md`). Stop with Ctrl+C. Change the port with the `RIKLR_PORT` environment variable. `python tasks.py run --open` also opens the browser.
 
 
 ### Optional: fill the second reader's cache (needs a Gemini key and the internet; the app and the tests do not need it)

@@ -104,6 +104,7 @@ class State:
 
 
 # ------------------------------------------------------------------------------------------------ intake
+PREVIEW_ROWS = 5      # how many rows of each long list the control tower shows before "show all" (layout only)
 LABEL = {"auto-clear": ("Clear at intake", "No finding at intake. Every later check still runs."),
          "fix-before-sending": ("Send back to the vendor before filing", "The vendor can fix this the same day."),
          "fix-internal": ("Fix inside the company", "The bill is not blocked; the owner below starts the fix now."),
@@ -241,9 +242,9 @@ def top_issues(res: dict, out: dict) -> tuple[list[dict], int]:
     rest.sort(key=lambda t: t[:2])
     issues = [issue_for(r) for _, _, r in rest]
     if out["unread"]:
-        nr = "; ".join(f"{n['check']} needs {', '.join(n['needs']).lower()}" for n in out["not_run"])
+        nr = "; ".join(f"{n['title'].lower()} needs {', '.join(n['needs']).lower()}" for n in out["not_run"])
         issues.append(dict(check="read", title="Parts of the bill could not be read", who="Vendor, or a person types them", kind="resend",
-                           detail="Not read: " + ", ".join(out["unread"]) + ". " + (f"Checks that could not run: {nr}. " if nr else "") + "Nothing is guessed: ask for a clearer photo or scan, or type the values below."))
+                           detail="Not read: " + ", ".join(out["unread"]) + ". " + ("The checks that need them are listed below. " if nr else "") + "Nothing is guessed: ask for a clearer photo or scan, or type the values below."))
     return issues[:3], max(0, len(issues) - 3)
 
 
@@ -391,6 +392,15 @@ def tesseract_found() -> bool:
 
 
 # ------------------------------------------------------------------------------------------------ control tower
+# the three cut-off cases, worst first, named as on the Impact page (the cut-off is how many days before a run the list closes)
+SCENARIOS = [dict(cutoff=2, label="Two days before the run", case="worst case"), dict(cutoff=1, label="One day before", case="middle case"), dict(cutoff=0, label="Same day", case="best case")]
+
+
+def _will_miss(bills, cutoff: int) -> int:
+    """Known Micro and Small bills that will miss the limit because no payment run is left, for one cut-off: the same count as the headline."""
+    return sum(1 for r in countdown(bills, cutoff) if r["msme_status"] in ("Micro", "Small") and r["state"] == "will be late: no run left")
+
+
 def control(S: State, cutoff: int = DEFAULT_CUTOFF_DAYS) -> dict:
     N = S.numbers
     bills = S.bills
@@ -417,17 +427,35 @@ def control(S: State, cutoff: int = DEFAULT_CUTOFF_DAYS) -> dict:
     wo = list(csv.DictReader(open(RUNWAY, encoding="utf-8", newline="")))
     dry = [dict(wo_id=r["wo_id"], property=r["property_code"], vendor=r["vendor_name"], balance=f"Rs {int(r['balance_inr']):,}", burn=f"Rs {int(r['monthly_billing_inr']):,}",
                 days=int(float(r["runway_days"])), expires=int(r["days_to_expiry"]), vendor_waiting=r["vendor_has_bill_waiting"] == "True") for r in wo[:6]]
-    return dict(as_of=date_label(AS_OF), cutoff=cutoff, cutoffs=[0, 1, 2], cutoff_note=f"Payment-run cut-off setting: {cutoff} day(s) before the run (Treasury's real rule is unconfirmed).",
+    miss_now = sum(1 for r in known if r["state"] == "will be late: no run left")
+    miss_mid = miss_now if cutoff == DEFAULT_CUTOFF_DAYS else _will_miss(bills, DEFAULT_CUTOFF_DAYS)
+    case = next(s for s in SCENARIOS if s["cutoff"] == cutoff)
+    if cutoff == DEFAULT_CUTOFF_DAYS:
+        effect = f"This is the middle case: {miss_now:,} more Micro and Small {'bill' if miss_now == 1 else 'bills'} will miss the {LIMIT_DAYS}-day limit because no payment run is left."
+    else:
+        d = miss_now - miss_mid
+        effect = (f"In the {case['case']}, {miss_now:,} more Micro and Small {'bill' if miss_now == 1 else 'bills'} will miss the {LIMIT_DAYS}-day limit, "
+                  + (f"{abs(d):,} {'more' if d > 0 else 'fewer'} than the {miss_mid:,} in the middle case." if d else f"the same as in the middle case."))
+    return dict(as_of=date_label(AS_OF), cutoff=cutoff, cutoffs=[0, 1, 2], scenarios=SCENARIOS, effect=effect, cutoff_note=f"Payment runs are modelled with the run list closing {cutoff} {'day' if cutoff == 1 else 'days'} before the run. Treasury's real rule is unconfirmed.",
                 headline=dict(late=sum(1 for r in known if r["state"] == "late"), miss=sum(1 for r in known if r["state"] == "will be late: no run left"), close=len(close),
                               waiting=len(po), dry=int(N("rw.dry")), dry_vendor_waiting=int(N("rw.dry.vendor_waiting"))),
                 labels=dict(late=f"Micro and Small bills already past {LIMIT_DAYS} days", miss="more will miss it: no payment run left", waiting="bills waiting at head office for a clerk",
                             dry=f"work orders likely to run dry within {N('rw.horizon_days'):.0f} days, estimated from the last {N('rw.window_days'):.0f} days of billing",
-                            dry_extra=(f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting. It is an estimate: it depends on how many days of billing set the burn "
-                                       f"({N('rw.sens.window_60d.dry'):,.0f} orders with the last {N('rw.sens.window_lo_days'):.0f} days, {N('rw.sens.window_120d.dry'):,.0f} with the last {N('rw.sens.window_hi_days'):.0f} days)")),
-                oldest=oldest20, msme=msme, clerks=clerks, spread_pct=(None if spread(after) == float("inf") else round(100 * spread(after), 1)), dry=dry, live_waiting=int(N("l.live.waiting")))
+                            dry_extra=f"{N('rw.dry.vendor_waiting'):,.0f} of them have a vendor with a bill already waiting",
+                            dry_note=(f"An estimate, not a forecast: it depends on how many days of billing set the burn "
+                                      f"({N('rw.sens.window_60d.dry'):,.0f} orders with the last {N('rw.sens.window_lo_days'):.0f} days, {N('rw.sens.window_120d.dry'):,.0f} with the last {N('rw.sens.window_hi_days'):.0f} days).")),
+                preview=PREVIEW_ROWS, oldest=oldest20, msme=msme, clerks=clerks, spread_pct=(None if spread(after) == float("inf") else round(100 * spread(after), 1)), dry=dry, live_waiting=int(N("l.live.waiting")))
 
 
 # ------------------------------------------------------------------------------------------------ impact
+LEVER_SOURCE = {"pay": "backtest/out/impact.csv, group pay, days_off_mean (worst to best case); the figures l.lever.pay2.save to l.lever.pay0.save in notes/numbers.md.",
+                "queue": "backtest/out/impact.csv, group queue, days_off_mean; the figure l.lever.queue.save in notes/numbers.md.",
+                "intake": "backtest/out/impact.csv, group intake, days_off_mean (worst to best case); the figures l.lever.in3.save, l.lever.in1.save and l.lever.inopt.save in notes/numbers.md."}
+METRIC_SOURCE = ["Before: l.base.desk_mean. After: that minus the saving, from backtest/out/impact.csv (group combined, days_off_mean) and l.lever.low.save to l.lever.high.save. All registered in notes/numbers.md.",
+                 "Before: l.base.ms_late, l.base.ms_late_pct and l.n_msme_known. After: backtest/out/impact.csv (group combined, msme_over_45_days_count and msme_over_45_days_pct). Registered in notes/numbers.md.",
+                 "Before: l.base.p90. After: backtest/out/impact.csv (group combined, p90_days_desk_to_paid). Registered in notes/numbers.md."]
+
+
 def impact(S: State) -> dict:
     N = S.numbers
     rows = {(r["group"], r["metric"]): r for r in S.impact}
@@ -443,31 +471,37 @@ def impact(S: State) -> dict:
     intake_words = f"a caught query still costs {days(resid[0])} in the worst case and {days(resid[1])} in the middle case, and the best case counts every query from the two early layers with {days(resid[1])} left"
     clerks = len(control_tower(S.bills))
     levers = []
-    for g, title, cond in [
-        ("pay", "Pay on the first run after posting", f"Treasury sets the run-list cut-off. In the replay {pay_words}. Why bills miss the first run is unconfirmed: Treasury's run lists are still a question for the client."),
-        ("queue", "Balance the AP pick order", f"The AP lead works the order across the {clerks} clerks. This is a replay of last year's waits; the live queue holds only {n0(N('l.live.waiting'))} waiting bills."),
-        ("intake", "Check bills at intake", f"The desk and the executives fix problems at the source. The replay assumes that {intake_words}. Fewer queries, not a faster payment run.")]:
+    for g, title, sentence, cond in [
+        ("pay", "Pay on the first run after posting", "A bill goes out on the first Tuesday or Friday run after it is posted, instead of waiting for the next one.",
+         f"Depends on when Treasury closes the run list: {pay_words}. Why bills miss the first run is still unconfirmed."),
+        ("queue", "Balance the AP pick order", "Bills at head office are picked up in turn across the clerks, so none waits behind a long queue.",
+         f"Replays last year's waits across the {clerks} clerks; the live queue holds only {n0(N('l.live.waiting'))} waiting bills."),
+        ("intake", "Check bills at intake", "A problem is caught the day the bill arrives and sent back to the vendor, so it does not sit in a query.",
+         f"Depends on how long a bill still takes after a problem is caught: {intake_words}. Fewer queries, not a faster payment run.")]:
         d = f(g, "days_off_mean")
-        levers.append(dict(title=title, days=rng(d[0], d[2], lambda x: f"{x:.2f}"), condition=cond))
+        levers.append(dict(title=title, sentence=sentence, days=rng(d[0], d[2], lambda x: f"{x:.2f}"), condition=cond, source=LEVER_SOURCE[g]))
     tail_pct = 100 * intake_days[2] / base["mean"]
     return dict(
         label="Replay on last year's register: a counterfactual, not a result.",
         headline=[
-            dict(name="Average days from desk to paid", before=n1(base["mean"]), after=rng(base["mean"] - N("l.lever.high.save"), base["mean"] - N("l.lever.low.save")),
+            dict(source=METRIC_SOURCE[0], name="Average days from desk to paid", before=n1(base["mean"]), after=rng(base["mean"] - N("l.lever.high.save"), base["mean"] - N("l.lever.low.save")),
                  unit="days", saved=rng(cmb["days_off_mean"][0], cmb["days_off_mean"][2], lambda x: f"{x:.1f}"),
-                 condition="Needs Treasury and AP to act on all three levers. Payment-run cause unconfirmed.",
+                 sentence=f"from {n1(base['mean'])} days today, which is {rng(cmb['days_off_mean'][0], cmb['days_off_mean'][2], lambda x: f'{x:.1f}')} days faster",
+                 condition="Needs Treasury and AP to act on all three changes. Payment-run cause unconfirmed.",
                  scale=dict(before=base["mean"], lo=base["mean"] - N("l.lever.high.save"), hi=base["mean"] - N("l.lever.low.save"), min=0, max=base["mean"])),
-            dict(name=f"Micro and Small bills paid after more than {LIMIT_DAYS} days", before=n0(base["ms"]), after=rng(cmb["msme_over_45_days_count"][2], cmb["msme_over_45_days_count"][0], n0), unit="bills",
+            dict(source=METRIC_SOURCE[1], name=f"Micro and Small bills paid after more than {LIMIT_DAYS} days", before=n0(base["ms"]), after=rng(cmb["msme_over_45_days_count"][2], cmb["msme_over_45_days_count"][0], n0), unit="bills",
                  sentence=(f"from {n1(base['ms_pct'])} per cent of Micro and Small bills ({n0(base['ms'])} of {n0(base['n_ms'])}) to "
                            f"{rng(cmb['msme_over_45_days_pct'][2], cmb['msme_over_45_days_pct'][0])} per cent ({rng(cmb['msme_over_45_days_count'][2], cmb['msme_over_45_days_count'][0], n0)})"),
                  saved=f"{rng(cmb['msme_over_45_days_pct'][2], cmb['msme_over_45_days_pct'][0])} per cent of {n0(base['n_ms'])}, from {n1(base['ms_pct'])}",
                  condition="Counted from the date the desk logged the bill. The statutory clock starts earlier, so these are minimums.",
                  scale=dict(before=base["ms"], lo=cmb["msme_over_45_days_count"][2], hi=cmb["msme_over_45_days_count"][0], min=0, max=base["ms"])),
-            dict(name="The slowest tenth of bills: days from desk to paid", before=n0(base["p90"]), after=rng(cmb["p90_days_desk_to_paid"][2], cmb["p90_days_desk_to_paid"][0], n0), unit="days",
+            dict(source=METRIC_SOURCE[2], name="The slowest tenth of bills: days from desk to paid", before=n0(base["p90"]), after=rng(cmb["p90_days_desk_to_paid"][2], cmb["p90_days_desk_to_paid"][0], n0), unit="days",
                  saved=f"{n0(base['p90'] - cmb['p90_days_desk_to_paid'][0])} to {n0(base['p90'] - cmb['p90_days_desk_to_paid'][2])} days",
+                 sentence=f"from {n0(base['p90'])} days today, which is {n0(base['p90'] - cmb['p90_days_desk_to_paid'][0])} to {n0(base['p90'] - cmb['p90_days_desk_to_paid'][2])} days faster",
                  condition="Same conditions as the average. This is the ninetieth percentile.", scale=dict(before=base["p90"], lo=cmb["p90_days_desk_to_paid"][2], hi=cmb["p90_days_desk_to_paid"][0], min=0, max=base["p90"]))],
         levers=levers,
         intake_line=(f"The intake rules barely move the mean ({rng(intake_days[0], intake_days[2], lambda x: f'{x:.2f}')} days, at most {n1(tail_pct)} per cent of it) but protect the tail: "
                      f"bills over {LIMIT_DAYS} days fall from {n0(base['over'])} to {between(intake_over[2], intake_over[0], n0)}, and {n0(N('l.chk.over45_queried'))} of those {n0(base['over'])} bills had a query."),
         low_middle_high=f"Best, middle and worst case: {pay_words}. For the intake rules, {intake_words}.",
+        reading_note="Each range runs from the worst case to the best case, with the middle case between.",
         source="Backtest on last year's register (backtest/out/impact.csv). Figures are in notes/numbers.md.")

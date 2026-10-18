@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vendor bill intake</title>
+<title>Paypath: From desk to paid.</title>
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <header class="top">
   <div class="wrap bar">
-    <span class="brand">Vendor bills</span>
+    <a class="brand" href="#intake"><span class="brand-name">Paypath</span><span class="brand-tag">From desk to paid.</span></a>
     <nav id="nav" aria-label="Screens">
       <a href="#intake" data-view="intake">Intake</a>
       <a href="#control" data-view="control">Control tower</a>
@@ -19,26 +19,39 @@
 </header>
 <main class="wrap">
   <section id="view-intake" class="view" hidden>
-    <h1>Drop a bill or packet</h1>
-    <p class="lede">One card, a verdict, and a message ready to send. Nothing leaves this machine.</p>
+    <h1>Check a bill</h1>
+    <p class="lede">Drop a bill or packet. You get a verdict, the issues that matter and a message ready to send. Nothing leaves this machine.</p>
     <div id="drop" class="drop" tabindex="0">
-      <p class="drop-main">Drop a file here</p>
-      <p class="drop-sub">or <label class="link"><input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png" hidden>choose a file</label>, or pick a bill the reader has already read</p>
+      <p class="drop-main">Drop a bill here</p>
+      <p class="drop-sub">or <label class="link"><input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png" hidden>choose a file</label>, or pick one the reader has already read</p>
       <div class="pick"><select id="sample" aria-label="A bill the reader has already read"></select><button id="pickgo" class="btn">Show the card</button></div>
     </div>
     <div id="card-area" aria-live="polite"></div>
+    <p class="next"><a class="next-link" href="#control">Next: Control tower <span aria-hidden="true">&rarr;</span></a></p>
   </section>
 
   <section id="view-control" class="view" hidden>
-    <div class="head-row"><div><h1>Control tower</h1><p id="control-as" class="lede"></p></div>
-      <div id="cutoff" class="seg" role="group" aria-label="Payment-run cut-off setting"></div></div>
+    <h1>Control tower</h1>
+    <p id="control-as" class="lede"></p>
+    <div class="scenario">
+      <div class="sc-main">
+        <p class="sc-q" id="sc-q">When does Treasury close the run list?</p>
+        <div id="cutoff" class="sc-opts" role="radiogroup" aria-labelledby="sc-q"></div>
+      </div>
+      <div class="sc-side">
+        <p id="sc-effect" class="sc-effect" aria-live="polite"></p>
+        <p class="sc-note">Treasury's real rule is unconfirmed; this is a scenario, not a result. <a class="link" href="#impact">The Impact page uses the same three cases.</a></p>
+      </div>
+    </div>
     <div id="control-body"></div>
+    <p class="next"><a class="next-link" href="#impact">Next: Impact <span aria-hidden="true">&rarr;</span></a></p>
   </section>
 
   <section id="view-impact" class="view" hidden>
     <h1>What would change</h1>
     <p id="impact-label" class="lede"></p>
     <div id="impact-body"></div>
+    <p class="next"><a class="next-link" href="#intake">Back to Intake <span aria-hidden="true">&rarr;</span></a></p>
   </section>
   <p id="err" class="err" hidden></p>
 </main>
