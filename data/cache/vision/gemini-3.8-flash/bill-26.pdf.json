@@ -1,0 +1,67 @@
+{
+ "file": "bill-26.pdf",
+ "sha256": "54d45bf55137434d141eb6d23aa63d249ea100a8b342ca746327912cc2d49f54",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 34.4
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "UDAAN ENGINEERING WORKS",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "09GMNCI3145I1ZU",
+   "conf": 0.95
+  },
+  "invoice_no": {
+   "value": "082/25-26/714",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-08-23",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4100245",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 35150.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 6327.0,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 41477.0,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998714",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Delhi",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

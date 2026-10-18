@@ -1,7 +1,24 @@
 id,value,description
-rc.labelled_bills,10,hand-labelled bills
-rc.vision_stored_of_labelled,0,"of those, bills with a stored vision reading"
-rc.tess_first.fields_correct,53,"Tesseract alone, first run: fields right (of 60)"
-rc.tess_first.key_bills,5,"Tesseract alone, first run: bills right on the four key fields"
-rc.tess_live.fields_correct,58,"Tesseract alone, stored reading now (tuned on these bills): fields right (of 60)"
-rc.tess_live.key_bills,8,"Tesseract alone, stored reading now (tuned on these bills): bills right on the four key fields"
+rc.free_tier.requests_per_day_per_model,20.0,"free-tier limit per model per day, as stated in Google's 429 message (not computed here)"
+rc.labelled_bills,10.0,hand-labelled bills
+rc.vision_stored_of_labelled,10.0,"of those, bills with a stored vision reading"
+rc.tess_first.fields_correct,53.0,"Tesseract alone, first run: fields right (of 60)"
+rc.tess_first.key_bills,5.0,"Tesseract alone, first run: bills right on the four key fields"
+rc.tess_live.fields_correct,58.0,"Tesseract alone, stored reading now (tuned on these bills): fields right (of 60)"
+rc.tess_live.key_bills,8.0,"Tesseract alone, stored reading now (tuned on these bills): bills right on the four key fields"
+rc.vision.fields_correct,60.0,vision alone: fields right (of 60)
+rc.vision.key_bills,10.0,vision alone: bills right on the four key fields
+rc.comb.trusted,50.0,combination: fields where the readers agree (trusted)
+rc.comb.trusted_wrong,0.0,combination: trusted fields that are wrong
+rc.comb.differ,2.0,combination: fields where the readers differ (go to a person)
+rc.comb.vision_only,8.0,combination: fields only the vision reader read (go to a person)
+rc.comb.tesseract_only,0.0,combination: fields only Tesseract read (no second opinion)
+rc.comb.neither,0.0,combination: fields neither reader read
+rc.comb.tess_wrong_readings,2.0,"Tesseract readings that were wrong (a value, not the right one)"
+rc.comb.wrong_caught,2.0,"of those, caught because the readers disagreed"
+rc.comb.wrong_already_low,0.0,"of those, not caught by disagreement but already below 0.70 confidence"
+rc.comb.wrong_trusted,0.0,"of those, trusted because the vision reader made the same error"
+rc.comb.key_bills_trusted_right,3.0,combination: bills with all four key fields agreed and right
+rc.comb.key_bills_trusted_wrong,0.0,combination: bills with a key field agreed but wrong
+rc.comb.key_bills_to_person,7.0,combination: bills with at least one key field that goes to a person
+rc.vision.seconds_mean,16.7,"vision: mean seconds per bill (one call, rate-limit pause excluded)"

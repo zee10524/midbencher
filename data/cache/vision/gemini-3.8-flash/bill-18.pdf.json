@@ -1,0 +1,67 @@
+{
+ "file": "bill-18.pdf",
+ "sha256": "5fe411e464faf19e3087e8c40b02aa98fdd9260cd5667bd3bfcebc26162f752b",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 7.2
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "KESARI FACILITY MANAGEMENT",
+   "conf": 1.0
+  },
+  "vendor_gstin": {
+   "value": "06GOJFC5622L1Z5",
+   "conf": 1.0
+  },
+  "invoice_no": {
+   "value": "558/25-26/909",
+   "conf": 1.0
+  },
+  "invoice_date": {
+   "value": "2025-08-05",
+   "conf": 1.0
+  },
+  "wo_id": {
+   "value": "4100314",
+   "conf": 1.0
+  },
+  "taxable": {
+   "value": 421020.0,
+   "conf": 1.0
+  },
+  "cgst": {
+   "value": 37891.8,
+   "conf": 1.0
+  },
+  "sgst": {
+   "value": 37891.8,
+   "conf": 1.0
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "total": {
+   "value": 496803.6,
+   "conf": 1.0
+  },
+  "hsn_sac": {
+   "value": "998533",
+   "conf": 1.0
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 1.0
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 1.0
+  }
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "file": "bill-11.pdf",
+ "sha256": "5765183f0020cd489bf034fe96781db88d6700563807a171f918db75c247f936",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.7-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 18.6
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "GARUD NIRMAL LANDSCAPES PVT LTD",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "09WMLCG8394Z1Z9",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "085/25-26/730",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-08-02",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4101752",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 61610.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 11089.8,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 72699.8,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998134",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

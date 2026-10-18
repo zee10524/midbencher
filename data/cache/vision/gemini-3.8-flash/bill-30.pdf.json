@@ -1,0 +1,67 @@
+{
+ "file": "bill-30.pdf",
+ "sha256": "501b11ca57203dc9b8c5cc822aa88fe6c5a3641f1c1f9112d783c1bbe16c3a81",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 5.2
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "NIRMAL ENGINEERING WORKS",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "07JHKCZ6677Q1Z2",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "245/25-26/699",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-11-08",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4101712",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 183060.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 32950.8,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 216010.8,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "995473",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

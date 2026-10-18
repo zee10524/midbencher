@@ -278,7 +278,7 @@ def messages(res: dict, out: dict) -> list[dict]:
 def vision_label(res: dict) -> str | None:
     v = res.get("vision")
     if not v:
-        return None
+        return "Not read by the vision model yet."
     return (f"Stored vision reading ({v.get('model') or 'vision model'}, read {v.get('read_at') or 'earlier'}), not a live call. It is a second opinion only: where it agrees with Tesseract the field is marked "
             "two readers agree; where they differ both values are shown and a person decides. Neither is picked automatically.")
 

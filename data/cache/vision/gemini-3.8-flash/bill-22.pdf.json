@@ -1,0 +1,67 @@
+{
+ "file": "bill-22.pdf",
+ "sha256": "e318947571203da66670881e1e5830153fd4e4c463d89552a3a0caa62d9c1148",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 6.0
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "SATLUJ ARAVIND ENGINEERING WORKS",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "06OHLFJ5315C1ZL",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "112/25-26/754",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-09-30",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4101609",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 11560.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 2080.8,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 13640.8,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "995473",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

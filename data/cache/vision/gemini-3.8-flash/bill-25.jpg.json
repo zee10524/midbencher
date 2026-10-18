@@ -1,0 +1,67 @@
+{
+ "file": "bill-25.jpg",
+ "sha256": "13ed6a2244e4267f806a65556888008674c4659548fc35494bfa193a3790b8e7",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 7.6
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "GARUD FACILITY MANAGEMENT PVT LTD",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "09MMSFV0354S1ZB",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "618/25-26/959",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-12-06",
+   "conf": 0.98
+  },
+  "wo_id": {
+   "value": "4100506",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 616720.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 111009.6,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 727729.6,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998533",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

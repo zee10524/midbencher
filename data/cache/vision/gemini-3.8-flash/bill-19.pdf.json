@@ -1,0 +1,67 @@
+{
+ "file": "bill-19.pdf",
+ "sha256": "98b963c5354607c9ebc8dcd7c5cd0590060d63e023512fb7217dbba5fa6a28e4",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 21.2
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "SARTHAK ELEVATOR CARE PVT LTD",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "08CSPFO9265W1ZP",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "525/25-26/032",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-09-19",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4100632",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 30990.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 5578.2,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 36568.2,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998717",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

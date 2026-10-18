@@ -1,0 +1,67 @@
+{
+ "file": "packet-01-security-manpower.pdf",
+ "sha256": "ad875c13032113edfa36d737d035a4afad4f6db80cf0678b19dae315e8560e7b",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.7-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 8.2
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "RAKSHA ABHAY MANPOWER SOLUTIONS PVT LTD",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "06EPVCF6069Z1ZZ",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "668/25-26/138",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2026-03-04",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4100395",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 420980.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": 37888.2,
+   "conf": 0.99
+  },
+  "sgst": {
+   "value": 37888.2,
+   "conf": 0.99
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "total": {
+   "value": 496756.4,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998525",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

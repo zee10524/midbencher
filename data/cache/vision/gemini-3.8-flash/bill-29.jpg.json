@@ -1,0 +1,67 @@
+{
+ "file": "bill-29.jpg",
+ "sha256": "0821d8fc28614f5187d811aaa3463b72778e681e6330ed451aaed89d617bc3bf",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 13.3
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "SHIVALIK FACILITY SERVICES",
+   "conf": 0.95
+  },
+  "vendor_gstin": {
+   "value": "06LXWPB6848I1ZO",
+   "conf": 0.85
+  },
+  "invoice_no": {
+   "value": "289/25-26/049",
+   "conf": 0.95
+  },
+  "invoice_date": {
+   "value": "2026-02-05",
+   "conf": 0.95
+  },
+  "wo_id": {
+   "value": "4100325",
+   "conf": 0.95
+  },
+  "taxable": {
+   "value": 987150.0,
+   "conf": 0.95
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 177687.0,
+   "conf": 0.95
+  },
+  "total": {
+   "value": 1173837.0,
+   "conf": 0.95
+  },
+  "hsn_sac": {
+   "value": "998533",
+   "conf": 0.95
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.95
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.95
+  }
+ }
+}

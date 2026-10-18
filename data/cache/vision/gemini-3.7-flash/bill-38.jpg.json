@@ -1,0 +1,67 @@
+{
+ "file": "bill-38.jpg",
+ "sha256": "b739b12d02fb8805f87e0f8b7ac95c007dd9fb71ab61ec2c20b57e1d4ea0e455",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.7-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 10.5
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "TRISHUL NIRMAL MANPOWER SOLUTIONS",
+   "conf": 1.0
+  },
+  "vendor_gstin": {
+   "value": "06KRKPD6281U1Z5",
+   "conf": 1.0
+  },
+  "invoice_no": {
+   "value": "718/25-26/543",
+   "conf": 1.0
+  },
+  "invoice_date": {
+   "value": "2025-09-01",
+   "conf": 1.0
+  },
+  "wo_id": {
+   "value": "4100090",
+   "conf": 1.0
+  },
+  "taxable": {
+   "value": 1024440.0,
+   "conf": 1.0
+  },
+  "cgst": {
+   "value": 92199.6,
+   "conf": 1.0
+  },
+  "sgst": {
+   "value": 92199.6,
+   "conf": 1.0
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "total": {
+   "value": 1208839.2,
+   "conf": 1.0
+  },
+  "hsn_sac": {
+   "value": "998525",
+   "conf": 1.0
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 1.0
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 1.0
+  }
+ }
+}

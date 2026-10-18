@@ -43,7 +43,7 @@ def vis_of(res, **over):
         f[k] = dict(value=x.get("value"), conf=0.9 if x.get("value") is not None else 0.0)
     for k, v in over.items():
         f[k] = dict(value=v, conf=0.9 if v is not None else 0.0)
-    return dict(file=res["file"], sha256=res["sha256"], reader=dict(name="vision", provider="Gemini", model="test-model", prompt_version="t", read_at="2026-10-17"), doc_type="invoice", fields=f)
+    return dict(file=res["file"], sha256=res["sha256"], reader=dict(name="vision", provider="Gemini", model=vision.MODEL, prompt_version="t", read_at="2026-10-17"), doc_type="invoice", fields=f)
 
 
 # ------------------------------------------------------------------ the key and the cache
@@ -153,14 +153,16 @@ def test_a_disputed_field_is_treated_as_not_read_by_the_checks(world):
 def test_card_marks_agreement_and_shows_both_values_on_a_difference(world, monkeypatch, tmp_path):
     sap, S = world
     res = cached("bill-11.pdf")
+    monkeypatch.setattr(vision, "VISION_DIR", tmp_path)          # an empty cache folder: the real one may hold readings by now
     plain = data.card(S, res, "stored", replay=True)
-    assert plain["vision_label"] is None and not any("cross" in r for r in plain["fields"])           # no stored vision reading: nothing changes
+    assert plain["vision_label"] == "Not read by the vision model yet." and not any("cross" in r for r in plain["fields"])           # no stored vision reading: nothing changes
     total = float(res["fields"]["total"]["value"])
-    (tmp_path / "bill-11.pdf.json").write_text(json.dumps(vis_of(res, total=total + 5)), encoding="utf-8")
+    (tmp_path / vision.MODEL).mkdir()
+    (tmp_path / vision.MODEL / "bill-11.pdf.json").write_text(json.dumps(vis_of(res, total=total + 5)), encoding="utf-8")
     monkeypatch.setattr(vision, "VISION_DIR", tmp_path)
     c = data.card(S, res, "stored", replay=True)
     rows = {r["key"]: r for r in c["fields"]}
-    assert "Stored vision reading" in c["vision_label"] and "test-model" in c["vision_label"] and "Neither is picked automatically" in c["vision_label"]
+    assert "Stored vision reading" in c["vision_label"] and vision.MODEL in c["vision_label"] and "Neither is picked automatically" in c["vision_label"]
     assert rows["vendor_gstin"]["cross"]["state"] == "agree" and rows["vendor_gstin"]["state"] == "ok"
     t = rows["total"]
     assert t["state"] == "differ" and t["cross"]["tesseract"] == f"{total:,.2f}" and t["cross"]["vision"] == f"{total + 5:,.2f}" and "total" in c["inputs"]
@@ -172,7 +174,8 @@ def test_typing_a_value_on_a_difference_saves_it_as_human_review(world, monkeypa
     res = cached("bill-11.pdf")
     S.cache[res["sha256"]] = res
     total = float(res["fields"]["total"]["value"])
-    (tmp_path / "bill-11.pdf.json").write_text(json.dumps(vis_of(res, total=total + 5)), encoding="utf-8")
+    (tmp_path / vision.MODEL).mkdir()
+    (tmp_path / vision.MODEL / "bill-11.pdf.json").write_text(json.dumps(vis_of(res, total=total + 5)), encoding="utf-8")
     monkeypatch.setattr(vision, "VISION_DIR", tmp_path)
     monkeypatch.setattr(pipeline, "WORKING_DB", tmp_path / "w.sqlite")
     pipeline.make_working_copy(PACK / "sap_extract.sqlite", tmp_path / "w.sqlite")
@@ -196,8 +199,8 @@ def test_comparison_script_scores_a_synthetic_cache_and_says_nothing_without_one
     env["RIKLR_VISION_DIR"] = str(empty)
     run()
     assert "NOT been scored" in (tmp_path / "out" / "reader-comparison.md").read_text(encoding="utf-8")
-    full = tmp_path / "full"
-    full.mkdir()
+    full = tmp_path / "full" / vision.MODEL
+    full.mkdir(parents=True)
     for name, r in first.items():
         live = cached(name)
         v = vis_of(live)
@@ -205,7 +208,7 @@ def test_comparison_script_scores_a_synthetic_cache_and_says_nothing_without_one
         if name == sorted(first)[0]:
             v["fields"]["vendor_gstin"]["value"] = "06ZZZZZ9999Z1Z9"            # one disagreement
         (full / f"{name}.json").write_text(json.dumps(v), encoding="utf-8")
-    env["RIKLR_VISION_DIR"] = str(full)
+    env["RIKLR_VISION_DIR"] = str(full.parent)
     run()
     md = (tmp_path / "out" / "reader-comparison.md").read_text(encoding="utf-8")
     figs = {r["id"]: float(r["value"]) for r in csv.DictReader(open(tmp_path / "out" / "figures_comparison.csv", encoding="utf-8"))}
@@ -220,3 +223,65 @@ def test_comparison_script_scores_a_synthetic_cache_and_says_nothing_without_one
         p.write_text(json.dumps(d), encoding="utf-8")
     run()
     assert "TUNED" in (tmp_path / "out" / "reader-comparison.md").read_text(encoding="utf-8")
+
+
+# ------------------------------------------------------------------ one folder per model, retries, and --files
+def test_readings_of_different_models_are_never_mixed(tmp_path, monkeypatch):
+    monkeypatch.setattr(vision, "VISION_DIR", tmp_path)
+    (tmp_path / "other-model").mkdir()
+    (tmp_path / "other-model" / "x.pdf.json").write_text(json.dumps(dict(file="x.pdf", sha256="a", reader=dict(model="other-model"), fields={})), encoding="utf-8")
+    assert vision.stored("x.pdf", "a") is None and vision.stored("x.pdf", "a", model="other-model") is not None
+    (tmp_path / vision.MODEL).mkdir()
+    (tmp_path / vision.MODEL / "x.pdf.json").write_text(json.dumps(dict(file="x.pdf", sha256="a", reader=dict(model="other-model"), fields={})), encoding="utf-8")
+    assert vision.stored("x.pdf", "a") is None          # a file in this model's folder that says it came from another model is not used
+
+
+def _http_error(code):
+    return urllib.error.HTTPError("https://x/v1beta/models/m:generateContent", code, "x", {}, __import__("io").BytesIO(json.dumps({"error": {"message": f"Google text {code} " + KEY}}).encode()))
+
+
+def test_503_is_retried_three_times_and_429_stops_without_a_retry(monkeypatch, tmp_path, capsys):
+    monkeypatch.setenv("GEMINI_API_KEY", KEY)
+    monkeypatch.setenv("GEMINI_RETRY_SECONDS", "0")
+    calls = []
+
+    def always(code):
+        def f(req, timeout=0):
+            calls.append(code)
+            raise _http_error(code)
+        return f
+
+    f = tmp_path / "bill.pdf"
+    f.write_bytes(b"%PDF-1.4 test")
+    monkeypatch.setattr(vision.urllib.request, "urlopen", always(503))
+    with pytest.raises(RuntimeError) as e:
+        vision.read_file(f, folder=tmp_path / "c")
+    assert calls == [503, 503, 503] and "HTTP 503" in str(e.value) and vision.MODEL in str(e.value) and "Google text 503" in str(e.value) and KEY not in str(e.value)
+    calls.clear()
+    monkeypatch.setattr(vision.urllib.request, "urlopen", always(429))
+    with pytest.raises(vision.QuotaExceeded) as e:
+        vision.read_file(f, folder=tmp_path / "c")
+    assert calls == [429] and KEY not in str(e.value)
+
+
+def test_files_option_reads_only_those_files_and_stops_at_a_quota(monkeypatch, tmp_path, capsys):
+    monkeypatch.setenv("GEMINI_API_KEY", KEY)
+    monkeypatch.setattr(vision, "VISION_DIR", tmp_path)
+    monkeypatch.setattr(vision.time, "sleep", lambda s: None)
+    seen = []
+
+    def fake_read(p, force=False, folder=None):
+        seen.append(p.name)
+        if len(seen) == 2:
+            raise vision.QuotaExceeded("429 text")
+        return {}
+
+    monkeypatch.setattr(vision, "read_file", fake_read)
+    rc = vision.main(["--files", "bill-11.pdf", "bill-12.pdf", "bill-14.pdf"])
+    out = capsys.readouterr().out
+    assert rc == 1 and seen == ["bill-11.pdf", "bill-12.pdf"] and "Stopped" in out and KEY not in out
+    assert vision.main(["--files", "index.md-not-there.pdf"]) == 2
+    seen.clear()
+    monkeypatch.setattr(vision, "read_file", lambda p, force=False, folder=None: seen.append(p.name) or {})
+    vision.main(["--all"])
+    assert len(seen) == 40 and not any(n.endswith(".md") for n in seen)

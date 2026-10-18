@@ -1,0 +1,67 @@
+{
+ "file": "bill-28.jpg",
+ "sha256": "aa19f076c30c5d6c0ec70585c69536c524f426b84bb38e5566597efdeba1fcf0",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 11.8
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "KAILASH FACILITY MANAGEMENT",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "06DUMCV9219I1ZB",
+   "conf": 0.95
+  },
+  "invoice_no": {
+   "value": "487/25-26/896",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-10-02",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4100384",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": "351370.00",
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": "63246.60",
+   "conf": 0.99
+  },
+  "total": {
+   "value": "414616.60",
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998533",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

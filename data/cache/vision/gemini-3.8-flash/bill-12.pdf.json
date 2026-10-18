@@ -1,0 +1,67 @@
+{
+ "file": "bill-12.pdf",
+ "sha256": "bcf5404e738f8e60e7da1920555d7b3b9ec9b58e784b19bdd6fd9cc5d4dea19f",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 6.1
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "NAVDEEP AGRO SERVICES PVT LTD",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "06UJFFM8627J1ZJ",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "050/25-26/128",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-06-04",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4100482",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 181990.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": 16379.1,
+   "conf": 0.99
+  },
+  "sgst": {
+   "value": 16379.1,
+   "conf": 0.99
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "total": {
+   "value": 214748.2,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998134",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

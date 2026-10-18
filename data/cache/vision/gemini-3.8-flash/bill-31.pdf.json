@@ -1,0 +1,67 @@
+{
+ "file": "bill-31.pdf",
+ "sha256": "a6c2dc7687e279fabd28034ba62160b05502308e17fdd16905b2e59ae31b3e2b",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 4.9
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "INDUS AGRO SERVICES PVT LTD",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "06JPQFH7025X1ZV",
+   "conf": 0.95
+  },
+  "invoice_no": {
+   "value": "336/25-26/739",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2026-01-05",
+   "conf": 0.95
+  },
+  "wo_id": {
+   "value": null,
+   "conf": 0.0
+  },
+  "taxable": {
+   "value": 144460.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 26002.8,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 170462.8,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998134",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

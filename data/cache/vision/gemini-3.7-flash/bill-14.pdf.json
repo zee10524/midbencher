@@ -1,0 +1,67 @@
+{
+ "file": "bill-14.pdf",
+ "sha256": "8a5a65c780f1e0b20826e53626671944965779bef247a700388df2949c06948d",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.7-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 6.5
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "VARDHAN SARTHAK LANDSCAPES",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "03GSNPI5677B1ZK",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "881/25-26/468",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-11-06",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4100214",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 249140.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": 22422.6,
+   "conf": 0.99
+  },
+  "sgst": {
+   "value": 22422.6,
+   "conf": 0.99
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "total": {
+   "value": 293985.2,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998134",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "file": "bill-16.jpg",
+ "sha256": "d1b1655af1c39e9f0f213dfb519409e8c2addcef7d60ce2ed10b1ab206d79e7f",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 6.7
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "KESARI HEMKUNT FIRE SAFETY SYSTEMS",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "07QXNPN2966U1ZT",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "751/25-26/346",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-11-01",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4100393",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 86330.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 15539.4,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 110869.4,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998719",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

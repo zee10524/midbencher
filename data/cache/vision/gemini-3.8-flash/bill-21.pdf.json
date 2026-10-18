@@ -1,0 +1,67 @@
+{
+ "file": "bill-21.pdf",
+ "sha256": "98a58aa7f87a718a94de8c97b64c6a77cdb14b187eb1894c41a0b75155d7d801",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 7.8
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "SATLUJ PANCHJANYA FACILITY MANAGEMENT",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "07OKSCW6595J1Z9",
+   "conf": 0.95
+  },
+  "invoice_no": {
+   "value": "739/25-26/309",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-10-05",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4101150",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 167410.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": 15066.9,
+   "conf": 0.99
+  },
+  "sgst": {
+   "value": 15066.9,
+   "conf": 0.99
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "total": {
+   "value": 197543.8,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998533",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

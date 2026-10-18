@@ -1,0 +1,67 @@
+{
+ "file": "packet-08-repeat-invoice.pdf",
+ "sha256": "43d7c7249ceea7bce017513d7609d73872add11584e7948df2dbe2de09689b41",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.7-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 7.8
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "HEMKUNT YAMUNA FACILITY SERVICES",
+   "conf": 0.95
+  },
+  "vendor_gstin": {
+   "value": "06QVLCO1204A1Z3",
+   "conf": 0.9
+  },
+  "invoice_no": {
+   "value": "550/25-26/340",
+   "conf": 0.95
+  },
+  "invoice_date": {
+   "value": "2025-06-04",
+   "conf": 0.95
+  },
+  "wo_id": {
+   "value": "4100602",
+   "conf": 0.95
+  },
+  "taxable": {
+   "value": 190740.0,
+   "conf": 0.95
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 34333.2,
+   "conf": 0.95
+  },
+  "total": {
+   "value": 225073.2,
+   "conf": 0.95
+  },
+  "hsn_sac": {
+   "value": "9985",
+   "conf": 0.95
+  },
+  "place_of_supply": {
+   "value": "Uttar Pradesh",
+   "conf": 0.95
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.95
+  }
+ }
+}

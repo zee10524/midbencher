@@ -1,0 +1,67 @@
+{
+ "file": "bill-24.pdf",
+ "sha256": "06e4adf7e5d692462a98706ccfb0733167720905ef374a6daa6902f8d72a248e",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 47.1
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "PANCHJANYA TEJAS FACILITY SERVICES PVT LTD",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "06EZVFS7401T1ZX",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "732/25-26/608",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-12-01",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4100250",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 408480.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": 36763.2,
+   "conf": 0.99
+  },
+  "sgst": {
+   "value": 36763.2,
+   "conf": 0.99
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "total": {
+   "value": 482006.4,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998533",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

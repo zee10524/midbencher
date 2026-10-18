@@ -1,0 +1,67 @@
+{
+ "file": "bill-15.pdf",
+ "sha256": "6df46858c896135ca0cae68efa2902ef17112607948e737833c4e87542d0b643",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 5.4
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "SATLUJ TRISHUL MANPOWER SOLUTIONS",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "06UJKCA4641Y1Z5",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "165/25-26/725",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-09-02",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": null,
+   "conf": 0.0
+  },
+  "taxable": {
+   "value": 286150.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 51507.0,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 337657.0,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998525",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Delhi",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

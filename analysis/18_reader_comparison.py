@@ -31,6 +31,7 @@ LABELS = ROOT / "analysis" / "gold_labels.csv"
 FIELDS = {"vendor_name": "vendor_name", "invoice_number": "invoice_no", "invoice_date": "invoice_date", "amount": "total", "gstin": "vendor_gstin", "po_or_wo_number": "wo_id"}
 KEY = ["invoice_number", "invoice_date", "amount", "gstin"]
 FIRST_PROMPT = "vision-prompt-1"
+FREE_REQUESTS = 20   # requests per day per model on the free tier, as stated in Google's own 429 message (limit: 20), seen on 2026-10-18
 
 
 def load_labels() -> list[dict]:
@@ -91,7 +92,8 @@ def combine(tess: dict, vis_: dict) -> pd.DataFrame:
 
 T1 = score(tess_first, "first")
 TL = score(tess_live, "live")
-figs = [("rc.labelled_bills", len(gold), "hand-labelled bills"),
+figs = [("rc.free_tier.requests_per_day_per_model", FREE_REQUESTS, "free-tier limit per model per day, as stated in Google's 429 message (not computed here)"),
+        ("rc.labelled_bills", len(gold), "hand-labelled bills"),
         ("rc.vision_stored_of_labelled", len(have), "of those, bills with a stored vision reading"),
         ("rc.tess_first.fields_correct", int(T1.correct.sum()), "Tesseract alone, first run: fields right (of 60)"),
         ("rc.tess_first.key_bills", key_bills(T1), "Tesseract alone, first run: bills right on the four key fields"),
@@ -104,8 +106,9 @@ L = ["# Reader comparison: Tesseract, a vision model, and the two together", "",
 
 if not complete:
     L += ["## Status: the vision reader has NOT been scored", "",
-          f"The stored vision readings of the labelled bills are not all present ({len(have)} of {len(gold)}). The vision reader needs a Gemini API key to make its readings, and no key was available when this was built, "
-          "so no vision response exists to score and none has been invented. Everything below that depends on it is blank on purpose.", "",
+          f"The stored vision readings of the labelled bills are not all present ({len(have)} of {len(gold)}), so the vision reader is not scored: a score on part of the set, or on readings from different models, would not be a first run. "
+          + ("None has been made yet (the reader needs a Gemini API key), and no vision response has been invented." if not have else "Missing: " + ", ".join(f"`{f}`" for f in vis if not vis[f]) + ". Run `python -m app.reader.vision --all` again (it skips what is cached; the free tier of a model has a daily request limit) with the same model, then re-run this script.")
+          + " Everything below that depends on it is blank on purpose.", "",
           "To fill the cache (sends each bill image to Google; the pack is synthetic), put the key in a `.env` file (copy `.env.example`), then run:", "",
           "```", "python -m app.reader.vision --all", "python -I analysis/18_reader_comparison.py", "```", "",
           "That writes `data/cache/vision/<file>.json` for the 40 inbox bills (commit them, and the app and the tests then run with no key), and re-writes this file with the scores. "
@@ -143,6 +146,9 @@ else:
     if secs:
         figs.append(("rc.vision.seconds_mean", round(sum(secs) / len(secs), 1), "vision: mean seconds per bill (one call, rate-limit pause excluded)"))
     L += [f"## {title}", "", f"Vision model: {', '.join(sorted({(v.get('reader') or {}).get('model', '?') for v in vis.values()}))}; prompt version(s): {', '.join(versions)}.", "",
+          f"**Why this model.** Google's free tier allows {FREE_REQUESTS} requests a day for each model (its own 429 message says so: `limit: {FREE_REQUESTS}`). `gemini-3.8-flash` ran out of quota after {FREE_REQUESTS} bills, and `gemini-2.5-flash` is closed to new users, "
+          f"so the 10 labelled bills were read with one model that had quota, `{', '.join(sorted({(v.get('reader') or {}).get('model', '?') for v in vis.values()}))}`, and nothing else is mixed in: each model's readings are stored in their own folder (`data/cache/vision/<model>/`), and only this model's folder is scored. "
+          "Readings by `gemini-3.8-flash` for other bills exist in their own folder and are not used here.", "",
           "## 1. Fields and bills right", "", "| Reader | Fields right (of 60) | Bills right on the four key fields (of 10) |", "|---|---|---|",
           f"| (1) Tesseract alone, first run | {int(T1.correct.sum())} | {key_bills(T1)} |", f"| (2) Vision alone | {int(V.correct.sum())} | {key_bills(V)} |",
           f"| (3) Combination: agreement trusted, disagreement to a person | {n_tr - n_trw} trusted and right; {n_trw} trusted and wrong; {n_diff + n_vo + n_to + n_none} not trusted | {key_trusted_right} bills fully trusted and right; {key_to_person} with a field for a person |", "",

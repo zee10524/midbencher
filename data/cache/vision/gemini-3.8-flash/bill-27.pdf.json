@@ -1,0 +1,67 @@
+{
+ "file": "bill-27.pdf",
+ "sha256": "c37800474b8564ad732a568e7e1cc8cf2aca2b66341b0d5f2560f57b56f1707b",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 21.3
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "SATLUJ HYGIENE SOLUTIONS",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "06UESFR5810Q1ZZ",
+   "conf": 0.99
+  },
+  "invoice_no": {
+   "value": "548/25-26/781",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-04-08",
+   "conf": 0.99
+  },
+  "wo_id": {
+   "value": "4100377",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 75750.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": 6817.5,
+   "conf": 0.99
+  },
+  "sgst": {
+   "value": 6817.5,
+   "conf": 0.99
+  },
+  "igst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "total": {
+   "value": 89385.0,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "3402",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Haryana",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AAACX4421K1ZQ",
+   "conf": 0.99
+  }
+ }
+}

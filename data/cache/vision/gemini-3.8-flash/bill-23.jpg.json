@@ -1,0 +1,67 @@
+{
+ "file": "bill-23.jpg",
+ "sha256": "c2ce1895648bbb65a568c162c4ed135c01453f456665ba081fb39417cebcf81c",
+ "reader": {
+  "name": "vision",
+  "provider": "Gemini",
+  "model": "gemini-3.8-flash",
+  "prompt_version": "vision-prompt-1",
+  "read_at": "2026-10-18",
+  "seconds": 26.7
+ },
+ "doc_type": "invoice",
+ "fields": {
+  "vendor_name": {
+   "value": "PANCHJANYA HYGIENE SOLUTIONS PVT LTD",
+   "conf": 0.99
+  },
+  "vendor_gstin": {
+   "value": "06IXXFO6273K1ZU",
+   "conf": 0.95
+  },
+  "invoice_no": {
+   "value": "039/25-26/832",
+   "conf": 0.99
+  },
+  "invoice_date": {
+   "value": "2025-12-03",
+   "conf": 0.98
+  },
+  "wo_id": {
+   "value": "4100453",
+   "conf": 0.99
+  },
+  "taxable": {
+   "value": 454210.0,
+   "conf": 0.99
+  },
+  "cgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "sgst": {
+   "value": null,
+   "conf": 0.0
+  },
+  "igst": {
+   "value": 81757.8,
+   "conf": 0.99
+  },
+  "total": {
+   "value": 535967.8,
+   "conf": 0.99
+  },
+  "hsn_sac": {
+   "value": "998533",
+   "conf": 0.99
+  },
+  "place_of_supply": {
+   "value": "Delhi",
+   "conf": 0.99
+  },
+  "recipient_gstin": {
+   "value": "06AACX4421K1ZQ",
+   "conf": 0.98
+  }
+ }
+}

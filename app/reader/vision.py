@@ -3,11 +3,15 @@
 OFF by default. It runs only when `GEMINI_API_KEY` is set, in the environment or in a `.env` file at the project root (`.env` is git-ignored; `.env.example`, with a blank value,
 is committed). The key is read, sent in a request header and nothing else: it is never printed, logged, put in a URL or written to the cache.
 
-Every response is cached as JSON under `data/cache/vision/<file name>.json`, and that cache is meant to be committed, so the app, the analysis and the tests run with no key and
+Every response is cached as JSON under `data/cache/vision/<model>/<file name>.json` (one folder per model, so readings of different models are never mixed; the model name is also
+recorded inside every file), and that cache is meant to be committed, so the app, the analysis and the tests run with no key and
 no network. `stored(name)` reads the cache only; the app never calls the model. To fill the cache (one call per bill, sends the bill image to Google):
 
     python -m app.reader.vision --all          # all 40 inbox bills, skipping any already cached
     python -m app.reader.vision --file bill-11.pdf [--force]
+    python -m app.reader.vision --files bill-11.pdf bill-12.pdf ...     # just these files
+
+A 503 ("high demand") is retried up to 3 times with a short wait; a 429 (quota) stops the run cleanly, with no retry.
 
 What goes to the model is the bill file and a fixed instruction (PROMPT, versioned by PROMPT_VERSION). The model returns JSON: for each field a value, or null, and a confidence
 from 0 to 1. Nothing it returns is trusted by itself: `crosscheck.py` compares it with the Tesseract reading, field by field, and a person decides wherever they differ.
@@ -32,9 +36,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 VISION_DIR = Path(os.environ["RIKLR_VISION_DIR"]) if os.environ.get("RIKLR_VISION_DIR") else ROOT / "data" / "cache" / "vision"   # the override is for the tests
 INBOX = ROOT / "pack" / "context" / "documents" / "bill-inbox"
-MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")   # not verified from here (no key, no network): change with GEMINI_MODEL if the name has moved on
 ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 PROMPT_VERSION = "vision-prompt-1"
+BILL_SUFFIXES = {".pdf", ".jpg", ".jpeg", ".png"}
 
 # the fields the Tesseract reader extracts that can be compared as printed (property_name is matched to SAP by the Tesseract reader, so it is not compared)
 FIELDS = ["vendor_name", "vendor_gstin", "invoice_no", "invoice_date", "wo_id", "taxable", "cgst", "sgst", "igst", "total", "hsn_sac", "place_of_supply", "recipient_gstin"]
@@ -71,6 +75,16 @@ def _env_file_value(name: str) -> str | None:
     return None
 
 
+# gemini-2.5-flash is closed to new users (HTTP 404). The free tier allows 20 requests a day per model, so the 10 labelled bills are read with ONE model that had quota: gemini-3.7-flash.
+# Override with GEMINI_MODEL (environment or .env); readings are stored per model.
+DEFAULT_MODEL = "gemini-3.7-flash"
+MODEL = os.environ.get("GEMINI_MODEL") or _env_file_value("GEMINI_MODEL") or DEFAULT_MODEL
+
+
+class QuotaExceeded(RuntimeError):
+    """HTTP 429: the model's quota is used up. Never retried."""
+
+
 def api_key() -> str | None:
     """The key from the environment or `.env`, or None. Never printed or logged: callers use `has_key()` to ask whether there is one."""
     return os.environ.get("GEMINI_API_KEY") or _env_file_value("GEMINI_API_KEY")
@@ -81,17 +95,21 @@ def has_key() -> bool:
 
 
 # ------------------------------------------------------------------------------------------------ cache
-def cache_path(name: str, folder: Path | None = None) -> Path:
-    return (folder or VISION_DIR) / f"{Path(name).name}.json"
+def cache_path(name: str, folder: Path | None = None, model: str | None = None) -> Path:
+    """`data/cache/vision/<model>/<file>.json`; an explicit `folder` is used as it is."""
+    return (folder or VISION_DIR / (model or MODEL)) / f"{Path(name).name}.json"
 
 
-def stored(name: str, sha256: str | None = None, folder: Path | None = None) -> dict | None:
-    """The stored vision reading for a file name, or None. If `sha256` is given and the stored reading was made from different bytes, it is not used."""
-    p = cache_path(name, folder)
+def stored(name: str, sha256: str | None = None, folder: Path | None = None, model: str | None = None) -> dict | None:
+    """The stored vision reading of one model (the app's model unless `model` is given) for a file name, or None. If `sha256` is given and the stored reading was made from different
+    bytes, or by a different model than the folder says, it is not used."""
+    p = cache_path(name, folder, model)
     if not p.exists():
         return None
     d = json.loads(p.read_text(encoding="utf-8"))
     if sha256 and d.get("sha256") and d["sha256"] != sha256:
+        return None
+    if (d.get("reader") or {}).get("model") not in (None, model or MODEL) and folder is None:
         return None
     return d
 
@@ -120,18 +138,35 @@ def _call(body: bytes, mime: str, key: str, model: str) -> dict:
                "generationConfig": {"temperature": 0, "responseMimeType": "application/json"}}
     req = urllib.request.Request(ENDPOINT.format(model=model), data=json.dumps(payload).encode("utf-8"), method="POST",
                                  headers={"Content-Type": "application/json", "x-goog-api-key": key})   # a header, never the URL
-    try:
-        with urllib.request.urlopen(req, timeout=120) as r:
-            out = json.loads(r.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        raise RuntimeError(f"The vision model answered with HTTP {e.code}.") from None   # no URL, no headers in the message
-    except urllib.error.URLError as e:
-        raise RuntimeError(f"The vision model could not be reached ({type(e.reason).__name__}).") from None
+    for attempt in (1, 2, 3):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                out = json.loads(r.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 503 and attempt < 3:
+                time.sleep(float(os.environ.get("GEMINI_RETRY_SECONDS", "5")) * attempt)    # "high demand" is usually brief
+                continue
+            _raise_http(e, key, model)
+        except urllib.error.URLError as e:
+            raise RuntimeError(f"The vision model could not be reached ({type(e.reason).__name__}; model {model}).") from None
     try:
         text = out["candidates"][0]["content"]["parts"][0]["text"]
         return json.loads(text)
     except (KeyError, IndexError, TypeError, ValueError):
         raise RuntimeError("The vision model's answer was not the JSON that was asked for.") from None
+
+
+def _raise_http(e: urllib.error.HTTPError, key: str, model: str):
+    # what is shown: the model, the request path (the key is in a header, so it is never in the path), and the error text Google sent, with the key scrubbed if it were echoed
+    try:
+        said = (json.loads(e.read().decode("utf-8", "replace")).get("error") or {}).get("message") or ""
+    except (ValueError, AttributeError):
+        said = ""
+    said = " ".join(said.replace(key, "[key hidden]").split())[:600]
+    path = ENDPOINT.format(model=model).split("googleapis.com", 1)[1]
+    msg = f"The vision model answered with HTTP {e.code} (model {model}, request path {path}). Google says: {said or 'no error text'}"
+    raise (QuotaExceeded(msg) if e.code == 429 else RuntimeError(msg)) from None
 
 
 def read_file(path: Path, force: bool = False, folder: Path | None = None) -> dict:
@@ -159,10 +194,17 @@ def read_file(path: Path, force: bool = False, folder: Path | None = None) -> di
 
 def main(argv: list[str]) -> int:
     force = "--force" in argv
-    if "--file" in argv:
+    if "--files" in argv:
+        names = [a for a in argv[argv.index("--files") + 1:] if not a.startswith("--")]
+        files = [INBOX / n for n in names]
+        missing = [f.name for f in files if not f.is_file()]
+        if missing or not files:
+            print("Not in the bill inbox: " + ", ".join(missing or ["(no file names given)"]))
+            return 2
+    elif "--file" in argv:
         files = [INBOX / argv[argv.index("--file") + 1]]
     elif "--all" in argv:
-        files = sorted(p for p in INBOX.iterdir() if p.is_file())
+        files = sorted(p for p in INBOX.iterdir() if p.is_file() and p.suffix.lower() in BILL_SUFFIXES)   # bills only: index.md and the like are skipped
     else:
         print(__doc__)
         return 2
@@ -177,6 +219,9 @@ def main(argv: list[str]) -> int:
             print(f"{i}/{len(files)} {p.name}: {'already cached' if cached else 'read and cached'}", flush=True)
             if not cached:
                 time.sleep(float(os.environ.get("GEMINI_PAUSE_SECONDS", "6")))   # stays under free-tier request limits
+        except QuotaExceeded as e:
+            print(f"{i}/{len(files)} {p.name}: {e}\nStopped: the quota for {MODEL} is used up. Nothing more was sent. Try again after the wait Google gives, or use another model (GEMINI_MODEL).", flush=True)
+            return 1
         except RuntimeError as e:
             print(f"{i}/{len(files)} {p.name}: {e}", flush=True)
     return 0
