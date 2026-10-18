@@ -1663,6 +1663,8 @@ Run from the project root with the project's virtual environment active (`.venv`
 | p.msme.late_desk_after_queue | 447.0 | ...if the AP-1 queue fix had applied |
 | p.msme.late_desk_after_both | 366.0 | ...if both first fixes had applied |
 | p.msme.late_desk_after_all3 | 315.0 | ...if all three flow fixes had applied |
+| p.owner.ap_lead.ceiling | 10.59 | central AP lead: days on the mean that the causes it owns could take at most (verifier wait, head-office queries, typing) |
+| p.owner.property.ceiling | 12.89 | property heads and executives: days on the mean that the causes they own could take at most (courier, signature, checks and service entry, property-side queries) |
 
 <!-- END 08_problem_ranking.py -->
 
@@ -1842,6 +1844,10 @@ Run from the project root with the project's virtual environment active (`.venv`
 | d.hours.must | 14.0 | estimated hours for the must-have slice |
 | d.hours.old | 13.0 | hours in the first version of the slice (13) before this change |
 | d.hours.spare | 0.0 | hours left in the budget after the must-have slice |
+| d.after.desk_mean_low | 24.944 | mean days from the desk after all three levers, best case (before minus the high saving) |
+| d.after.desk_mean_high | 27.348 | mean days from the desk after all three levers, worst case (before minus the low saving) |
+| d.after.inv_mean_low | 31.301 | mean days from the invoice date after all three levers, best case |
+| d.after.inv_mean_high | 33.705 | mean days from the invoice date after all three levers, worst case |
 | d.hours.full | 26.0 | hours for the full checker plus the full work queue, which do not fit |
 
 <!-- END 10_solution_design.py -->
@@ -2618,6 +2624,7 @@ Run from the project root with the project's virtual environment active (`.venv`
 | rc.comb.key_bills_trusted_right | 3.0 | combination: bills with all four key fields agreed and right |
 | rc.comb.key_bills_trusted_wrong | 0.0 | combination: bills with a key field agreed but wrong |
 | rc.comb.key_bills_to_person | 7.0 | combination: bills with at least one key field that goes to a person |
+| rc.vision.error_upper95_pct | 5.0 | rule of three: with no vision error in the scored fields, the 95% upper bound on its true field error rate, per cent |
 | rc.comb.trusted_wrong_upper95_pct | 6.0 | rule of three: with no trusted-and-wrong field in the trusted fields, the 95% upper bound on the true rate of trusted-and-wrong fields, per cent |
 | rc.vision.seconds_mean | 16.7 | vision: mean seconds per bill (one call, rate-limit pause excluded) |
 

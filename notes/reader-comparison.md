@@ -18,6 +18,8 @@ Vision model: gemini-3.7-flash; prompt version(s): vision-prompt-1.
 
 For reference, the Tesseract stored readings as they are now (tuned on these 10 bills, so not a fair measure): 58 fields, 8 bills.
 
+**Read this table with care.** The vision reader had no error on these ten bills (60 of 60 fields), read once, against labels typed by one person. That is not evidence of 100% accuracy: with no error in 60 fields the 95% upper bound on its true field error rate is about 5 per cent (rule of three, `rc.vision.error_upper95_pct`), and ten bills are not a random sample of the inbox. The tuned Tesseract line is not a fair comparison and is not a headline.
+
 ## 2. The combination, field by field
 
 | | Fields |

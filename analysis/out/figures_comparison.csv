@@ -23,5 +23,6 @@ rc.comb.wrong_trusted,0.0,"of those, trusted because the vision reader made the 
 rc.comb.key_bills_trusted_right,3.0,combination: bills with all four key fields agreed and right
 rc.comb.key_bills_trusted_wrong,0.0,combination: bills with a key field agreed but wrong
 rc.comb.key_bills_to_person,7.0,combination: bills with at least one key field that goes to a person
+rc.vision.error_upper95_pct,5.0,"rule of three: with no vision error in the scored fields, the 95% upper bound on its true field error rate, per cent"
 rc.comb.trusted_wrong_upper95_pct,6.0,"rule of three: with no trusted-and-wrong field in the trusted fields, the 95% upper bound on the true rate of trusted-and-wrong fields, per cent"
 rc.vision.seconds_mean,16.7,"vision: mean seconds per bill (one call, rate-limit pause excluded)"

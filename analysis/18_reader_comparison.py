@@ -145,6 +145,8 @@ else:
              ("rc.comb.wrong_already_low", flagged_low, "of those, not caught by disagreement but already below 0.70 confidence"), ("rc.comb.wrong_trusted", trusted_wrong_t, "of those, trusted because the vision reader made the same error"),
              ("rc.comb.key_bills_trusted_right", key_trusted_right, "combination: bills with all four key fields agreed and right"), ("rc.comb.key_bills_trusted_wrong", key_trusted_wrong, "combination: bills with a key field agreed but wrong"),
              ("rc.comb.key_bills_to_person", key_to_person, "combination: bills with at least one key field that goes to a person")]
+    if int(V.correct.sum()) == len(V):
+        figs.append(("rc.vision.error_upper95_pct", round(100 * 3 / len(V), 1), "rule of three: with no vision error in the scored fields, the 95% upper bound on its true field error rate, per cent"))
     if n_trw == 0 and n_tr:
         figs.append(("rc.comb.trusted_wrong_upper95_pct", round(100 * 3 / n_tr, 1), "rule of three: with no trusted-and-wrong field in the trusted fields, the 95% upper bound on the true rate of trusted-and-wrong fields, per cent"))
     secs = [float((v.get("reader") or {}).get("seconds")) for v in vis.values() if v and (v.get("reader") or {}).get("seconds") is not None]
@@ -158,6 +160,7 @@ else:
           f"| (1) Tesseract alone, first run | {int(T1.correct.sum())} | {key_bills(T1)} |", f"| (2) Vision alone | {int(V.correct.sum())} | {key_bills(V)} |",
           f"| (3) Combination: agreement trusted, disagreement to a person | {n_tr - n_trw} trusted and right; {n_trw} trusted and wrong; {n_diff + n_vo + n_to + n_none} not trusted | {key_trusted_right} bills fully trusted and right; {key_to_person} with a field for a person |", "",
           f"For reference, the Tesseract stored readings as they are now (tuned on these 10 bills, so not a fair measure): {int(TL.correct.sum())} fields, {key_bills(TL)} bills.", "",
+          f"**Read this table with care.** The vision reader had no error on these ten bills{(' (' + str(int(V.correct.sum())) + ' of 60 fields)') if int(V.correct.sum()) == 60 else ''}, read once, against labels typed by one person. That does not show it is always right: with no error in {len(V)} fields the 95% upper bound on its true field error rate is about {100 * 3 / len(V):.0f} per cent (rule of three, `rc.vision.error_upper95_pct`), and ten bills are not a random sample of the inbox. The tuned Tesseract line is not a fair comparison and is not a headline.", "",
           "## 2. The combination, field by field", "", "| | Fields |", "|---|---|", f"| Readers agree (trusted) | {n_tr} |", f"|   of those, wrong | {n_trw} |", f"| Readers differ (a person decides) | {n_diff} |",
           f"| Only the vision reader read it (a person decides) | {n_vo} |", f"| Only Tesseract read it (no second opinion) | {n_to} |", f"| Neither read it | {n_none} |", "",
           f"Of the {wrong_total} Tesseract readings that were wrong, {caught} were caught because the readers disagreed, {flagged_low} more were not caught by disagreement but already carried a confidence below 0.70, "

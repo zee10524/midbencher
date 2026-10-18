@@ -37,7 +37,7 @@ Creates `.venv` and installs the pinned versions in `constraints.txt`. Expected 
 python tasks.py analyse          # or: make analyse
 ```
 
-Runs the numbered scripts in `analysis/`, then refreshes `notes/numbers.md`. Expected: one line per script (`== clean.py`, `== 01_profile.py` and so on up to `== 17_runway_90d.py`) and, last, `registered 2214 figures in .../notes/numbers.md` (the figure count grows as figures are added). It also rewrites the files in `analysis/out/`, `backtest/out/` and `notes/` that the app and the tests read; they are already in the repository, so the result should match what you cloned.
+Runs the numbered scripts in `analysis/`, then refreshes `notes/numbers.md`. Expected: one line per script (`== clean.py`, `== 01_profile.py` and so on up to `== 18_reader_comparison.py`) and, last, `registered 2250 figures in .../notes/numbers.md` (the figure count grows as figures are added). It also rewrites the files in `analysis/out/`, `backtest/out/` and `notes/` that the app and the tests read; they are already in the repository, so the result should match what you cloned.
 
 ### 3. Test: about 1.5 minutes
 
@@ -45,7 +45,7 @@ Runs the numbered scripts in `analysis/`, then refreshes `notes/numbers.md`. Exp
 python tasks.py test             # or: make test
 ```
 
-Expected last line: `204 passed` (the number grows as tests are added; there must be no failures). Tests that need Tesseract are skipped if it is not installed.
+Expected last line: `218 passed` (the number grows as tests are added; there must be no failures). Tests that need Tesseract are skipped if it is not installed.
 
 ### 4. Run
 

@@ -150,6 +150,9 @@ fig("p.msme.late_desk_after_pay", int(((tot - sv_pay) > 45).sum()), "...if the p
 fig("p.msme.late_desk_after_queue", int(((tot - sv_q) > 45).sum()), "...if the AP-1 queue fix had applied")
 fig("p.msme.late_desk_after_both", int(((tot - sv_pay - sv_q) > 45).sum()), "...if both first fixes had applied")
 fig("p.msme.late_desk_after_all3", int(((tot - sv_pay - sv_q - sv_c) > 45).sum()), "...if all three flow fixes had applied")
+# the ceilings printed in the owner table below (each is a sum of registered stage means and query days), registered so that every figure in the note has an id
+fig("p.owner.ap_lead.ceiling", float(F["overall.s05.cal_mean"]) + float(F["p.query.head-office.days_on_mean"]) + float(F["overall.s06.cal_mean"]), "central AP lead: days on the mean that the causes it owns could take at most (verifier wait, head-office queries, typing)")
+fig("p.owner.property.ceiling", float(F["overall.s04.cal_mean"]) + float(F["overall.s03.cal_mean"]) + float(F["overall.s02.cal_mean"]) + float(F["p.query.property.days_on_mean"]), "property heads and executives: days on the mean that the causes they own could take at most (courier, signature, checks and service entry, property-side queries)")
 pd.DataFrame([dict(id=k, value=v_, description=d_) for k, (v_, d_) in own.items()]).to_csv(OUT / "figures_problem.csv", index=False, lineterminator="\n")
 
 # ------------------------------------------------------------------ the ranking

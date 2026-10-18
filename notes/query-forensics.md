@@ -222,11 +222,11 @@ Which texts sit where:
 - **D:** service report (71), gate stamp (68), PF/ESIC (52), attendance unsigned (51).
 - **E:** cost centre on the service entry (76), service entry parked (59), GRN not found (57), bill vs service entry amount (17), holds (20), original not received (8).
 
-**What the data proves for layer A** (the rule run on the bill and extract at the desk date):
+**What the data shows for layer A** (the rule run on the bill and extract at the desk date):
 
 - **Expired work orders: 104 of 107.** The SAP `valid_to` equals the expiry date in the query text for 104, and the invoice date is after it for those 104. For 3 the text gives an earlier date than SAP, which would fit a later extension.
 - **Duplicates: 34 of 130, and weakly.** 68 of the 130 have a same-vendor same-invoice-number twin in the register, and in 34 of them that twin had reached the desk first. In 62 there is no twin at all. In none of the 68 does the twin have the same amount. So a rule on invoice number alone would raise the 34 queries, but they are probably number collisions rather than double billing (see `notes/data-audit.md`, D04).
-- **Proven total for layer A: 138 queries (9.6%).**
+- **Total confirmed in the extract for layer A: 138 queries (9.6%).** This is a count of queries the rule would have matched, not a promise of what it will catch on new bills.
 
 **What the data does not support:**
 

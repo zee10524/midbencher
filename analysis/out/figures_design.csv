@@ -18,4 +18,8 @@ d.human_per_day,0.418,"...per working day, on 250 working days"
 d.hours.must,14.0,estimated hours for the must-have slice
 d.hours.old,13.0,hours in the first version of the slice (13) before this change
 d.hours.spare,0.0,hours left in the budget after the must-have slice
+d.after.desk_mean_low,24.944,"mean days from the desk after all three levers, best case (before minus the high saving)"
+d.after.desk_mean_high,27.348,"mean days from the desk after all three levers, worst case (before minus the low saving)"
+d.after.inv_mean_low,31.301,"mean days from the invoice date after all three levers, best case"
+d.after.inv_mean_high,33.705,"mean days from the invoice date after all three levers, worst case"
 d.hours.full,26.0,"hours for the full checker plus the full work queue, which do not fit"
